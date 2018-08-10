@@ -25,45 +25,77 @@
                     <select name="categoryId" class="form-control mr-3">
                         <option value="0">All category</option>
                         {{--@foreach($categories as $item)--}}
-                            {{--<option--}}
-                                {{--value="{{$item->id}}" {{$categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>--}}
+                        {{--<option--}}
+                        {{--value="{{$item->id}}" {{$categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>--}}
                         {{--@endforeach--}}
                     </select>
                     <input type="submit" value="Lọc" class="btn btn-outline-success">
                 </div>
             </form>
         </div>
-        <table class="table table-striped">
-            <thead>
+
+        <table class="table">
+            <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col" class="w-25">Image</th>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">Price</th>
-                <th scope="col">Action</th>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
             </tr>
             </thead>
-            {{--<tbody>--}}
-            {{--@foreach($products_in_view as $item)--}}
-                {{--<tr>--}}
-                    {{--<th scope="row">{{$item->id}}</th>--}}
-                    {{--<td>--}}
-                        {{--<div class="card"--}}
-                             {{--style="background-image: url('{{\JD\Cloudder\Facades\Cloudder::show($item->image, array('width' => 70, 'height' => 70, 'crop' => 'fit'))}}'); background-size: cover; width: 77px; height: 60px">--}}
-                        {{--</div>--}}
-                    {{--</td>--}}
-                    {{--<td>{{$item->name}}</td>--}}
-                    {{--<td>{{$item->category->name}}</td>--}}
-                    {{--<td>{{$item->price}}</td>--}}
-                    {{--<td>--}}
-                        {{--<a href="/admin/product/{{$item -> id}}/edit">{{__('message.edit')}}</a>&nbsp;&nbsp;--}}
-                        {{--<a href="/admin/product/{{$item -> id}}">{{__('message.delete')}}</a>--}}
-                    {{--</td>--}}
-                {{--</tr>--}}
-            {{--@endforeach--}}
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
             </tbody>
         </table>
+
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+
         <div class="row float-right mr-2">
             {{--{{$products_in_view->links()}}--}}
         </div>
