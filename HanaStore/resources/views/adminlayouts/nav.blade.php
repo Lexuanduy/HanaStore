@@ -31,6 +31,6 @@
 </ul>
 <!-- /.navbar-top-links -->
  
-@include('adminLayout/menu')
+@include('adminlayouts/menu')
 <!-- /.navbar-static-side -->
 </nav>
