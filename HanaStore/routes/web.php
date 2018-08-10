@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('admin/example-list', function () {
+    return view('template.example-list');
+});
