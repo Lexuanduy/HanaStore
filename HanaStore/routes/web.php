@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/form/example', function () {
-    return view('example.example-form');
+    return view('template.example-form');
+});
+
+Route::get('list/example', function () {
+    return view('template.example-list');
 });
