@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// mapping route to file with url form/template
+Route::get('list/example', function () {
+    return view('template.example-list');
+});
+
 Route::get('/form/template', function () {
     return view('template.template-form');
 });
