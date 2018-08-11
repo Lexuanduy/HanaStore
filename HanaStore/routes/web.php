@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Mapping route to file with url admin/product/list
+Route::get('/admin/product/list', 'ProductController@index');
