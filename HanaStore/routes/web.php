@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/form/example', function () {
     return view('examples.example-form');
+});
+
+Route::get('admin/example-list', function () {
+    return view('template.example-list');
 });
