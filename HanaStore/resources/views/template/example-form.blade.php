@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Example Form</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/form-example.css') }}">
+        <link rel="stylesheet" href="{{ asset('template') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
               integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <script src="{{asset('js/app.js')}}"></script>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <!--form example include email, password, text area, check box and radios button-->
+                <!--form example incltemplateil, password, text area, check box and radios button-->
                 <div class="col-md-8">
                     <form action="/form/example" method="POST">
                         {{ csrf_field() }}
