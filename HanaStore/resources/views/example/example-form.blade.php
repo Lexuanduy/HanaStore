@@ -45,7 +45,7 @@
 
                 <!--form example include email, password, text area, check box and radios button-->
                 <div class="col-md-8">
-                    <form action="/form/example" method="GET">
+                    <form action="/form/example" method="POST">
                         {{ csrf_field() }}
 
                         <div class="form-group row">
