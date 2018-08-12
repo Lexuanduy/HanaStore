@@ -11,13 +11,10 @@
 |
 */
 
-// Admin Product
-Route::resource('/admin/product', 'ProductController');
-
-// Admin Register
-Route::resource('/admin/register', 'RegisterController');
-
 Route::get('/admin', function (){
    return view('admin.flower.list');
 });
 
+Route::get('/list/template', function (){
+    return view('template.list-form');
+});
