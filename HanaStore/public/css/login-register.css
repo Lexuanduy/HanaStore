@@ -1,0 +1,39 @@
+html {
+    background: url(../img/bg-content.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: "Roboto","Helvetica Neue",Arial,sans-serif;
+}
+label {
+    /*font-weight: bold;*/
+    color: #9A9A9A;
+    /*font-size: 12px;*/
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+.text-small{
+    font-size: 9px;
+    margin-left: 5px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
