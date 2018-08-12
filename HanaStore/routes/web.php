@@ -18,7 +18,7 @@ Route::get('/', function () {
 // Mapping route to file with url admin/product/list
 Route::get('/admin/product/list', 'ProductController@index');
 
-Route::get('list/example', function () {
+Route::get('list/template', function () {
     return view('template.example-list');
 });
 
