@@ -22,6 +22,6 @@ Route::get('list/template', function () {
     return view('template.example-list');
 });
 
-Route::get('/form/template', function () {
+Route::get('form/template', function () {
     return view('template.template-form');
 });
