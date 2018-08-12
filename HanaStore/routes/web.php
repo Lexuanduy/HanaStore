@@ -18,3 +18,8 @@ Route::get('/admin', function (){
 Route::get('/list/template', function (){
     return view('template.list-form');
 });
+
+// mapping route to file with url form/template
+Route::get('/form/example', function () {
+    return view('template.example-form');
+});
