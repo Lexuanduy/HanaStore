@@ -15,10 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('list/example', function () {
+// Mapping route to file with url admin/product/list
+Route::get('/admin/product/list', 'ProductController@index');
+
+Route::get('list/template', function () {
     return view('template.example-list');
 });
 
-Route::get('/form/template', function () {
+Route::get('form/template', function () {
     return view('template.template-form');
 });
