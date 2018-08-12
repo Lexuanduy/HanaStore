@@ -20,6 +20,6 @@ Route::get('/list/template', function (){
 });
 
 // mapping route to file with url form/template
-Route::get('/form/example', function () {
+Route::get('/form/template', function () {
     return view('template.example-form');
 });
