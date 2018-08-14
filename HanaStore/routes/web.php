@@ -25,3 +25,5 @@ Route::resource('admin/product', 'ProductController');
 Route::get('/form/template', function () {
     return view('template.example-form');
 });
+
+Route::resource('products','ProductController');
