@@ -69,6 +69,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="form-group col-xs-4 has-warning">
+                                        <label class="control-label">Status:</label>
+                                        <select name="status" id="" class="form-control">
+                                            <option value="1">Còn hàng</option>
+                                            <option value="2">Hết</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-group text-center">
                                         <button class="btn btn-primary" type="submit" style="width: 100px">Save</button>&nbsp;&nbsp;
                                         <button class="btn btn-default" type="reset" style="width: 100px" id="btn-reset">Reset</button>
