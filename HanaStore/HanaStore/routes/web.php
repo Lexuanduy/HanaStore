@@ -19,8 +19,6 @@ Route::get('/list/template', function (){
     return view('template.list-form');
 });
 
-Route::resource('admin/product', 'ProductController');
-
 // mapping route to file with url form/template
 Route::get('/form/template', function () {
     return view('template.example-form');
