@@ -15,7 +15,7 @@ tr {
     border-radius: 10px;
 }
 
-#messageSuccess, #messageError {
+#messageSuccess, #messageError, #messageHello {
     visibility: hidden;
     text-align: center;
     position: fixed;
@@ -35,6 +35,11 @@ tr {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+#messageHello.show-mess {
+    visibility: visible;
+    -webkit-animation: fadein 1s, fadeout 1s 3s;
+    animation: fadein 1s, fadeout 1s 3s;
 }
 
 @-webkit-keyframes fadein {

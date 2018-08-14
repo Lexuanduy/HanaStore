@@ -183,4 +183,27 @@ $(document).ready(function () {
         $('.imgAvatar').addClass('hidden');
     });
 
+    // hello sir
+    var d = new Date();
+    var n = d.getHours();
+    // alert(n);
+    $('#messageHello').addClass('show-mess');
+    if (n<=9){
+        $('#messageHello').text('Chúc sếp một buổi sáng tốt lành!');
+    }else if(9<n<=14){
+        $('#messageHello').text('Trưa rồi sếp đừng để đầu căng thẳng nhé!');
+    }else if (14<n<=17){
+        $('#messageHello').text('Chiều mát sếp không đi chơi ở đâu ạ?');
+    }else if (17<n<=22){
+        $('#messageHello').text('Một ngày làm việc thật vật vả, sếp hãy chú ý sức khỏe!');
+    }else if (4>=n>22){
+        $('#messageHello').text('Muộn rồi sếp hay đi nghỉ ngơi giữ gìn sức khỏe!');
+    }else if (4<n<=9){
+        $('#messageHello').text('Sáng sớm không khí trong lành!');
+    }
+    setTimeout(function () {
+        $('#messageHello').removeClass('show-mess');
+    }, 4000);
+    // end hello sir
+
 });

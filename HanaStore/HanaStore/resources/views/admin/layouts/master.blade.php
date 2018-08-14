@@ -225,6 +225,7 @@
         {{--Mess--}}
         <div class="alert alert-success" role="alert" id="messageSuccess" style="border-radius: 5px"></div>
         <div class="alert alert-danger" role="alert" id="messageError" style="border-radius: 5px"></div>
+        <div class="alert alert-info" role="alert" id="messageHello" style="border-radius: 5px"></div>
         {{--End Mess--}}
 
         {{--Modal edit--}}
@@ -251,9 +252,6 @@
                             <div class="form-group">
                                 <label class="control-label">{{__('content.anh')}} :</label>
                                 <input type="text" name="images" class="form-control">
-                                <div id="img-old">
-
-                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{{__('content.trang.thai')}} :</label>

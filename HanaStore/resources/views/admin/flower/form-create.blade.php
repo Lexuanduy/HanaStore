@@ -59,7 +59,7 @@
                                     <textarea name="detail" id="" cols="30" rows="10" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group text-center">
-                                    <button class="btn btn-success" type="submit" style="width: 101px">Save</button>&nbsp;&nbsp;
+                                    <button class="btn btn-success" type="submit" style="width: 100px">Save</button>&nbsp;&nbsp;
                                     <button class="btn btn-default" type="reset" style="width: 100px" id="btn-reset">Reset</button>
                                 </div>
                             </form>
