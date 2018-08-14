@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/admin', function (){
-   return view('admin.flower.list');
-});
-
 Route::get('/list/template', function (){
     return view('template.list-form');
+});
+
+Route::get('admin/product', function (){
+    return view('admin.flower.list');
 });
 
 // mapping route to file with url form/template
