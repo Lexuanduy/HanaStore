@@ -20,6 +20,7 @@ class ProductController extends Controller
     {
         
     }
+
     public function store(Request $request)
     {
         
@@ -30,21 +31,18 @@ class ProductController extends Controller
         
     }
 
-
     public function edit($id)
     {
         
     }
-
 
     public function update(Request $request, $id)
     {
         
     }
 
-
     public function destroy($id)
     {
-        
+    
     }
 }
