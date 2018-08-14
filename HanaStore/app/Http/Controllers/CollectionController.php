@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Collection;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CollectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $collections = Collection::all();
-        
+        //
     }
 
     /**
