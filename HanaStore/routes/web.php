@@ -25,3 +25,8 @@ Route::resource('admin/product', 'ProductController');
 Route::get('/form/template', function () {
     return view('template.example-form');
 });
+
+// sample about routing for form template layout
+Route::get('/admin/product/create/', function () {
+    return view('admin.layouts.form');
+});
