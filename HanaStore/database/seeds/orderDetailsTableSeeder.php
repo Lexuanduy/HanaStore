@@ -11,7 +11,7 @@ class orderDetailsTableSeeder extends Seeder
      */
     public function run()
     {
-         		for ($i = 0; $i < 30; $i++) {
+         		for ($i = 0; $i < 10; $i++) {
  			factory(OrderDetails::class)->create();
  		}
     }
