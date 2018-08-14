@@ -26,7 +26,7 @@ Route::get('/form/template', function () {
     return view('template.example-form');
 });
 
-// sample about routing for form template layout
+// //test view form create layout
 Route::get('/admin/product/create/', function () {
-    return view('admin.layouts.form');
+    return view('admin.layouts.form-create');
 });

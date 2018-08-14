@@ -1,9 +1,3 @@
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
-body{
-    padding: 50px;
-}
-
 label{
     position: relative;
     cursor: pointer;
