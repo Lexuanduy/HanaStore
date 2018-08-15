@@ -10,4 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/admin/layout/master', function (){
+    return view('admin.layout.master');
+});
