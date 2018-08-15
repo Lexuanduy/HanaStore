@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSlidesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('images');
-            $table->string('link');
+            $table->unsignedInteger('customerId');
+            $table->foreign('customerId')->references('id')->on('customers');
+            $table->double('totalPrice');
             $table->timestamps();
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
         });
     }
 
@@ -29,6 +30,6 @@ class CreateSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('slides');
+        Schema::dropIfExists('orders');
     }
 }
