@@ -123,23 +123,25 @@
                         </div>
                         <div class="form-group mb-3">
                             <label>Checkboxes</label>
-                            <div class="form-check">
-                                <label>
-                                    <input type="checkbox" name="check" checked required> <span class="label-text">Option 01</span>
-                                </label>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" name="check" checked required> <span class="label-text">Option 01</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" name="check" required> <span class="label-text">Option 02</span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label>
+                                        <input type="checkbox" name="check" required> <span class="label-text">Option 03</span>
+                                    </label>
+                                </div>
                             </div>
-                            <div class="form-check">
-                                <label>
-                                    <input type="checkbox" name="check" required> <span class="label-text">Option 02</span>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label>
-                                    <input type="checkbox" name="check" required> <span class="label-text">Option 03</span>
-                                    <div class="invalid-feedback">
-                                        Please choose at least one choice.
-                                    </div>
-                                </label>
+                            <div class="invalid-feedback">
+                                Please choose at least one choice.
                             </div>
                         </div>
                         <div class="form-group mb-3">
@@ -157,10 +159,10 @@
                             <div class="form-check">
                                 <label class="toggle">
                                     <input type="radio" name="toggle" required> <span class="label-text">Option 03</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a choice.
-                                    </div>
                                 </label>
+                            </div>
+                            <div class="invalid-feedback">
+                                Please choose a choice.
                             </div>
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
