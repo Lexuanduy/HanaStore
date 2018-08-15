@@ -11,15 +11,4 @@
 |
 */
 
-Route::get('/admin', function (){
-   return view('admin.flower.list');
-});
 
-Route::get('/list/template', function (){
-    return view('template.list-form');
-});
-
-// mapping route to file with url form/template
-Route::get('/form/template', function () {
-    return view('template.example-form');
-});
