@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class RegisterController extends Controller
 {
@@ -52,6 +53,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'avatar' => 'required|image',
+            'level' => 'required|numeric'
         ]);
     }
 
@@ -63,10 +66,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $image = $data['avatar'];
+        $filename = $image->getClientOriginalName();
+        $path = public_path('/img/faces/'. $filename);
+        Image::make($image->getRealPath())->save($path);
+        return Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'level' =>$data['level'],
+            'avatar'=>$data['avatar'],
         ]);
     }
 }
