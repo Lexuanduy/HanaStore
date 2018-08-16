@@ -18,3 +18,5 @@ Route::get('/admin/product/create/', function () {
 Route::get('/admin/layout/master', function () {
     return view('admin.layout.master');
 });
+
+Route::get('/admin/product/show/{id}', 'ProductController@show');
