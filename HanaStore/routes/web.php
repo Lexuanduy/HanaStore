@@ -12,7 +12,7 @@
 */
 // //test view form create layout
 Route::get('/admin/product/create/', function () {
-    return view('admin.layout.form-create');
+    return view('admin.product.form-create');
 });
 
 Route::get('/admin/layout/master', function () {
