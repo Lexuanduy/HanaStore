@@ -15,10 +15,6 @@ Route::get('/admin/product/create/', function () {
     return view('admin.product.form-create');
 });
 
-Route::get('/admin/product/create', function () {
-    return view('admin.layout.form-create');
-});
-
 Route::get('/admin/layout/master', function () {
     return view('admin.layout.master');
 });
