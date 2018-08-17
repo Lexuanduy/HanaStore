@@ -50,8 +50,10 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        $categories = Category::find($id);
-        $collection = Collection::find($id);
+        $categoryId = $product->categoryId;
+        $collectionId = $product->categoryId;
+        $categories = Category::find($categoryId);
+        $collection = Collection::find($collectionId);
 
         if($product == null){
             return ('Not found');
