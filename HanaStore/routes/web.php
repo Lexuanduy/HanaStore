@@ -19,6 +19,7 @@ Route::get('/admin/layout/master', function () {
     return view('admin.layout.master');
 });
 
+//view show product
 Route::get('/admin/product/show/{id}', 'ProductController@show');
 
 // test view form edit layout
