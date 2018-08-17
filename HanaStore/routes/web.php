@@ -11,7 +11,7 @@
 |
 */
 // //test view form create layout
-Route::get('/admin/product/create/', function () {
+Route::get('/admin/product/create', function () {
     return view('admin.layout.form-create');
 });
 
