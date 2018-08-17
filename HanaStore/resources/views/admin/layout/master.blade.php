@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width"/>
 
     <!-- Bootstrap core CSS     -->
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
     <!--  Material Dashboard CSS    -->
     <link href="/assets/css/material-dashboard.css" rel="stylesheet"/>
@@ -40,7 +41,7 @@
         </div>
         <div class="logo logo-mini">
             <a href="" class="simple-text">
-                SEA
+                HS
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -158,7 +159,7 @@
                 </div>
             </div>
         </nav>
-        <div class="content" style="background-color: white">
+        <div class="content" style="background-color: white;">
             <div class="container-fluid">
                 @section('content')
                 @show()

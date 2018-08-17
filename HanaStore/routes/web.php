@@ -11,10 +11,14 @@
 |
 */
 // //test view form create layout
-Route::get('/admin/product/create/', function () {
+Route::get('admin/product/create', function () {
     return view('admin.layout.form-create');
 });
 
-Route::get('/admin/layout/master', function () {
+Route::get('admin/product/list', function () {
+    return view('admin.flower.list-example');
+});
+
+Route::get('admin/layout/master', function () {
     return view('admin.layout.master');
 });
