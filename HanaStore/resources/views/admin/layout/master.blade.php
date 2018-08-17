@@ -14,6 +14,7 @@
 
     <!-- Bootstrap core CSS     -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
+
     <!--  Material Dashboard CSS    -->
     <link href="/assets/css/material-dashboard.css" rel="stylesheet"/>
     <!--  CSS for Demo Purpose, don't include it in your project     -->
@@ -40,7 +41,7 @@
         </div>
         <div class="logo logo-mini">
             <a href="" class="simple-text">
-                SEA
+                Hana Store
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -67,7 +68,7 @@
             </div>
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
                     </a>
@@ -82,7 +83,7 @@
                     <div class="collapse" id="pagesExamples">
                         <ul class="nav">
                             <li>
-                                <a href="/index/create">Create new</a>
+                                <a href="/admin/product/create">Create new</a>
                             </li>
                             <li>
                                 <a href="/index">List Products</a>

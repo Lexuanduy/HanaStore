@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// //test view form create layout
+//test view form create layout
+Route::get('/admin/product/create/', function () {
+    return view('admin.product.form-create');
+});
+
 Route::get('/admin/product/create', function () {
     return view('admin.layout.form-create');
 });
