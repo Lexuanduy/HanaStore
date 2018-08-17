@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// //test view form create layout
+//test view form create layout
 Route::get('/admin/product/create/', function () {
-    return view('admin.layout.form-create');
+    return view('admin.product.form-create');
 });
 
 Route::get('/admin/layout/master', function () {
@@ -20,3 +20,8 @@ Route::get('/admin/layout/master', function () {
 });
 
 Route::get('/admin/product/show/{id}', 'ProductController@show');
+
+// test view form edit layout
+Route::get('/admin/product/1/edit', function () {
+    return view('admin.product.form-edit');
+});
