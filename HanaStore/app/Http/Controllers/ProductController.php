@@ -57,7 +57,7 @@ class ProductController extends Controller
         if($product == null){
             return ('Not found');
         }
-        return view('admin.layout.product-detail')
+        return view('admin.product.product-detail')
             ->with('product',$product)
             ->with('categories',$categories)
             ->with('collection',$collection);
