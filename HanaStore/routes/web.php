@@ -22,3 +22,8 @@ Route::get('/admin/product/create', function () {
 Route::get('/admin/layout/master', function () {
     return view('admin.layout.master');
 });
+
+// test view form edit layout
+Route::get('/admin/product/1/edit', function () {
+    return view('admin.product.form-edit');
+});

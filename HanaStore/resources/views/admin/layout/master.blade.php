@@ -8,11 +8,13 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png"/>
     <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Template master layout</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
     <!-- Bootstrap core CSS     -->
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet"/>
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!--  Material Dashboard CSS    -->
@@ -24,6 +26,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="/assets/css/google-roboto-300-700.css" rel="stylesheet"/>
+    <!-- Jquery preview image upload-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 
 <body>
@@ -82,11 +86,16 @@
                     </a>
                     <div class="collapse" id="pagesExamples">
                         <ul class="nav">
+                            {{--@if($current_menu == 'category_manager' && $current_sub_menu == 'edit')--}}
+                                {{--<li class="active">--}}
+                                    {{--<a href="{{ url()->current() }}">Edit Products</a>--}}
+                                {{--</li>--}}
+                            {{--@endif--}}
                             <li>
                                 <a href="/admin/product/create">Create new</a>
                             </li>
                             <li>
-                                <a href="/index">List Products</a>
+                                <a href="/admin/product">List Products</a>
                             </li>
                         </ul>
                     </div>
