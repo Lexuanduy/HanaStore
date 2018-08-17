@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SlideTableSeeder extends Seeder
+class SlidesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
