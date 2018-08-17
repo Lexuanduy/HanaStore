@@ -23,3 +23,5 @@ Route::get('/admin/layout/master', function () {
 Route::get('/admin/product/1/edit', function () {
     return view('admin.product.form-edit');
 });
+
+Route::get('/admin/product/show/{id}', 'ProductController@show');

@@ -54,11 +54,9 @@ class ProductController extends Controller
         $collectionId = $product->categoryId;
         $categories = Category::find($categoryId);
         $collection = Collection::find($collectionId);
-
         if($product == null){
             return ('Not found');
         }
-
         return view('admin.layout.product-detail')
             ->with('product',$product)
             ->with('categories',$categories)
