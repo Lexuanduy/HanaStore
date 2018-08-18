@@ -11,10 +11,11 @@
 |
 */
 //test view form create layout
-Route::get('/admin/product/create/', function () {
-    return view('admin.product.form-create');
-});
 
+// config web by Phuocding
+Route::resource('/admin/product', 'ProductController');
+
+// don't need to show this url
 Route::get('/admin/layout/master', function () {
     return view('admin.layout.master');
 });
@@ -27,4 +28,3 @@ Route::get('/admin/product/1/edit', function () {
     return view('admin.product.form-edit');
 });
 
-Route::get('/admin/product/show/{id}', 'ProductController@show');
