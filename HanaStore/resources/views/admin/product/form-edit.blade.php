@@ -5,7 +5,18 @@
         <div class="col-md-12">
             <!--main form -->
             <div class="card">
-                <form method="post" action="/admin/product" class="form-horizontal bg-info">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        Vui lòng sửa các lỗi bên dưới và thử lại.
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+
+                    </div>
+                @endif
+                <form method="post" action="/admin/product/{{ $product->id }}" class="form-horizontal bg-info">
                     @method('PUT')
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
@@ -18,7 +29,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" class="form-control" value="{{$product->name}}" required>
+                                    <input type="text" name="name" class="form-control" value="{{$product->name}}" required>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
@@ -45,7 +56,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group label-floating">
                                     <select class="form-control" name="collectionId">
-                                        @foreach($cellections as $item)
+                                        @foreach($collections as $item)
                                             <option value="{{$item->id}}" {{$product -> collectionId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
@@ -58,7 +69,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Price</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" class="form-control" value="{{$product->price}}" required>
+                                    <input type="text" name="price" class="form-control" value="{{$product->price}}" required>
                                     <span class="input-group-addon">VND</span>
                                 </div>
                             </div>
@@ -68,8 +79,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" class="form-control" value="{{$product->images}}" required>
-                                    <img src="{{$product -> image}}" class="img-thumbnail" alt="" style="width:200px;">
+                                    <input type="text" name="images" class="form-control" value="{{$product->images}}" required>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +88,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Sale</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" class="form-control" value="{{$product->sale}}" required>
+                                    <input type="text" name="sale" class="form-control" value="{{$product->sale}}" required>
                                     <span class="input-group-addon">%</span>
                                 </div>
                             </div>
@@ -88,7 +98,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" class="form-control" value="{{$product->description}}" required>
+                                    <input type="text" name="description" class="form-control" value="{{$product->description}}" required>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +107,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Detail</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <textarea class="form-control" rows="3" value="{{$product->detail}}" required></textarea>
+                                    <textarea class="form-control" name="detail" rows="3" required>{{$product->detail}}</textarea>
                                 </div>
                             </div>
                         </div>

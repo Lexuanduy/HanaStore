@@ -5,7 +5,18 @@
         <div class="col-md-12">
             <!--main form -->
             <div class="card">
-                <form method="POST" action="/admin/product/store" class="form-horizontal bg-info">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        Vui lòng sửa các lỗi bên dưới và thử lại.
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+
+                    </div>
+                @endif
+                <form method="POST" action="/admin/product" class="form-horizontal bg-info">
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
                         <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Flower</h4>
@@ -17,7 +28,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="name" class="form-control" required>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
@@ -59,7 +70,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Price</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="price" class="form-control" required>
                                     <span class="input-group-addon">VND</span>
                                 </div>
                             </div>
@@ -69,7 +80,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="images" class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +89,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Sale</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="sale" class="form-control" required>
                                     <span class="input-group-addon">%</span>
                                 </div>
                             </div>
@@ -88,7 +99,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="description" class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +108,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Detail</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <textarea class="form-control" rows="3" required></textarea>
+                                    <textarea class="form-control" name="detail" rows="3" required></textarea>
                                 </div>
                             </div>
                         </div>
