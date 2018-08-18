@@ -15,11 +15,6 @@
 // config web by Phuocding
 Route::resource('/admin/product', 'ProductController');
 
-// modified routing in view master
-Route::get('/admin/', function () {
-    return view('admin.layout.master');
-});
-
 // don't need to show this url
 Route::get('/admin/layout/master', function () {
     return view('admin.layout.master');
@@ -33,4 +28,3 @@ Route::get('/admin/product/1/edit', function () {
     return view('admin.product.form-edit');
 });
 
-Route::get('/admin/product/show/{id}', 'ProductController@show');
