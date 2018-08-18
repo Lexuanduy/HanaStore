@@ -1,5 +1,5 @@
-@extends('admin.layout.master')
-@section('page-title', '')
+@extends('admin.layout.master', ['currentPage' => 'show'])
+@section('page-title', 'Show product')
 @section('content')
  <div class="container-fluid">
      <div class="row">

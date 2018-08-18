@@ -1,4 +1,4 @@
-@extends('admin.layout.master', ['currentPage' => 'form-create'])
+@extends('admin.layout.master', ['currentPage' => 'create'])
 @section('page-title', 'Create new products')
 @section('content')
     <style>

@@ -13,18 +13,10 @@
 //test view form create layout
 
 // config web by Phuocding
-Route::resource('/admin/product', 'ProductController');
+Route::resource('admin/product', 'ProductController');
 
-// don't need to show this url
-Route::get('/admin/layout/master', function () {
-    return view('admin.layout.master');
+Route::get('/list', function (){
+    return view('admin.layout.list');
 });
 
-//view show product
-Route::get('/admin/product/show/{id}', 'ProductController@show');
-
-// test view form edit layout
-Route::get('/admin/product/1/edit', function () {
-    return view('admin.product.form-edit');
-});
 
