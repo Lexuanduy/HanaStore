@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -31,9 +31,9 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $collections  = Collection::all();
+        $collections = Collection::all();
         $action = '/admin/bakery/store';
-        return view('admin.product.form-create')
+        return view('admin.product.create')
             ->with('categories', $categories)
             ->with('collections', $collections)
             ->with('action', $action);
@@ -61,14 +61,13 @@ class ProductController extends Controller
         $product->description = $request['description'];
         $product->detail = $request->input('detail');
         $product->save();
-//        return redirect('/admin/product');
-        return 'success';
+        return redirect('/admin/product');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -78,19 +77,19 @@ class ProductController extends Controller
         $collectionId = $product->categoryId;
         $categories = Category::find($categoryId);
         $collection = Collection::find($collectionId);
-        if($product == null){
+        if ($product == null) {
             return ('Not found');
         }
-        return view('admin.product.product-detail')
-            ->with('product',$product)
-            ->with('categories',$categories)
-            ->with('collection',$collection);
+        return view('admin.product.show')
+            ->with('product', $product)
+            ->with('categories', $categories)
+            ->with('collection', $collection);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
 
@@ -103,7 +102,7 @@ class ProductController extends Controller
         if ($product == null || $product->status != 1) {
             return view('404');
         }
-        return view('admin.product.form-edit')
+        return view('admin.product.edit')
             ->with('product', $product)
             ->with('categories', $categories)
             ->with('collections', $collections);
@@ -112,8 +111,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
 
@@ -133,14 +132,13 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->detail = $request->input('detail');
         $product->save();
-//        return redirect('/admin/product');
-        return 'success';
+        return redirect('/admin/product');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

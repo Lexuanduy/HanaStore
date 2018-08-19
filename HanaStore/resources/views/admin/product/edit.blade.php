@@ -1,5 +1,5 @@
-@extends('admin.layout.master', ['currentPage'=>'form-create'])
-@section('page-title', 'Create new flower')
+@extends('admin.layout.master', ['currentPage' => 'edit'])
+@section('page-title', 'Edit products')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -16,7 +16,8 @@
 
                     </div>
                 @endif
-                <form method="POST" action="/admin/product" class="form-horizontal bg-info">
+                <form method="post" action="/admin/product/{{ $product->id }}" class="form-horizontal bg-info">
+                    @method('PUT')
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
                         <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Flower</h4>
@@ -28,7 +29,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="name" class="form-control" value="{{$product->name}}" required>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
@@ -39,10 +40,9 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Category</label>
                             <div class="col-sm-4">
                                 <div class="form-group label-floating">
-                                    <select name="categoryId" class="form-control">
-                                        <option value="">Select category...</option>
+                                    <select class="form-control" name="categoryId">
                                         @foreach($categories as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            <option value="{{$item->id}}" {{$product -> categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -56,9 +56,8 @@
                             <div class="col-sm-4">
                                 <div class="form-group label-floating">
                                     <select class="form-control" name="collectionId">
-                                        <option value="">Select collection...</option>
                                         @foreach($collections as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            <option value="{{$item->id}}" {{$product -> collectionId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -70,7 +69,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Price</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" name="price" class="form-control" required>
+                                    <input type="text" name="price" class="form-control" value="{{$product->price}}" required>
                                     <span class="input-group-addon">VND</span>
                                 </div>
                             </div>
@@ -80,7 +79,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="images" class="form-control" required>
+                                    <input type="text" name="images" class="form-control" value="{{$product->images}}" required>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +88,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Sale</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" name="sale" class="form-control" required>
+                                    <input type="text" name="sale" class="form-control" value="{{$product->sale}}" required>
                                     <span class="input-group-addon">%</span>
                                 </div>
                             </div>
@@ -99,7 +98,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="description" class="form-control" required>
+                                    <input type="text" name="description" class="form-control" value="{{$product->description}}" required>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +107,7 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Detail</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <textarea class="form-control" name="detail" rows="3" required></textarea>
+                                    <textarea class="form-control" name="detail" rows="3" required>{{$product->detail}}</textarea>
                                 </div>
                             </div>
                         </div>
