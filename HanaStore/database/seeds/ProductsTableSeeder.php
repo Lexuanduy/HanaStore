@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\DB;
+>>>>>>> 1a970b585c84a4d06cd45727800d77832f7a8f92
 
 class ProductsTableSeeder extends Seeder
 {
@@ -234,6 +238,7 @@ class ProductsTableSeeder extends Seeder
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
             ],
+<<<<<<< HEAD
 
             [
                 'id' => 21,
@@ -345,6 +350,8 @@ class ProductsTableSeeder extends Seeder
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
             ],          
+=======
+>>>>>>> 1a970b585c84a4d06cd45727800d77832f7a8f92
         ]);
     }
 }

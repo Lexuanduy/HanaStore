@@ -10,4 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//test view form create layout
+
+// config web by Phuocding
+Route::resource('admin/product', 'ProductController');
+
+Route::get('/list', function (){
+    return view('admin.layout.list');
+});
+
 
