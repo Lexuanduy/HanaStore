@@ -89,13 +89,13 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        if ($product == null) {
+            return view('admin.error.404');
+        }
         $categoryId = $product->categoryId;
         $collectionId = $product->categoryId;
         $categories = Category::find($categoryId);
         $collection = Collection::find($collectionId);
-        if ($product == null) {
-            return ('Not found');
-        }
         return view('admin.product.show')
             ->with('product', $product)
             ->with('categories', $categories)
