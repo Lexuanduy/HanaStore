@@ -1,5 +1,6 @@
 <?php
 
+use App\Collection;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +20,8 @@ Route::get('/list', function (){
     return view('admin.layout.list');
 });
 
+Route::resource('admin/collections', 'CollectionController');
 
+// Route::get('admin/collections', function(){
+
+// });

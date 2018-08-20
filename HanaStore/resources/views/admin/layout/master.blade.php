@@ -73,7 +73,7 @@
                 </div>
             </div>
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
@@ -116,6 +116,12 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+                <li class="active">
+                    <a data-toggle="collapse" href="#">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        <p>Collections</p>
+                    </a>
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#">

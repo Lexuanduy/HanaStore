@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Collection;
 
 class CollectionController extends Controller
 {
@@ -13,7 +14,9 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        //
+        $collections = Collection::all();
+        $collections = Collection::orderBy('created_at')->get();
+        return view('admin.collection.list', ['collections'=>$collections]);
     }
 
     /**
@@ -79,6 +82,11 @@ class CollectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $collection = Collection::findOrFail($id);
+
+        $collection->delete();
+
+        return redirect()->back()->with('message', 'Successed delete collection');
+
     }
 }
