@@ -13,10 +13,10 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-
                     </div>
                 @endif
-                <form method="POST" action="/admin/product" class="form-horizontal bg-info" enctype="multipart/form-data">
+                <form method="POST" action="/admin/product" class="form-horizontal bg-info"
+                      enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
                         <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Flower</h4>
@@ -72,6 +72,9 @@
                                 <div class="input-group label-floating">
                                     <input type="text" name="price" class="form-control" required>
                                     <span class="input-group-addon">VND</span>
+                                    @if($errors->has('price'))
+                                        <label class="text-danger">*{{$errors->first('price')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -94,6 +97,9 @@
                                 <div class="input-group label-floating">
                                     <input type="text" name="sale" class="form-control" required>
                                     <span class="input-group-addon">%</span>
+                                    @if($errors->has('sale'))
+                                        <label class="text-danger">*{{$errors->first('sale')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -103,6 +109,9 @@
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
                                     <input type="text" name="description" class="form-control" required>
+                                    @if($errors->has('description'))
+                                        <label class="text-danger">*{{$errors->first('description')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -112,6 +121,9 @@
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
                                     <textarea class="form-control" name="detail" rows="3" required></textarea>
+                                    @if($errors->has('detail'))
+                                        <label class="text-danger">*{{$errors->first('detail')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>

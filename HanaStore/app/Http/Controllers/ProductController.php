@@ -171,11 +171,29 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         $validate_unique = '';
-        if ($product == null) {
-            return view('404');
-        }
         if($product->name != $request->get('name')){
             $validate_unique = '|unique:products';
+        }
+
+        $request->validate([
+            'name' => 'required|max:50|min:10' . $validate_unique,
+            'price' => 'numeric',
+            'image'=>'nullable|max:191',
+            'sale' => 'numeric',
+            'description' => 'required',
+            'detail' => 'required',
+        ], [
+            'name.required' => 'Vui lòng nhập tên sản phẩm.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 10 ký tự.',
+            'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
+            'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
+            'price.numeric' => 'Vui lòng nhập giá sản phẩm là số.',
+            'sale.numeric' => 'Vui lòng nhập giá trị sale là số.',
+            'description.required' => 'Vui lòng nhập mô tả cho sản phẩm.',
+            'detail.required' => 'Vui lòng nhập thông tin chi tiết cho sản phẩm.',
+        ]);
+        if ($product == null || $obj->status != 1) {
+            return view('admin.error.404');
         }
         $current_time = time();
         $product->name = $request->input('name');
@@ -183,8 +201,6 @@ class ProductController extends Controller
         $product->collectionId = $request->input('collectionId');
         $product->price = $request->input('price');
         $product->images = $request->input('images');
-//        Cloudder::upload($request->file('images')->getRealPath(), $current_time);
-//        $product->images = Cloudder::getResult()['url'];
         $product->sale = $request->input('sale');
         $product->description = $request->input('description');
         $product->detail = $request->input('detail');
