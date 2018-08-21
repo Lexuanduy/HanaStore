@@ -136,9 +136,46 @@ class ProductController extends Controller
     // save new edited info into database with products table
     public function update(Request $request, $id)
     {
+
+        $obj = Category::find($id);
+        $validate_unique = '';
+        if($obj->name != $request->get('name')){
+            $validate_unique = '|unique:categories';
+        }
+        $request->validate([
+            'name' => 'required|max:50|min:10' . $validate_unique,
+            'description' => 'required',
+            'thumbnail' => 'required'
+        ], [
+            'name.required' => 'Vui lòng nhập tê n danh mục.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 10 ký tự.',
+            'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
+            'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
+            'description.required' => 'Vui lòng nhập mô tả cho danh mục',
+            'thumbnail.required' => 'Vui lòng nhập ảnh đại diện cho danh mục',
+        ]);
+
+        if ($obj == null || $obj->status != 1) {
+            return view('error.404');
+        }
+        $obj->name = $request->get('name');
+        $obj->description = $request->get('description');
+        $obj->thumbnail = $request->get('thumbnail');
+        $obj->save();
+        Session::flash('message', 'Sửa thành công');
+        Session::flash('message-class', 'alert-success');
+        return redirect('/admin/category');
+
+        //----------------
+
+
         $product = Product::find($id);
+        $validate_unique = '';
         if ($product == null) {
             return view('404');
+        }
+        if($product->name != $request->get('name')){
+            $validate_unique = '|unique:products';
         }
         $current_time = time();
         $product->name = $request->input('name');
