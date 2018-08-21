@@ -16,7 +16,7 @@
 
                     </div>
                 @endif
-                <form method="post" action="/admin/product/{{ $collection->id }}" class="form-horizontal bg-info">
+                <form method="post" action="/admin/collection/{{ $collection->id }}" class="form-horizontal bg-info">
                     @method('PUT')
                     {{csrf_field()}}
                     <div class="card-header card-header text-center" data-background-color="green">
