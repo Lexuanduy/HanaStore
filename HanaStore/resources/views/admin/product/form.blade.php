@@ -1,4 +1,4 @@
-@extends('admin.layout.master', ['currentPage'=>'create'])
+@extends('admin.layout.master', ['currentPage'=>'form'])
 @section('page-title', 'Create new flower')
 @section('content')
     <div class="row">
@@ -13,10 +13,10 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-
                     </div>
                 @endif
-                <form method="POST" action="/admin/product" class="form-horizontal bg-info">
+                <form method="POST" action="/admin/product" class="form-horizontal bg-info"
+                      enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
                         <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Flower</h4>
@@ -27,7 +27,7 @@
                         <div class="row">
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
                             <div class="col-sm-8">
-                                <div class="form-group label-floating">
+                                <div class="form-group label-floating" {{$errors->has('name')?' has-error':''}}>
                                     <input type="text" name="name" class="form-control" required>
                                     <span class="material-input"></span>
                                 </div>
@@ -72,15 +72,21 @@
                                 <div class="input-group label-floating">
                                     <input type="text" name="price" class="form-control" required>
                                     <span class="input-group-addon">VND</span>
+                                    @if($errors->has('price'))
+                                        <label class="text-danger">*{{$errors->first('price')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating">
-                                    <input type="text" name="images" class="form-control" required>
+                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
+                            <div class="form-group">
+                                <div class="row ml-1 custom-file">
+                                    <input type="file" name="images" class="mr-2"><span>Choose file...</span>
+                                    @if($errors->has('images'))
+                                        <label class="text-danger">*{{$errors->first('images')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -91,6 +97,9 @@
                                 <div class="input-group label-floating">
                                     <input type="text" name="sale" class="form-control" required>
                                     <span class="input-group-addon">%</span>
+                                    @if($errors->has('sale'))
+                                        <label class="text-danger">*{{$errors->first('sale')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -100,6 +109,9 @@
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
                                     <input type="text" name="description" class="form-control" required>
+                                    @if($errors->has('description'))
+                                        <label class="text-danger">*{{$errors->first('description')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -109,6 +121,9 @@
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
                                     <textarea class="form-control" name="detail" rows="3" required></textarea>
+                                    @if($errors->has('detail'))
+                                        <label class="text-danger">*{{$errors->first('detail')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>

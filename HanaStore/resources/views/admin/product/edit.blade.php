@@ -29,7 +29,8 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="name" class="form-control" value="{{$product->name}}" required>
+                                    <input type="text" name="name" class="form-control" value="{{$product->name}}"
+                                           required>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
@@ -42,7 +43,8 @@
                                 <div class="form-group label-floating">
                                     <select class="form-control" name="categoryId">
                                         @foreach($categories as $item)
-                                            <option value="{{$item->id}}" {{$product -> categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                            <option
+                                                value="{{$item->id}}" {{$product -> categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -57,7 +59,8 @@
                                 <div class="form-group label-floating">
                                     <select class="form-control" name="collectionId">
                                         @foreach($collections as $item)
-                                            <option value="{{$item->id}}" {{$product -> collectionId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                            <option
+                                                value="{{$item->id}}" {{$product -> collectionId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -69,17 +72,25 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Price</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" name="price" class="form-control" value="{{$product->price}}" required>
+                                    <input type="text" name="price" class="form-control" value="{{$product->price}}"
+                                           required>
                                     <span class="input-group-addon">VND</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating">
-                                    <input type="text" name="images" class="form-control" value="{{$product->images}}" required>
+                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
+                            <div class="form-group">
+                                <div class="row ml-1 custom-file">
+                                    {{--<input type="file" name="images" class="mr-2"><span>Choose file...</span>--}}
+                                    {{--<img src="{{ $product->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>--}}
+                                    {{--@if($errors->has('images'))--}}
+                                        {{--<label class="text-danger">*{{$errors->first('images')}}</label>--}}
+                                    {{--@endif--}}
+
+                                    <input type="text" name="images" value="{{$product -> images}}">
+                                    <img src="{{$product -> images}}" alt="" style="width:200px;">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +99,8 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Sale</label>
                             <div class="col-sm-4">
                                 <div class="input-group label-floating">
-                                    <input type="text" name="sale" class="form-control" value="{{$product->sale}}" required>
+                                    <input type="text" name="sale" class="form-control" value="{{$product->sale}}"
+                                           required>
                                     <span class="input-group-addon">%</span>
                                 </div>
                             </div>
@@ -98,7 +110,8 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="description" class="form-control" value="{{$product->description}}" required>
+                                    <input type="text" name="description" class="form-control"
+                                           value="{{$product->description}}" required>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +120,8 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Detail</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <textarea class="form-control" name="detail" rows="3" required>{{$product->detail}}</textarea>
+                                    <textarea class="form-control" name="detail" rows="3"
+                                              required>{{$product->detail}}</textarea>
                                 </div>
                             </div>
                         </div>
