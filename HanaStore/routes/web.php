@@ -1,5 +1,6 @@
 <?php
 
+use App\Collection;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +22,6 @@ Route::get('/list', function (){
     return view('admin.layout.list');
 });
 
+Route::resource('admin/collection', 'CollectionController');
 
+Route::resource('admin/category', 'CategoryController');

@@ -19,7 +19,9 @@ class CollectionController extends Controller
         $limit = 0;
         $collection = Collection::where('status', 1)->orderBy('created_at', 'DESC')->paginate($limit);
         return view('admin.collection.list')->with('collection', $collection);
-
+        $collections = Collection::all();
+        $collections = Collection::orderBy('created_at')->get();
+        return view('admin.collection.list', ['collections'=>$collections]);
     }
 
     /**
@@ -43,7 +45,6 @@ class CollectionController extends Controller
     {
         $request->validated();
         $collection = new Collection();
-
         $collection->name = $request -> get('name');
         $collection->description = $request->get('description');
         $collection->images = $request->get('images');
@@ -134,5 +135,8 @@ class CollectionController extends Controller
         $collection->status = 0;
         $collection->save();
         return response()->json(['message' => 'Xóa bộ sưu tập thành công']);
+        $collection = Collection::findOrFail($id);
+        $collection->delete();
+        return redirect()->back()->with('message', 'Successed delete collection');
     }
 }
