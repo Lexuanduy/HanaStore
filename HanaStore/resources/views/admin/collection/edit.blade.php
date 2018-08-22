@@ -19,9 +19,10 @@
                 <form method="post" action="/admin/collection/{{ $collection->id }}" class="form-horizontal bg-info">
                     @method('PUT')
                     {{csrf_field()}}
-                    <div class="card-header card-header text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> New Collection</h4>
+                    <div class="card-header card-header-text text-center" data-background-color="green">
+                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Collection</h4>
                     </div>
+
 
                     <!--form edit flowers-->
                     <div class="card-content">
@@ -40,8 +41,11 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="images" class="form-control" value="{{$collection
-                                    ->images}}" required>
+                                    <img src="{{$collection -> images}}" alt="" style="width:250px;">
+                                </div>
+                                <div class="form-group label-floating">
+                                    <button type="button" class="btn btn-info btn-sm">
+                                        <input type="file" name="images" class="form-control" required>Chọn tệp ...</button>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +63,7 @@
                         <div class="row">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-8">
-                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram" style="margin-right: 50px">Create
+                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram" style="margin-right: 50px">Update
                                     <div class="ripple-container"></div>
                                 </button>
                                 <button type="reset" value="Reset" class="btn btn-fill btn-danger">Reset

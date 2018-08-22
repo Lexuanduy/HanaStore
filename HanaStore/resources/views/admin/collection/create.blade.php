@@ -18,9 +18,10 @@
             <div class="card">
                 <form method="post" action="/admin/collection" class="form-horizontal">
                     {{csrf_field()}}
-                    <div class="card-header card-header text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> New Collection</h4>
+                    <div class="card-header card-header-text text-center" data-background-color="green">
+                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create Collection</h4>
                     </div>
+
 
                     <!--form new flowers-->
                     <div class="card-content">
@@ -37,7 +38,8 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="images" class="form-control" required>
+                                    <button type="button" class="btn btn-info btn-sm">
+                                        <input type="file" name="images" class="form-control" required>Chọn tệp ...</button>
                                 </div>
                             </div>
                         </div>
