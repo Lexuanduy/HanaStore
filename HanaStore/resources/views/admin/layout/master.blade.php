@@ -109,7 +109,7 @@
                                 <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
                                     <a href="/admin/product/create">Thêm mới</a>
                                 </li>
-                                <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
+                                <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
                                     <a href="/admin/product">Danh sách</a>
                                 </li>
                             </ul>
@@ -123,19 +123,80 @@
                             <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="componentsExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="components/grid.html">List</a>
-                            </li>
-                        </ul>
-                    </div>
+                    @if($current_menu == 'category_manager')
+                        <div class="collapse in" id="componentsExamples">
+                            <ul class="nav">
+                                @if($current_menu == 'category_manager' && $current_sub_menu == 'edit')
+                                    <li class="active">
+                                        <a href="{{ url()->current() }}">Sửa thông tin</a>
+                                    </li>
+                                @endif
+                                <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
+                                    <a href="/admin/category/create">Thêm mới</a>
+                                </li>
+                                <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
+                                    <a href="/admin/category">Danh sách</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @else
+                        <div class="collapse" id="componentsExamples">
+                            <ul class="nav">
+                                @if($current_menu == 'category_manager' && $current_sub_menu == 'edit')
+                                    <li class="active">
+                                        <a href="{{ url()->current() }}">Sửa thông tin</a>
+                                    </li>
+                                @endif
+                                <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
+                                    <a href="/admin/category/create">Thêm mới</a>
+                                </li>
+                                <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
+                                    <a href="/admin/category">Danh sách</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                 </li>
-                <li class="active">
-                    <a data-toggle="collapse" href="#">
-                        <i class="glyphicon glyphicon-th-list"></i>
-                        <p>Collections</p>
+                <li class="{{ $current_menu == 'collection_manager' ? 'active' : '' }}">
+                    <a data-toggle="collapse" href="#formsExamples">
+                        <i class="material-icons">apps</i>
+                        <p>Collection
+                            <b class="caret"></b>
+                        </p>
                     </a>
+                    @if($current_menu == 'collection_manager')
+                        <div class="collapse in" id="formsExamples">
+                            <ul class="nav">
+                                @if($current_menu == 'collection_manager' && $current_sub_menu == 'edit')
+                                    <li class="active">
+                                        <a href="{{ url()->current() }}">Sửa thông tin</a>
+                                    </li>
+                                @endif
+                                <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
+                                    <a href="/admin/collection/create">Thêm mới</a>
+                                </li>
+                                <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
+                                    <a href="/admin/collection">Danh sách</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @else
+                        <div class="collapse" id="formsExamples">
+                            <ul class="nav">
+                                @if($current_menu == 'collection_manager' && $current_sub_menu == 'edit')
+                                    <li class="active">
+                                        <a href="{{ url()->current() }}">Sửa thông tin</a>
+                                    </li>
+                                @endif
+                                <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
+                                    <a href="/admin/collection/create">Thêm mới</a>
+                                </li>
+                                <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
+                                    <a href="/admin/collection">Danh sách</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#">

@@ -1,4 +1,8 @@
-@extends('admin.layout.master', ['currentPage' => 'list'])
+@extends('admin.layout.master', [
+    'currentPage' => 'list',
+    'current_menu' => 'product_manager',
+    'current_sub_menu' => 'list',
+])
 @section('page-title', 'List products')
 @section('content')
     <div class="card">
