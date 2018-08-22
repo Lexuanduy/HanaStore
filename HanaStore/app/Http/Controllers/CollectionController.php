@@ -16,9 +16,10 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $collection = Collection::all();
-        return view('admin.collection.list')
-            ->with('collection' , $collection);
+        $limit = 0;
+        $collection = Collection::where('status', 1)->orderBy('created_at', 'DESC')->paginate($limit);
+        return view('admin.collection.list')->with('collection', $collection);
+
     }
 
     /**
@@ -73,7 +74,7 @@ class CollectionController extends Controller
     public function edit($id)
     {
         $collection = Collection::find($id);
-        if ($collection == null){
+        if ($collection == null || $collection->status != 1){
             return view('error.404');
         }
         return view('admin.collection.edit')
@@ -101,14 +102,14 @@ class CollectionController extends Controller
             'images' => 'required',
         ],[
             'name.required' => 'Vui lòng nhập tên bộ sưu tập.',
-            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 7 ký tự.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 6 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
             'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
             'description.required' => 'Vui lòng nhập mô tả cho bộ sưu tập',
             'images.required' => 'Vui lòng nhập ảnh đại diện cho bộ sưu tập'
         ]);
 
-        if ($collection == null){
+        if ($collection == null || $collection->status != 1){
             return view('error.404');
         }
         $collection->name = $request->get('name');

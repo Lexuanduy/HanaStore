@@ -1,6 +1,10 @@
 @extends('admin.layout.master')
 @section('page-title','List Collection')
 @section('content')
+    <div class="card">
+    <div class="card-content">
+        <h4 class="card-title">DANH SÁCH BỘ SƯU TẬP</h4>
+        @if($collection->count()>0)
     <table class="table table-striped">
         <thead>
         <tr class="row">
@@ -31,7 +35,14 @@
             </tr>
         @endforeach
         </tbody>
+        @else
+            <div class="alert alert-danger">Hiện tại không có danh mục sản phẩm. Vui lòng click <a
+                        href="/admin/collection/create" title="Thêm mới sản phẩm" class="btn-link">vào đây</a> để tạo mới.
+            </div>
+        @endif
     </table>
+    </div>
+    </div>
     <script>
         $('.btn-delete').click(function () {
             var thisButton = $(this);
