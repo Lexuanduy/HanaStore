@@ -32,7 +32,7 @@ class CollectionController extends Controller
     public function create()
     {
 
-        return view('admin.collection.create');
+        return view('admin.collection.form');
     }
 
     /**
@@ -46,8 +46,8 @@ class CollectionController extends Controller
         $request->validated();
         $collection = new Collection();
         $collection->name = $request -> get('name');
-        $collection->description = $request->get('description');
         $collection->images = $request->get('images');
+        $collection->description = $request->get('description');
         $collection->save();
         return redirect('admin/collection');
 
@@ -98,12 +98,12 @@ class CollectionController extends Controller
             $validate_unique = '|unique:collections';
         }
         $request -> validate([
-            'name' => 'required|max:50|min:6' . $validate_unique,
+            'name' => 'required|max:50|min:8' . $validate_unique,
             'description' => 'required',
             'images' => 'required',
         ],[
             'name.required' => 'Vui lòng nhập tên bộ sưu tập.',
-            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 6 ký tự.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 8 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
             'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
             'description.required' => 'Vui lòng nhập mô tả cho bộ sưu tập',

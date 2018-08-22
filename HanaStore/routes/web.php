@@ -1,6 +1,7 @@
 <?php
 
 use App\Collection;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +19,5 @@ Route::resource('admin/product', 'ProductController');
 
 // Collection - Nam
 Route::resource('admin/collection', 'CollectionController');
-
-Route::get('/list', function (){
-    return view('admin.layout.list');
-});
 
 Route::resource('admin/category', 'CategoryController');

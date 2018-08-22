@@ -1,4 +1,8 @@
-@extends('admin.layout.master')
+@extends('admin.layout.master', [
+    'currentPage' => 'list',
+    'current_menu' => 'collection_manager',
+    'current_sub_menu' => 'list',
+])
 @section('page-title','List Collection')
 @section('content')
     <div class="card">
