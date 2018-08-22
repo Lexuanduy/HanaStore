@@ -126,6 +126,12 @@ class CollectionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $collection = Collection::find($id);
+        if ($collection == null) {
+            return response()->json(['message' => 'Bộ sưu tập không tồn tại hoặc đã bị xóa'], 404);
+        }
+        $collection->status = 0;
+        $collection->save();
+        return response()->json(['message' => 'Xóa bộ sưu tập thành công']);
     }
 }
