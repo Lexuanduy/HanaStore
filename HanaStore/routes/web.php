@@ -20,7 +20,7 @@ Route::get('/list', function (){
     return view('admin.layout.list');
 });
 
-Route::resource('admin/collections', 'CollectionController');
+Route::resource('admin/collection', 'CollectionController');
 
 // Route::get('admin/collections', function(){
 

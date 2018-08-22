@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Collection;
-use App\Http\Requests\StoreProductPost;
+use App\Http\Requests\StoreProductRequest;
 use App\Product;
+use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -18,7 +19,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        $categories = Category::all();
+        $categoryId = Input::get('categoryId');
+        if ($categoryId == null || $categoryId == 0) {
+            $products = Product::orderBy('created_at', 'desc')->paginate(5);
+            return view('admin.layout.list')
+                ->with('products_in_view', $products)
+                ->with('categories', $categories)
+                ->with('categoryId', $categoryId);
+        } else {
+            $products = Product::where('categoryId', Input::get('categoryId'))->orderBy('created_at', 'desc')->paginate(5);
+            return view('admin.layout.list')
+                ->with('products_in_view', $products)
+                ->with('categories', $categories)
+                ->with('categoryId', $categoryId);
+        }
     }
 
     /**
@@ -32,8 +47,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $collections = Collection::all();
-        $action = '/admin/bakery/store';
-        return view('admin.product.create')
+        $action = '/admin/product/store';
+        return view('admin.product.form')
             ->with('categories', $categories)
             ->with('collections', $collections)
             ->with('action', $action);
@@ -47,18 +62,19 @@ class ProductController extends Controller
      */
 
     // test ok but need list view to redirect
-    public function store(StoreProductPost $request)
+    public function store(StoreProductRequest $request)
     {
         $request->validated();
         $product = new Product();
-
-        $product->name = $request['name'];
-        $product->categoryId = $request['categoryId'];
-        $product->collectionId = $request['collectionId'];
-        $product->price = $request['price'];
-        $product->images = $request['images'];
-        $product->sale = $request['sale'];
-        $product->description = $request['description'];
+        $current_time = time();
+        $product->name = $request->get('name');
+        $product->categoryId = $request->get('categoryId');
+        $product->collectionId = $request->get('collectionId');
+        $product->price = $request->get('price');
+        Cloudder::upload($request->file('images')->getRealPath(), $current_time);
+        $product->images = Cloudder::getResult()['url'];
+        $product->sale = $request->get('sale');
+        $product->description = $request->get('description');
         $product->detail = $request->input('detail');
         $product->save();
         return redirect('/admin/product');
@@ -73,13 +89,13 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        if ($product == null) {
+            return view('admin.error.404');
+        }
         $categoryId = $product->categoryId;
         $collectionId = $product->categoryId;
         $categories = Category::find($categoryId);
         $collection = Collection::find($collectionId);
-        if ($product == null) {
-            return ('Not found');
-        }
         return view('admin.product.show')
             ->with('product', $product)
             ->with('categories', $categories)
@@ -106,6 +122,7 @@ class ProductController extends Controller
             ->with('product', $product)
             ->with('categories', $categories)
             ->with('collections', $collections);
+
     }
 
     /**
@@ -120,9 +137,32 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        if ($product == null) {
-            return view('404');
+        $validate_unique = '';
+        if($product->name != $request->get('name')){
+            $validate_unique = '|unique:products';
         }
+
+        $request->validate([
+            'name' => 'required|max:50|min:10' . $validate_unique,
+            'price' => 'numeric',
+            'image'=>'nullable|max:191',
+            'sale' => 'numeric',
+            'description' => 'required',
+            'detail' => 'required',
+        ], [
+            'name.required' => 'Vui lòng nhập tên sản phẩm.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 10 ký tự.',
+            'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
+            'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
+            'price.numeric' => 'Vui lòng nhập giá sản phẩm là số.',
+            'sale.numeric' => 'Vui lòng nhập giá trị sale là số.',
+            'description.required' => 'Vui lòng nhập mô tả cho sản phẩm.',
+            'detail.required' => 'Vui lòng nhập thông tin chi tiết cho sản phẩm.',
+        ]);
+        if ($product == null || $product->status != 1) {
+            return view('admin.error.404');
+        }
+        $current_time = time();
         $product->name = $request->input('name');
         $product->categoryId = $request->input('categoryId');
         $product->collectionId = $request->input('collectionId');
