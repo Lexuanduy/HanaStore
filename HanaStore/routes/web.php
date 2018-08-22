@@ -22,6 +22,4 @@ Route::get('/list', function (){
 
 Route::resource('admin/collection', 'CollectionController');
 
-// Route::get('admin/collections', function(){
-
-// });
+Route::resource('admin/category', 'CategoryController');
