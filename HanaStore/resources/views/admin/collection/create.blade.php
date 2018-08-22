@@ -12,7 +12,6 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-
                     </div>
             @endif
             <!--main form -->
