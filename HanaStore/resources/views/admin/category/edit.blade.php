@@ -1,4 +1,8 @@
-@extends('admin.layout.master', ['currentPage' => 'edit'])
+@extends('admin.layout.master', [
+    'currentPage' => 'edit',
+    'current_menu' => 'category_manager',
+    'current_sub_menu' => 'edit',
+])
 @section('page-title', 'Edit category')
 @section('content')
     <div class="row">

@@ -1,4 +1,8 @@
-@extends('admin.layout.master', ['currentPage'=>'form'])
+@extends('admin.layout.master', [
+    'currentPage' => 'form',
+    'current_menu' => 'product_manager',
+    'current_sub_menu' => 'create_new',
+])
 @section('page-title', 'Create new flower')
 @section('content')
     <div class="row">
