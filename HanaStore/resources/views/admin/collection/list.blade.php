@@ -7,7 +7,7 @@
 <h1>Collections</h1>
 
 <table class="table">
-	<thead class="black white-text">
+	<thead class="thead-dark">
 		<tr>
 			<th scope="col">ID</th>
 			<th scope="col">Name</th>
