@@ -20,18 +20,21 @@ class ProductController extends Controller
     public function index()
     {
         $categories = Category::all();
+        $collections = Collection::all();
         $categoryId = Input::get('categoryId');
         if ($categoryId == null || $categoryId == 0) {
             $products = Product::orderBy('created_at', 'desc')->paginate(5);
             return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
+                ->with('collections', $collections)
                 ->with('categoryId', $categoryId);
         } else {
-            $products = Product::where('categoryId', Input::get('categoryId'))->orderBy('created_at', 'desc')->paginate(5);
-            return view('admin.layout.list')
+            $products = Product::where('categoryId', $categoryId)->orderBy('created_at', 'desc')->paginate(5);
+            return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
+                ->with('collections', $collections)
                 ->with('categoryId', $categoryId);
         }
     }
@@ -134,6 +137,7 @@ class ProductController extends Controller
      */
 
     // save new edited info into database with products table
+    // phuocding customize validation for 'name' min 5
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
@@ -143,7 +147,7 @@ class ProductController extends Controller
         }
 
         $request->validate([
-            'name' => 'required|max:50|min:10' . $validate_unique,
+            'name' => 'required|max:50|min:5' . $validate_unique,
             'price' => 'numeric',
             'image'=>'nullable|max:191',
             'sale' => 'numeric',
