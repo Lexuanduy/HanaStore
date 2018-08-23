@@ -66,8 +66,9 @@
                                     <tr>
                                         <th class="id-flower" scope="row">{{$item->id}}</th>
                                         <td>
-                                            <div class="card"
-                                                 style="background-image: url('{{$item->images}}'); background-size: cover; width: 60px; height: 60px;">
+                                            <div class="card" style="background-size: cover; height: 60px; width: 60px">
+                                                <a href="/admin/product/{{ $item->id }}">
+                                                    <img src="{{$item->images}}" class="img-thumbnail" style="background-size: cover; height: 60px; width: 60px" alt="images"/></a>
                                             </div>
                                         </td>
                                         <td>{{$item->name}}</td>
