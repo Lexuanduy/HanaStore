@@ -19,9 +19,7 @@ class CollectionController extends Controller
         $limit = 0;
         $collection = Collection::where('status', 1)->orderBy('created_at', 'DESC')->paginate($limit);
         return view('admin.collection.list')->with('collection', $collection);
-        $collections = Collection::all();
-        $collections = Collection::orderBy('created_at')->get();
-        return view('admin.collection.list', ['collections'=>$collections]);
+
     }
 
     /**
@@ -76,7 +74,7 @@ class CollectionController extends Controller
     {
         $collection = Collection::find($id);
         if ($collection == null || $collection->status != 1){
-            return view('error.404');
+            return view('admin.error.404');
         }
         return view('admin.collection.edit')
             ->with('collection',$collection);
