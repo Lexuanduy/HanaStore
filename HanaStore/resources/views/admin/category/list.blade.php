@@ -11,7 +11,7 @@
                 <i class="material-icons">assignment</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">DANH SÁCH BỘ SƯU TẬP</h4>
+                <h4 class="card-title">DANH SÁCH DANH MỤC</h4>
                 <div class="toolbar">
                     <!--        Here you can write extra buttons/actions for the toolbar              -->
                 </div>
@@ -29,26 +29,7 @@
                                            aria-describedby="datatables_info">
                                         <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatables" rowspan="1"
-                                                colspan="1" style="width: 50px;" aria-sort="ascending"
-                                                aria-label="ID: activate to sort column descending">ID
-                                            </th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatables" rowspan="1"
-                                                colspan="1" style="width: 157px;" aria-sort="ascending"
-                                                aria-label="Name: activate to sort column descending">Tên
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1"
-                                                colspan="1" style="width: 303px;"
-                                                aria-label="Image: activate to sort column ascending">Mô tả
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatables" rowspan="1"
-                                                colspan="1" style="width: 156px;"
-                                                aria-label="Price: activate to sort column ascending">Ảnh đại diện
-                                            </th>
-                                            <th class="disabled-sorting text-right sorting" tabindex="0"
-                                                aria-controls="datatables" rowspan="1" colspan="1" style="width: 149px;"
-                                                aria-label="Actions: activate to sort column ascending">Thao tác
-                                            </th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -63,7 +44,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-right">
-                                                    <a href="/admin/collection/{{$item->id}}/edit" class="btn btn-simple btn-warning btn-icon edit"><i
+                                                    <a href="/admin/category/{{$item->id}}/edit" class="btn btn-simple btn-warning btn-icon edit"><i
                                                             class="material-icons">edit</i></a>
                                                     <a href="{{$item->id}}" class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
                                                             class="material-icons">close</i></a>
