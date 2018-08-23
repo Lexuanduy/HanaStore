@@ -6,6 +6,7 @@ use App\Collection;
 use App\Http\Requests\StoreCollectionRequest;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Input\Input;
+use JD\Cloudder\Facades\Cloudder;
 
 class CollectionController extends Controller
 {
@@ -16,8 +17,7 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $limit = 0;
-        $collection = Collection::where('status', 1)->orderBy('created_at', 'DESC')->paginate($limit);
+        $collection = Collection::where('status', 1)->orderBy('created_at', 'DESC')->paginate(5);
         return view('admin.collection.list')->with('collection', $collection);
 
     }
@@ -42,9 +42,11 @@ class CollectionController extends Controller
     public function store(StoreCollectionRequest $request)
     {
         $request->validated();
+        $current_time = time();
         $collection = new Collection();
         $collection->name = $request -> get('name');
-        $collection->images = $request->get('images');
+        Cloudder::upload($request->file('images')->getRealPath(), $current_time);
+        $collection->images = Cloudder::getResult()['url'];
         $collection->description = $request->get('description');
         $collection->save();
         return redirect('admin/collection');
@@ -95,25 +97,23 @@ class CollectionController extends Controller
         if($collection->name != $request->get('name')){
             $validate_unique = '|unique:collections';
         }
-        $request -> validate([
-            'name' => 'required|max:50|min:8' . $validate_unique,
-            'description' => 'required',
-            'images' => 'required',
-        ],[
-            'name.required' => 'Vui lòng nhập tên bộ sưu tập.',
-            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 8 ký tự.',
-            'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
-            'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
-            'description.required' => 'Vui lòng nhập mô tả cho bộ sưu tập',
-            'images.required' => 'Vui lòng nhập ảnh đại diện cho bộ sưu tập'
-        ]);
 
-        if ($collection == null || $collection->status != 1){
-            return view('error.404');
+        $request->validate([
+            'name' => 'required|max:50|min:5' . $validate_unique,
+            'image'=>'nullable|max:191',
+            'description' => 'required',
+        ], [
+            'name.required' => 'Vui lòng nhập tên sản phẩm.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 5 ký tự.',
+            'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
+            'description.required' => 'Vui lòng nhập mô tả cho sản phẩm.'
+        ]);
+        if ($collection == null || $collection->status != 1) {
+            return view('admin.error.404');
         }
-        $collection->name = $request->get('name');
-        $collection->images = $request->get('images');
-        $collection->description = $request->get('description');
+        $collection->name = $request->input('name');
+        $collection->images = $request->input('images');
+        $collection->description = $request->input('description');
         $collection->save();
         return redirect('/admin/collection');
     }

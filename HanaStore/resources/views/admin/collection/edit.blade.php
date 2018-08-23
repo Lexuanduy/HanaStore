@@ -5,112 +5,6 @@
 ])
 @section('page-title', 'Edit Collection')
 @section('content')
-    <style>
-        /*basic settings */
-
-        a:focus {
-            outline: none !important;
-            outline-offset: none !important;
-        }
-
-        body {
-            background: #f5f6f5;
-            color: #333;
-        }
-
-        /* helper classses */
-
-        /* input [type = file]
-        ----------------------------------------------- */
-
-        input[type=file] {
-            display: block !important;
-            right: 1px;
-            top: 1px;
-            height: 34px;
-            opacity: 0;
-            width: 100%;
-            background: none;
-            position: absolute;
-            overflow: hidden;
-            z-index: 2;
-        }
-
-        .control-fileupload {
-            display: block;
-            border: 1px solid #d6d7d6;
-            background: #FFF;
-            border-radius: 4px;
-            width: 100%;
-            height: 36px;
-            line-height: 36px;
-            padding: 0px 10px 2px 10px;
-            overflow: hidden;
-            position: relative;
-
-
-        &:before, input, label {
-             cursor: pointer !important;
-         }
-        /* File upload button */
-        &:before {
-             /* inherit from boostrap btn styles */
-             padding: 4px 12px;
-             margin-bottom: 0;
-             font-size: 14px;
-             line-height: 20px;
-             color: #333333;
-             text-align: center;
-             text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-             vertical-align: middle;
-             cursor: pointer;
-             background-color: #f5f5f5;
-             background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-             background-repeat: repeat-x;
-             border: 1px solid #cccccc;
-             border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-             border-bottom-color: #b3b3b3;
-             border-radius: 4px;
-             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-             transition: color 0.2s ease;
-
-             /* add more custom styles*/
-             content: 'Browse';
-             display: block;
-             position: absolute;
-             z-index: 1;
-             top: 2px;
-             right: 2px;
-             line-height: 20px;
-             text-align: center;
-         }
-        &:hover, &:focus {
-        &:before {
-             color: #333333;
-             background-color: #e6e6e6;
-             color: #333333;
-             text-decoration: none;
-             background-position: 0 -15px;
-             transition: background-position 0.2s ease-out;
-         }
-        }
-
-        label {
-            line-height: 24px;
-            color: #999999;
-            font-size: 14px;
-            font-weight: normal;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            position: relative;
-            z-index: 1;
-            margin-right: 90px;
-            margin-bottom: 0px;
-            cursor: text;
-        }
-        }
-    </style>
     <div class="row">
         <div class="col-md-12">
             <!--main form -->
@@ -123,7 +17,6 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-
                     </div>
                 @endif
                 <form method="post" action="/admin/collection/{{ $collection->id }}" class="form-horizontal bg-info">
@@ -133,32 +26,31 @@
                         <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Collection</h4>
                     </div>
 
-
                     <!--form edit flowers-->
                     <div class="card-content">
                         <div class="row">
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="name" class="form-control" value="{{$collection
-                                    ->name}}" required>
+                                    <input type="text" name="name" class="form-control" value="{{$collection->name}}"
+                                           required>
                                     <span class="material-input"></span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Image</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating">
-                                    <img src="{{$collection -> images}}" alt="" style="width:250px;">
-                                </div>
-                                <div class="form-group label-floating">
-                                    <label class="btn btn-default">
-                                        Chọn file <input type="file" name="images" class="form-control" required>
-                                        <span >   <input type="file"></span>
-                                    </label>
-                                    <input type="file">
+                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
+                            <div class="form-group">
+                                <div class="row ml-1 custom-file">
+                                    {{--<input type="file" name="images" class="mr-2"><span>Choose file...</span>--}}
+                                    {{--<img src="{{ $product->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>--}}
+                                    {{--@if($errors->has('images'))--}}
+                                    {{--<label class="text-danger">*{{$errors->first('images')}}</label>--}}
+                                    {{--@endif--}}
+
+                                    <input type="text" name="images" value="{{$collection -> images}}">
+                                    <img src="{{$collection -> images}}" alt="" style="width:200px;">
                                 </div>
                             </div>
                         </div>
@@ -167,17 +59,16 @@
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
                             <div class="col-sm-8">
                                 <div class="form-group label-floating">
-                                    <input type="text" name="description" class="form-control" value="{{$collection
-                                    ->description}}" required>
-
+                                    <input type="text" name="description" class="form-control"
+                                           value="{{$collection->description}}" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-4"></div>
-                            <div class="col-sm-8">
-                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram" style="margin-right: 50px">Update
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Update
                                     <div class="ripple-container"></div>
                                 </button>
                                 <button type="reset" value="Reset" class="btn btn-fill btn-danger">Reset
@@ -190,13 +81,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $(function() {
-            $('input[type=file]').change(function(){
-                var t = $(this).val();
-                var labelText = 'File : ' + t.substr(12, t.length);
-                $(this).prev('label').text(labelText);
-            })
-        });
-    </script>
 @endsection

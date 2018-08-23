@@ -30,7 +30,7 @@ class StoreCollectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50|min:8|unique:collections',
+            'name' => 'required|max:50|min:5|unique:collections',
             'description' => 'required',
             'images' => 'required'
         ];
@@ -40,7 +40,7 @@ class StoreCollectionRequest extends FormRequest
     {
         return [
             'name.required' => 'Vui lòng nhập tên bộ sưu tập.',
-            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 8 ký tự.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 5 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
             'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
             'description.required' => 'Vui lòng nhập mô tả cho bộ sưu tập',
