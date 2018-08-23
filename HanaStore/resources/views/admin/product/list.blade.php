@@ -75,7 +75,7 @@
                                         <td>{{$item->category->name}}</td>
                                         <td>{{$item->collection->name}}</td>
                                         <td>{{$item->price}} <b>VND</b></td>
-                                        <td>{{$item->sale}}</td>
+                                        <td>{{$item->sale}} %</td>
                                         <td>{{$item->detail}}</td>
                                         <td>{{$item->description}}</td>
                                         <td class="none">
