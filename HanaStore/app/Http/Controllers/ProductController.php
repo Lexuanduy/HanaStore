@@ -23,7 +23,7 @@ class ProductController extends Controller
         $categoryId = Input::get('categoryId');
         if ($categoryId == null || $categoryId == 0) {
             $products = Product::orderBy('created_at', 'desc')->paginate(5);
-            return view('admin.layout.list')
+            return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
                 ->with('categoryId', $categoryId);

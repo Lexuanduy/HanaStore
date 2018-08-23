@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png"/>
-    <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+    <link rel="icon" type="image/png" href="{{ asset('img/hanastore.png') }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>@yield('page-title')</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
@@ -87,30 +87,14 @@
                             <ul class="nav">
                                 @if($current_menu == 'product_manager' && $current_sub_menu == 'edit')
                                     <li class="active">
-                                        <a href="{{ url()->current() }}">Sửa thông tin</a>
+                                        <a href="{{ url()->current() }}">Edit Info</a>
                                     </li>
                                 @endif
                                 <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                    <a href="/admin/product/create">Thêm mới</a>
+                                    <a href="/admin/product/create">Create New</a>
                                 </li>
                                 <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                    <a href="/admin/product">Danh sách</a>
-                                </li>
-                            </ul>
-                        </div>
-                    @else
-                        <div class="collapse" id="pagesExamples">
-                            <ul class="nav">
-                                @if($current_menu == 'product_manager' && $current_sub_menu == 'edit')
-                                    <li class="active">
-                                        <a href="{{ url()->current() }}">Sửa thông tin</a>
-                                    </li>
-                                @endif
-                                <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                    <a href="/admin/product/create">Thêm mới</a>
-                                </li>
-                                <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                    <a href="/admin/product">Danh sách</a>
+                                    <a href="/admin/product">List Flowers</a>
                                 </li>
                             </ul>
                         </div>
@@ -131,7 +115,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="active">
+                <li class="{{ $current_menu == 'collection_manager' ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#">
                         <i class="glyphicon glyphicon-th-list"></i>
                         <p>Collections</p>
@@ -222,7 +206,7 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script>
-                    <a href="http://www.creative-tim.com/">Creative Tim</a>, made with love for a better web
+                    <a href="http://www.creative-tim.com/">Flower for happiness</a>, made with love for a better web
                 </p>
             </div>
         </footer>
