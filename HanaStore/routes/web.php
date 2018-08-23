@@ -1,6 +1,7 @@
 <?php
 
 use App\Collection;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,7 @@ use App\Collection;
 // config web by Phuocding
 Route::resource('admin/product', 'ProductController');
 
+// Collection - Nam
 Route::resource('admin/collection', 'CollectionController');
 
 Route::resource('admin/category', 'CategoryController');
