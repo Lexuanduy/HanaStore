@@ -1,4 +1,8 @@
-@extends('admin.layout.master', ['currentPage' => 'show'])
+@extends('admin.layout.master', [
+    'currentPage' => 'show',
+    'current_menu' => 'product_manager',
+    'current_sub_menu' => 'show_item',
+])
 @section('page-title', 'Show product')
 @section('content')
  <div class="container-fluid">
