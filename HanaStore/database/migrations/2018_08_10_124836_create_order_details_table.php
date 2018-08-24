@@ -14,15 +14,11 @@ class CreateOrderDetailsTable extends Migration
     public function up()
     {
         Schema::create('order_details', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('orderId');
-            $table->foreign('orderId')->references('id')->on('orders');
-            $table->unsignedInteger('productId');
-            $table->foreign('productId')->references('id')->on('products');
+            $table->integer('order_id');
+            $table->integer('product_id');
+            $table->primary(['order_id', 'product_id']);
             $table->integer('quantity');
-            $table->double('unitPrice');
-            $table->string('address');
-            $table->timestamps();
+            $table->integer('unit_price');
         });
     }
 
