@@ -5,74 +5,43 @@
 ])
 @section('page-title', 'List categorys')
 @section('content')
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header card-header-icon" data-background-color="purple">
-                <i class="material-icons">assignment</i>
+    <div class="card">
+        <div class="card-content">
+            <div class="card-header card-header-text text-center" data-background-color="green">
+                <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> DANH SÁCH DANH MỤC</h4>
             </div>
-            <div class="card-content">
-                <h4 class="card-title">DANH SÁCH DANH MỤC</h4>
-                <div class="toolbar">
-                    <!--        Here you can write extra buttons/actions for the toolbar              -->
-                </div>
-                @if (Session::has('message'))
-                    <div class="alert {{ Session::get('message-class') }}">{{ Session::get('message') }}</div>
-                @endif
-                <div class="material-datatables">
-                    <div id="datatables_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                @if($list_category->count()>0)
-                                    <table id="datatables"
-                                           class="table table-striped table-no-bordered table-hover dataTable dtr-inline"
-                                           cellspacing="0" width="100%" style="width: 100%;" role="grid"
-                                           aria-describedby="datatables_info">
-                                        <thead>
-                                        <tr role="row">
+            @if($list_category->count()>0)
+                <table class="table  ">
+                    <thead class="black white-text" >
+                    <tr class="row">
 
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($list_category as $item)
-                                            <tr role="row" class="odd">
-                                                <td>{{$item->id}}</td>
-                                                <td tabindex="0" class="sorting_1">{{$item->name}}</td>
-                                                <td>{{$item->description}}</td>
-                                                <td>
-                                                    <div class="card"
-                                                         style="width: 100px;height: 80px;background-image: url('{{$item->images}}'); background-size: cover">
-                                                    </div>
-                                                </td>
-                                                <td class="text-right">
-                                                    <a href="/admin/category/{{$item->id}}/edit" class="btn btn-simple btn-warning btn-icon edit"><i
-                                                            class="material-icons">edit</i></a>
-                                                    <a href="{{$item->id}}" class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
-                                                            class="material-icons">close</i></a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                            </div>
-                            @else
-                                <div class="alert alert-info">Hiện tại không có bộ sưu tập. Vui lòng click <a
-                                        href="/admin/category/create" title="Thêm mới danh mục" class="btn-link">vào đây</a> để tạo mới.
-                                </div>
-                            @endif
+                        <th class="col">{{__('Id')}}</th>
+                        <th class="col">{{__('Category')}}</th>
+                        <th class="col">{{__('Description')}}</th>
+                        <th class="col">{{__('Action')}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($list_category as $item)
+                        <tr class="row" id="row-item-{{$item->id}}">
+
+                            <td class="col">{{$item->id}}</td>
+                            <td class="col">{{$item->name}}</td>
+                            <td class="col">{{$item->description}}</td>
+                            <td class="col">
+                                <a href="/admin/category/{{$item-> id}}/edit" class="fas fa-edit  " style="margin-right: 15px;"></a>
+                                <a href="{{$item-> id}}"  class="btn-delete fas fa-trash-alt "></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                    @else
+                        <div class="alert alert-danger">Hiện tại không có danh mục sản phẩm. Vui lòng click <a
+                                href="/admin/category/create" title="Thêm mới danh mục" class="btn-link">vào đây</a> để tạo mới.
                         </div>
-                        <div class="row">
-                            <div class="col-sm-5">
-                            </div>
-                            <div class="col-sm-7">
-                                {{ $list_category->links() }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end content-->
+                    @endif
+                </table>
         </div>
-        <!--  end card  -->
     </div>
     <script>
         $('.btn-delete').click(function () {

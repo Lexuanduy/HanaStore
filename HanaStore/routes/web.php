@@ -1,6 +1,7 @@
 <?php
 
 use App\Collection;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +17,7 @@ use App\Collection;
 // config web by Phuocding
 Route::resource('admin/product', 'ProductController');
 
-Route::get('/error', function (){
-    return view('admin.error.404');
-});
-
+// Collection - Nam
 Route::resource('admin/collection', 'CollectionController');
 
 Route::resource('admin/category', 'CategoryController');

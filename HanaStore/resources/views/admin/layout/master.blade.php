@@ -253,8 +253,7 @@
         </nav>
         <div class="content" style="background-color: white">
             <div class="container-fluid">
-                @section('content')
-                @show()
+                @yield('content')
             </div>
         </div>
         <footer class="footer">
