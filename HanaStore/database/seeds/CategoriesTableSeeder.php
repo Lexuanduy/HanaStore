@@ -17,6 +17,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'id'=>1,
                 'name'=>'Hoa sinh nhật',
+                'images'=>'',
                 'description'=>'Hoa được dùng để tặng trong tiệc sinh nhật'
             ],
             [

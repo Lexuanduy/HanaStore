@@ -114,6 +114,15 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if ($category == null) {
+            return response()->json(['message' => 'Danh mục không tồn tại hoặc đã bị xóa'], 404);
+        }
+        $category->status = 0;
+        $category->save();
+        return response()->json(['message' => 'Xóa danh mục thành công']);
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->back()->with('message', 'Successed delete category');
     }
 }
