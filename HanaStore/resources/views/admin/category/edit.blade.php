@@ -38,6 +38,23 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
+                            <div class="form-group">
+                                <div class="row ml-1 custom-file">
+                                    {{--<input type="file" name="images" class="mr-2"><span>Choose file...</span>--}}
+                                    {{--<img src="{{ $product->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>--}}
+                                    {{--@if($errors->has('images'))--}}
+                                    {{--<label class="text-danger">*{{$errors->first('images')}}</label>--}}
+                                    {{--@endif--}}
+
+                                    <input type="text" name="images" value="{{$category -> images}}">
+                                    <img src="{{$category -> images}}" alt="" style="width:200px;">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
                             <div class="col-sm-8">
@@ -47,10 +64,11 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-sm-2"></div>
                             <div class="col-sm-10">
-                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Create
+                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Update
                                     <div class="ripple-container"></div>
                                 </button>
                                 <button type="reset" value="Reset" class="btn btn-fill btn-danger">Reset
