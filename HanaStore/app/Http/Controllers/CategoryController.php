@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use Illuminate\Http\Request;
+use JD\Cloudder\Facades\Cloudder;
 
 class CategoryController extends Controller
 {
@@ -38,9 +39,11 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         $request->validated();
-
+        $current_time = time();
         $category = new Category();
         $category->name = $request->get('name');
+        Cloudder::upload($request->file('images')->getRealPath(), $current_time);
+        $category->images = Cloudder::getResult()['url'];
         $category->description = $request->get('description');
         $category->save();
         return redirect('/admin/category');
@@ -86,22 +89,23 @@ class CategoryController extends Controller
         if($category->name != $request->get('name')){
             $validate_unique = '|unique:categories';
         }
-        $request->validate([
-            'name' => 'required|max:50|min:6' . $validate_unique,
-            'description' => 'required'
-        ], [
-            'name.required' => 'Vui lòng nhập tên danh mục.',
-            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 6 ký tự.',
-            'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
-            'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
-            'description.required' => 'Vui lòng nhập mô tả cho danh mục'
-        ]);
 
+        $request->validate([
+            'name' => 'required|max:50|min:5' . $validate_unique,
+            'images'=>'nullable|max:191',
+            'description' => 'required',
+        ], [
+            'name.required' => 'Vui lòng nhập tên danh mục.',
+            'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 5 ký tự.',
+            'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
+            'description.required' => 'Vui lòng nhập mô tả cho sản phẩm.'
+        ]);
         if ($category == null || $category->status != 1) {
             return view('admin.error.404');
         }
-        $category->name = $request->get('name');
-        $category->description = $request->get('description');
+        $category->name = $request->input('name');
+        $category->images = $request->input('images');
+        $category->description = $request->input('description');
         $category->save();
         return redirect('/admin/category');
     }

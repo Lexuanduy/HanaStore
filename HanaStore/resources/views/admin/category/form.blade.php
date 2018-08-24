@@ -23,10 +23,9 @@
                       enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create category </h4>
+                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create Category</h4>
                     </div>
 
-                    <!--form edit flowers-->
                     <div class="card-content">
                         <div class="row">
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
@@ -34,6 +33,18 @@
                                 <div class="form-group label-floating" {{$errors->has('name')?' has-error':''}}>
                                     <input type="text" name="name" class="form-control" required>
                                     <span class="material-input"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
+                            <div class="form-group">
+                                <div class="row ml-1 custom-file">
+                                    <input type="file" name="images" class="mr-2"><span>Choose file...</span>
+                                    @if($errors->has('images'))
+                                        <label class="text-danger">*{{$errors->first('images')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>

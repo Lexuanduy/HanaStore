@@ -16,6 +16,7 @@
                     <tr class="row">
 
                         <th class="col">{{__('Id')}}</th>
+                        <th class="col">{{__('Image')}}</th>
                         <th class="col">{{__('Category')}}</th>
                         <th class="col">{{__('Description')}}</th>
                         <th class="col">{{__('Action')}}</th>
@@ -26,10 +27,15 @@
                         <tr class="row" id="row-item-{{$item->id}}">
 
                             <td class="col">{{$item->id}}</td>
+                            <td class="col">
+                                <div class="card"
+                                     style="background-image: url('{{$item->images}}'); background-size: cover; width: 60px; height: 60px;">
+                                </div>
+                            </td>
                             <td class="col">{{$item->name}}</td>
                             <td class="col">{{$item->description}}</td>
                             <td class="col">
-                                <a href="/admin/category/{{$item-> id}}/edit" class="fas fa-edit  " style="margin-right: 15px;"></a>
+                                <a href="/admin/collection/{{$item-> id}}/edit" class="fas fa-edit  " style="margin-right: 15px;"></a>
                                 <a href="{{$item-> id}}"  class="btn-delete fas fa-trash-alt "></a>
                             </td>
                         </tr>
@@ -58,7 +64,7 @@
             }).then(function() {
                 var id = thisButton.attr('href');
                 $.ajax({
-                    'url': '/admin/category/' + id,
+                    'url': '/admin/collection/' + id,
                     'method': 'DELETE',
                     'data':{
                         '_token':$('meta[name="csrf-token"]').attr('content')
