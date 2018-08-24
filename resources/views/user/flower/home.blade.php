@@ -2,6 +2,35 @@
 
 @section('page-title', 'Trang chủ - Hana Store')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/themify/themify-icons.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/elegant-font/html-css/style.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/lightbox2/css/lightbox.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+@endsection
+
 @section('content')
 
     <!-- Slide1 --> <!--Slide ảnh-->
@@ -23,7 +52,7 @@
                     <div class=" p-l-15 p-r-15 col-md-3 mt-3">
                         <!-- Block2 -->
                         <div class="block2">
-                            <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 ? ' block2-labelsale' : ''}}{{$item->new == 1 ? ' block2-labelnew' : ''}}">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
                                 {{--<img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" >--}}
                                 <div style="height: 350px; background-image: url('{{asset('img/product/'. $item->images)}}');
                                         background-size: cover;">
@@ -39,7 +68,7 @@
                                     <div class="block2-btn-addcart w-size1 trans-0-4">
                                         <!-- Button -->
                                         <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                            <a href="/user/add-cart/{{$item->id}}}" style="color: #fff;">Thêm vào giỏ</a>
+                                            <a href="/user/add-cart/{{$item->id}}" style="color: #fff;" target="_top">Thêm vào giỏ</a>
                                         </button>
                                     </div>
                                 </div>
@@ -92,7 +121,7 @@
                             <div class="item-slick2 p-l-15 p-r-15">
                                 <!-- Block2 -->
                                 <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 ? ' block2-labelsale' : ''}} ">
+                                    <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
                                         {{--<img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" >--}}
                                         <div style="height: 350px; background-image: url('{{asset('img/product/'. $item->images)}}');
                                                 background-size: cover;">
@@ -166,13 +195,13 @@
                 </div>
 
                 <!-- Slide2 -->
-                <div class="wrap-slick2">
-                    <div class="slick2">
+                <div class="wrap-slick4">
+                    <div class="slick4">
                         @foreach($products_new as $item)
                             <div class="item-slick2 p-l-15 p-r-15">
                                 <!-- Block2 -->
                                 <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->new == 1 ? ' block2-labelnew': ''}}">
+                                    <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
                                         {{--<img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" >--}}
                                         <div style="height: 350px; background-image: url('{{asset('img/product/'. $item->images)}}');
                                                 background-size: cover;">
@@ -629,7 +658,7 @@
         $('.block2-btn-addwishlist').each(function () {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function () {
-                swal(nameProduct, "is added to wishlist !", "success");
+                swal(nameProduct, "Đã thêm vào yêu thích!", "success");
             });
         });
     </script>

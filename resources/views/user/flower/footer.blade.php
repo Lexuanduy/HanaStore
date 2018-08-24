@@ -1,13 +1,15 @@
 <div class="flex-w p-b-90">
     <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
         <h4 class="s-text12 p-b-30">
-            GET IN TOUCH
+            {{--GET IN TOUCH--}} Liên lạc
         </h4>
 
         <div>
             <p class="s-text7 w-size27">
-                Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
-                (+1) 96 716 6879
+                {{--Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on--}}
+                {{--(+1) 96 716 6879--}}
+                Bạn có câu hỏi nào không ? Hãy cho chúng tôi biệt tại cửa hàng ở số 8 Tông Thất Thuyết, Quận Cầu Giấy, tp. Hà Nội
+                hoặc vào số (+84)164 555 602
             </p>
 
             <div class="flex-m p-t-30">
@@ -22,33 +24,17 @@
 
     <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
         <h4 class="s-text12 p-b-30">
-            Categories
+            Danh mục
         </h4>
 
         <ul>
+            @foreach($categories as $item)
             <li class="p-b-9">
                 <a href="#" class="s-text7">
-                    Men
+                    {{$item->name}}
                 </a>
             </li>
-
-            <li class="p-b-9">
-                <a href="#" class="s-text7">
-                    Women
-                </a>
-            </li>
-
-            <li class="p-b-9">
-                <a href="#" class="s-text7">
-                    Dresses
-                </a>
-            </li>
-
-            <li class="p-b-9">
-                <a href="#" class="s-text7">
-                    Sunglasses
-                </a>
-            </li>
+            @endforeach
         </ul>
     </div>
 

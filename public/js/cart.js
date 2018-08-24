@@ -27,7 +27,7 @@ $(document).ready(function () {
                 showCancelButton: true,
                 confirmButtonText: 'Đồng ý',
                 cancelButtonText: 'Quay lại',
-                cancelButtonColor: '#d33',
+                cancelButtonColor: '#dd5f30',
             }).then((result) => {
                 if (result.value) {
                     var rowId = $(this).attr('id')
@@ -38,5 +38,25 @@ $(document).ready(function () {
         })
     });
 
+    $('.btn-num').click(function () {
+        var qty = $(this).parents().find('.qty').val();
+        var rowId = $(this).parents().find('.btn-delete').attr('id');
+        $.ajax({
+            type: 'GET',
+            url: '/user/update-product-cart/'+ rowId +'/' + qty,
+            cache: false,
+            data:{
+                '_token': $('meta[name="csrf-token"]').attr('content'),
+                'rowId' : rowId,
+                'qty': qty
+            },
+            success:function (data) {
+                $(this).parents().find('.price').html(data.item.price*qty);
+            },
+            error:function() {
+
+            }
+        });
+    });
 
 });

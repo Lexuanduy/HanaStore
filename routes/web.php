@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route update sản phẩm trong giỏ hàng.
+Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
+
 // Route xóa sản phẩm trong giỏ hàng
 Route::delete('/user/delete-cart/{rowid}', 'Usercontroller@productDelete');
 
@@ -42,4 +45,9 @@ Route::get('/user/cart', 'UserController@getCart')->name('giohang');
 
 // Route thêm vào giỏ hàng
 Route::get('/user/add-cart/{id}', 'UserController@productBuy');
+
+// Route view list sản phẩm
+Route::get('/user/list', 'Usercontroller@listProduct');
+
+
 

@@ -153,7 +153,7 @@ class ProductController extends Controller
         if ($product == null) {
             return response()->json(['msg' => 'Not found'], 404);
         }
-        $product->status(0);
+        $product->status = 0;
         $product->save();
         return redirect()->back()->with(['level_delete' => 'success','delete_success' => 'Xóa sản phẩm thành công.']);
     }

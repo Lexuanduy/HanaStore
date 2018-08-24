@@ -31,7 +31,7 @@
                                         <label class="text-danger"></label>
                                     </div>
                                     <div class="form-group col-xs-6 has-warning">
-                                        <label class="control-label">Collection:</label>
+                                        <label class="control-label">Bộ sưu tập:</label>
                                         <select class="form-control" name="collectionId">
                                             @foreach($collections as $item)
                                                 <option value="{{$item->id}}" class="form-control">{{$item->name}}</option>

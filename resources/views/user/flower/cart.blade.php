@@ -2,6 +2,36 @@
 
 @section('page-title', 'Giỏ hàng - Hana Store')
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/themify/themify-icons.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/elegant-font/html-css/style.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/lightbox2/css/lightbox.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/user-cart.css')}}">
+@endsection
+
 @section('content')
     <!-- Title Page -->
     <section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"
@@ -16,79 +46,76 @@
         <div class="container">
         @if(Count($content) != 0)
             <!-- Cart item -->
-                <div class="container-table-cart pos-relative">
-                    <div class="wrap-table-shopping-cart bgwhite">
-                        <table class="table-shopping-cart">
-                            <tr class="table-head">
-                                <th class="column-1"></th>
-                                <th class="column-2 text-center">Tên</th>
-                                <th class="column-3 text-center">Giá</th>
-                                <th class="column-4 text-center">Số lượng</th>
-                                <th class="column-5 text-center">Tổng tiền</th>
-                                <th></th>
-                            </tr>
-                            @foreach($content as $item)
-                                <tr class="table-row">
-                                    <td class="column-1 text-center">
-                                        <div class="cart-img-product b-rad-4 o-f-hidden">
-                                            <img src="{{asset('img/product/'.($item->options->has('img') ? $item->options->img : ''))}}"
-                                                 alt="IMG-PRODUCT">
-                                        </div>
-                                    </td>
-                                    <td class="column-2 text-center name-product">{{$item->name}}</td>
-                                    <td class="column-3 text-center">{{number_format( $item->price,0,',','.')}}</td>
-                                    <td class="column-4 p-l-70">
-                                        <div class="flex-w bo5 of-hidden w-size17 ">
-                                            <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-                                                <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-                                            </button>
+                <form action="">
+                    <div class="container-table-cart pos-relative">
+                        <div class="wrap-table-shopping-cart bgwhite">
 
-                                            <input class="size8 m-text18 t-center num-product" type="number"
-                                                   name="num-product1"
-                                                   value="{{$item->qty}}">
-
-                                            <button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-                                                <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td class="column-5 text-center">{{number_format($item->price * $item->qty,0,',','.')}}</td>
-                                    <td style="padding-right: 20px;">
-                                        <button type="button" data-toggle="tooltip" title="Xóa"
-                                                class="btn btn-xs btn-delete" id="{{$item-> rowId}}"
-                                                style="background-color: transparent; border: 1px solid transparent">
-                                            <i class="fa fa-trash-o icon" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
+                            <table class="table-shopping-cart">
+                                <tr class="table-head">
+                                    <th class="column-1"></th>
+                                    <th class="column-2 text-center">Tên</th>
+                                    <th class="column-3 text-center">Giá</th>
+                                    <th class="column-4 text-center">Số lượng</th>
+                                    <th class="column-5 text-center">Tổng tiền</th>
+                                    <th></th>
                                 </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
+                                @foreach($content as $item)
+                                    <tr class="table-row">
+                                        <td class="column-1 text-center">
+                                            <div class="cart-img-product b-rad-4 o-f-hidden">
+                                                <img src="{{asset('img/product/'.($item->options->has('img') ? $item->options->img : ''))}}"
+                                                     alt="IMG-PRODUCT">
+                                            </div>
+                                        </td>
+                                        <td class="column-2 text-center name-product">{{$item->name}}</td>
+                                        <td class="column-3 text-center unit-price">{{number_format( $item->price,0,',','.')}}</td>
+                                        <td class="column-4 p-l-70">
+                                            <div class="flex-w bo5 of-hidden w-size17 ">
+                                                <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2 btn-num">
+                                                    <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+                                                </button>
 
-                <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
-                    <div class="flex-w flex-m w-full-sm">
-                        <div class="size11 bo4 m-r-10">
-                            <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="coupon-code"
-                                   placeholder="Coupon Code">
+                                                <input class="size8 m-text18 t-center num-product qty" type="number"
+                                                       name="num-product[{{$item->id}}]"
+                                                       value="{{$item->qty}}">
+
+                                                <button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2 btn-num">
+                                                    <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="column-5 text-center price">{{number_format($item->price * $item->qty,0,',','.')}}</td>
+                                        <td style="padding-right: 20px;">
+                                            <button type="button" data-toggle="tooltip" title="Xóa"
+                                                    class="btn btn-xs btn-delete" id="{{$item-> rowId}}"
+                                                    style="background-color: transparent; border: 1px solid transparent">
+                                                <i class="fa fa-trash-o icon" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+                        <div class="flex-w flex-m w-full-sm">
+                            <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
+                                <!-- Button -->
+                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                                    Tiếp tục mua sắm
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
+                        <div class="size10 trans-0-4 m-t-10 m-b-10">
                             <!-- Button -->
-                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                                Apply coupon
+                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
+                                Cập nhật giỏ hàng
                             </button>
                         </div>
                     </div>
-
-                    <div class="size10 trans-0-4 m-t-10 m-b-10">
-                        <!-- Button -->
-                        <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                            Update Cart
-                        </button>
-                    </div>
-                </div>
-
+                </form>
                 <!-- Total -->
                 <div class="bo9 w-size28 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
                     <h5 class="m-text20 p-b-24">
@@ -152,7 +179,8 @@
                         </span>
                         <div class="w-size20 w-full-sm">
                             <div class="bo4 m-b-12">
-                                <textarea class="sizefull p-l-15 p-r-15" type="text" name="address" required rows="4" style="border: none"></textarea>
+                                <textarea class="sizefull p-l-15 p-r-15" type="text" name="address" required rows="4"
+                                          style="border: none"></textarea>
                             </div>
                         </div>
                     </div>
@@ -177,7 +205,7 @@
             @else
                 <div>
                     <div class="alert alert-success " role="alert" style="border-radius: 5px">
-                        Hiện chưa có sản phẩm nào trong giỏ hàng, bấm vào <a href="/user/home"
+                        Hiện chưa có sản phẩm nào trong giỏ hàng, bấm vào <a href="/user/list"
                                                                              style="color: red; font-size: 1rem">đây</a>
                         để mua hàng.
                     </div>
@@ -188,6 +216,11 @@
             @method('DELETE')
             @csrf
         </form>
+        @if(Session::has('delete'))
+            <div class="alert alert-success " role="alert" id="messageDeleteCart" style="border-radius: 5px">
+                {{Session::get('delete')}}
+            </div>
+        @endif
     </section>
 @endsection
 

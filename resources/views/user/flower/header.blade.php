@@ -3,7 +3,7 @@
     <div class="topbar">
         <div class="topbar-social">
             <a href="https://www.facebook.com/HanaStore-376911052841875"
-               class="topbar-social-item fa fa-facebook"></a>
+               class="topbar-social-item fa fa-facebook" target="_blank"></a>
             <a href="https://www.instagram.com/hanastore205/" class="topbar-social-item fa fa-instagram"></a>
             <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/"
                class="topbar-social-item fa fa-pinterest-p"></a>
@@ -46,16 +46,12 @@
                     </li>
 
                     <li>
-                        <a href="#">Danh mục</a>
-                        <ul class="sub_menu">
-                            @foreach($categories as $item)
-                                <li><a href="user/category/{{$item->id}}">{{$item->name}}</a></li>
-                            @endforeach
-                        </ul>
+                        <a href="/user/list">Danh sách</a>
+
                     </li>
 
                     <li class="sale-noti">
-                        <a href="product.html">Sale</a>
+                        <a href="#">Sale</a>
                     </li>
 
                     <li>
@@ -68,11 +64,16 @@
                     </li>
 
                     <li>
-                        <a href="blog.html">Bài viết</a>
+                        <a href="#">Danh mục</a>
+                        <ul class="sub_menu">
+                            @foreach($categories as $item)
+                                <li><a href="user/category/{{$item->id}}">{{$item->name}}</a></li>
+                            @endforeach
+                        </ul>
                     </li>
 
                     <li>
-                        <a href="about.html">Thông tin</a>
+                        <a href="blog.html">Bài viết</a>
                     </li>
 
                     <li>
@@ -93,79 +94,52 @@
             <div class="header-wrapicon2">
                 <img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown"
                      alt="ICON">
-                <span class="header-icons-noti">0</span>
+                <span class="header-icons-noti">{{$countItemCart}}</span>
 
                 <!-- Header cart noti --> <!-- Xem nhanh giỏ hàng -->
                 <div class="header-cart header-dropdown">
-                    <ul class="header-cart-wrapitem">
-                        <li class="header-cart-item">
-                            <div class="header-cart-item-img">
-                                <img src="{{asset('images/item-cart-01.jpg')}}" alt="IMG">
-                            </div>
+                    @if(Count($content))
+                        <ul class="header-cart-wrapitem">
+                            @foreach($content as $itemCart)
+                                <li class="header-cart-item bo10">
+                                    <div class="header-cart-item-img">
+                                        <img src="{{asset('img/product/'.$itemCart->options->img)}}"
+                                             alt="IMG-PRODUCT-CART">
+                                    </div>
 
-                            <div class="header-cart-item-txt">
-                                <a href="#" class="header-cart-item-name">
-                                    White Shirt With Pleat Detail Back
-                                </a>
+                                    <div class="header-cart-item-txt">
+                                        <a href="#" class="header-cart-item-name">
+                                            {{$itemCart->name}}
+                                        </a>
 
-                                <span class="header-cart-item-info">
-											1 x $19.00
-										</span>
-                            </div>
-                        </li>
+                                        <span class="header-cart-item-info">
+                                    {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
+                                </span>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
 
-                        <li class="header-cart-item">
-                            <div class="header-cart-item-img">
-                                <img src="{{asset('images/item-cart-02.jpg')}}" alt="IMG">
-                            </div>
-
-                            <div class="header-cart-item-txt">
-                                <a href="#" class="header-cart-item-name">
-                                    Converse All Star Hi Black Canvas
-                                </a>
-
-                                <span class="header-cart-item-info">
-											1 x $39.00
-										</span>
-                            </div>
-                        </li>
-
-                        <li class="header-cart-item">
-                            <div class="header-cart-item-img">
-                                <img src="{{asset('images/item-cart-03.jpg')}}" alt="IMG">
-                            </div>
-
-                            <div class="header-cart-item-txt">
-                                <a href="#" class="header-cart-item-name">
-                                    Nixon Porter Leather Watch In Tan
-                                </a>
-
-                                <span class="header-cart-item-info">
-											1 x $17.00
-										</span>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="header-cart-total">
-                        Total: $75.00
-                    </div>
-
-                    <div class="header-cart-buttons">
-                        <div class="header-cart-wrapbtn">
-                            <!-- Button -->
-                            <a href="/user/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                giỏ hàng
-                            </a>
+                        <div class="header-cart-total">
+                            Tổng tiền: {{$total}}
                         </div>
 
-                        <div class="header-cart-wrapbtn">
-                            <!-- Button -->
-                            <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                Check Out
-                            </a>
+                        <div class="header-cart-buttons">
+                            <div class="header-cart-wrapbtn" style="margin-left: 25%">
+                                <!-- Button -->
+                                <a href="{{route('giohang')}}"
+                                   class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    giỏ hàng
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <ul class="header-cart-wrapitem">
+                            <li class="header-cart-item bo10">
+                                Hiện tại chưa có sản phẩm nào trong giỏ hàng!
+                            </li>
+                        </ul>
+                    @endif
                 </div>
             </div>
         </div>
@@ -192,76 +166,39 @@
             <div class="header-wrapicon2">
                 <img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown"
                      alt="ICON">
-                <span class="header-icons-noti">0</span>
+                <span class="header-icons-noti">{{$countItemCart}}</span>
 
                 <!-- Header cart noti -->
                 <div class="header-cart header-dropdown">
                     <ul class="header-cart-wrapitem">
-                        <li class="header-cart-item">
-                            <div class="header-cart-item-img">
-                                <img src="{{asset('images/item-cart-01.jpg')}}" alt="IMG">
-                            </div>
+                        @foreach($content as $itemCart)
+                            <li class="header-cart-item bo10">
+                                <div class="header-cart-item-img">
+                                    <img src="{{asset('img/product/'.$itemCart->options->img)}}" alt="IMG-PRODUCT-CART">
+                                </div>
 
-                            <div class="header-cart-item-txt">
-                                <a href="#" class="header-cart-item-name">
-                                    White Shirt With Pleat Detail Back
-                                </a>
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        {{$itemCart->name}}
+                                    </a>
 
-                                <span class="header-cart-item-info">
-											1 x $19.00
-										</span>
-                            </div>
-                        </li>
-
-                        <li class="header-cart-item">
-                            <div class="header-cart-item-img">
-                                <img src="{{asset('images/item-cart-02.jpg')}}" alt="IMG">
-                            </div>
-
-                            <div class="header-cart-item-txt">
-                                <a href="#" class="header-cart-item-name">
-                                    Converse All Star Hi Black Canvas
-                                </a>
-
-                                <span class="header-cart-item-info">
-											1 x $39.00
-										</span>
-                            </div>
-                        </li>
-
-                        <li class="header-cart-item">
-                            <div class="header-cart-item-img">
-                                <img src="{{asset('images/item-cart-03.jpg')}}" alt="IMG">
-                            </div>
-
-                            <div class="header-cart-item-txt">
-                                <a href="#" class="header-cart-item-name">
-                                    Nixon Porter Leather Watch In Tan
-                                </a>
-
-                                <span class="header-cart-item-info">
-											1 x $17.00
-										</span>
-                            </div>
-                        </li>
+                                    <span class="header-cart-item-info">
+                                    {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
+                                </span>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
 
                     <div class="header-cart-total">
-                        Total: $75.00
+                        Tổng tiền: {{$total}}
                     </div>
 
                     <div class="header-cart-buttons">
                         <div class="header-cart-wrapbtn">
                             <!-- Button -->
-                            <a href="/user.cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                Xem giỏ hàng
-                            </a>
-                        </div>
-
-                        <div class="header-cart-wrapbtn">
-                            <!-- Button -->
-                            <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                Check Out
+                            <a href="{{route('giohang')}}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                giỏ hàng
                             </a>
                         </div>
                     </div>
@@ -270,9 +207,9 @@
         </div>
 
         <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-					<span class="hamburger-box">
-						<span class="hamburger-inner"></span>
-					</span>
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
         </div>
     </div>
 </div>
@@ -313,16 +250,11 @@
             </li>
 
             <li class="item-menu-mobile">
-                <a href="index.html">Trang chủ</a>
+                <a href="/user/home">Trang chủ</a>
             </li>
+
             <li class="item-menu-mobile">
-                <a href="product.html">Danh mục</a>
-                <ul class="sub-menu">
-                    @foreach($categories as $item)
-                        <li><a href="user/category/{{$item->id}}">{{$item->name}}</a></li>
-                    @endforeach
-                </ul>
-                <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+                <a href="/user/list">Danh sách</a>
             </li>
 
             <li class="item-menu-mobile">
@@ -334,6 +266,16 @@
                 <ul class="sub-menu">
                     @foreach($collections as $item)
                         <li><a href="user/collection/{{$item->id}}">{{$item->name}}</a></li>
+                    @endforeach
+                </ul>
+                <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+            </li>
+
+            <li class="item-menu-mobile">
+                <a href="product.html">Danh mục</a>
+                <ul class="sub-menu">
+                    @foreach($categories as $item)
+                        <li><a href="user/category/{{$item->id}}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
                 <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
