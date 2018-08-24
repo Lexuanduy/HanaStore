@@ -25,7 +25,6 @@
                     <tbody>
                     @foreach($list_category as $item)
                         <tr class="row" id="row-item-{{$item->id}}">
-
                             <td class="col">{{$item->id}}</td>
                             <td class="col">
                                 <div class="card"
@@ -35,7 +34,7 @@
                             <td class="col">{{$item->name}}</td>
                             <td class="col">{{$item->description}}</td>
                             <td class="col">
-                                <a href="/admin/collection/{{$item-> id}}/edit" class="fas fa-edit  " style="margin-right: 15px;"></a>
+                                <a href="/admin/category/{{$item-> id}}/edit" class="fas fa-edit  " style="margin-right: 15px;"></a>
                                 <a href="{{$item-> id}}"  class="btn-delete fas fa-trash-alt "></a>
                             </td>
                         </tr>
@@ -89,7 +88,6 @@
                         })
                     }
                 });
-
             });
             return false;
         })

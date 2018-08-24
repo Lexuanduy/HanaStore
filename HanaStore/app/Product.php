@@ -16,4 +16,6 @@ class Product extends Model
     public function collection() {
         return $this->belongsTo('App\Collection','collectionId');
     }
+
+    
 }
