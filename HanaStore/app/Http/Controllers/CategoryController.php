@@ -69,10 +69,11 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        if ($category == null || $category->status != 1) {
+        if ($category == null || $category->status != 1){
             return view('admin.error.404');
         }
-        return view('admin.category.edit')->with('category', $category);
+        return view('admin.category.edit')
+            ->with('category',$category);
     }
 
     /**

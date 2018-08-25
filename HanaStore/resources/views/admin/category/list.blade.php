@@ -3,7 +3,7 @@
     'current_menu' => 'category_manager',
     'current_sub_menu' => 'list_item',
 ])
-@section('page-title', 'List categorys')
+@section('page-title', 'List category')
 @section('content')
 
     <style type="text/css">

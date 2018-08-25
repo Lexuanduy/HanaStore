@@ -15,11 +15,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('customerId');
-            $table->foreign('customerId')->references('id')->on('customers');
-            $table->double('totalPrice');
+            $table->integer('customer_id');
+            $table->integer('total_price');
+            $table->string('ship_name');
+            $table->string('ship_address');
+            $table->string('ship_phone');
             $table->timestamps();
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(0); // 0. đang chờ xử lý | 1. đã nhận đơn hàng | 2. hoàn thành.
         });
     }
 
