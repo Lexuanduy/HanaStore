@@ -1,4 +1,8 @@
-@extends('admin.layout.master', ['currentPage'=>'form'])
+@extends('admin.layout.master', [
+    'currentPage' => 'form',
+    'current_menu' => 'product_manager',
+    'current_sub_menu' => 'create_new',
+])
 @section('page-title', 'Create new flower')
 @section('content')
     <div class="row">
@@ -19,7 +23,7 @@
                       enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Flower</h4>
+                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create Product</h4>
                     </div>
 
                     <!--form edit flowers-->

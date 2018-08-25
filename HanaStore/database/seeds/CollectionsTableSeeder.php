@@ -38,6 +38,24 @@ class CollectionsTableSeeder extends Seeder
                 'description'=>'Hoa mùa đông',
                 'images' => 'collection4.jpg'
             ],
+            [
+                'id'=>5,
+                'name'=>'Phụ nữ Việt Nam 20/10',
+                'description'=>'Sắc Hoa',
+                'images' => 'collection1.jpg'
+            ],
+            [
+                'id'=>6,
+                'name'=>'Hoa Hồng',
+                'description'=>'Sắc Hoa',
+                'images' => 'collection1.jpg'
+            ],
+            [
+                'id'=>7,
+                'name'=>'Hoa Sen',
+                'description'=>'Quốc Hoa',
+                'images' => 'collection1.jpg'
+            ],
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
