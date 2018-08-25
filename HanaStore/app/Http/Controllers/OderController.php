@@ -26,6 +26,14 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $order = new Order;
+        $order->name = $request->get('name');
+        $order->gender = $request->get('gender');
+        $order->email = $request->get('number');
+        $order->phone = $request->get('phone');
+        $order->addressDetail = $request->get('addressDetail');
+        $order->note = $request->get('note');
+
         $rules = [
             'name' => 'require|min:6',
             'gender' => 'required',
@@ -41,14 +49,6 @@ class OrderController extends Controller
         }
 
         else {
-
-        $order = new Order;
-        $order->name = $request->get('name');
-        $order->gender = $request->get('gender');
-        $order->email = $request->get('number');
-        $order->phone = $request->get('phone');
-        $order->addressDetail = $request->get('addressDetail');
-        $order->note = $request->get('note');
         $order->save();
         return redirect('admin.order.list')->with('success', 'Tạo đơn hàng thành công');
         }
@@ -70,6 +70,15 @@ class OrderController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $order = new Order;
+        $order->name = $request->get('name');
+        $order->gender = $request->get('gender');
+        $order->email = $request->get('number');
+        $order->phone = $request->get('phone');
+        $order->addressDetail = $request->get('addressDetail');
+        $order->note = $request->get('note');
+        
         $rules = [
             'name' => 'require|min:6',
             'gender' => 'required',
@@ -85,14 +94,6 @@ class OrderController extends Controller
         }
 
         else {
-
-        $order = new Order;
-        $order->name = $request->get('name');
-        $order->gender = $request->get('gender');
-        $order->email = $request->get('number');
-        $order->phone = $request->get('phone');
-        $order->addressDetail = $request->get('addressDetail');
-        $order->note = $request->get('note');
         $order->save();
         return redirect('admin.order.list')->with('success', 'Sửa đơn hàng thành công');
         }
