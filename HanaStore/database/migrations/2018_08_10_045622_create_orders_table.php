@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('customerId');
             $table->foreign('customerId')->references('id')->on('customers');
             $table->double('totalPrice');
+            $table->text('note'); // Lời nhắn.
             $table->timestamps();
             $table->integer('status')->default(1); // 0. Đang chờ xác nhận, 1. Đã xác nhận, 2. Hoàn thành
         });
