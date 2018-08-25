@@ -87,6 +87,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $validate_unique = '';
+        $current_time = time();
         if($category->name != $request->get('name')){
             $validate_unique = '|unique:categories';
         }
@@ -105,7 +106,10 @@ class CategoryController extends Controller
             return view('admin.error.404');
         }
         $category->name = $request->input('name');
-        $category->images = $request->input('images');
+        $file_image = $request->file('images')->getRealPath();
+        Cloudder::upload($file_image, $current_time);
+        $src_image = Cloudder::getResult();
+        $category->images = $src_image['url'];
         $category->description = $request->input('description');
         $category->save();
         return redirect('/admin/category');

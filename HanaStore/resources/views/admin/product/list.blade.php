@@ -19,15 +19,29 @@
     </style>
     <div class="card">
         <div class="card-content">
-            <div class="card-header card-header-text text-center" data-background-color="green">
-                <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> FLOWERS CATALOGUE</h4>
+            <div class="row">
+                <div class="card-header card-header-text text-center col-sm-4" data-background-color="green">
+                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> FLOWERS CATALOGUE</h4>
+                </div>
+                <div class="ml-2">
+                    <a href="/admin/product/create" class="btn btn-twitter"><i class="far fa-plus-square"></i> Create New</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label class="mr-3 badge">Search by name or id,...</label>
+                    <div class="form-group">
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Search Flower Data" />
+                    </div>
+                </div>
             </div>
 
             <!--Search by category-->
             <div class="row">
                 <form action="/admin/product">
                     <div class="form-group col-sm-4">
-                        <label class="mr-3"></label>
+                        <label class="mr-3 badge">Search by category</label>
                         <select name="categoryId" class="form-control mr-3">
                             <option value="0">All category</option>
                             @foreach($categories as $item)
@@ -149,4 +163,32 @@
         })
     </script>
     <!--remove product in view-->
+
+    <!--live search-->
+    {{--<script>--}}
+        {{--$(document).ready(function(){--}}
+
+            {{--fetch_customer_data();--}}
+
+            {{--function fetch_customer_data(query = '')--}}
+            {{--{--}}
+                {{--$.ajax({--}}
+                    {{--url:'admin/product/action',--}}
+                    {{--method:'GET',--}}
+                    {{--data:{query:query},--}}
+                    {{--dataType:'json',--}}
+                    {{--success:function(data)--}}
+                    {{--{--}}
+                        {{--$('tbody').html(data.table_data);--}}
+                        {{--$('#total_records').text(data.total_data);--}}
+                    {{--}--}}
+                {{--})--}}
+            {{--}--}}
+
+            {{--$(document).on('keyup', '#search', function(){--}}
+                {{--var query = $(this).val();--}}
+                {{--fetch_customer_data(query);--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection
