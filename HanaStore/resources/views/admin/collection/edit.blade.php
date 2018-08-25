@@ -5,6 +5,43 @@
 ])
 @section('page-title', 'Edit Collection')
 @section('content')
+    <style>
+
+        /* Style Three */
+
+        img.broken {
+            position: relative;
+            min-height: 30px;
+        }
+
+        img.broken:before {
+            content: " ";
+            display: block;
+
+            position: absolute;
+            left: 0;
+            height: calc(100% + 10px);
+            width: 100%;
+            background-color: rgb(235, 235, 235);
+            border: 2px dotted rgb(200, 200, 200);
+            border-radius: 5px;
+        }
+
+        img.broken:after {
+            content: attr(alt);
+            display: block;
+            font-size: 16px;
+            font-style: normal;
+            color: rgb(100, 100, 100);
+
+            position: absolute;
+            top: 5px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+    
     <div class="row">
         <div class="col-md-12">
             <!--main form -->
@@ -19,7 +56,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="/admin/collection/{{ $collection->id }}" class="form-horizontal bg-info">
+                <form method="post" action="/admin/collection/{{ $collection->id }}" class="form-horizontal bg-info" enctype="multipart/form-data">
                     @method('PUT')
                     {{csrf_field()}}
                     <div class="card-header card-header-text text-center" data-background-color="green">
@@ -42,15 +79,19 @@
                         <div class="row">
                             <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
                             <div class="form-group">
-                                <div class="row ml-1 custom-file">
-                                    {{--<input type="file" name="images" class="mr-2"><span>Choose file...</span>--}}
-                                    {{--<img src="{{ $product->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>--}}
-                                    {{--@if($errors->has('images'))--}}
-                                    {{--<label class="text-danger">*{{$errors->first('images')}}</label>--}}
-                                    {{--@endif--}}
-
-                                    <input type="text" name="images" value="{{$collection -> images}}">
-                                    <img src="{{$collection -> images}}" alt="" style="width:200px;">
+                                <div class="row ml-1">
+                                    <div class="col-sm-3">
+                                        <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
+                                        <span class="badge">Choose new image...</span>
+                                        <img id="upload-image" class="broken" src="#" alt="New image here" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span class="badge">Previous Image</span>
+                                        <img src="{{ $collection->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>
+                                    </div>
+                                    @if($errors->has('images'))
+                                        <label class="text-danger">*{{$errors->first('images')}}</label>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -81,4 +122,22 @@
             </div>
         </div>
     </div>
+    <!--preview image after selected from storage-->
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#upload-image')
+                        .attr('src', e.target.result)
+                        .addClass("img-thumbnail")
+                        .width(140)
+                        .height(140);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection

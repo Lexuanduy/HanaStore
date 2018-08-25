@@ -60,7 +60,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProductPost $request
+     * @param  \App\Http\Requests\StoreProductRequest $request
      * @return \Illuminate\Http\Response
      */
 
@@ -171,7 +171,10 @@ class ProductController extends Controller
         $product->categoryId = $request->input('categoryId');
         $product->collectionId = $request->input('collectionId');
         $product->price = $request->input('price');
-        $product->images = $request->input('images');
+        $file_image = $request->file('images')->getRealPath();
+        Cloudder::upload($file_image, $current_time);
+        $src_image = Cloudder::getResult();
+        $product->images = $src_image['url'];
         $product->sale = $request->input('sale');
         $product->description = $request->input('description');
         $product->detail = $request->input('detail');
@@ -195,4 +198,63 @@ class ProductController extends Controller
         $product->save();
         return response()->json(['message' => 'Đã xoá thông tin sản phẩm hoa này'], 200);
     }
+
+//    Live search action
+//    function action(Request $request)
+//    {
+//        if($request->ajax())
+//        {
+//            $output = '';
+//            $query = $request->get('query');
+//            if($query != '')
+//            {
+//                $data = Product::where('Name', 'like', '%'.$query.'%')
+//                    ->orWhere('Price', 'like', '%'.$query.'%')
+//                    ->orWhere('Sale', 'like', '%'.$query.'%')
+//                    ->orWhere('Description', 'like', '%'.$query.'%')
+//                    ->orWhere('Detail', 'like', '%'.$query.'%')
+//                    ->get();
+//
+//            }
+//            else
+//            {
+//                $data = Product::orderBy('ID', 'desc')
+//                    ->get();
+//            }
+//            $total_row = $data->count();
+//            if($total_row > 0)
+//            {
+//                foreach($data as $row)
+//                {
+//                    $output .= '
+//                    <tr>
+//                     <td>'.$row->ID.'</td>
+//                     <td>'.$row->Name.'</td>
+//                     <td>'.$row->Image.'</td>
+//                     <td>'.$row->Category.'</td>
+//                     <td>'.$row->Collection.'</td>
+//                     <td>'.$row->Price.'</td>
+//                     <td>'.$row->Sale.'</td>
+//                     <td>'.$row->Description.'</td>
+//                     <td>'.$row->Detail.'</td>
+//                    </tr>
+//                    ';
+//                }
+//            }
+//            else
+//            {
+//                $output = '
+//                <tr>
+//                 <td align="center" colspan="5">No Data Found</td>
+//                </tr>
+//               ';
+//            }
+//            $data = array(
+//                'table_data'  => $output,
+//                'total_data'  => $total_row
+//            );
+//
+//            echo json_encode($data);
+//        }
+//    }
 }

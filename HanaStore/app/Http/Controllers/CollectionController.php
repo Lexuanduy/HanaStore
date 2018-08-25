@@ -94,6 +94,7 @@ class CollectionController extends Controller
     {
         $collection = Collection::find($id);
         $validate_unique = '';
+        $current_time = time();
         if($collection->name != $request->get('name')){
             $validate_unique = '|unique:collections';
         }
@@ -113,6 +114,10 @@ class CollectionController extends Controller
         }
         $collection->name = $request->input('name');
         $collection->images = $request->input('images');
+        $file_image = $request->file('images')->getRealPath();
+        Cloudder::upload($file_image, $current_time);
+        $src_image = Cloudder::getResult();
+        $collection->images = $src_image['url'];
         $collection->description = $request->input('description');
         $collection->save();
         return redirect('/admin/collection');
