@@ -106,16 +106,17 @@
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
                                 <select class="selection-2" name="sorting">
                                     <option>Giá</option>
-                                    <option>50.000 &nbsp;&nbsp;- 100.000</option>
-                                    <option>100.000 - 150.000</option>
-                                    <option>150.000 - 200.000</option>
-                                    <option>200.000 - 300.000</option>
-                                    <option>300.000+</option>
+                                    <option>$0.00 - $50.00</option>
+                                    <option>$50.00 - $100.00</option>
+                                    <option>$100.00 - $150.00</option>
+                                    <option>$150.00 - $200.00</option>
+                                    <option>$200.00+</option>
                                 </select>
                             </div>
                         </div>
                         <span class="s-text8 p-t-5 p-b-5">
-                            {{$selected_categoryId!=0?'Danh mục "'.$selected_category->name . '"':'Danh sách sản phẩm'}}
+                            {{$selected_categoryId!=0?'Danh mục "'.$selected_category->name . '"':''}}
+                            {{$selected_collectionId!=0?'Bộ sư tập "'.$selected_collection->name.'"':''}}
                         </span>
                     </div>
                     <div style="display: none">
@@ -131,21 +132,18 @@
                             <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                                 <!-- Block2 -->
                                 <div class="block2">
-                                    <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <div style="height: 350px; background-image: url('{{asset('img/product/'. $item->images)}}');
-                                                background-size: cover;">
-                                        </div>
-
+                                    <div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
+                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
                                                 <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                    <a href="/user/add-cart/{{$item->id}}" style="color: #fff;" target="_top">Thêm vào giỏ</a>
+                                                    Thêm vào giỏ
                                                 </button>
                                             </div>
                                         </div>
@@ -157,16 +155,18 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                        {{number_format($item->price,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
+                                    </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
-                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                    {{number_format($item->sale,0,',','.')}} <span
+                                        {{number_format($item->price,0,',','.')}} <span
                                                         style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                    </span>
+                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
+                                        {{number_format($item->sale,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
+                                    </span>
                                         @endif
                                     </div>
                                 </div>
@@ -195,12 +195,6 @@
 @section('javascript')
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-    <script>
-        var startPrice = $('#value-lower').html();
-        var endPrice = $('#value-upper').html();
-        var price = $('#form-filter').find('#endPrice');
-        console.log(price);
-    </script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
     <!--===============================================================================================-->
@@ -225,20 +219,25 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/slick/slick.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/slick-custom.js')}}"></script>
+    <script type="text/javascript" src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
+    <script type="text/javascript" src="{{asset('vendor/slick/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/slick-custom.js')}}"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="{{asset('vendor/lightbox2/js/lightbox.min.js')}}"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
     <script type="text/javascript">
         $('.block2-btn-addcart').each(function(){
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function(){
-                swal(nameProduct, "Đã thêm vào giỏ hàng!", "success");
+                swal(nameProduct, "Thêm vào giỏ hàng thành công!", "success");
             });
         });
 
         $('.block2-btn-addwishlist').each(function(){
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function(){
-                swal(nameProduct, "is added to wishlist !", "success");
+                swal(nameProduct, "Chức năng đang phát triển (^.^)", "success");
             });
         });
         $('#srearch-product').focus(function () {
@@ -249,10 +248,10 @@
             });
         });
     </script>
-
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/noui/nouislider.min.js')}}"></script>
+    <!--===============================================================================================-->
     <script src="{{asset('js/main.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="{{asset('js/list-product.js')}}"></script>
+    <script src="{{asset('js/home-user.js')}}"></script>
 @endsection

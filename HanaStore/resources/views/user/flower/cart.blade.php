@@ -49,7 +49,6 @@
                 <form action="">
                     <div class="container-table-cart pos-relative">
                         <div class="wrap-table-shopping-cart bgwhite">
-
                             <table class="table-shopping-cart">
                                 <tr class="table-head">
                                     <th class="column-1"></th>
@@ -63,8 +62,7 @@
                                     <tr class="table-row">
                                         <td class="column-1 text-center">
                                             <div class="cart-img-product b-rad-4 o-f-hidden">
-                                                <img src="{{asset('img/product/'.($item->options->has('img') ? $item->options->img : ''))}}"
-                                                     alt="IMG-PRODUCT">
+                                                <img src="{{asset('img/product/'.($item->options->has('img') ? $item->options->img : ''))}}" alt="IMG-PRODUCT">
                                             </div>
                                         </td>
                                         <td class="column-2 text-center name-product">{{$item->name}}</td>
@@ -75,9 +73,7 @@
                                                     <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
                                                 </button>
 
-                                                <input class="size8 m-text18 t-center num-product qty" type="number"
-                                                       name="num-product[{{$item->id}}]"
-                                                       value="{{$item->qty}}">
+                                                <input class="size8 m-text18 t-center num-product qty" type="number" name="num-product[{{$item->id}}]" value="{{$item->qty}}">
 
                                                 <button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2 btn-num">
                                                     <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
@@ -86,9 +82,7 @@
                                         </td>
                                         <td class="column-5 text-center price">{{number_format($item->price * $item->qty,0,',','.')}}</td>
                                         <td style="padding-right: 20px;">
-                                            <button type="button" data-toggle="tooltip" title="Xóa"
-                                                    class="btn btn-xs btn-delete" id="{{$item-> rowId}}"
-                                                    style="background-color: transparent; border: 1px solid transparent">
+                                            <button type="button" data-toggle="tooltip" title="Xóa" class="btn btn-xs btn-delete" id="{{$item-> rowId}}" style="background-color: transparent; border: 1px solid transparent">
                                                 <i class="fa fa-trash-o icon" aria-hidden="true"></i>
                                             </button>
                                         </td>
@@ -179,8 +173,7 @@
                         </span>
                         <div class="w-size20 w-full-sm">
                             <div class="bo4 m-b-12">
-                                <textarea class="sizefull p-l-15 p-r-15" type="text" name="address" required rows="4"
-                                          style="border: none"></textarea>
+                                <textarea class="sizefull p-l-15 p-r-15" type="text" name="address" required rows="4" style="border: none"></textarea>
                             </div>
                         </div>
                     </div>
@@ -205,9 +198,7 @@
             @else
                 <div>
                     <div class="alert alert-success " role="alert" style="border-radius: 5px">
-                        Hiện chưa có sản phẩm nào trong giỏ hàng, bấm vào <a href="/user/list"
-                                                                             style="color: red; font-size: 1rem">đây</a>
-                        để mua hàng.
+                        Hiện chưa có sản phẩm nào trong giỏ hàng, bấm vào <a href="/user/list" style="color: red; font-size: 1rem">đây</a> để mua hàng.
                     </div>
                 </div>
             @endif

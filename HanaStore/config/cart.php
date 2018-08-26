@@ -54,14 +54,14 @@ return [
     |
     */
 
-    'format' => [
-
-        'decimals' => 0,
-
-        'decimal_point' => '.',
-
-        'thousand_seperator' => ','
-
-    ],
+//    'format' => [
+//
+//        'decimals' => 0,
+//
+//        'decimal_point' => '.',
+//
+//        'thousand_seperator' => ','
+//
+//    ],
 
 ];

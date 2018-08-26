@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,16 +19,23 @@ Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProduc
 // Route xóa sản phẩm trong giỏ hàng
 Route::delete('/user/delete-cart/{rowid}', 'Usercontroller@productDelete');
 
-//test view form create layout
+// Admin Product
+Route::delete('/admin/product/delete-all', "ProductController@destroyMany");
+Route::resource('/admin/product', 'ProductController');
 
-// config web by Phuocding
-Route::resource('admin/product', 'ProductController');
 
-//Route::get('/admin/product/action', 'ProductController@action');
-// Collection - Nam
-Route::resource('admin/collection', 'CollectionController');
+Route::get('/', function (){
+    return view('welcome');
+});
 
-Route::resource('admin/category', 'CategoryController');
+
+// Lấy 1 san phẩm
+Route::get('/admin/product/get-json/{id}', 'ProductController@getJson');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 // User Controller
 Route::get('/user/home', 'UserController@getIndexUser');
@@ -37,7 +44,7 @@ Route::get('/user/home', 'UserController@getIndexUser');
 Route::get('/user/cart', 'UserController@getCart')->name('giohang');
 
 // Route thêm vào giỏ hàng
-Route::get('/user/add-cart/{id}', 'UserController@productBuy');
+Route::post('/user/add-cart/{id}', 'UserController@productBuy');
 
 // Route view list sản phẩm
 Route::get('/user/list', 'Usercontroller@listProduct');

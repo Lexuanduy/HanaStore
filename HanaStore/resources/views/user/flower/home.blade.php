@@ -29,6 +29,29 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <style>
+        .img-fly{
+            position: absolute;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 100%;
+            border: 1.5px solid rgba(255, 191, 182, 0.78);
+            transition: all 1s ease;
+            animation: MyAnimation 1.5s;
+        }
+
+        @keyframes MyAnimation {
+            0%   {transform: scale(0.4)}
+            25%  {transform: scale(1)}
+            75%  {transform: scale(1)}
+            100% {transform: scale(0.4)}
+        }
+        .disable-scoll{
+            overflow: hidden;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -47,28 +70,23 @@
                 </h3>
             </div>
             <div class="row">
-                <!-- Mỗi cục div trong row là 1 sản phẩm.-->
+                <!--Mỗi cục div trong row là 1 sản phẩm-->
                 @foreach($products as $item)
                     <div class=" p-l-15 p-r-15 col-md-3 mt-3">
                         <!-- Block2 -->
                         <div class="block2">
-                            <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                {{--<img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" >--}}
-                                <div style="height: 350px; background-image: url('{{asset('img/product/'. $item->images)}}');
-                                        background-size: cover;">
-
-                                </div>
-
+                            <div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
+                                <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                         <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                         <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                     </a>
 
-                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                    <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
                                         <!-- Button -->
                                         <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                            <a href="/user/add-cart/{{$item->id}}" style="color: #fff;" target="_top">Thêm vào giỏ</a>
+                                            Thêm vào giỏ
                                         </button>
                                     </div>
                                 </div>
@@ -80,16 +98,18 @@
                                 </a>
                                 @if($item->sale == 0)
                                     <span class="block2-price m-text6 p-r-5">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                        {{number_format($item->price,0,',','.')}} <span
+                                                style="text-transform: lowercase">vnđ</span>
+                                    </span>
                                 @else
                                     <span class="block2-price m-text6 p-r-5 text-decoration">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
-                                    <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                    {{number_format($item->sale,0,',','.')}} <span
+                                        {{number_format($item->price,0,',','.')}} <span
                                                 style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                    </span>
+                                    <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
+                                        {{number_format($item->sale,0,',','.')}} <span
+                                                style="text-transform: lowercase">vnđ</span>
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -122,19 +142,14 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        {{--<img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" >--}}
-                                        <div style="height: 350px; background-image: url('{{asset('img/product/'. $item->images)}}');
-                                                background-size: cover;">
-
-                                        </div>
-
+                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
                                                 <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                     Thêm vào giỏ
@@ -150,16 +165,18 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                                {{number_format($item->price,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
+                                            </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
-                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                    {{number_format($item->sale,0,',','.')}} <span
+                                                {{number_format($item->price,0,',','.')}} <span
                                                         style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                            </span>
+                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
+                                                {{number_format($item->sale,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -202,19 +219,14 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        {{--<img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" >--}}
-                                        <div style="height: 350px; background-image: url('{{asset('img/product/'. $item->images)}}');
-                                                background-size: cover;">
-
-                                        </div>
-
+                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
                                                 <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                     Thêm vào giỏ
@@ -230,16 +242,18 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                                {{number_format($item->price,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
+                                            </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                    {{number_format($item->price,0,',','.')}} <span style="text-transform: lowercase">vnđ</span>
-                                </span>
-                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                    {{number_format($item->sale,0,',','.')}} <span
+                                                {{number_format($item->price,0,',','.')}} <span
                                                         style="text-transform: lowercase">vnđ</span>
-                                </span>
+                                            </span>
+                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
+                                                {{number_format($item->sale,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
@@ -648,19 +662,13 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
     <script type="text/javascript">
-        $('.block2-btn-addcart').each(function () {
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function () {
-                swal(nameProduct, "Thêm vào giỏ hàng thành công!", "success");
-            });
-        });
-
         $('.block2-btn-addwishlist').each(function () {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function () {
                 swal(nameProduct, "Đã thêm vào yêu thích!", "success");
             });
         });
+
     </script>
 
     <!--===============================================================================================-->

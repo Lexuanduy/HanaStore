@@ -2,11 +2,9 @@
 <div class="container-menu-header">
     <div class="topbar">
         <div class="topbar-social">
-            <a href="https://www.facebook.com/HanaStore-376911052841875"
-               class="topbar-social-item fa fa-facebook" target="_blank"></a>
+            <a href="https://www.facebook.com/HanaStore-376911052841875" class="topbar-social-item fa fa-facebook" target="_blank"></a>
             <a href="https://www.instagram.com/hanastore205/" class="topbar-social-item fa fa-instagram"></a>
-            <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/"
-               class="topbar-social-item fa fa-pinterest-p"></a>
+            <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/" class="topbar-social-item fa fa-pinterest-p"></a>
             <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
             <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
         </div>
@@ -91,20 +89,18 @@
 
             <span class="linedivide1"></span>
 
-            <div class="header-wrapicon2">
-                <img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown"
-                     alt="ICON">
-                <span class="header-icons-noti">{{$countItemCart}}</span>
+            <div class="header-wrapicon2" id="cart-icon-header">
+                <img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                <span class="header-icons-noti" id="header-icons-noti">{{$countItemCart}}</span>
 
                 <!-- Header cart noti --> <!-- Xem nhanh giỏ hàng -->
-                <div class="header-cart header-dropdown">
+                <div class="header-cart header-dropdown" >
                     @if(Count($content))
-                        <ul class="header-cart-wrapitem">
+                        <ul class="header-cart-wrapitem style4" id="header-cart-wrapitem">
                             @foreach($content as $itemCart)
                                 <li class="header-cart-item bo10">
                                     <div class="header-cart-item-img">
-                                        <img src="{{asset('img/product/'.$itemCart->options->img)}}"
-                                             alt="IMG-PRODUCT-CART">
+                                        <img src="{{asset("img/product/".$itemCart->options->img)}}" alt="IMG-PRODUCT-CART" >
                                     </div>
 
                                     <div class="header-cart-item-txt">
@@ -113,14 +109,14 @@
                                         </a>
 
                                         <span class="header-cart-item-info">
-                                    {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
-                                </span>
+                                            {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
+                                        </span>
                                     </div>
                                 </li>
                             @endforeach
                         </ul>
 
-                        <div class="header-cart-total">
+                        <div class="header-cart-total" id="header-cart-total">
                             Tổng tiền: {{$total}}
                         </div>
 
@@ -134,7 +130,7 @@
                             </div>
                         </div>
                     @else
-                        <ul class="header-cart-wrapitem">
+                        <ul class="header-cart-wrapitem" id="header-cart-wrapitem">
                             <li class="header-cart-item bo10">
                                 Hiện tại chưa có sản phẩm nào trong giỏ hàng!
                             </li>
@@ -169,8 +165,8 @@
                 <span class="header-icons-noti">{{$countItemCart}}</span>
 
                 <!-- Header cart noti -->
-                <div class="header-cart header-dropdown">
-                    <ul class="header-cart-wrapitem">
+                <div class="header-cart header-dropdown " id="style-4">
+                    <ul class="header-cart-wrapitem style4" id="header-cart-wrapitem">
                         @foreach($content as $itemCart)
                             <li class="header-cart-item bo10">
                                 <div class="header-cart-item-img">

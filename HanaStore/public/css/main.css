@@ -311,8 +311,8 @@ iframe {
     height: 40px;
     bottom: 40px;
     right: 40px;
-    background-color: black;
-    opacity: 0.5;
+    background-color: rgba(158, 158, 158, 0.57);
+    opacity: 0.8;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -825,6 +825,7 @@ li.sale-noti > a {
     border-top: 3px solid #e6e6e6;
     background-color: white;
 
+
     box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1);
@@ -885,33 +886,33 @@ li.sale-noti > a {
 }
 
 /*.header-cart-item-img::after {*/
-    /*content: '\e870';*/
-    /*font-family: Linearicons;*/
-    /*font-size: 16px;*/
-    /*display: -webkit-box;*/
-    /*display: -webkit-flex;*/
-    /*display: -moz-box;*/
-    /*display: -ms-flexbox;*/
-    /*display: flex;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*position: absolute;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*background-color: rgba(0, 0, 0, 0.5);*/
-    /*color: white;*/
-    /*transition: all 0.3s;*/
-    /*-webkit-transition: all 0.3s;*/
-    /*-o-transition: all 0.3s;*/
-    /*-moz-transition: all 0.3s;*/
-    /*opacity: 0;*/
+/*content: '\e870';*/
+/*font-family: Linearicons;*/
+/*font-size: 16px;*/
+/*display: -webkit-box;*/
+/*display: -webkit-flex;*/
+/*display: -moz-box;*/
+/*display: -ms-flexbox;*/
+/*display: flex;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*position: absolute;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*top: 0;*/
+/*left: 0;*/
+/*background-color: rgba(0, 0, 0, 0.5);*/
+/*color: white;*/
+/*transition: all 0.3s;*/
+/*-webkit-transition: all 0.3s;*/
+/*-o-transition: all 0.3s;*/
+/*-moz-transition: all 0.3s;*/
+/*opacity: 0;*/
 /*}*/
 
 /*.header-cart-item-img:hover:after {*/
-    /*cursor: pointer;*/
-    /*opacity: 1;*/
+/*cursor: pointer;*/
+/*opacity: 1;*/
 /*}*/
 
 /* ------------------------------------ */
@@ -1499,10 +1500,10 @@ li.sale-noti > a {
 -----------------------------------------------------------
 */
 .wrap-slick2 {
-     position: relative;
-     margin-right: -15px;
-     margin-left: -15px;
- }
+    position: relative;
+    margin-right: -15px;
+    margin-left: -15px;
+}
 
 /* ------------------------------------ */
 .arrow-slick2 {
@@ -1763,6 +1764,8 @@ li.sale-noti > a {
     top: 12px;
     left: 12px;
 }
+
+
 
 .block2-labelnew::before {
     background-color: #66a8a6;
@@ -2511,5 +2514,25 @@ input.num-product::-webkit-inner-spin-button {
     background-color: #ff5d31;
 }
 
+/*Scoll*/
+
+.style4::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 209, 190, 0.28);
+    background-color: #fcfcfc;
+}
+
+.style4::-webkit-scrollbar
+{
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+.style4::-webkit-scrollbar-thumb
+{
+    background-color: rgba(255, 175, 161, 0.77);
+    border: 2px solid #ffd1be;
+    border-radius: 15px;
+}
 
 
