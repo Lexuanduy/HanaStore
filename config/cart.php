@@ -53,15 +53,15 @@ return [
     | set them in the method call.
     |
     */
-
-    'format' => [
-
-        'decimals' => 0,
-
-        'decimal_point' => '.',
-
-        'thousand_seperator' => ','
-
-    ],
+//
+//    'format' => [
+//
+//        'decimals' => 0,
+//
+//        'decimal_point' => '.',
+//
+//        'thousand_seperator' => ','
+//
+//    ],
 
 ];

@@ -11,7 +11,7 @@
     @yield('css')
     <!--===============================================================================================-->
 </head>
-<body class="animsition">
+<body class="animsition style4">
 
 <!-- Header -->
 <header class="header1">

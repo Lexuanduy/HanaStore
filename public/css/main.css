@@ -311,8 +311,8 @@ iframe {
     height: 40px;
     bottom: 40px;
     right: 40px;
-    background-color: black;
-    opacity: 0.5;
+    background-color: rgba(158, 158, 158, 0.57);
+    opacity: 0.8;
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -824,6 +824,7 @@ li.sale-noti > a {
     padding: 20px;
     border-top: 3px solid #e6e6e6;
     background-color: white;
+
 
     box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.1);
@@ -1639,9 +1640,10 @@ li.sale-noti > a {
 }
 
 .swal2-popup .swal2-styled.swal2-confirm {
-    background-color: #1e6e37 !important;
+    background-color: rgba(62, 152, 69, 0.91) !important;
     font-family: Montserrat-Regular !important;
     font-size: 15px !important;
+    width: 150px;
     color: white !important;
     text-transform: uppercase !important;
     font-weight: unset !important;
@@ -1656,6 +1658,7 @@ li.sale-noti > a {
     background-color: #e45a10 !important;
     font-family: Montserrat-Regular !important;
     font-size: 15px !important;
+    width: 150px;
     color: white !important;
     text-transform: uppercase !important;
     font-weight: unset !important;
@@ -1666,10 +1669,13 @@ li.sale-noti > a {
     transition: all 0.3s !important;
 }
 
-.swal2-confirm:hover {
-    background-color: #333333;
+.swal2-popup .swal2-styled.swal2-confirm:hover {
+    background-color: rgba(93, 224, 141, 0.91) !important;
 }
 
+.swal2-cancel.swal2-styled:hover{
+    background-color: rgba(228, 90, 16, 0.85) !important;
+}
 .swal2-confirm:active {
     background-color: #e65540;
 }
@@ -1763,6 +1769,8 @@ li.sale-noti > a {
     top: 12px;
     left: 12px;
 }
+
+
 
 .block2-labelnew::before {
     background-color: #66a8a6;
@@ -2511,5 +2519,32 @@ input.num-product::-webkit-inner-spin-button {
     background-color: #ff5d31;
 }
 
+/*Scoll*/
 
+.style4::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 209, 190, 0.28);
+    background-color: #fcfcfc;
+}
+
+.style4::-webkit-scrollbar
+{
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+.style4::-webkit-scrollbar-thumb
+{
+    background-color: rgba(255, 175, 161, 0.77);
+    border: 2px solid #ffd1be;
+    border-radius: 15px;
+}
+
+.nextPhopping{
+    color: #fff;
+}
+
+.nextPhopping:hover{
+    color: #fff;
+}
 

@@ -43,7 +43,10 @@ class UserController extends Controller
             ]);
     }
 
-    public function listProduct(){
+
+    // Tra ve view list product.
+    public function listProduct()
+    {
         // Giỏ hàng
         $content = Cart::content();
         $countItemCart = Cart::count();
@@ -59,7 +62,7 @@ class UserController extends Controller
         }
 
         $selected_collectionId = 0;
-        if (Input::has('collectionId') && Input::get('collectionId') != 0){
+        if (Input::has('collectionId') && Input::get('collectionId') != 0) {
             $selected_collectionId = Input::get('collectionId');
             $product_filter = $product_filter->where('collectionId', $selected_collectionId);
         }
@@ -69,7 +72,7 @@ class UserController extends Controller
         return view('user.flower.product-list')->with([
             'categories' => $categories,
             'products' => $list_product,
-            'collections'=>  $collections,
+            'collections' => $collections,
             'countItemCart' => $countItemCart,
             'content' => $content,
             'total' => $total,
@@ -85,27 +88,29 @@ class UserController extends Controller
     {
         $product = Product::where('id', $id)->first();
         if ($product->sale == 0) {
-            Cart::add(array(
+            $itemCart = Cart::add(array(
                 'id' => $id,
                 'name' => $product->name,
                 'qty' => 1,
                 'price' => $product->price,
-                'options' => array(
-                    'img' => $product->images
-                )
-            ));
+                'options' => array('img' => $product->images)));
         } else {
-            Cart::add(array(
+            $itemCart = Cart::add(array(
                 'id' => $id,
                 'name' => $product->name,
                 'qty' => 1,
                 'price' => $product->sale,
-                'options' => array(
-                    'img' => $product->images
-                )
-            ));
+                'options' => array('img' => $product->images)));
         }
-        return redirect()->route('giohang');
+        $cartItem = Cart::get($itemCart->rowId);
+        $total = Cart::subtotal();
+        $countItem = Cart::count();
+        $content = Cart::content();
+        return response()->json([
+            'item' => $cartItem,
+            'count' => $countItem,
+            'total' => $total,
+            'cart' => $content], 200);
     }
 
     // Trả về view giỏ hàng
@@ -117,14 +122,13 @@ class UserController extends Controller
         $countItemCart = Cart::count();
         $total = Cart::subtotal();
 
-        return view('user.flower.cart')
-            ->with([
-                'categories' => $categories,
-                'collections' => $collections,
-                'content' => $content,
-                'total' => $total,
-                'countItemCart' => $countItemCart
-            ]);
+        return view('user.flower.cart')->with([
+            'categories' => $categories,
+            'collections' => $collections,
+            'content' => $content,
+            'total' => $total,
+            'countItemCart' => $countItemCart
+        ]);
     }
 
 
@@ -136,8 +140,9 @@ class UserController extends Controller
     }
 
     // Update sản phẩm trong giỏ hàng
-    public function updateProductInCart(){
-        if (Request::ajax()){
+    public function updateProductInCart()
+    {
+        if (Request::ajax()) {
             $rowId = Input::get('rowId');
             $qty = Input::get('qty');
             Cart::update($rowId, $qty);
@@ -146,4 +151,28 @@ class UserController extends Controller
         }
     }
 
+    // Trả về view Sản phẩm chi tiết.
+
+    public function getProductDetail($id)
+    {
+        // Giỏ hàng
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+
+        $categories = Category::all();
+        $collections = Collection::all();
+        $product = Product::where('id', $id)->first();
+        $categoryId = $product->categoryId;
+        $productRelate = Product::where('categoryId', $categoryId)->orderBy('created_at', 'DESC')->get();
+        return view('user.flower.productDetail')->with([
+            'product' => $product,
+            'categories' => $categories,
+            'collections' => $collections,
+            'countItemCart' => $countItemCart,
+            'content' => $content,
+            'total' => $total,
+            'productRelate' => $productRelate
+        ]);
+    }
 }

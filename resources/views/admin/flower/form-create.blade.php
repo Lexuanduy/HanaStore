@@ -58,7 +58,7 @@
                                         <span class="filename text-muted small" id="file-name">Chưa ảnh nào được chọn...</span>
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <img src="" id="review-image" class="thumbnail hidden imgAvatar" style="height: 120px;margin-top: 10px;">
+                                                <img src="" id="review-image" class="thumbnail hidden imgAvatar" style="height: 120px;margin-top: 10px;object-fit: cover">
                                             </div>
                                         </div>
                                     </div>
