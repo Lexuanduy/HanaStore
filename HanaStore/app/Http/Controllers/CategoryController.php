@@ -94,12 +94,13 @@ class CategoryController extends Controller
 
         $request->validate([
             'name' => 'required|max:50|min:5' . $validate_unique,
-            'images'=>'nullable|max:191',
+            'images'=>'required',
             'description' => 'required',
         ], [
             'name.required' => 'Vui lòng nhập tên danh mục.',
             'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 5 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
+            'images.required' => 'Vui lòng chọn ảnh danh mục cần sửa.',
             'description.required' => 'Vui lòng nhập mô tả cho sản phẩm.'
         ]);
         if ($category == null || $category->status != 1) {

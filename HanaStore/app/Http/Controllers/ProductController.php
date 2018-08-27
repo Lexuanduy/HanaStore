@@ -23,14 +23,15 @@ class ProductController extends Controller
         $collections = Collection::all();
         $categoryId = Input::get('categoryId');
         if ($categoryId == null || $categoryId == 0) {
-            $products = Product::orderBy('created_at', 'desc')->paginate(5);
+            $products = Product::where('status', 1)->orderBy('created_at', 'desc')->paginate(5);
             return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
                 ->with('collections', $collections)
                 ->with('categoryId', $categoryId);
         } else {
-            $products = Product::where('categoryId', $categoryId)->orderBy('created_at', 'desc')->paginate(5);
+            $products_filter = Product::where('status', 1);
+            $products = $products_filter->where('categoryId', $categoryId)->orderBy('created_at', 'desc')->paginate(5);
             return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
@@ -149,16 +150,17 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|max:50|min:5' . $validate_unique,
             'price' => 'numeric',
-            'image'=>'nullable|max:191',
+            'images'=>'required',
             'sale' => 'numeric',
             'description' => 'required',
             'detail' => 'required',
-        ], [
+        ],
+            [
             'name.required' => 'Vui lòng nhập tên sản phẩm.',
             'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 10 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
-            'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
             'price.numeric' => 'Vui lòng nhập giá sản phẩm là số.',
+            'images.required' => 'Vui lòng nhập ảnh sản phẩm cần sửa.',
             'sale.numeric' => 'Vui lòng nhập giá trị sale là số.',
             'description.required' => 'Vui lòng nhập mô tả cho sản phẩm.',
             'detail.required' => 'Vui lòng nhập thông tin chi tiết cho sản phẩm.',
