@@ -2,9 +2,11 @@
 <div class="container-menu-header">
     <div class="topbar">
         <div class="topbar-social">
-            <a href="https://www.facebook.com/HanaStore-376911052841875" class="topbar-social-item fa fa-facebook" target="_blank"></a>
+            <a href="https://www.facebook.com/HanaStore-376911052841875" class="topbar-social-item fa fa-facebook"
+               target="_blank"></a>
             <a href="https://www.instagram.com/hanastore205/" class="topbar-social-item fa fa-instagram"></a>
-            <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/" class="topbar-social-item fa fa-pinterest-p"></a>
+            <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/"
+               class="topbar-social-item fa fa-pinterest-p"></a>
             <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
             <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
         </div>
@@ -90,52 +92,45 @@
             <span class="linedivide1"></span>
 
             <div class="header-wrapicon2" id="cart-icon-header">
-                <img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                <img src="{{asset('images/icons/icon-header-02.png')}}" class="header-icon1 js-show-header-dropdown"
+                     alt="ICON">
                 <span class="header-icons-noti" id="header-icons-noti">{{$countItemCart}}</span>
 
                 <!-- Header cart noti --> <!-- Xem nhanh giỏ hàng -->
-                <div class="header-cart header-dropdown" >
-                    @if(Count($content))
-                        <ul class="header-cart-wrapitem style4" id="header-cart-wrapitem">
-                            @foreach($content as $itemCart)
-                                <li class="header-cart-item bo10">
-                                    <div class="header-cart-item-img">
-                                        <img src="{{asset("img/product/".$itemCart->options->img)}}" alt="IMG-PRODUCT-CART" >
-                                    </div>
+                <div class="header-cart header-dropdown">
+                    <ul class="header-cart-wrapitem style4" id="header-cart-wrapitem">
+                        @foreach($content as $itemCart)
+                            <li class="header-cart-item bo10">
+                                <div class="header-cart-item-img">
+                                    <img src="{{asset("img/product/".$itemCart->options->img)}}" alt="IMG-PRODUCT-CART">
+                                </div>
 
-                                    <div class="header-cart-item-txt">
-                                        <a href="#" class="header-cart-item-name">
-                                            {{$itemCart->name}}
-                                        </a>
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        {{$itemCart->name}}
+                                    </a>
 
-                                        <span class="header-cart-item-info">
+                                    <span class="header-cart-item-info">
                                             {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
                                         </span>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-
-                        <div class="header-cart-total" id="header-cart-total">
-                            Tổng tiền: {{$total}}
-                        </div>
-
-                        <div class="header-cart-buttons">
-                            <div class="header-cart-wrapbtn" style="margin-left: 25%">
-                                <!-- Button -->
-                                <a href="{{route('giohang')}}"
-                                   class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                    giỏ hàng
-                                </a>
-                            </div>
-                        </div>
-                    @else
-                        <ul class="header-cart-wrapitem" id="header-cart-wrapitem">
-                            <li class="header-cart-item bo10">
-                                Hiện tại chưa có sản phẩm nào trong giỏ hàng!
+                                </div>
                             </li>
-                        </ul>
-                    @endif
+                        @endforeach
+                    </ul>
+
+                    <div class="header-cart-total" id="header-cart-total">
+                        Tổng tiền: {{$total}} vnđ
+                    </div>
+
+                    <div class="header-cart-buttons">
+                        <div class="header-cart-wrapbtn" style="margin-left: 25%">
+                            <!-- Button -->
+                            <a href="{{route('giohang')}}"
+                               class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                giỏ hàng
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -179,15 +174,15 @@
                                     </a>
 
                                     <span class="header-cart-item-info">
-                                    {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
-                                </span>
+                                        {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
+                                    </span>
                                 </div>
                             </li>
                         @endforeach
                     </ul>
 
                     <div class="header-cart-total">
-                        Tổng tiền: {{$total}}
+                        Tổng tiền: {{$total}} vnđ
                     </div>
 
                     <div class="header-cart-buttons">
