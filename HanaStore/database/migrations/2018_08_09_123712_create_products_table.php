@@ -15,20 +15,19 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('categoryId');
+            $table->string('name'); // Tên sản phẩm
+            $table->unsignedInteger('categoryId'); // ID danh mục
             $table->foreign('categoryId')->references('id')->on('categories');
-            $table->unsignedInteger('collectionId');
+            $table->unsignedInteger('collectionId'); // ID bộ sưu tập.
             $table->foreign('collectionId')->references('id')->on('collections');
-            $table->string('name', 50);
-            $table->string('images');
-            $table->integer('price');
-            $table->integer('discount');
-            $table->string('description', 250);
-            $table->text('detail');
-            $table->integer('colors'); // 1. red | 2.yellow | 3.green | 4.blue | 5.white | 6.black
-            $table->integer('sizes'); // 1. XS | 2.S | 3.M | 4.L | 5.XL | 6.XXL
+            $table->unsignedInteger('price');// Giá
+            $table->string('images'); // Ảnh
+            $table->integer('sale')->default(0); // Giá khuyến mãi.
+            $table->integer('new')->default(1); // Hàng mới up,  1 = mới up, 0 = up đã lâu.
+            $table->string('description'); //Thông tin
+            $table->text('detail'); // Thông tin chi tiết.
             $table->timestamps();
-            $table->integer('status')->default(1);
+            $table->string('status')->default(1); // 1. Còn hàng, 2. Hết hàng
         });
     }
 

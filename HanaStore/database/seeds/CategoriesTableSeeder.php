@@ -16,38 +16,32 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'id'=>1,
-                'name'=>'Hoa sinh nhật',
-                'images'=>'',
-                'description'=>'Hoa được dùng để tặng trong tiệc sinh nhật'
+                'name'=>'Hoa giỏ',
+                'images'=>'https://tuongvyflorist.com/wp-content/uploads/2018/01/HG-0012-6-150x150.jpg',
+                'description'=>'Hoa được dùng để trang trí, trưng bày...'
             ],
             [
                 'id'=>2,
-                'name'=>'Hoa khai trương',
-                'description'=>'Hoa được dùng để trang trí rong dịp khai trương'
+                'name'=>'Hoa bó',
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334484/1535334477.jpg',
+                'description'=>'Hoa được dùng để gửi tặng người thân...'
             ],
             [
                 'id'=>3,
-                'name'=>'Hoa giỏ',
-                'description'=>'Hoa được làm và trang trí thành từng giỏ để tặng hoặc trưng bày'
+                'name'=>'Hoa nhập khẩu',
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334500/1535334495.jpg',
+                'description'=>'Hoa được nhập khẩu từ các quốc gia trên thế giới...'
             ],
             [
                 'id'=>4,
-                'name'=>'Hoa nhập khẩu',
-                'description'=>'Hoa được nhập khẩu từ các quốc gia trên thế giới'
-            ],
-            [
-                'id'=>5,
-                'name'=>'Hoa bó',
-                'description'=>'Hoa được làm theo bó'
-            ],
-            [
-                'id'=>6,
                 'name'=>'Hoa cưới',
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334520/1535334514.jpg',
                 'description'=>'Hoa được làm trang trí đám cưới, bày bàn, hoa đón dâu'
             ],
             [
-                'id'=>7,
+                'id'=>5,
                 'name'=>'Hoa chúc mừng',
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334556/1535334549.jpg',
                 'description'=>'Hoa dùng để tặng, chúc mừng'
             ]
         ]);

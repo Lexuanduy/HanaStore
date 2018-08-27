@@ -101,12 +101,13 @@ class CollectionController extends Controller
 
         $request->validate([
             'name' => 'required|max:50|min:5' . $validate_unique,
-            'images'=>'nullable|max:191',
+            'images'=>'required',
             'description' => 'required',
         ], [
             'name.required' => 'Vui lòng nhập tên bộ sưu tập.',
             'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 5 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
+            'images.required' => 'Vui lòng nhập ảnh bộ sưu tập cần sửa.',
             'description.required' => 'Vui lòng nhập mô tả cho bộ sưu tập.'
         ]);
         if ($collection == null || $collection->status != 1) {
