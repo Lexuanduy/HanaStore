@@ -167,4 +167,22 @@ class UserController extends Controller
         ]);
 
     }
+
+    // Lấy ra sản phẩm từ database trả về view bên User
+    public function getIndexProductSale()
+    {
+        // Gio hang
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+
+        $categories = Category::all();
+        $collections = Collection::all();
+        $products_sale = Product::orderBy('created_at', 'DESC')->where('sale', '>', 0)->where('status', 1)->get();
+        $products = Product::orderBy('created_at', 'DESC')->where('status', 1)->paginate(16);
+        return view('user.flower.sale')
+            ->with('categories', $categories)->with('products', $products)
+            ->with('collections', $collections)
+            ->with(['products_sale' => $products_sale, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total]);
+    }
 }

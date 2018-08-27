@@ -55,3 +55,6 @@ Route::get('/user/list', 'Usercontroller@listProduct')->name('listProductClient'
 // Route view sản phẩm chi tiết.
 Route::get('/user/product/{id}','UserController@getProductDetail');
 
+//View list product sale
+Route::get('/user/sale', 'UserController@getIndexProductSale')->name('saleClient');
+
