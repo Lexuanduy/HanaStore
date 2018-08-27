@@ -52,3 +52,6 @@ Route::post('/user/add-cart/{id}', 'UserController@productBuy');
 // Route view list sản phẩm
 Route::get('/user/list', 'Usercontroller@listProduct')->name('listProductClient');
 
+// Route view sản phẩm chi tiết.
+Route::get('/user/product/{id}','UserController@getProductDetail');
+

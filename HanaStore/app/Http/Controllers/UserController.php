@@ -80,13 +80,13 @@ class UserController extends Controller
                 'selected_collection' => $selected_collection,
                 'selected_collectionId' => $selected_collectionId,
                 'activeHome' => $activeHome,
-                'activeList'=> $activeList,
-                'activeSale'=> $activeSale ,
-                'activeCollection'=> $activeCollection ,
-                'activeCategory'=> $activeCategory,
-                'activeArticle'=> $activeArticle,
-                'activeContact'=> $activeContact,
-                ]);
+                'activeList' => $activeList,
+                'activeSale' => $activeSale,
+                'activeCollection' => $activeCollection,
+                'activeCategory' => $activeCategory,
+                'activeArticle' => $activeArticle,
+                'activeContact' => $activeContact,
+            ]);
     }
 
     // Thêm vào giỏ hàng
@@ -108,7 +108,7 @@ class UserController extends Controller
         $total = Cart::subtotal(); // Tổng tiền tất cả giỏ hàng
         $countItem = Cart::count();
         $content = Cart::content();
-        return response()->json(['item' => $cartItem, 'count' => $countItem, 'total' => $total, 'cart'=>$content], 200);
+        return response()->json(['item' => $cartItem, 'count' => $countItem, 'total' => $total, 'cart' => $content], 200);
     }
 
     // Trả về view giỏ hàng
@@ -143,4 +143,28 @@ class UserController extends Controller
         }
     }
 
+    // Trả về view Sản phẩm chi tiết.
+    public function getProductDetail($id)
+    {
+        // Giỏ hàng
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+
+        $categories = Category::all();
+        $collections = Collection::all();
+        $product = Product::where('id', $id)->first();
+        $categoryId = $product->categoryId;
+        $productRelate = Product::where('categoryId', $categoryId)->orderBy('created_at', 'DESC')->get();
+        return view('user.flower.productDetail')->with([
+            'product' => $product,
+            'categories' => $categories,
+            'collections' => $collections,
+            'countItemCart' => $countItemCart,
+            'content' => $content,
+            'total' => $total,
+            'productRelate' => $productRelate
+        ]);
+
+    }
 }
