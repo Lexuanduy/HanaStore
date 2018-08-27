@@ -23,14 +23,15 @@ class ProductController extends Controller
         $collections = Collection::all();
         $categoryId = Input::get('categoryId');
         if ($categoryId == null || $categoryId == 0) {
-            $products = Product::orderBy('created_at', 'desc')->paginate(5);
+            $products = Product::where('status', 1)->orderBy('created_at', 'desc')->paginate(5);
             return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
                 ->with('collections', $collections)
                 ->with('categoryId', $categoryId);
         } else {
-            $products = Product::where('categoryId', $categoryId)->orderBy('created_at', 'desc')->paginate(5);
+            $products_filter = Product::where('status', 1);
+            $products = $products_filter->where('categoryId', $categoryId)->orderBy('created_at', 'desc')->paginate(5);
             return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
