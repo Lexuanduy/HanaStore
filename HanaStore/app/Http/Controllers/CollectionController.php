@@ -94,25 +94,31 @@ class CollectionController extends Controller
     {
         $collection = Collection::find($id);
         $validate_unique = '';
+        $current_time = time();
         if($collection->name != $request->get('name')){
             $validate_unique = '|unique:collections';
         }
 
         $request->validate([
             'name' => 'required|max:50|min:5' . $validate_unique,
-            'image'=>'nullable|max:191',
+            'images'=>'required',
             'description' => 'required',
         ], [
-            'name.required' => 'Vui lòng nhập tên sản phẩm.',
+            'name.required' => 'Vui lòng nhập tên bộ sưu tập.',
             'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 5 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
-            'description.required' => 'Vui lòng nhập mô tả cho sản phẩm.'
+            'images.required' => 'Vui lòng nhập ảnh bộ sưu tập cần sửa.',
+            'description.required' => 'Vui lòng nhập mô tả cho bộ sưu tập.'
         ]);
         if ($collection == null || $collection->status != 1) {
             return view('admin.error.404');
         }
         $collection->name = $request->input('name');
         $collection->images = $request->input('images');
+        $file_image = $request->file('images')->getRealPath();
+        Cloudder::upload($file_image, $current_time);
+        $src_image = Cloudder::getResult();
+        $collection->images = $src_image['url'];
         $collection->description = $request->input('description');
         $collection->save();
         return redirect('/admin/collection');

@@ -26,6 +26,7 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name' => 'required|max:50|min:6|unique:categories',
             'description' => 'required',
+            'images' => 'required'
         ];
     }
 
@@ -36,9 +37,8 @@ class StoreCategoryRequest extends FormRequest
             'name.min' => 'Tên quá ngắn, vui lòng nhập ít nhất 6 ký tự.',
             'name.max' => 'Tên quá dài, vui lòng nhập nhiều nhất 50 ký tự.',
             'name.unique' => 'Tên đã được sử dụng, vui lòng chọn tên khác.',
-            'description.required' => 'Vui lòng nhập mô tả cho danh mục'
+            'description.required' => 'Vui lòng nhập mô tả cho danh mục',
+            'images.required' => 'Vui lòng nhập ảnh đại diện cho danh mục'
         ];
     }
-
-
 }
