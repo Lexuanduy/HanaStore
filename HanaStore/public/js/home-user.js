@@ -38,7 +38,7 @@ $(document).ready(function () {
                 for (var i in new_cart) {
                     content+='<li class="header-cart-item bo10">'+
                         '<div class="header-cart-item-img">'+
-                        '<img src="../img/product/' + new_cart[i].options.img + '" alt="IMG-PRODUCT-CART">'+
+                        '<img src="' + new_cart[i].options.img + '" alt="IMG-PRODUCT-CART">'+
                         '</div>'+
                         '<div class="header-cart-item-txt">'+
                         '<a href="#" class="header-cart-item-name">'+
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 }
                 $('#header-cart-wrapitem').html(content);
                 $('#header-icons-noti').text(new_count);
-                $('#header-cart-total').text(new_total_money);
+                $('#header-cart-total').text('Tổng tiền: '+new_total_money + ' vnđ');
             },
             error:function (msg) {
 

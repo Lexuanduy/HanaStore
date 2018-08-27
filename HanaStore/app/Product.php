@@ -25,12 +25,13 @@ class Product extends Model
         return sprintf('%s', number_format(($this->price - ($this->price * $this->discount / 100)), 0));
     }
 
+    //Hàm tính giá sau khi sale %
     public function getDiscountPriceStringAttribute()
     {
-        if ($this->discount == 0) {
+        if ($this->sale == 0) {
             return sprintf('%s (vnd)', number_format($this->price, 0));
         }
-        return sprintf('%s (vnd)', number_format(($this->price - ($this->price * $this->discount / 100)), 0));
+        return sprintf('%s (vnd)', number_format(($this->price - ($this->price * $this->sale / 100)), 0));
     }
 
     public function getOriginalPriceStringAttribute()

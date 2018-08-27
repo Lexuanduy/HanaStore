@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 //Route update sản phẩm trong giỏ hàng.
 Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
 
@@ -40,7 +41,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // User Controller
-Route::get('/user/home', 'UserController@getIndexUser');
+Route::get('/user/home', 'UserController@getIndexUser')->name('homeClient');
 
 // Route view giỏ hàng
 Route::get('/user/cart', 'UserController@getCart')->name('giohang');
@@ -49,5 +50,5 @@ Route::get('/user/cart', 'UserController@getCart')->name('giohang');
 Route::post('/user/add-cart/{id}', 'UserController@productBuy');
 
 // Route view list sản phẩm
-Route::get('/user/list', 'Usercontroller@listProduct');
+Route::get('/user/list', 'Usercontroller@listProduct')->name('listProductClient');
 

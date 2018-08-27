@@ -30,7 +30,8 @@ class UserController extends Controller
         $products_sale = Product::orderBy('created_at', 'DESC')->where('sale', '>', 0)->where('status', 1)->get();
         $products_new = Product::orderBy('created_at', 'DESC')->where('new', '=', 1)->where('status', 1)->get();
         $products = Product::orderBy('created_at', 'DESC')->where('status', 1)->paginate(16);
-        return view('user.flower.home')->with('categories', $categories)->with('products', $products)->with('collections', $collections)->with(['products_sale' => $products_sale, 'products_new' => $products_new, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total]);
+        return view('user.flower.home')->with('categories', $categories)->with('products', $products)
+            ->with('collections', $collections)->with(['products_sale' => $products_sale, 'products_new' => $products_new, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total]);
     }
 
 
@@ -58,8 +59,34 @@ class UserController extends Controller
         }
         $selected_category = Category::find($selected_categoryId);
         $selected_collection = Collection::find($selected_collectionId);
-        $list_product = $product_filter->orderBy('created_at', 'DESC')->paginate(12);
-        return view('user.flower.product-list')->with(['categories' => $categories, 'products' => $list_product, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total, 'selected_categoryId' => $selected_categoryId, 'selected_category' => $selected_category, 'selected_collection' => $selected_collection, 'selected_collectionId' => $selected_collectionId,]);
+        $list_product = $product_filter->orderBy('created_at', 'DESC')->paginate(9);
+        $activeHome = 1;
+        $activeList = 2;
+        $activeSale = 3;
+        $activeCollection = 4;
+        $activeCategory = 5;
+        $activeArticle = 6;
+        $activeContact = 7;
+        return view('user.flower.product-list')
+            ->with([
+                'categories' => $categories,
+                'products' => $list_product,
+                'collections' => $collections,
+                'countItemCart' => $countItemCart,
+                'content' => $content,
+                'total' => $total,
+                'selected_categoryId' => $selected_categoryId,
+                'selected_category' => $selected_category,
+                'selected_collection' => $selected_collection,
+                'selected_collectionId' => $selected_collectionId,
+                'activeHome' => $activeHome,
+                'activeList'=> $activeList,
+                'activeSale'=> $activeSale ,
+                'activeCollection'=> $activeCollection ,
+                'activeCategory'=> $activeCategory,
+                'activeArticle'=> $activeArticle,
+                'activeContact'=> $activeContact,
+                ]);
     }
 
     // Thêm vào giỏ hàng
@@ -67,12 +94,18 @@ class UserController extends Controller
     {
         $product = Product::where('id', $id)->first();
         if ($product->sale == 0) {
-            $itemCart = Cart::add(array('id' => $id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'options' => array('img' => $product->images)));
+            $itemCart = Cart::add(array('id' => $id,
+                'name' => $product->name, 'qty' => 1,
+                'price' => $product->price,
+                'options' => array('img' => $product->images)));
         } else {
-            $itemCart = Cart::add(array('id' => $id, 'name' => $product->name, 'qty' => 1, 'price' => $product->sale, 'options' => array('img' => $product->images)));
+            $itemCart = Cart::add(array('id' => $id,
+                'name' => $product->name, 'qty' => 1,
+                'price' => $product->price - $product->price * $product->sale / 100,
+                'options' => array('img' => $product->images)));
         }
         $cartItem = Cart::get($itemCart->rowId);
-        $total = Cart::subtotal();
+        $total = Cart::subtotal(); // Tổng tiền tất cả giỏ hàng
         $countItem = Cart::count();
         $content = Cart::content();
         return response()->json(['item' => $cartItem, 'count' => $countItem, 'total' => $total, 'cart'=>$content], 200);

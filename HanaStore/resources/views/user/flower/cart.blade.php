@@ -62,7 +62,7 @@
                                     <tr class="table-row">
                                         <td class="column-1 text-center">
                                             <div class="cart-img-product b-rad-4 o-f-hidden">
-                                                <img src="{{asset('img/product/'.($item->options->has('img') ? $item->options->img : ''))}}" alt="IMG-PRODUCT">
+                                                <img src="{{$item->options->has('img') ? $item->options->img : ''}}" alt="IMG-PRODUCT">
                                             </div>
                                         </td>
                                         <td class="column-2 text-center name-product">{{$item->name}}</td>

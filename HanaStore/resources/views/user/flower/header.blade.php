@@ -40,44 +40,42 @@
         <div class="wrap_menu">
             <nav class="menu">
                 <ul class="main_menu">
-                    <li>
+                    <li class="{{url()->current() == route('homeClient')?'sale-noti':''}}">
                         <a href="/user/home">Trang chủ</a>
-
                     </li>
 
-                    <li>
-                        <a href="/user/list">Danh sách</a>
-
+                    <li class="{{url()->current() == route('listProductClient')?'sale-noti':''}}">
+                        <a href="{{route('listProductClient')}}">Danh sách</a>
                     </li>
 
-                    <li class="sale-noti">
+                    <li class="">
                         <a href="#">Sale</a>
                     </li>
 
-                    <li>
-                        <a href="cart.html">Bộ sưu tập</a>
+                    <li class="">
+                        <a href="javascript:void(0)">Bộ sưu tập</a>
                         <ul class="sub_menu">
                             @foreach($collections as $item)
-                                <li><a href="user/collection/{{$item->id}}">{{$item->name}}</a></li>
+                                <li><a href="{{route('listProductClient').'?collectionId='.$item->id}}">{{$item->name}}</a></li>
                             @endforeach
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="#">Danh mục</a>
+                    <li class="">
+                        <a href="javascript:void(0)">Danh mục</a>
                         <ul class="sub_menu">
                             @foreach($categories as $item)
-                                <li><a href="user/category/{{$item->id}}">{{$item->name}}</a></li>
+                                <li><a href="{{route('listProductClient').'?categoryId='.$item->id}}">{{$item->name}}</a></li>
                             @endforeach
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="blog.html">Bài viết</a>
+                    <li class="">
+                        <a href="javascript:void(0)">Bài viết</a>
                     </li>
 
-                    <li>
-                        <a href="contact.html">Liên hệ</a>
+                    <li class="">
+                        <a href="javascript:void(0)">Liên hệ</a>
                     </li>
                 </ul>
             </nav>
@@ -102,7 +100,7 @@
                         @foreach($content as $itemCart)
                             <li class="header-cart-item bo10">
                                 <div class="header-cart-item-img">
-                                    <img src="{{asset("img/product/".$itemCart->options->img)}}" alt="IMG-PRODUCT-CART">
+                                    <img src="{{$itemCart->options->img}}" alt="IMG-PRODUCT-CART">
                                 </div>
 
                                 <div class="header-cart-item-txt">
@@ -165,7 +163,7 @@
                         @foreach($content as $itemCart)
                             <li class="header-cart-item bo10">
                                 <div class="header-cart-item-img">
-                                    <img src="{{asset('img/product/'.$itemCart->options->img)}}" alt="IMG-PRODUCT-CART">
+                                    <img src="{{$itemCart->options->img}}" alt="IMG-PRODUCT-CART">
                                 </div>
 
                                 <div class="header-cart-item-txt">

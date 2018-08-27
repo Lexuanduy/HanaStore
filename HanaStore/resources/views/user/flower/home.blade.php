@@ -76,7 +76,7 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                <img src="{{$item->images}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                         <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -98,17 +98,14 @@
                                 </a>
                                 @if($item->sale == 0)
                                     <span class="block2-price m-text6 p-r-5">
-                                        {{number_format($item->price,0,',','.')}} <span
-                                                style="text-transform: lowercase">vnđ</span>
+                                        {{number_format($item->price,0,',','.')}} (VND)
                                     </span>
                                 @else
                                     <span class="block2-price m-text6 p-r-5 text-decoration">
-                                        {{number_format($item->price,0,',','.')}} <span
-                                                style="text-transform: lowercase">vnđ</span>
+                                        {{number_format($item->price,0,',','.')}} (VND)
                                     </span>
                                     <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                        {{number_format($item->sale,0,',','.')}} <span
-                                                style="text-transform: lowercase">vnđ</span>
+                                        {{$item->discountPriceString}}
                                     </span>
                                 @endif
                             </div>
@@ -142,7 +139,7 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                        <img src="{{$item->images}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -165,17 +162,14 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                                {{number_format($item->price,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                                {{number_format($item->price,0,',','.')}} (VND)
                                             </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                                {{number_format($item->price,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                                {{number_format($item->price,0,',','.')}} (VND)
                                             </span>
                                             <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                                {{number_format($item->sale,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                                {{$item->discountPriceString}}
                                             </span>
                                         @endif
                                     </div>
@@ -219,7 +213,7 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                        <img src="{{$item->images}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -242,17 +236,14 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                                {{number_format($item->price,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                                {{number_format($item->price,0,',','.')}} (VND)
                                             </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                                {{number_format($item->price,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                                {{number_format($item->price,0,',','.')}} (VND)
                                             </span>
                                             <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                                {{number_format($item->sale,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                                {{$item->discountPriceString}}
                                             </span>
                                         @endif
                                     </div>

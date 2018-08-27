@@ -29,6 +29,29 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <style>
+        .img-fly{
+            position: absolute;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 100%;
+            border: 1.5px solid rgba(255, 191, 182, 0.78);
+            transition: all 1s ease;
+            animation: MyAnimation 1.5s;
+        }
+
+        @keyframes MyAnimation {
+            0%   {transform: scale(0.4)}
+            25%  {transform: scale(1)}
+            75%  {transform: scale(1)}
+            100% {transform: scale(0.4)}
+        }
+        .disable-scoll{
+            overflow: hidden;
+        }
+    </style>
     <!--===============================================================================================-->
 @endsection
 
@@ -133,7 +156,7 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                        <img src="{{$item->images}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -155,17 +178,14 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                        {{number_format($item->price,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                        {{number_format($item->price,0,',','.')}} (VND)
                                     </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                        {{number_format($item->price,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                        {{number_format($item->price,0,',','.')}} (VND)
                                     </span>
                                             <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
-                                        {{number_format($item->sale,0,',','.')}} <span
-                                                        style="text-transform: lowercase">vnđ</span>
+                                        {{$item->discountPriceString}}
                                     </span>
                                         @endif
                                     </div>
@@ -227,12 +247,12 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
     <script type="text/javascript">
-        $('.block2-btn-addcart').each(function(){
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function(){
-                swal(nameProduct, "Thêm vào giỏ hàng thành công!", "success");
-            });
-        });
+        // $('.block2-btn-addcart').each(function(){
+        //     var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        //     $(this).on('click', function(){
+        //         swal(nameProduct, "Thêm vào giỏ hàng thành công!", "success");
+        //     });
+        // });
 
         $('.block2-btn-addwishlist').each(function(){
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
