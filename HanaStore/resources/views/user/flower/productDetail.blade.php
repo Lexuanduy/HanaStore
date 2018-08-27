@@ -80,21 +80,21 @@
                     <div class="wrap-slick3-dots"></div>
 
                     <div class="slick3">
-                        <div class="item-slick3" data-thumb="{{asset('img/product/'. $product->images)}}">
+                        <div class="item-slick3" data-thumb="{{$product->images}}">
                             <div class="wrap-pic-w">
-                                <img src="{{asset('img/product/'. $product->images)}}" alt="IMG-PRODUCT">
+                                <img src="{{$product->images}}" alt="IMG-PRODUCT">
                             </div>
                         </div>
 
-                        <div class="item-slick3" data-thumb="{{asset('img/product/'. $product->images)}}">
+                        <div class="item-slick3" data-thumb="{{$product->images}}">
                             <div class="wrap-pic-w">
-                                <img src="{{asset('img/product/'. $product->images)}}" alt="IMG-PRODUCT">
+                                <img src="{{$product->images}}" alt="IMG-PRODUCT">
                             </div>
                         </div>
 
-                        <div class="item-slick3" data-thumb="{{asset('img/product/'. $product->images)}}">
+                        <div class="item-slick3" data-thumb="{{$product->images}}">
                             <div class="wrap-pic-w">
-                                <img src="{{asset('img/product/'. $product->images)}}" alt="IMG-PRODUCT">
+                                <img src="{{$product->images}}" alt="IMG-PRODUCT">
                             </div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                    <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT"
+                                    <img src="{{$item->images}}" alt="IMG-PRODUCT"
                                          style="height: 350px;object-fit: cover;">
                                     <div class="block2-overlay trans-0-4">
                                         <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
