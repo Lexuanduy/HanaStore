@@ -21,13 +21,16 @@ Route::delete('/user/delete-cart/{rowid}', 'Usercontroller@productDelete');
 
 // Admin Product
 Route::delete('/admin/product/delete-all', "ProductController@destroyMany");
+
 Route::resource('/admin/product', 'ProductController');
 
+Route::resource('/admin/category', 'CategoryController');
+
+Route::resource('/admin/collection', 'CollectionController');
 
 Route::get('/', function (){
     return view('welcome');
 });
-
 
 // Lấy 1 san phẩm
 Route::get('/admin/product/get-json/{id}', 'ProductController@getJson');
@@ -35,7 +38,6 @@ Route::get('/admin/product/get-json/{id}', 'ProductController@getJson');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 // User Controller
 Route::get('/user/home', 'UserController@getIndexUser');

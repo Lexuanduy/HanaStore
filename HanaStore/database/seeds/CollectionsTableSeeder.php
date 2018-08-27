@@ -18,43 +18,43 @@ class CollectionsTableSeeder extends Seeder
                 'id'=>1,
                 'name'=>'Mùa xuân',
                 'description'=>'Hoa mùa xuân',
-                'images' => 'collection1.jpg'
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334671/1535334665.jpg'
             ],
             [
                 'id'=>2,
                 'name'=>'Mùa Hạ',
                 'description'=>'Hoa mùa hạ',
-                'images' => 'collection2.jpg'
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334691/1535334687.jpg'
             ],
             [
                 'id'=>3,
                 'name'=>'Mùa thu',
                 'description'=>'Hoa mùa thu',
-                'images' => 'collection3.jpg'
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334737/1535334730.jpg'
             ],
             [
                 'id'=>4,
                 'name'=>'Mùa Đông',
                 'description'=>'Hoa mùa đông',
-                'images' => 'collection4.jpg'
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334775/1535334752.jpg'
             ],
             [
                 'id'=>5,
                 'name'=>'Phụ nữ Việt Nam 20/10',
                 'description'=>'Sắc Hoa',
-                'images' => 'collection1.jpg'
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334801/1535334797.jpg'
             ],
             [
                 'id'=>6,
                 'name'=>'Hoa Hồng',
                 'description'=>'Sắc Hoa',
-                'images' => 'collection1.jpg'
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334937/1535334909.jpg'
             ],
             [
                 'id'=>7,
                 'name'=>'Hoa Sen',
                 'description'=>'Quốc Hoa',
-                'images' => 'collection1.jpg'
+                'images'=>'http://res.cloudinary.com/dug9zryzq/image/upload/v1535334996/1535334995.jpg'
             ],
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
