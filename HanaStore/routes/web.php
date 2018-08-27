@@ -16,7 +16,7 @@ use App\Collection;
 
 // config web by Phuocding
 Route::resource('admin/product', 'ProductController');
-
+Route::resource('admin/order', 'OrderController');
 // Collection - Nam
 Route::resource('admin/collection', 'CollectionController');
 

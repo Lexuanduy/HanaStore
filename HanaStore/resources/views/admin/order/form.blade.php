@@ -3,7 +3,7 @@
     'current_menu' => 'order_manager',
     'current_sub_menu' => 'create_new',
 ])
-@section('page-title', 'Edit Order')
+@section('page-title', 'Create new order')
 @section('content')
     <div class="row">
         <div class="col-md-12">
