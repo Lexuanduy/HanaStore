@@ -28,6 +28,9 @@ Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProduc
 // Route xóa sản phẩm trong giỏ hàng
 Route::delete('/user/delete-cart/{rowid}', 'Usercontroller@productDelete');
 
+//Route Checkout giỏ hàng.
+Route::post('/user/checkout-cart','UserController@checkoutCart')->name('checkoutCart');
+
 // Admin Product
 Route::delete('/admin/product/delete-all', "ProductController@destroyMany");
 
@@ -44,23 +47,20 @@ Route::get('/error', function (){
 // Lấy 1 san phẩm
 Route::get('/admin/product/get-json/{id}', 'ProductController@getJson');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-// User Controller
+// Route User Controller Client
 Route::get('/user/home', 'UserController@getIndexUser')->name('homeClient');
 
-// Route view giỏ hàng
+// Route view giỏ hàng Client
 Route::get('/user/cart', 'UserController@getCart')->name('giohang');
 
-// Route thêm vào giỏ hàng
+// Route thêm vào giỏ hàng Client
 Route::post('/user/add-cart/{id}', 'UserController@productBuy');
 
-// Route view list sản phẩm
+// Route view list sản phẩm Client
 Route::get('/user/list', 'Usercontroller@listProduct')->name('listProductClient');
 
-// Route view sản phẩm chi tiết.
+// Route view sản phẩm chi tiết Client
 Route::get('/user/product/{id}','UserController@getProductDetail');
 
 //View list product sale
