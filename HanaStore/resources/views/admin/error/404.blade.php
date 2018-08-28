@@ -68,7 +68,7 @@
     </div>
 
     <div class="buttons">
-        <a class="button" href="http://admin">Go to homepage</a>
+        <a class="button" href="/admin/product">Go to homepage</a>
     </div>
 </div>
 </body>

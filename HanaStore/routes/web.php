@@ -37,8 +37,8 @@ Route::resource('/admin/category', 'CategoryController');
 
 Route::resource('/admin/collection', 'CollectionController');
 
-Route::get('/', function (){
-    return view('welcome');
+Route::get('/error', function (){
+    return view('admin.error.404');
 });
 
 // Lấy 1 san phẩm

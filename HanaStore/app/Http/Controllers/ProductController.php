@@ -120,7 +120,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $collections = Collection::all();
         if ($product == null || $product->status != 1) {
-            return view('404');
+            return view('admin.error.404');
         }
         return view('admin.product.edit')
             ->with('product', $product)
