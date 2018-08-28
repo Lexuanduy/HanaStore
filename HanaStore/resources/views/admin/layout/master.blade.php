@@ -215,18 +215,10 @@
                     </a>
                 </li>
 
-                <!--Chart-->
-                <li>
-                    <a data-toggle="collapse" href="#">
-                        <i class="fas fa-chart-line"></i>
-                        <p>Chart</p>
-                    </a>
-                </li>
-
                 <!--Revenue-->
-                <li>
-                    <a data-toggle="collapse" href="#">
-                        <i class="fas fa-chart-bar"></i>
+                <li class="{{ $current_menu == 'chart_manager' ? 'active' : '' }}">
+                    <a href="/admin/chart">
+                        <i class="fas fa-chart-line"></i>
                         <p>Revenue</p>
                     </a>
                 </li>
