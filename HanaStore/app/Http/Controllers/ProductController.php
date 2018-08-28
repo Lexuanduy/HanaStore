@@ -120,7 +120,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $collections = Collection::all();
         if ($product == null || $product->status != 1) {
-            return view('404');
+            return view('admin.error.404');
         }
         return view('admin.product.edit')
             ->with('product', $product)
@@ -199,6 +199,15 @@ class ProductController extends Controller
         $product->status = 0;
         $product->save();
         return response()->json(['message' => 'Đã xoá thông tin sản phẩm hoa này'], 200);
+    }
+
+    public function search()
+    {
+        $query=request('records');
+        $products = Product::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+        $categories = Category::all();
+        $categoryId = Input::get('categoryId');
+        return view('admin.product.list')->with(['products_in_view' => $products, 'categories' => $categories, 'categoryId' => $categoryId]);
     }
 
 //    Live search action

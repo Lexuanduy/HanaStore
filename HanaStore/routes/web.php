@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route dashboard admin
+Route::get('/admin', function (){
+    return view('admin.layout.index');
+});
+
+Route::get('/admin/product/search','ProductController@search');
+
+Route::get('/admin/category/search','CategoryController@search');
+
+Route::get('/admin/collection/search','CollectionController@search');
+
+// config web by Phuocding
+Route::resource('admin/product', 'ProductController');
+
 
 //Route update sản phẩm trong giỏ hàng.
 Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
@@ -29,16 +43,12 @@ Route::resource('/admin/category', 'CategoryController');
 
 Route::resource('/admin/collection', 'CollectionController');
 
-Route::get('/', function (){
-    return view('welcome');
+Route::get('/error', function (){
+    return view('admin.error.404');
 });
 
 // Lấy 1 san phẩm
 Route::get('/admin/product/get-json/{id}', 'ProductController@getJson');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 // User Controller
 Route::get('/user/home', 'UserController@getIndexUser')->name('homeClient');
@@ -52,5 +62,22 @@ Route::post('/user/add-cart/{id}', 'UserController@productBuy');
 // Route view list sản phẩm
 Route::get('/user/list', 'Usercontroller@listProduct')->name('listProductClient');
 
+
 Route::get('contact-us', 'ContactUSController@contactUS');
+
 Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+
+// Route view sản phẩm chi tiết.
+Route::get('/user/product/{id}','UserController@getProductDetail');
+
+//View list product sale
+Route::get('/user/sale', 'UserController@getIndexProductSale')->name('saleClient');
+
+//Route view bài viết
+Route::get('user/post', 'UserController@post')->name('postClient');
+
+//View chart
+Route::get('/admin/chart', function () {
+   return view('admin.chart.chart');
+});
+Route::resource('admin/category', 'CategoryController');
