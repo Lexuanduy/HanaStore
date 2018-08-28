@@ -44,8 +44,8 @@ Route::resource('/admin/category', 'CategoryController');
 
 Route::resource('/admin/collection', 'CollectionController');
 
-Route::get('/', function (){
-    return view('welcome');
+Route::get('/error', function (){
+    return view('admin.error.404');
 });
 
 // Lấy 1 san phẩm
@@ -73,5 +73,8 @@ Route::get('/user/product/{id}','UserController@getProductDetail');
 //View list product sale
 Route::get('/user/sale', 'UserController@getIndexProductSale')->name('saleClient');
 
+//View chart
+Route::get('/admin/chart', function () {
+   return view('admin.chart.chart');
+});
 Route::resource('admin/category', 'CategoryController');
-
