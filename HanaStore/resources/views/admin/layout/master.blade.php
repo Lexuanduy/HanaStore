@@ -71,8 +71,8 @@
 
             <!--dashboard-->
             <ul class="nav">
-                <li>
-                    <a href="">
+                <li class="">
+                    <a href="/admin">
                         <i class="material-icons">dashboard</i>
                         <p>Dashboard</p>
                     </a>
@@ -241,7 +241,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <a class="navbar-brand" href="/admin"> Dashboard </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <form class="navbar-form navbar-right" role="search">
