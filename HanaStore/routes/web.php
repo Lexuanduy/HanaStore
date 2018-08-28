@@ -67,7 +67,7 @@ Route::get('/user/product/{id}','UserController@getProductDetail');
 Route::get('/user/sale', 'UserController@getIndexProductSale')->name('saleClient');
 
 //Route view bài viết
-Route::get('user/post', 'UserController@post');
+Route::get('user/post', 'UserController@post')->name('postClient');
 
 
 //View chart

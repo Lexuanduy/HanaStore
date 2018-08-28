@@ -70,8 +70,8 @@
                         </ul>
                     </li>
 
-                    <li class="">
-                        <a href="/user/post">Bài viết</a>
+                    <li class="{{url()->current() == route('postClient')?'sale-noti':''}}">
+                        <a href="{{route('postClient')}}">Bài viết</a>
                     </li>
 
                     <li class="">
