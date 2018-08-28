@@ -200,6 +200,15 @@ class ProductController extends Controller
         return response()->json(['message' => 'Đã xoá thông tin sản phẩm hoa này'], 200);
     }
 
+    public function search()
+    {
+        $query=request('records');
+        $products = Product::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+        $categories = Category::all();
+        $categoryId = Input::get('categoryId');
+        return view('admin.product.list')->with(['products_in_view' => $products, 'categories' => $categories, 'categoryId' => $categoryId]);
+    }
+
 //    Live search action
 //    function action(Request $request)
 //    {

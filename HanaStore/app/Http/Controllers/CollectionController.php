@@ -143,4 +143,11 @@ class CollectionController extends Controller
         $collection->delete();
         return redirect()->back()->with('message', 'Successed delete collection');
     }
+
+    public function search()
+    {
+        $query=request('records');
+        $collection = Collection::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('admin.collection.list')->with(['collection' => $collection]);
+    }
 }

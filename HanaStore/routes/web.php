@@ -14,6 +14,12 @@ use App\Collection;
 */
 //test view form create layout
 
+Route::get('/admin/product/search','ProductController@search');
+
+Route::get('/admin/category/search','CategoryController@search');
+
+Route::get('/admin/collection/search','CollectionController@search');
+
 // config web by Phuocding
 Route::resource('admin/product', 'ProductController');
 
@@ -22,3 +28,4 @@ Route::resource('admin/product', 'ProductController');
 Route::resource('admin/collection', 'CollectionController');
 
 Route::resource('admin/category', 'CategoryController');
+
