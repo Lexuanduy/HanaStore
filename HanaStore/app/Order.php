@@ -6,36 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
-    public function details()
-    {
-        return $this->hasMany('App\orderDetail', 'orderId');
+    protected $table = 'orders';
+    public $timestamps = true;
+
+    public function customer(){
+        return $this->belongsTo('App\Customer','customerId');
     }
 
-    public function getShipInformationAttribute()
-    {
-        return ' - '. $this->shipPhone . '<br> - '. $this->shipName . '<br> - ' . $this->shipAddress;
+    public function order_detail(){
+        return $this->hasMany('App\OrderDetail','orderId');
     }
-
-    public function getStatusLabelAttribute()
-    {
-        switch ($this->status) {
-            case -1:
-                return 'Đã huỷ';
-                break;
-            case 0:
-                return 'Chờ xử lý';
-                break;
-            case 1:
-                return 'Đã xác nhận';
-                break;
-            case 2:
-                return 'Hoàn thành';
-                break;
-            default:
-                return 'Không xác định';
-                break;
-        }
-    }
-
 }
