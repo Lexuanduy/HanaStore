@@ -10,10 +10,15 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Collection;
+use App\Customer;
+use App\Order;
+use App\orderDetail;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
+use Webpatser\Uuid\Uuid;
 
 class UserController extends Controller
 {
@@ -186,7 +191,64 @@ class UserController extends Controller
             ->with(['products_sale' => $products_sale, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total]);
     }
 
-    public function post(){
+
+    // Insert gio hang vao database
+    public function checkoutCart()
+    {
+        if (Count(Cart::content()) > 0) {
+            try {
+                DB::beginTransaction();
+                $cart = Cart::content();
+                $ship_name = Input::get('ship-name');
+                $ship_email = Input::get('ship-email');
+                $ship_phone = Input::get('ship-phone');
+                $ship_address = Input::get('ship-address');
+                $note = Input::get('note');
+
+                $customer = new Customer();
+                $idCus = $customer->id = Uuid::generate(4)->string;
+                $customer->name = 'SlowVs2L';
+                $customer->email = 'quocviet.hn98@gmail.com';
+                $customer->save();
+
+                $order = new Order();
+                $idOr = $order->id = Uuid::generate(4)->string;
+                $order->customerId = $idCus;
+                $order->totalPrice = Cart::subtotal(0, '', '');
+                $order->shipName = $ship_name;
+                $order->shipEmail = $ship_email;
+                $order->shipAddress = $ship_address;
+                $order->shipPhone = $ship_phone;
+                $order->note = $note;
+                $order->save();
+                foreach ($cart as $item) {
+                    $product = Product::find($item->id);
+                    if ($product == null || $product->status != 1) {
+                        // Chỗ này phải return về view error 404
+                        return 'Xảy ra lỗi!';
+                    }
+                    $qty = $item->qty;
+                    $order_detail = new OrderDetail();
+                    $order_detail->orderId = $idOr;
+                    $order_detail->productId = $product->id;
+                    $order_detail->quantity = $qty;
+                    $order_detail->unitPrice = $product->price;
+                    $order_detail->save();
+                }
+                $order->save();
+                DB::commit();
+                Cart::destroy();
+                return redirect()->route('giohang');
+            } catch (\Exception $exception) {
+                // return view error ở chỗ này
+                DB::rollBack();
+                return 'Có lỗi xảy ra.' . $exception->getMessage();
+            }
+        }
+    }
+
+    public function post()
+    {
         $content = Cart::content();
         $countItemCart = Cart::count();
         $total = Cart::subtotal();
@@ -201,4 +263,5 @@ class UserController extends Controller
         ]);
     }
 }
+
 
