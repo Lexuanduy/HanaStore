@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
     <style>
-        .img-fly{
+        .img-fly {
             position: absolute;
             z-index: 9999;
             width: 50px;
@@ -43,14 +43,29 @@
         }
 
         @keyframes MyAnimation {
-            0%   {transform: scale(0.4)}
-            25%  {transform: scale(1)}
-            75%  {transform: scale(1)}
-            100% {transform: scale(0.4)}
+            0% {
+                transform: scale(0.4)
+            }
+            25% {
+                transform: scale(1)
+            }
+            75% {
+                transform: scale(1)
+            }
+            100% {
+                transform: scale(0.4)
+            }
         }
-        .disable-scoll{
+
+        .disable-scoll {
             overflow: hidden;
         }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
     </style>
 @endsection
 
@@ -76,14 +91,16 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT"
+                                     style="height: 350px;object-fit: cover;">
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                         <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                         <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                     </a>
 
-                                    <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
+                                    <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                         id="add-cart-{{$item->id}}">
                                         <!-- Button -->
                                         <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                             Thêm vào giỏ
@@ -142,14 +159,16 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT"
+                                             style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                                 id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
                                                 <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                     Thêm vào giỏ
@@ -219,14 +238,16 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                        <img src="{{asset('img/product/'.$item->images)}}" alt="IMG-PRODUCT"
+                                             style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                                 id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
                                                 <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                     Thêm vào giỏ

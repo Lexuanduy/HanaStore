@@ -20,6 +20,7 @@
             padding: 0;
             margin: 0;
         }
+
         html, body {
             background-color: #fff;
             color: #636b6f;
@@ -34,6 +35,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .full-height {
             height: 100vh;
         }
@@ -89,7 +91,7 @@
                 <a href="{{ url('/admin/product') }}">Trang chủ</a>
             @else
                 <a href="{{ route('login') }}" >Đăng nhập</a>
-                {{--<a href="{{ route('register') }}">Register</a>--}}
+                <a href="{{ route('register') }}">Đăng ký</a>
             @endauth
         </div>
     @endif

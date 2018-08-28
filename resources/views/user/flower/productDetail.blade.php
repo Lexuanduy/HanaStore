@@ -238,11 +238,9 @@
                     @endforeach
                 </div>
             </div>
-
         </div>
     </section>
 @endsection
-
 @section('selection')
     <!-- Container Selection -->
     <div id="dropDownSelect1"></div>
@@ -306,7 +304,6 @@
             })
         });
     </script>
-
     <!--===============================================================================================-->
     <script src="{{asset('js/main.js')}}"></script>
 @endsection

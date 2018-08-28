@@ -243,12 +243,12 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
     <script type="text/javascript">
-        $('.block2-btn-addcart').each(function(){
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function(){
-                swal(nameProduct, "Thêm vào giỏ hàng thành công!", "success");
-            });
-        });
+        // $('.block2-btn-addcart').each(function(){
+        //     var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        //     $(this).on('click', function(){
+        //         swal(nameProduct, "Thêm vào giỏ hàng thành công!", "success");
+        //     });
+        // });
 
 
         $('.block2-btn-addwishlist').each(function(){

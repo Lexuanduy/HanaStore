@@ -149,6 +149,7 @@ return [
         JD\Cloudder\CloudderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Dirape\Token\TokenServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,7 +214,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Token'=>\Dirape\Token\Facades\Facade::class
     ],
 
 ];

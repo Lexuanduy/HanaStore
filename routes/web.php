@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route Checkout giỏ hàng.
+Route::post('/user/checkout-cart','UserController@checkoutCart')->name('checkoutCart');
+
 //Route update sản phẩm trong giỏ hàng.
-Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
+Route::get('/user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
 
 // Route xóa sản phẩm trong giỏ hàng
 Route::delete('/user/delete-cart/{rowid}', 'Usercontroller@productDelete');

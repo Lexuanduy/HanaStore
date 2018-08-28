@@ -24,6 +24,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đẹp.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 2,
@@ -35,6 +37,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ đẹp.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 3,
@@ -46,6 +50,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 4,
@@ -57,6 +63,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Lãng hoa hồng.',
                 'sale' => 0,
                 'detail' => 'Lãng hoa hồng đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 5,
@@ -68,6 +76,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 6,
@@ -79,6 +89,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 7,
@@ -90,6 +102,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 8,
@@ -101,6 +115,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 9,
@@ -112,6 +128,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 10,
@@ -123,6 +141,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 11,
@@ -134,6 +154,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 12,
@@ -145,6 +167,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 13,
@@ -156,6 +180,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 14,
@@ -167,6 +193,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 15,
@@ -178,6 +206,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
 
             [
@@ -190,6 +220,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 17,
@@ -201,6 +233,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 18,
@@ -212,6 +246,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 19,
@@ -223,6 +259,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 20,
@@ -234,6 +272,8 @@ class ProductSeeder extends Seeder
                 'description'=>'Hoa hồng đỏ tình yêu.',
                 'sale' => 0,
                 'detail' => 'Hoa hồng đỏ tình yêu đẹp lắm đấy.',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
         ]);
     }
