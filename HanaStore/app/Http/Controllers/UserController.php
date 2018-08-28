@@ -191,6 +191,7 @@ class UserController extends Controller
             ->with(['products_sale' => $products_sale, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total]);
     }
 
+
     // Insert gio hang vao database
     public function checkoutCart()
     {
@@ -211,9 +212,9 @@ class UserController extends Controller
                 $customer->save();
 
                 $order = new Order();
-                $idOr = $order->id =  Uuid::generate(4)->string;
-                $order->customerId =$idCus;
-                $order->totalPrice = Cart::subtotal(0,'','');
+                $idOr = $order->id = Uuid::generate(4)->string;
+                $order->customerId = $idCus;
+                $order->totalPrice = Cart::subtotal(0, '', '');
                 $order->shipName = $ship_name;
                 $order->shipEmail = $ship_email;
                 $order->shipAddress = $ship_address;
@@ -245,4 +246,22 @@ class UserController extends Controller
             }
         }
     }
+
+    public function post()
+    {
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+        $categories = Category::all();
+        $collections = Collection::all();
+        return view('user.flower.post')->with([
+            'categories' => $categories,
+            'collections' => $collections,
+            'countItemCart' => $countItemCart,
+            'content' => $content,
+            'total' => $total,
+        ]);
+    }
 }
+
+
