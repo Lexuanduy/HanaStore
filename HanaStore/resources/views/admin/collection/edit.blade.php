@@ -112,7 +112,7 @@
                                 <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Update
                                     <div class="ripple-container"></div>
                                 </button>
-                                <button type="reset" value="Reset" class="btn btn-fill btn-danger">Reset
+                                <button type="reset" value="Reset" class="btn btn-reset btn-fill btn-danger">Reset
                                     <div class="ripple-container"></div>
                                 </button>
                             </div>
@@ -140,4 +140,13 @@
             }
         }
     </script>
+
+    <!--reset-->
+    <script>
+        $('.btn-reset').click(function(){
+            /* Single line Reset function executes on click of Reset Button */
+            $('.broken').attr('src', '').removeClass('img-thumbnail');
+        });
+    </script>
+    <!--reset-->
 @endsection

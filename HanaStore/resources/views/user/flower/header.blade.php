@@ -48,8 +48,8 @@
                         <a href="{{route('listProductClient')}}">Danh sách</a>
                     </li>
 
-                    <li class="">
-                        <a href="#">Sale</a>
+                    <li class="{{url()->current() == route('saleClient')?'sale-noti':''}}">
+                        <a href="{{route('saleClient')}}">Sale</a>
                     </li>
 
                     <li class="">
