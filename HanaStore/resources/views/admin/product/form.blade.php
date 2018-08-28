@@ -179,7 +179,7 @@
                                 <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Create
                                     <div class="ripple-container"></div>
                                 </button>
-                                <button type="reset" value="Reset" class="btn btn-fill btn-danger">Reset
+                                <button type="reset" value="Reset" class="btn btn-reset btn-fill btn-danger">Reset
                                     <div class="ripple-container"></div>
                                 </button>
                             </div>
@@ -209,4 +209,12 @@
         }
     </script>
     <!--preview image after selected from storage-->
+
+    <!--Reset-->
+    <script>
+        $('.btn-reset').click( function () {
+            $('.broken').attr('src', '').removeClass('img-thumbnail');
+        })
+    </script>
+    <!--Reset-->
 @endsection

@@ -135,4 +135,11 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->back()->with('message', 'Successed delete category');
     }
+
+    public function search()
+    {
+        $query = request('records');
+        $list_category = Category::where('name', 'LIKE', '%' . $query . '%')->paginate(10);
+        return view('admin.category.list')->with(['list_category' => $list_category]);
+    }
 }
