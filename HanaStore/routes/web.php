@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/admin/product/search','ProductController@search');
+
+Route::get('/admin/category/search','CategoryController@search');
+
+Route::get('/admin/collection/search','CollectionController@search');
+
+// config web by Phuocding
+Route::resource('admin/product', 'ProductController');
 
 //Route update sản phẩm trong giỏ hàng.
 Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
@@ -57,4 +65,6 @@ Route::get('/user/product/{id}','UserController@getProductDetail');
 
 //View list product sale
 Route::get('/user/sale', 'UserController@getIndexProductSale')->name('saleClient');
+
+Route::resource('admin/category', 'CategoryController');
 
