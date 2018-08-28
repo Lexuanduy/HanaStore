@@ -11,6 +11,6 @@
 <h1 class="font-weight-bold" style="font-size: 50px ; text-align: center">500 Internal Serve Error</h1>
 <p style="font-size: 20px ; text-align: center" >Oops, something went wrong.</p>
 <hr>
-<h3 style="text-align: center"><a href="http://admin">Go to homepage</a></h3>
+<h3 style="text-align: center"><a href="/admin">Go to homepage</a></h3>
 </body>
 </html>
