@@ -55,7 +55,7 @@
                     <li class="">
                         <a href="javascript:void(0)">Bộ sưu tập</a>
                         <ul class="sub_menu">
-                            @foreach($collections as $item)
+                            @foreach($collections    as $item)
                                 <li><a href="{{route('listProductClient').'?collectionId='.$item->id}}">{{$item->name}}</a></li>
                             @endforeach
                         </ul>
@@ -70,8 +70,8 @@
                         </ul>
                     </li>
 
-                    <li class="">
-                        <a href="javascript:void(0)">Bài viết</a>
+                    <li class="{{url()->current() == route('postClient')?'sale-noti':''}}">
+                        <a href="{{route('postClient')}}">Bài viết</a>
                     </li>
 
                     <li class="">
