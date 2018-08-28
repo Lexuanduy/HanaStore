@@ -15,7 +15,6 @@
             height: 100%;
         }
         body {
-            background: url(https://i.imgur.com/76NZB7A.gif) no-repeat center center fixed;
             background-size: cover;
             font-family: 'Raleway', sans-serif;
             background-color: #342643;
@@ -69,7 +68,7 @@
     </div>
 
     <div class="buttons">
-        <a class="button" href="http://admin">Go to homepage</a>
+        <a class="button" href="/admin/product">Go to homepage</a>
     </div>
 </div>
 </body>
