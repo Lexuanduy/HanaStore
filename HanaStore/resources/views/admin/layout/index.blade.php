@@ -118,18 +118,26 @@
         }
 
 
+        .row.items-dasboard{
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .row.parent-dasboard{
+            margin-bottom: 30px;
+        }
     </style>
     <!-- /.row -->
-    <div class="row">
+    <div class="row parent-dasboard">
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3" style="margin-left: 10px">
+                    <div class="row items-dasboard">
+                        <div class="col-xs-4" style="margin-left: 10px">
                             <i class="material-icons" style="padding-left: 10px; font-size: 80px;">image</i>
                         </div>
                         <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Product !</h2>
+                            <h2>Product</h2>
                         </div>
                     </div>
                 </div>
@@ -146,12 +154,12 @@
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-red">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3" style="margin-left: 10px">
+                    <div class="row items-dasboard">
+                        <div class="col-xs-4" style="margin-left: 10px">
                             <i class="material-icons" style="font-size: 80px">apps</i>
                         </div>
                         <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Category !</h2>
+                            <h2>Category</h2>
                         </div>
                     </div>
                 </div>
@@ -169,12 +177,12 @@
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3" style="margin-left: 10px">
+                    <div class="row items-dasboard">
+                        <div class="col-xs-4" style="margin-left: 10px">
                             <i class="material-icons" style="font-size: 80px">apps</i>
                         </div>
                         <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Collection !</h2>
+                            <h2>Collection</h2>
                         </div>
                     </div>
                 </div>
@@ -189,20 +197,20 @@
         </div>
 
     </div>
-    <div class="row">
+    <div class="row parent-dasboard">
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-purple">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fab fa-first-order fa-5x"></i>
+                    <div class="row items-dasboard">
+                        <div class="col-xs-4" style="margin-left: 10px">
+                            <i class="fab fa-first-order fa-5x" style="font-size: 70px"></i>
                         </div>
-                        <div class="col-xs-9 text-right">
-                            <h2>Order !</h2>
+                        <div class="col-xs-8 text-right" style="float: right">
+                            <h2>Order</h2>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="admin/order">
                     <div class="panel-footer">
                         <span class="pull-left">View Details</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -216,12 +224,12 @@
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-green">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3" style="margin-left: 10px">
+                    <div class="row items-dasboard">
+                        <div class="col-xs-4" style="margin-left: 10px">
                             <i class="fa fa-chart-line fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Chart !</h2>
+                            <h2>Chart</h2>
                         </div>
                     </div>
                 </div>
@@ -239,12 +247,12 @@
         <div class="col-lg-4 col-md-6">
             <div class="panel panel-sea">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3" style="margin-left: 10px">
+                    <div class="row items-dasboard">
+                        <div class="col-xs-4" style="margin-left: 10px">
                             <i class="fa fa-chart-bar fa-5x" ></i>
                         </div>
                         <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Revenue !</h2>
+                            <h2>Revenue</h2>
                         </div>
                     </div>
                 </div>
