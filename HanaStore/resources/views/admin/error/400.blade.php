@@ -11,6 +11,6 @@
 <h1 class="font-weight-bold" style="font-size: 50px ; text-align: center">400 Bad Request</h1>
 <p style="font-size: 20px ; text-align: center" >Your request contains bad syntax and cannot be fulfilled.</p>
 <hr>
-<h3 style="text-align: center"><a href="http://admin">Go to homepage</a></h3>
+<h3 style="text-align: center"><a href="/admin">Go to homepage</a></h3>
 </body>
 </html>
