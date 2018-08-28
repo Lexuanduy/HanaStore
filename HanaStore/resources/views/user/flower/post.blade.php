@@ -60,46 +60,48 @@
     <section class="slide1">
         @include('user.flower.slide')
     </section>
-<section>
-    <div class="container" style="margin-top: 30px">
-        <h2 style="">MẪU HOA CƯỚI ĐẸP NHẤT 2018</h2>
-        <img src="{{asset('img/post/post-1.jpg')}}" alt="" style="margin-top: 50px; margin-bottom: 20px">
-        <p>Trong ngày trọng đại, áo cưới thường được các cô dâu đầu tư nhiều thời gian và lựa chọn kỹ càng nhất.  Nhiều cô dâu lựa chọn tới 2-3 bộ váy cưới để thay đổi trong buổi tiệc vừa để tạo ấn tượng đối với khách mời, vừa để có thêm những bức hình đẹp của dịp cả đời có một ấy. Tuy nhiên, ít ai biết rằng hoa cưới cũng không kém phần quan trọng. Theo các nhiếp ảnh gia, một bó hoa cưới đẹp chiếm tới 50% sự thành công và thẩm mỹ của bức ảnh. Theo khảo sát, hoa cưới (hoa cầm tay cô dâu) mới là thứ tạo được ấn tượng nhiều nhất cho khách mời ngay ánh nhìn đầu tiên.</p>
-        <br>
-        <p>Dưới đây là những mẫu hoa cưới đẹp từ HanaStore có thể khiến cô dâu thêm lộng lẫy trong ngày vui của mình:</p>
-        <br>
-        <p>Bó hoa cưới bằng hồng đỏ: Tình yêu mãnh liệt  </p>
-        <br>
-        <p>Hoa hồng là biểu tượng của tình yêu. Vì thế một bó hoa cưới làm từ hoa hồng đỏ sẽ là lời khẳng định tình yêu mãnh liệt của cô dâu và chú rể. Không còn nghi ngờ gì nữa, một bó hoa cưới bằng hoa hồng đỏ trên nền váy cưới màu trắng sẽ mang đến sự nổi bật cho cô dâu nhờ sự tương phản của màu sắc.</p>
-        <br>
-        <div class="text-center">
-            <img src="{{asset('img/post/post-2.jpg')}}" alt="">
-            <p>Bó hoa cưới từ hoa hồng đỏ đại diện cho tình yêu mãnh liệt</p>
-        </div>
-        <br>
+    <section>
+        <div class="container" style="margin-top: 30px">
+            <h2 style="">MẪU HOA CƯỚI ĐẸP NHẤT 2018</h2>
+            <div class="text-center">
+                <img src="{{asset('img/post/post-1.jpg')}}" alt="" style="margin-top: 50px; margin-bottom: 20px ; width: 800px ; height: 500px">
+            </div>
+            <p>Trong ngày trọng đại, áo cưới thường được các cô dâu đầu tư nhiều thời gian và lựa chọn kỹ càng nhất.  Nhiều cô dâu lựa chọn tới 2-3 bộ váy cưới để thay đổi trong buổi tiệc vừa để tạo ấn tượng đối với khách mời, vừa để có thêm những bức hình đẹp của dịp cả đời có một ấy. Tuy nhiên, ít ai biết rằng hoa cưới cũng không kém phần quan trọng. Theo các nhiếp ảnh gia, một bó hoa cưới đẹp chiếm tới 50% sự thành công và thẩm mỹ của bức ảnh. Theo khảo sát, hoa cưới (hoa cầm tay cô dâu) mới là thứ tạo được ấn tượng nhiều nhất cho khách mời ngay ánh nhìn đầu tiên.</p>
+            <br>
+            <p>Dưới đây là những mẫu hoa cưới đẹp từ HanaStore có thể khiến cô dâu thêm lộng lẫy trong ngày vui của mình:</p>
+            <br>
+            <p>Bó hoa cưới bằng hồng đỏ: Tình yêu mãnh liệt  </p>
+            <br>
+            <p>Hoa hồng là biểu tượng của tình yêu. Vì thế một bó hoa cưới làm từ hoa hồng đỏ sẽ là lời khẳng định tình yêu mãnh liệt của cô dâu và chú rể. Không còn nghi ngờ gì nữa, một bó hoa cưới bằng hoa hồng đỏ trên nền váy cưới màu trắng sẽ mang đến sự nổi bật cho cô dâu nhờ sự tương phản của màu sắc.</p>
+            <br>
+            <div class="text-center">
+                <img src="{{asset('img/post/post-2.jpg')}}" alt="" style="width: 500px ; height: 600px">
+                <p>Bó hoa cưới từ hoa hồng đỏ đại diện cho tình yêu mãnh liệt</p>
+            </div>
+            <br>
 
-        <p>Bó hoa cưới từ hoa hồng tím: Sự mộng mơ và chung thủy</p>
-        <br>
-        <p>Không quá nổi bật như hồng đỏ, nhưng những bó hoa cô dâu cầm tay làm từ hoa hồng tím lại mang tới vẻ đẹp nhẹ nhàng, lãng mạn. Bởi ý nghĩa hoa hồng tím là chung thủy và mộng mơ đúng như tâm trạng của người con gái đang đi “xây mộng cuộc đời” với người mình yêu thương.</p>
-        <br>
-        <div class="text-center">
-            <img src="{{asset('img/post/post-3.jpg')}}" alt="">
-            <p>Bó hoa cưới từ hoa hồng tím đại diện cho tình yêu thủy chung</p>
-        </div>
-        <br>
+            <p>Bó hoa cưới từ hoa hồng tím: Sự mộng mơ và chung thủy</p>
+            <br>
+            <p>Không quá nổi bật như hồng đỏ, nhưng những bó hoa cô dâu cầm tay làm từ hoa hồng tím lại mang tới vẻ đẹp nhẹ nhàng, lãng mạn. Bởi ý nghĩa hoa hồng tím là chung thủy và mộng mơ đúng như tâm trạng của người con gái đang đi “xây mộng cuộc đời” với người mình yêu thương.</p>
+            <br>
+            <div class="text-center">
+                <img src="{{asset('img/post/post-3.jpg')}}" alt="" style="width: 500px ; height: 600px">
+                <p>Bó hoa cưới từ hoa hồng tím đại diện cho tình yêu thủy chung</p>
+            </div>
+            <br>
 
-        <p>Bó hoa cưới từ hoa hồng trắng: Trái tim chân thành và trong sáng </p>
-        <br>
-        <p>Như chúng ta đã biết, màu trắng là màu thể hiện sự ngây thơ, nguyên vẹn và trong sạch. Do đó, một bó hoa hồng màu trắng sáng thể hiện sự ngây thơ và tình yêu trong sáng, không lẫn vật chất, vô cùng thiêng liêng. Hoa hồng trắng thể hiện một tình yêu không có những cám dỗ xác thịt, vật chất mà bởi sự gắn bó của hai tâm hồn đồng điệu. Xét về khía cạnh này thì hoa hồng trắng đối lập hoàn toàn với hoa hồng đỏ – loài hoa ẩn chứa sự đam mê cháy bỏng trong tình yêu.</p>
-        <br>
-        <div class="text-center">
-            <img src="{{asset('img/post/post-4.jpg')}}" alt="">
-            <p>Bó hoa cưới từ hoa hồng trắng thể hiện tình cảm  chân thành và trong sáng </p>
+            <p>Bó hoa cưới từ hoa hồng trắng: Trái tim chân thành và trong sáng </p>
+            <br>
+            <p>Như chúng ta đã biết, màu trắng là màu thể hiện sự ngây thơ, nguyên vẹn và trong sạch. Do đó, một bó hoa hồng màu trắng sáng thể hiện sự ngây thơ và tình yêu trong sáng, không lẫn vật chất, vô cùng thiêng liêng. Hoa hồng trắng thể hiện một tình yêu không có những cám dỗ xác thịt, vật chất mà bởi sự gắn bó của hai tâm hồn đồng điệu. Xét về khía cạnh này thì hoa hồng trắng đối lập hoàn toàn với hoa hồng đỏ – loài hoa ẩn chứa sự đam mê cháy bỏng trong tình yêu.</p>
+            <br>
+            <div class="text-center">
+                <img src="{{asset('img/post/post-4.jpg')}}" alt="" style="width: 500px ; height: 600px">
+                <p>Bó hoa cưới từ hoa hồng trắng thể hiện tình cảm  chân thành và trong sáng </p>
+            </div>
+            <br>
         </div>
-        <br>
-    </div>
-</section>
- @endsection
+    </section>
+@endsection
 
 @section('selection')
     <!-- Container Selection1 -->
