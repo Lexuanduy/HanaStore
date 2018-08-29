@@ -65,7 +65,7 @@ Route::get('/user/cart', 'UserController@getCart')->name('giohang');
 Route::post('/user/add-cart/{id}', 'UserController@productBuy');
 
 // Route view list sản phẩm Client
-Route::get('/user/list', 'Usercontroller@listProduct')->name('listProductClient');
+Route::get('/user/list-product', 'Usercontroller@listProduct')->name('listProductClient');
 
 // Route view sản phẩm chi tiết Client
 Route::get('/user/product/{id}','UserController@getProductDetail');
@@ -74,7 +74,13 @@ Route::get('/user/product/{id}','UserController@getProductDetail');
 Route::get('/user/sale', 'UserController@getIndexProductSale')->name('saleClient');
 
 //Route view bài viết
-Route::get('user/post', 'UserController@post')->name('postClient');
+Route::get('/user/blog', 'UserController@blog')->name('blogClient');
+
+//Route view bài viết chi tiết.
+Route::get('/user/blog/{id}','UserController@getBlogDetail');
+
+//Route view liên hệ
+Route::get('/user/contact','UserController@getBlog')->name('contactClient');
 
 
 //View chart

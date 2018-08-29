@@ -12,9 +12,9 @@
         </div>
 
         <span class="topbar-child1">
-					{{--Free shipping for standard order over $100--}}
+            {{--Free shipping for standard order over $100--}}
             Giao hàng miễn phí cho tất cả đơn hàng trên 1.000.000 vnđ
-				</span>
+        </span>
 
         <div class="topbar-child2">
 					<span class="topbar-email">
@@ -32,7 +32,7 @@
 
     <div class="wrap_header">
         <!-- Logo -->
-        <a href="/user/home" class="logo">
+        <a href="{{route('homeClient')}}" class="logo">
             <img src="{{asset('images/icons/logo.png')}}" alt="IMG-LOGO">
         </a>
 
@@ -41,27 +41,29 @@
             <nav class="menu">
                 <ul class="main_menu">
                     <li class="{{url()->current() == route('homeClient')?'sale-noti':''}}">
-                        <a href="/user/home">Trang chủ</a>
+                        <a href="{{route('homeClient')}}">Trang chủ</a>
+
                     </li>
 
                     <li class="{{url()->current() == route('listProductClient')?'sale-noti':''}}">
                         <a href="{{route('listProductClient')}}">Danh sách</a>
+
                     </li>
 
                     <li class="{{url()->current() == route('saleClient')?'sale-noti':''}}">
                         <a href="{{route('saleClient')}}">Sale</a>
                     </li>
 
-                    <li class="">
+                    <li>
                         <a href="javascript:void(0)">Bộ sưu tập</a>
                         <ul class="sub_menu">
-                            @foreach($collections    as $item)
+                            @foreach($collections as $item)
                                 <li><a href="{{route('listProductClient').'?collectionId='.$item->id}}">{{$item->name}}</a></li>
                             @endforeach
                         </ul>
                     </li>
 
-                    <li class="">
+                    <li>
                         <a href="javascript:void(0)">Danh mục</a>
                         <ul class="sub_menu">
                             @foreach($categories as $item)
@@ -70,12 +72,12 @@
                         </ul>
                     </li>
 
-                    <li class="{{url()->current() == route('postClient')?'sale-noti':''}}">
-                        <a href="{{route('postClient')}}">Bài viết</a>
+                    <li class="{{url()->current() == route('blogClient')?'sale-noti':''}}">
+                        <a href="{{route('blogClient')}}">Bài viết</a>
                     </li>
 
-                    <li class="">
-                        <a href="javascript:void(0)">Liên hệ</a>
+                    <li class="{{url()->current() == route('contactClient')?'sale-noti':''}}">
+                        <a href="{{route('contactClient')}}">Liên hệ</a>
                     </li>
                 </ul>
             </nav>
@@ -138,7 +140,7 @@
 <!-- Header Mobile --> <!-- Header dành cho điện thoại -->
 <div class="wrap_header_mobile">
     <!-- Logo moblie -->
-    <a href="index.html" class="logo-mobile">
+    <a href="{{route('homeClient')}}" class="logo-mobile">
         <img src="{{asset('images/icons/logo.png')}}" alt="IMG-LOGO">
     </a>
 
@@ -209,20 +211,21 @@
         <ul class="main-menu">
             <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
 						<span class="topbar-child1">
-							Free shipping for standard order over $100
+							{{--Free shipping for standard order over $100--}}
+                            Giao hàng miễn phí cho tất cả đơn hàng trên 1.000.000 vnđ
 						</span>
             </li>
 
             <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
                 <div class="topbar-child2-mobile">
 							<span class="topbar-email">
-								fashe@example.com
+								hanastore@gmail.com
 							</span>
 
                     <div class="topbar-language rs1-select2">
                         <select class="selection-1" name="time">
-                            <option>USD</option>
-                            <option>EUR</option>
+                            <option>VN</option>
+                            <option>EN</option>
                         </select>
                     </div>
                 </div>
@@ -230,56 +233,54 @@
 
             <li class="item-topbar-mobile p-l-10">
                 <div class="topbar-social-mobile">
-                    <a href="#" class="topbar-social-item fa fa-facebook"></a>
-                    <a href="#" class="topbar-social-item fa fa-instagram"></a>
-                    <a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+                    <a href="https://www.facebook.com/HanaStore-376911052841875" class="topbar-social-item fa fa-facebook"
+                       target="_blank"></a>
+                    <a href="https://www.instagram.com/hanastore205/" class="topbar-social-item fa fa-instagram"></a>
+                    <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/"
+                       class="topbar-social-item fa fa-pinterest-p"></a>
                     <a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
                     <a href="#" class="topbar-social-item fa fa-youtube-play"></a>
                 </div>
             </li>
 
             <li class="item-menu-mobile">
-                <a href="/user/home">Trang chủ</a>
+                <a href="{{route('homeClient')}}">Trang chủ</a>
             </li>
 
             <li class="item-menu-mobile">
-                <a href="/user/list">Danh sách</a>
+                <a href="{{route('listProductClient')}}">Danh sách</a>
             </li>
 
             <li class="item-menu-mobile">
-                <a href="product.html">Sale</a>
+                <a href="{{route('saleClient')}}">Sale</a>
             </li>
 
             <li class="item-menu-mobile">
-                <a href="cart.html">Bộ sưu tập</a>
+                <a href="javascript:void(0)">Bộ sưu tập</a>
                 <ul class="sub-menu">
                     @foreach($collections as $item)
-                        <li><a href="user/collection/{{$item->id}}">{{$item->name}}</a></li>
+                        <li><a href="{{route('listProductClient').'?collecyionId='.$item->id}}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
                 <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
             </li>
 
             <li class="item-menu-mobile">
-                <a href="product.html">Danh mục</a>
+                <a href="javascript:void(0)">Danh mục</a>
                 <ul class="sub-menu">
                     @foreach($categories as $item)
-                        <li><a href="user/category/{{$item->id}}">{{$item->name}}</a></li>
+                        <li><a href="{{route('listProductClient').'?categoryId='.$item->id}}">{{$item->name}}</a></li>
                     @endforeach
                 </ul>
                 <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
             </li>
 
             <li class="item-menu-mobile">
-                <a href="blog.html">Blog</a>
+                <a href="{{route('blogClient')}}">Bài viết</a>
             </li>
 
             <li class="item-menu-mobile">
-                <a href="about.html">About</a>
-            </li>
-
-            <li class="item-menu-mobile">
-                <a href="contact.html">Contact</a>
+                <a href="{{route('contactClient')}}">Liên hệ</a>
             </li>
         </ul>
     </nav>

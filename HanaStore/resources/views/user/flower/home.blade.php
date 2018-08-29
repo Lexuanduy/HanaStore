@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
     <style>
-        .img-fly{
+        .img-fly {
             position: absolute;
             z-index: 9999;
             width: 50px;
@@ -43,13 +43,31 @@
         }
 
         @keyframes MyAnimation {
-            0%   {transform: scale(0.4)}
-            25%  {transform: scale(1)}
-            75%  {transform: scale(1)}
-            100% {transform: scale(0.4)}
+            0% {
+                transform: scale(0.4)
+            }
+            25% {
+                transform: scale(1)
+            }
+            75% {
+                transform: scale(1)
+            }
+            100% {
+                transform: scale(0.4)
+            }
         }
-        .disable-scoll{
+
+        .disable-scoll {
             overflow: hidden;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container-fluid.effectImg {
+            width: 100%;
         }
     </style>
 @endsection
@@ -62,7 +80,7 @@
     </section>
 
     <!--Danh sách sản phẩm-->
-    <section class="product bgwhite p-t-45 p-b-40">
+    <section class="product bgpink p-t-45 p-b-40">
         <div class="container">
             <div class="sec-title p-b-60">
                 <h3 class="m-text5 t-left">
@@ -76,14 +94,16 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                <img src="{{$item->images}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                <img src="{{$item->images}}" alt="IMG-PRODUCT"
+                                     style="height: 350px;object-fit: cover;">
                                 <div class="block2-overlay trans-0-4">
                                     <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                         <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                         <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                     </a>
 
-                                    <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
+                                    <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                         id="add-cart-{{$item->id}}">
                                         <!-- Button -->
                                         <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                             Thêm vào giỏ
@@ -98,13 +118,15 @@
                                 </a>
                                 @if($item->sale == 0)
                                     <span class="block2-price m-text6 p-r-5">
-                                        {{number_format($item->price,0,',','.')}} (VND)
+                                        {{number_format($item->price,0,',','.')}} <span
+                                                style="text-transform: lowercase">vnđ</span>
                                     </span>
                                 @else
                                     <span class="block2-price m-text6 p-r-5 text-decoration">
-                                        {{number_format($item->price,0,',','.')}} (VND)
+                                        {{number_format($item->price,0,',','.')}} <span
+                                                style="text-transform: lowercase">vnđ</span>
                                     </span>
-                                    <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
+                                    <span class="block2-sale m-text6 p-r-5" style="color: #F8A300;text-transform: lowercase">
                                         {{$item->discountPriceString}}
                                     </span>
                                 @endif
@@ -123,9 +145,9 @@
 
     <!-- Product Sale-->
     @if(Count($products_sale) > 0)
-        <section class="product-sale bgwhite p-t-45 p-b-105">
+        <section class="product-sale bgwhite p-t-45 p-b-80">
             <div class="container">
-                <div class="sec-title p-b-60">
+                <div class="sec-title p-b-40">
                     <h3 class="m-text5 t-left">
                         Sản phẩm khuyến mãi
                     </h3>
@@ -139,14 +161,16 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <img src="{{$item->images}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                        <img src="{{$item->images}}" alt="IMG-PRODUCT"
+                                             style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                                 id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
                                                 <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                     Thêm vào giỏ
@@ -162,13 +186,15 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                                {{number_format($item->price,0,',','.')}} (VND)
+                                                {{number_format($item->price,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
                                             </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                                {{number_format($item->price,0,',','.')}} (VND)
+                                                {{number_format($item->price,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
                                             </span>
-                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
+                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300;text-transform: lowercase">
                                                 {{$item->discountPriceString}}
                                             </span>
                                         @endif
@@ -181,9 +207,9 @@
             </div>
         </section>
     @else
-        <section class="product-sale bgwhite p-t-45 p-b-105">
+        <section class="product-sale bgwhite p-t-45 p-b-80">
             <div class="container">
-                <div class="sec-title p-b-60">
+                <div class="sec-title p-b-40">
                     <h3 class="m-text5 t-left">
                         Sản phẩm khuyến mãi
                     </h3>
@@ -197,9 +223,9 @@
 
     <!-- Product New-->
     @if(Count($products_new) > 0)
-        <section class="product-sale bgwhite p-t-45 p-b-105">
+        <section class="product-sale bgpink p-t-45 p-b-40">
             <div class="container">
-                <div class="sec-title p-b-60">
+                <div class="sec-title p-b-40">
                     <h3 class="m-text5 t-left">
                         Sản phẩm mới
                     </h3>
@@ -213,14 +239,16 @@
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
-                                        <img src="{{$item->images}}" alt="IMG-PRODUCT" style="height: 350px;object-fit: cover;">
+                                        <img src="{{$item->images}}" alt="IMG-PRODUCT"
+                                             style="height: 350px;object-fit: cover;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-{{$item->id}}">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                                 id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
                                                 <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                     Thêm vào giỏ
@@ -236,13 +264,15 @@
                                         </a>
                                         @if($item->sale == 0)
                                             <span class="block2-price m-text6 p-r-5">
-                                                {{number_format($item->price,0,',','.')}} (VND)
+                                                {{number_format($item->price,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
                                             </span>
                                         @else
                                             <span class="block2-price m-text6 p-r-5 text-decoration">
-                                                {{number_format($item->price,0,',','.')}} (VND)
+                                                {{number_format($item->price,0,',','.')}} <span
+                                                        style="text-transform: lowercase">vnđ</span>
                                             </span>
-                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300">
+                                            <span class="block2-sale m-text6 p-r-5" style="color: #F8A300;text-transform: lowercase">
                                                 {{$item->discountPriceString}}
                                             </span>
                                         @endif
@@ -255,9 +285,9 @@
             </div>
         </section>
     @else
-        <section class="product-sale bgwhite p-t-45 p-b-105">
+        <section class="product-sale bgpink p-t-45 p-b-40">
             <div class="container">
-                <div class="sec-title p-b-60">
+                <div class="sec-title p-b-40">
                     <h3 class="m-text5 t-left">
                         Sản phẩm mới
                     </h3>
@@ -270,90 +300,12 @@
     @endif
 
     <!-- Banner2 -->
-    <section class="banner2 bg5 p-t-55 p-b-55">
-        <div class="container">
+    <section class="banner2 bgwhite" style="margin-left: -15px">
+        <div class="container-fluid effectImg">
             <div class="row">
-                <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="hov-img-zoom pos-relative">
-                        <img src="{{asset('images/banner-08.jpg')}}" alt="IMG-BANNER">
-
-                        <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
-							<span class="m-text9 p-t-45 fs-20-sm">
-								The Beauty
-							</span>
-
-                            <h3 class="l-text1 fs-35-sm">
-                                Lookbook
-                            </h3>
-
-                            <a href="#" class="s-text4 hov2 p-t-20 ">
-                                View Collection
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
-                    <div class="bgwhite hov-img-zoom pos-relative p-b-20per-ssm">
-                        <img src="{{asset('images/shop-item-09.jpg')}}" alt="IMG-BANNER">
-
-                        <div class="ab-t-l sizefull flex-col-c-b p-l-15 p-r-15 p-b-20">
-                            <div class="t-center">
-                                <a href="product-detail.html" class="dis-block s-text3 p-b-5">
-                                    Gafas sol Hawkers one
-                                </a>
-
-                                <span class="block2-oldprice m-text7 p-r-5">
-									$29.50
-								</span>
-
-                                <span class="block2-newprice m-text8">
-									$15.90
-								</span>
-                            </div>
-
-                            <div class="flex-c-m p-t-44 p-t-30-xl">
-                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 days">
-										69
-									</span>
-
-                                    <span class="s-text5">
-										days
-									</span>
-                                </div>
-
-                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 hours">
-										04
-									</span>
-
-                                    <span class="s-text5">
-										hrs
-									</span>
-                                </div>
-
-                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 minutes">
-										32
-									</span>
-
-                                    <span class="s-text5">
-										mins
-									</span>
-                                </div>
-
-                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
-									<span class="m-text10 p-b-1 seconds">
-										05
-									</span>
-
-                                    <span class="s-text5">
-										secs
-									</span>
-                                </div>
-                            </div>
-                        </div>
+                        <div id="three-container"></div>
                     </div>
                 </div>
             </div>
@@ -361,90 +313,40 @@
     </section>
 
     <!-- Blog -->
-    <section class="blog bgwhite p-t-94 p-b-65">
+    <section class="blog bgwhite p-t-60 p-b-65">
         <div class="container">
             <div class="sec-title p-b-52">
                 <h3 class="m-text5 t-center">
-                    Our Blog
+                    Bài viết
                 </h3>
             </div>
 
             <div class="row">
-                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-                    <!-- Block3 -->
-                    <div class="block3">
-                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-                            <img src="{{asset('images/blog-01.jpg')}}" alt="IMG-BLOG">
-                        </a>
+                @foreach($articles as $item)
+                    <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="block3">
+                            <a href="{{route('blogClient').$item->id}}" class="block3-img dis-block hov-img-zoom">
+                                <img src="{{$item->images}}" alt="IMG-BLOG" style="object-fit: cover; max-width: 370px;max-height: 277px">
+                            </a>
 
-                        <div class="block3-txt p-t-14">
-                            <h4 class="p-b-7">
-                                <a href="blog-detail.html" class="m-text11">
-                                    Black Friday Guide: Best Sales & Discount Codes
-                                </a>
-                            </h4>
+                            <div class="block3-txt p-t-14">
+                                <h4 class="p-b-7">
+                                    <a href="{{route('blogClient').'/'.$item->id}}" class="m-text11">
+                                        {{$item->title}}
+                                    </a>
+                                </h4>
 
-                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-                            <span class="s-text6">on</span> <span class="s-text7">July 22, 2017</span>
+                                <span class="s-text6">Người đăng:</span> <span class="s-text7">SlowV</span> |
+                                <span class="s-text6">Ngày:</span> <span class="s-text7">{{$item->created_at->format('d-m-Y')}}</span>
 
-                            <p class="s-text8 p-t-16">
-                                Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id
-                                euismod. Inter-dum et malesuada fames
-                            </p>
+                                <p class="s-text8 p-t-16">
+                                    {{$item->content}}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-                    <!-- Block3 -->
-                    <div class="block3">
-                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-                            <img src="{{asset('images/blog-02.jpg')}}" alt="IMG-BLOG">
-                        </a>
-
-                        <div class="block3-txt p-t-14">
-                            <h4 class="p-b-7">
-                                <a href="blog-detail.html" class="m-text11">
-                                    The White Sneakers Nearly Every Fashion Girls Own
-                                </a>
-                            </h4>
-
-                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-                            <span class="s-text6">on</span> <span class="s-text7">July 18, 2017</span>
-
-                            <p class="s-text8 p-t-16">
-                                Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex
-                                nulla
-                                in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
-                    <!-- Block3 -->
-                    <div class="block3">
-                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
-                            <img src="{{asset('images/blog-03.jpg')}}" alt="IMG-BLOG">
-                        </a>
-
-                        <div class="block3-txt p-t-14">
-                            <h4 class="p-b-7">
-                                <a href="blog-detail.html" class="m-text11">
-                                    New York SS 2018 Street Style: Annina Mislin
-                                </a>
-                            </h4>
-
-                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
-                            <span class="s-text6">on</span> <span class="s-text7">July 2, 2017</span>
-
-                            <p class="s-text8 p-t-16">
-                                Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed
-                                hendrerit ligula porttitor. Fusce sit amet maximus nunc
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -666,4 +568,11 @@
     <script src="{{asset('js/main.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{asset('js/home-user.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-41c52890748cd7143004e05d3c5f786c66b19939c4500ce446314d1748483e13.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/bas.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/OrbitControls-2.js"></script>
+    <script src="{{asset('js/effects.js')}}"></script>
 @endsection

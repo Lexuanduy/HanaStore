@@ -16,6 +16,12 @@ $(document).ready(function () {
         $('#messageDeleteCart').removeClass('show-mess');
     }, 4000);
 
+    // Mess delete product success.
+    $('#messageOrderCart').addClass('show-mess');
+    setTimeout(function () {
+        $('#messageOrderCart').removeClass('show-mess');
+    }, 4000);
+
 
     $('.btn-delete').each(function () {
         var nameProduct = $(this).parent().parent().find('.name-product').html();

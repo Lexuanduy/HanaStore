@@ -29,29 +29,6 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-    <style>
-        .img-fly{
-            position: absolute;
-            z-index: 9999;
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 100%;
-            border: 1.5px solid rgba(255, 191, 182, 0.78);
-            transition: all 1s ease;
-            animation: MyAnimation 1.5s;
-        }
-
-        @keyframes MyAnimation {
-            0%   {transform: scale(0.4)}
-            25%  {transform: scale(1)}
-            75%  {transform: scale(1)}
-            100% {transform: scale(0.4)}
-        }
-        .disable-scoll{
-            overflow: hidden;
-        }
-    </style>
 @endsection
 
 @section('content')

@@ -29,9 +29,9 @@ class Product extends Model
     public function getDiscountPriceStringAttribute()
     {
         if ($this->sale == 0) {
-            return sprintf('%s (vnd)', number_format($this->price, 0));
+            return sprintf('%s (vnđ)', number_format($this->price, 0));
         }
-        return sprintf('%s (vnd)', number_format(($this->price - ($this->price * $this->sale / 100)), 0));
+        return sprintf('%s (vnđ)', number_format(($this->price - ($this->price * $this->sale / 100)), 0));
     }
 
     public function getOriginalPriceStringAttribute()

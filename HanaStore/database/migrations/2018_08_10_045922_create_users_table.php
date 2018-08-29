@@ -17,14 +17,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('avatar');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->integer('phone');
             $table->integer('gender')->default(0);//0. Khác, 1. Nam, 2. Nữ
             $table->date('birthDay');
-            $table->string('addressDetail'); // Địa chỉ chi tiết.
-            $table->string('city'); // Thành phố.
-            $table->string('county'); // Quận, huyện.
-            $table->string('ward'); // Phường, xã.
             $table->integer('level')->default(0);
             $table->timestamps();
             $table->integer('status')->default(1);
