@@ -1,6 +1,8 @@
 /*[ FONT SIZE ]
 ///////////////////////////////////////////////////////////
 */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&subset=vietnamese');
+
 .fs-1 {font-size: 1px;}
 .fs-2 {font-size: 2px;}
 .fs-3 {font-size: 3px;}
@@ -3217,8 +3219,9 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text5 {
-	font-family: Montserrat-Bold;
+    font-family: 'Quicksand', sans-serif;
 	font-size: 30px;
+    font-weight: bold;
 	color: #222222;
 	line-height: 1.2;
 	text-transform: uppercase;
