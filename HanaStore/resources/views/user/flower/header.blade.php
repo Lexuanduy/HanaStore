@@ -89,9 +89,27 @@
 
         <!-- Header Icon --> <!-- Icon User-->
         <div class="header-icons">
-            <a href="javascript:void(0)" class="header-wrapicon1 dis-block user-account">
-                <img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
-            </a>
+            @guest
+                <a href="javascript:void(0)" class="header-wrapicon1 dis-block user-account">
+                    <img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
+                </a>
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="javascript:void (0)" id="logout">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
             <span class="linedivide1"></span>
 
             <div class="header-wrapicon2" id="cart-icon-header">

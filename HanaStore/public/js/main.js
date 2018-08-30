@@ -205,4 +205,22 @@
         $('#modalSocia').modal();
     });
 
+    $('#logout').click(function () {
+        $.ajax({
+            url: '/logout',
+            method: 'post',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function () {
+            },
+            error:function () {
+
+            }
+        })
+        setTimeout(function () {
+            window.location.reload();
+        },500)
+    });
+
 })(jQuery);

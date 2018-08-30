@@ -92,11 +92,14 @@ Route::resource('admin/category', 'CategoryController');
 
 /*<---=============================================================================================-->*/
 
-// Route login socilite Client
-Route::get('auth/{service}', 'Auth\LoginController@redirectToProvider');
-Route::get('auth/{service}/callback', 'Auth\LoginController@handleProviderCallback');
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Route login socilite Client
+Route::get('auth/google', 'GoogleController@redirectToProvider');
+Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
+
+Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
+Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
+
