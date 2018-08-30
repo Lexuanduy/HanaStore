@@ -1,4 +1,4 @@
-@extends('admin.layout.master', [
+@extends('admin.layout.app', [
     'currentPage' => 'show',
     'current_menu' => 'product_manager',
     'current_sub_menu' => 'show_item',

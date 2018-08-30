@@ -1,4 +1,4 @@
-@extends('admin.layout.master', [
+@extends('admin.layout.app', [
     'currentPage' => 'form',
     'current_menu' => 'product_manager',
     'current_sub_menu' => 'create_new',
@@ -43,12 +43,11 @@
     </style>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <!--main form -->
             <div class="card">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        Vui lòng sửa các lỗi bên dưới và thử lại.
+                    <div class="alert alert-danger">Vui lòng sửa các lỗi bên dưới và thử lại.
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -56,29 +55,27 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" action="/admin/product" class="form-horizontal bg-info"
-                      enctype="multipart/form-data">
-                    {{csrf_field()}}
-                    <div class="card-header card-header-text text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create Product</h4>
-                    </div>
+                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
+                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create Product</h4>
+                </div>
 
-                    <!--form edit flowers-->
-                    <div class="card-content">
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
-                            <div class="col-sm-8">
+                <!--form edit flowers-->
+                <div class="card-body container">
+                    <form method="POST" action="/admin/product" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        <div class="form-group row" style="margin-bottom: -5px;">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Name</label>
+                            <div class="col-md-8">
                                 <div class="form-group label-floating" {{$errors->has('name')?' has-error':''}}>
-                                    <input type="text" name="name" class="form-control" required>
-                                    <span class="material-input"></span>
+                                    <input
+                                        type="text" name="name" class="form-control" required> <span class="material-input"></span>
                                 </div>
                             </div>
                         </div>
-
                         <!-- props name of categories by id-->
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Category</label>
-                            <div class="col-sm-4">
+                        <div class="form-group row">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Category</label>
+                            <div class="col-md-4">
                                 <div class="form-group label-floating">
                                     <select name="categoryId" class="form-control">
                                         <option value="">Select category...</option>
@@ -90,11 +87,10 @@
                             </div>
                         </div>
                         <!-- props name of categories by id-->
-
                         <!-- props name of collections by id-->
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Collection</label>
-                            <div class="col-sm-4">
+                        <div class="form-group row">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Collection</label>
+                            <div class="col-md-4">
                                 <div class="form-group label-floating">
                                     <select class="form-control" name="collectionId">
                                         <option value="">Select collection...</option>
@@ -106,10 +102,9 @@
                             </div>
                         </div>
                         <!-- props name of collections by id-->
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Price</label>
-                            <div class="col-sm-4">
+                        <div class="form-group row">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Price</label>
+                            <div class="col-md-4">
                                 <div class="input-group label-floating">
                                     <input type="text" name="price" class="form-control" required>
                                     <span class="input-group-addon">VND</span>
@@ -119,15 +114,15 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row text-center">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
-                            <div class="form-group">
+                        <div class="form-group row">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Upload image</label>
+                            <div class="form-group text-center">
                                 <div class="row ml-1 custom-file">
-                                    <div class="col-sm-3">
+                                    <div class="col-md-3">
                                         <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
                                         <span class="badge">Choose image...</span>
-                                        <img id="upload-image" class="broken" src="#" alt="Choose image here" />
+                                        <img id="upload-image" class="broken"
+                                             src="#" alt="Choose image here">
                                     </div>
                                     @if($errors->has('images'))
                                         <label class="text-danger">*{{$errors->first('images')}}</label>
@@ -135,10 +130,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Sale</label>
-                            <div class="col-sm-4">
+                        <div class="form-group row">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Sale</label>
+                            <div class="col-md-4">
                                 <div class="input-group label-floating">
                                     <input type="text" name="sale" class="form-control" required>
                                     <span class="input-group-addon">%</span>
@@ -148,10 +142,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
-                            <div class="col-sm-8">
+                        <div class="form-group row">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Description</label>
+                            <div class="col-md-8">
                                 <div class="form-group label-floating">
                                     <input type="text" name="description" class="form-control" required>
                                     @if($errors->has('description'))
@@ -160,10 +153,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Detail</label>
-                            <div class="col-sm-8">
+                        <div class="form-group row">
+                            <label class="col-md-2 label-on-left" for="inputSuccess">Detail</label>
+                            <div class="col-md-8">
                                 <div class="form-group label-floating">
                                     <textarea class="form-control" name="detail" rows="3" required></textarea>
                                     @if($errors->has('detail'))
@@ -172,20 +164,19 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-10">
-                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Create
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-10">
+                                <button type="submit" value="Submit" class="btn btn-primary">Create
                                     <div class="ripple-container"></div>
                                 </button>
-                                <button type="reset" value="Reset" class="btn btn-reset btn-fill btn-danger">Reset
+                                <button type="reset" value="Reset" class="btn btn-reset btn-danger">Reset
                                     <div class="ripple-container"></div>
                                 </button>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

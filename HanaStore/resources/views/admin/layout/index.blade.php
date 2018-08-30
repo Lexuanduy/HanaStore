@@ -1,4 +1,4 @@
-@extends('admin.layout.master', [
+@extends('admin.layout.app', [
     'currentPage' => 'home',
     'current_menu' => 'Home',
     'current_sub_menu' => 'Home',
@@ -128,142 +128,196 @@
         }
     </style>
     <!-- /.row -->
-    <div class="row parent-dasboard">
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row items-dasboard">
-                        <div class="col-xs-4" style="margin-left: 10px">
-                            <i class="material-icons" style="padding-left: 10px; font-size: 80px;">image</i>
-                        </div>
-                        <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Product</h2>
+    <div class="container>">
+        <div class="row parent-dasboard">
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row items-dasboard">
+                            <div class="col-xs-4" style="margin-left: 10px">
+                                <i class="fab fa-product-hunt fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right" style="float: right">
+                                <h2>Products</h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <a href="/admin/product">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <a href="/admin/product">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
             </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row items-dasboard">
+                            <div class="col-xs-4" style="margin-left: 10px">
+                                <i class="fas fa-folder-minus fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right" style="float: right">
+                                <h2>Categories</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/admin/category">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row items-dasboard">
+                            <div class="col-xs-4" style="margin-left: 10px">
+                                <i class="far fa-list-alt fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right" style="float: right">
+                                <h2>Collections</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="admin/collection">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
         </div>
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <div class="row items-dasboard">
-                        <div class="col-xs-4" style="margin-left: 10px">
-                            <i class="material-icons" style="font-size: 80px">apps</i>
-                        </div>
-                        <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Category</h2>
+        <div class="row parent-dasboard">
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-purple">
+                    <div class="panel-heading">
+                        <div class="row items-dasboard">
+                            <div class="col-xs-4" style="margin-left: 10px">
+                                <i class="fas fa-clipboard-list fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right" style="float: right">
+                                <h2>Orders</h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <a href="/admin/category">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <a href="admin/order">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
             </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row items-dasboard">
+                            <div class="col-xs-4" style="margin-left: 10px">
+                                <i class="fa fa-chart-line fa-5x"></i>
+                            </div>
+                            <div class="col-xs-8 text-right" style="float: right">
+                                <h2>Chart</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/admin/chart">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="panel panel-sea">
+                    <div class="panel-heading">
+                        <div class="row items-dasboard">
+                            <div class="col-xs-4" style="margin-left: 10px">
+                                <i class="fa fa-chart-bar fa-5x" ></i>
+                            </div>
+                            <div class="col-xs-8 text-right" style="float: right">
+                                <h2>Revenue</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/admin/chart">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
         </div>
 
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-yellow">
-                <div class="panel-heading">
-                    <div class="row items-dasboard">
-                        <div class="col-xs-4" style="margin-left: 10px">
-                            <i class="material-icons" style="font-size: 80px">apps</i>
-                        </div>
-                        <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Collection</h2>
+        <div class="row">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div id="linechart_material">
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                <a href="admin/collection">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
             </div>
-        </div>
 
-    </div>
-    <div class="row parent-dasboard">
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-purple">
-                <div class="panel-heading">
-                    <div class="row items-dasboard">
-                        <div class="col-xs-4" style="margin-left: 10px">
-                            <i class="fab fa-first-order fa-5x" style="font-size: 70px"></i>
-                        </div>
-                        <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Order</h2>
-                        </div>
-                    </div>
-                </div>
-                <a href="admin/order">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+            </script>
+            <script type = "text/javascript">
+                google.charts.load('current', {packages: ['corechart','line']});
+            </script>
 
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+            <script type="text/javascript">
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
 
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <div class="row items-dasboard">
-                        <div class="col-xs-4" style="margin-left: 10px">
-                            <i class="fa fa-chart-line fa-5x"></i>
-                        </div>
-                        <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Chart</h2>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ['Day', 'Revenue (VND)'],
+                        ['22 August',  1000],
+                        ['23 August',  1170],
+                        ['24 August',  660],
+                        ['25 August',  1030],
+                        ['26 August',  1030],
+                        ['27 August',  1030],
+                        ['28 August',  1030],
+                        ['29 August',  1030],
+                        ['30 August',  1030],
+                    ]);
 
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+                    var options = {
+                        title: 'Store Performance',
+                        curveType: 'function',
+                        legend: { position: 'bottom' },
+                        height: 500
+                    };
 
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-sea">
-                <div class="panel-heading">
-                    <div class="row items-dasboard">
-                        <div class="col-xs-4" style="margin-left: 10px">
-                            <i class="fa fa-chart-bar fa-5x" ></i>
-                        </div>
-                        <div class="col-xs-8 text-right" style="float: right">
-                            <h2>Revenue</h2>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
+                    var chart = new google.visualization.LineChart(document.getElementById('linechart_material'));
+
+                    chart.draw(data, options);
+                }
+            </script>
         </div>
 
     </div>

@@ -89,3 +89,4 @@ Route::get('/admin/chart', function () {
 });
 Route::resource('admin/category', 'CategoryController');
 
+

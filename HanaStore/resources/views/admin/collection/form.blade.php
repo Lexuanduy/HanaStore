@@ -1,4 +1,4 @@
-@extends('admin.layout.master', [
+@extends('admin.layout.app', [
     'currentPage' => 'form',
     'current_menu' => 'collection_manager',
     'current_sub_menu' => 'create_new',

@@ -1,4 +1,4 @@
-@extends('admin.layout.master', [
+@extends('admin.layout.app', [
     'currentPage' => 'list',
     'current_menu' => 'collection_manager',
     'current_sub_menu' => 'list_item',
@@ -13,79 +13,79 @@
             background-color: #117a8b;
             color: #fff;
         }
-        .id-flower{
-            background-color: #ffff00;
-        }
     </style>
-    <div class="card">
-        <div class="card-content">
-            <div class="row">
-                <div class="card-header card-header-text text-center col-sm-3" data-background-color="green">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
                     <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> COLLECTION CATALOGUE</h4>
                 </div>
-                <div class="ml-2">
-                    <a href="/admin/collection/create" class="btn btn-twitter"><i class="far fa-plus-square"></i> Create New</a>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group col-sm-4">
-                    <label class="mr-3 badge">Search by name or id,...</label>
-                    <form action="/admin/collection/search">
-                        <div class="form-group">
-                            <input type="text" name="records" id="search" class="form-control" placeholder="Search Collection Data" />
+                <div class="card-body">
+                    <div class="form-group col-sm-4">
+                        <label class="mr-3 badge badge-info">Search by name or id,...</label>
+                        <form action="/admin/collection/search">
+                            <div class="form-group">
+                                <input type="text" name="records" id="search" class="form-control" placeholder="Search Collection Data" />
+                            </div>
+                        </form>
+
+                        <div class="ml-2">
+                            <a href="/admin/collection/create" class="btn btn-warning"><i class="far fa-plus-square"></i> Create New</a>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </div>
 
-            <!--List Flower Table-->
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="table-responsive">
-                        @if($collection->count()>0)
-                            <table class="table table-hover table-striped table-condensed table-bordered">
-                                <thead>
-                                <tr>
-                                    <th scope="col" style="width: 1em">{{__('ID')}}</th>
-                                    <th scope="col" style="width: 10em">{{__('Image')}}</th>
-                                    <th class="col">{{__('Collection')}}</th>
-                                    <th class="col">{{__('Description')}}</th>
-                                    <th scope="col" style="width: 45px">{{__('Action')}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($collection as $item)
-                                    <tr>
-                                        <th class="id-flower" scope="row">{{$item->id}}</th>
-                                        <td>
-                                            <div class="card" style="background-size: cover; height: 120px; width: 120px">
-                                                <a href="/admin/collection/{{ $item->id }}">
-                                                    <img src="{{$item->images}}" class="img-thumbnail" style="background-size: cover; height: 120px; width: 120px" alt="images"/></a>
-                                            </div>
-                                        </td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->description}}</td>
-                                        <td class="none">
-                                            <a class="btn btn-info btn-sm" href="/admin/collection/{{$item -> id}}/edit" style="width: 96.06px"><i class="fas fa-edit"></i> <b>Edit</b></a>
+                    <!--List Flower Table-->
+                    <div class="limiter">
+                        <div class="container-table100">
+                            <div class="wrap-table100">
+                                <div class="table100">
+                                    @if($collection->count()>0)
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1">{{__('ID')}}</th>
+                                                <th class="column2">{{__('Image')}}</th>
+                                                <th class="column5">{{__('Collection')}}</th>
+                                                <th class="column8">{{__('Description')}}</th>
+                                                <th class="column9">{{__('Action')}}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($collection as $item)
+                                                <tr>
+                                                    <td class="column1">{{$item->id}}</td>
+                                                    <td class="column2">
+                                                        <div class="card" style="background-size: cover; height: 120px; width: 120px">
+                                                            <a href="/admin/collection/{{ $item->id }}">
+                                                                <img src="{{$item->images}}" class="img-thumbnail" style="background-size: cover; height: 120px; width: 120px" alt="images"/></a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="column3">{{$item->name}}</td>
+                                                    <td class="column8">{{$item->description}}</td>
+                                                    <td class="column9">
+                                                        <a class="text-primary" href="/admin/collection/{{$item -> id}}/edit"><i class="fas fa-edit"></i></a>
 
-                                            <a class="btn btn-delete btn-danger btn-sm" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i> <b>Remove</b></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                                @else
-                                    <div class="alert alert-danger">Hiện tại không có bộ sưu tập nào. Vui lòng click <a
-                                            href="/admin/collection/create" title="Thêm mới bộ sưu tập" class="btn-link">vào đây</a> để tạo mới.
-                                    </div>
-                                @endif
-                            </table>
+                                                        <a class="text-danger" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            @else
+                                                <div class="alert alert-danger">Hiện tại không có danh mục sản phẩm. Vui lòng click <a
+                                                        href="/admin/collection/create" title="Thêm mới sản phẩm" class="btn-link">vào đây</a> để tạo mới.
+                                                </div>
+                                            @endif
+                                        </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--List Flower Table-->
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        {{$collection->links()}}
                     </div>
                 </div>
-            </div>
-            <!--List Flower Table-->
-            <div class="row float-right mr-2">
-                {{$collection->links()}}
             </div>
         </div>
     </div>

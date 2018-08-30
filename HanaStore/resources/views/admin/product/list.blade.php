@@ -1,4 +1,4 @@
-@extends('admin.layout.master', [
+@extends('admin.layout.app', [
     'currentPage' => 'list',
     'current_menu' => 'product_manager',
     'current_sub_menu' => 'list_item',
@@ -13,107 +13,106 @@
             background-color: #117a8b;
             color: #fff;
         }
-        .id-flower{
-            background-color: #ffff00;
-        }
     </style>
-    <div class="card">
-        <div class="card-content">
-            <div class="row">
-                <div class="card-header card-header-text text-center col-sm-3" data-background-color="green">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
                     <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> FLOWERS CATALOGUE</h4>
                 </div>
-                <div class="ml-2">
-                    <a href="/admin/product/create" class="btn btn-twitter"><i class="far fa-plus-square"></i> Create New</a>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group col-sm-4">
-                    <label class="mr-3 badge">Search by name or id,...</label>
-                    <form action="/admin/product/search">
-                        <div class="form-group">
-                            <input type="text" name="records" id="search" class="form-control" placeholder="Search Flower Data" />
+                <div class="card-body">
+                    <div class="form-group col-sm-4">
+                        <label class="mr-3 badge badge-info">Search by name or id,...</label>
+                        <form action="/admin/product/search">
+                            <div class="form-group">
+                                <input type="text" name="records" id="search" class="form-control" placeholder="Search Flower Data" />
+                            </div>
+                        </form>
+
+                        <div class="ml-2">
+                            <a href="/admin/product/create" class="btn btn-warning"><i class="far fa-plus-square"></i> Create New</a>
+                        </div>
+                    </div>
+
+                    <!--Search by category-->
+                    <form action="/admin/product">
+                        <div class="form-group col-sm-4">
+                            <label class="mr-3 badge badge-info">Search by category</label>
+                            <select name="categoryId" class="form-control mr-3">
+                                <option value="0">All category</option>
+                                @foreach($categories as $item)
+                                    <option
+                                        value="{{$item->id}}" {{$categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                            <input type="submit" value="Filter" class="btn btn-style">
                         </div>
                     </form>
-                </div>
-            </div>
+                    <!--Search by category-->
 
-            <!--Search by category-->
-            <div class="row">
-                <form action="/admin/product">
-                    <div class="form-group col-sm-4">
-                        <label class="mr-3 badge">Search by category</label>
-                        <select name="categoryId" class="form-control mr-3">
-                            <option value="0">All category</option>
-                            @foreach($categories as $item)
-                                <option
-                                    value="{{$item->id}}" {{$categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
-                            @endforeach
-                        </select>
-                        <input type="submit" value="Filter" class="btn btn-social">
-                    </div>
-                </form>
-            </div>
-            <!--Search by category-->
+                    <!--List Flower Table-->
+                    <div class="limiter">
+                        <div class="container-table100">
+                            <div class="wrap-table100">
+                                <div class="table100">
+                                    @if($products_in_view->count()>0)
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1">{{__('ID')}}</th>
+                                                <th class="column2">{{__('Image')}}</th>
+                                                <th class="column3">{{__('Name')}}</th>
+                                                <th class="column4">{{__('Category')}}</th>
+                                                <th class="column5">{{__('Collection')}}</th>
+                                                <th class="column6">{{__('Price')}}</th>
+                                                <th class="column7">{{__('Sale')}}</th>
+                                                <th class="column8">{{__('Description')}}</th>
+                                                <th class="column9">{{__('Detail')}}</th>
+                                                <th class="column9">{{__('Action')}}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($products_in_view as $item)
+                                                <tr>
+                                                    <td class="column1">{{$item->id}}</td>
+                                                    <td class="column2">
+                                                        <div class="card" style="background-size: cover; height: 120px; width: 120px">
+                                                            <a href="/admin/product/{{ $item->id }}">
+                                                                <img src="{{$item->images}}" class="img-thumbnail" style="background-size: cover; height: 120px; width: 120px" alt="images"/></a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="column3">{{$item->name}}</td>
+                                                    <td class="column4">{{$item->category->name}}</td>
+                                                    <td class="column5">{{$item->collection->name}}</td>
+                                                    <td class="column6">{{number_format($item->price, 0, '.', ',')}} (VND)</td>
+                                                    <td class="column7">{{$item->sale}} %</td>
+                                                    <td class="column8">{{$item->description}}</td>
+                                                    <td class="column9">{{$item->detail}}</td>
+                                                    <td class="column9">
+                                                        <a class="text-primary" href="/admin/product/{{$item -> id}}/edit"><i class="fas fa-edit"></i></a>
 
-            <!--List Flower Table-->
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="table-responsive">
-                        @if($products_in_view->count()>0)
-                            <table class="table table-hover table-striped table-condensed table-bordered">
-                                <thead>
-                                <tr>
-                                    <th scope="col" style="width: 1em">{{__('ID')}}</th>
-                                    <th scope="col" style="width: 10em">{{__('Image')}}</th>
-                                    <th scope="col">{{__('Name')}}</th>
-                                    <th scope="col">{{__('Category')}}</th>
-                                    <th class="col">{{__('Collection')}}</th>
-                                    <th scope="col">{{__('Price')}}</th>
-                                    <th scope="col">{{__('Sale')}}</th>
-                                    <th scope="col">{{__('Description')}}</th>
-                                    <th scope="col">{{__('Detail')}}</th>
-                                    <th scope="col" style="width: 45px">{{__('Action')}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($products_in_view as $item)
-                                    <tr>
-                                        <th class="id-flower" scope="row">{{$item->id}}</th>
-                                        <td>
-                                            <div class="card" style="background-size: cover; height: 120px; width: 120px">
-                                                <a href="/admin/product/{{ $item->id }}">
-                                                    <img src="{{$item->images}}" class="img-thumbnail" style="background-size: cover; height: 120px; width: 120px" alt="images"/></a>
-                                            </div>
-                                        </td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->category->name}}</td>
-                                        <td>{{$item->collection->name}}</td>
-                                        <td>{{number_format($item->price, 0, '.', ',')}} <b>VND</b></td>
-                                        <td>{{$item->sale}} %</td>
-                                        <td>{{$item->detail}}</td>
-                                        <td>{{$item->description}}</td>
-                                        <td class="none">
-                                            <a class="btn btn-info btn-sm" href="/admin/product/{{$item -> id}}/edit" style="width: 96.06px"><i class="fas fa-edit"></i> <b>Edit</b></a>
-
-                                            <a class="btn btn-delete btn-danger btn-sm" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i> <b>Remove</b></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                        @else
-                            <div class="alert alert-danger">Hiện tại không có danh mục sản phẩm. Vui lòng click <a
-                                    href="/admin/product/create" title="Thêm mới sản phẩm" class="btn-link">vào đây</a> để tạo mới.
+                                                        <a class="text-danger" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            @else
+                                                <div class="alert alert-danger">Hiện tại không có danh mục sản phẩm. Vui lòng click <a
+                                                        href="/admin/product/create" title="Thêm mới sản phẩm" class="btn-link">vào đây</a> để tạo mới.
+                                                </div>
+                                            @endif
+                                        </table>
+                                </div>
                             </div>
-                        @endif
-                            </table>
+                        </div>
+                    </div>
+                    <!--List Flower Table-->
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                        {{$products_in_view->links()}}
                     </div>
                 </div>
-            </div>
-            <!--List Flower Table-->
-            <div class="row float-right mr-2">
-                {{$products_in_view->links()}}
             </div>
         </div>
     </div>
@@ -165,32 +164,4 @@
         })
     </script>
     <!--remove product in view-->
-
-    <!--live search-->
-    {{--<script>--}}
-        {{--$(document).ready(function(){--}}
-
-            {{--fetch_customer_data();--}}
-
-            {{--function fetch_customer_data(query = '')--}}
-            {{--{--}}
-                {{--$.ajax({--}}
-                    {{--url:'admin/product/action',--}}
-                    {{--method:'GET',--}}
-                    {{--data:{query:query},--}}
-                    {{--dataType:'json',--}}
-                    {{--success:function(data)--}}
-                    {{--{--}}
-                        {{--$('tbody').html(data.table_data);--}}
-                        {{--$('#total_records').text(data.total_data);--}}
-                    {{--}--}}
-                {{--})--}}
-            {{--}--}}
-
-            {{--$(document).on('keyup', '#search', function(){--}}
-                {{--var query = $(this).val();--}}
-                {{--fetch_customer_data(query);--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
 @endsection

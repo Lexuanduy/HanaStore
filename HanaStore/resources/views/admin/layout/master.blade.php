@@ -43,7 +43,7 @@
         </div>
         <div class="logo logo-mini">
             <a href="" class="simple-text">
-                Hana Store
+                H
             </a>
         </div>
         <div class="sidebar-wrapper">
