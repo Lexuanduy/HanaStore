@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 //Route dashboard admin
 Route::get('/admin', function (){
     return view('admin.layout.index');
@@ -89,3 +90,13 @@ Route::get('/admin/chart', function () {
 });
 Route::resource('admin/category', 'CategoryController');
 
+/*<---=============================================================================================-->*/
+
+// Route login socilite Client
+Route::get('auth/{service}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{service}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

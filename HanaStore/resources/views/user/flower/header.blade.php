@@ -58,7 +58,9 @@
                         <a href="javascript:void(0)">Bộ sưu tập</a>
                         <ul class="sub_menu">
                             @foreach($collections as $item)
-                                <li><a href="{{route('listProductClient').'?collectionId='.$item->id}}">{{$item->name}}</a></li>
+                                <li>
+                                    <a href="{{route('listProductClient').'?collectionId='.$item->id}}">{{$item->name}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -67,7 +69,9 @@
                         <a href="javascript:void(0)">Danh mục</a>
                         <ul class="sub_menu">
                             @foreach($categories as $item)
-                                <li><a href="{{route('listProductClient').'?categoryId='.$item->id}}">{{$item->name}}</a></li>
+                                <li>
+                                    <a href="{{route('listProductClient').'?categoryId='.$item->id}}">{{$item->name}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -85,10 +89,9 @@
 
         <!-- Header Icon --> <!-- Icon User-->
         <div class="header-icons">
-            <a href="#" class="header-wrapicon1 dis-block">
+            <a href="javascript:void(0)" class="header-wrapicon1 dis-block user-account">
                 <img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
             </a>
-
             <span class="linedivide1"></span>
 
             <div class="header-wrapicon2" id="cart-icon-header">
@@ -119,7 +122,7 @@
                     </ul>
 
                     <div class="header-cart-total" id="header-cart-total">
-                        Tổng tiền: {{$total}} vnđ
+                        Tổng tiền:            vnđ
                     </div>
 
                     <div class="header-cart-buttons">
@@ -131,6 +134,70 @@
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalSocia">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: rgba(0,0,0,0.14);">
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        Đăng nhập nhanh bằng mạng xã hội!
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/auth/google">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-google" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -148,7 +215,7 @@
     <div class="btn-show-menu">
         <!-- Header Icon mobile -->
         <div class="header-icons-mobile">
-            <a href="#" class="header-wrapicon1 dis-block">
+            <a href="javascript:void (0)" class="header-wrapicon1 dis-block">
                 <img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
             </a>
 
@@ -182,7 +249,7 @@
                     </ul>
 
                     <div class="header-cart-total">
-                        Tổng tiền: {{$total}} vnđ
+                        Tổng tiền:            vnđ
                     </div>
 
                     <div class="header-cart-buttons">
@@ -233,7 +300,8 @@
 
             <li class="item-topbar-mobile p-l-10">
                 <div class="topbar-social-mobile">
-                    <a href="https://www.facebook.com/HanaStore-376911052841875" class="topbar-social-item fa fa-facebook"
+                    <a href="https://www.facebook.com/HanaStore-376911052841875"
+                       class="topbar-social-item fa fa-facebook"
                        target="_blank"></a>
                     <a href="https://www.instagram.com/hanastore205/" class="topbar-social-item fa fa-instagram"></a>
                     <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/"

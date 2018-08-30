@@ -16,11 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('avatar');
-            $table->string('email')->unique();
-            $table->integer('phone');
-            $table->integer('gender')->default(0);//0. Khác, 1. Nam, 2. Nữ
-            $table->date('birthDay');
+            $table->string('avatar')->nulllabel();
+            $table->string('email')->unique()->nulllabel();
             $table->integer('level')->default(0);
             $table->timestamps();
             $table->integer('status')->default(1);

@@ -201,4 +201,8 @@
         $('.video-mo-01').css('opacity','0');
     });
 
+    $('.user-account').click(function () {
+        $('#modalSocia').modal();
+    });
+
 })(jQuery);
