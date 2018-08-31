@@ -223,4 +223,8 @@
         },500)
     });
 
+    $('#infoUser').click(function () {
+        $('#modalInfoUser').modal();
+    })
+
 })(jQuery);

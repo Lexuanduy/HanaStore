@@ -44,6 +44,7 @@ class GoogleController extends Controller
                 'email' => $googleUser->email,
                 'provider_id' => $googleUser->id,
                 'provider' => $googleUser->id,
+                'avatar' => $googleUser->avatar
             ]
         );
     }

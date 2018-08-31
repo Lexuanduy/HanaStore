@@ -2552,7 +2552,7 @@ input.num-product::-webkit-inner-spin-button {
     background-color: rgba(12, 0, 35, 0.32) !important;
 }
 
-.modal-content{
+#modalSocia .modal-content{
     margin-top: 20% !important;
     background: url("../img/bg-login-client.jpg") no-repeat center center;
     background-size: cover;
@@ -2675,6 +2675,57 @@ input.num-product::-webkit-inner-spin-button {
     text-align: center;
     margin-bottom: 20px;
     color: #000;
+}
+
+.list-item-user {
+    padding: 10px;
+}
+
+.list-item-user a{
+    border-bottom: 1px dashed #d9d9d9;
+    font-size: 14px;
+}
+
+.list-item-user a:last-child {
+    border-bottom: none;
+}
+
+.block2-btn-addcart button{
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #ffe3c5, rgba(234, 77, 179, 0.82), #eedb38, #28e9e4);
+    background-size: 500%;
+    border-radius: 35px;
+}
+
+.block2-btn-addcart button:hover {
+   animation: animate 20s linear infinite;
+}
+
+@keyframes animate {
+    0%{background-position: 0%;}
+    100% {
+        background-position: 500%;
+    }
+}
+
+.block2-btn-addcart button:before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #f5bc99, rgba(244, 81, 185, 0.82), #ffeb3b, #03a9f4);
+    background-size: 500%;
+    border-radius: 45px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.block2-btn-addcart button:hover:before{
+    filter: blur(20px);
+    opacity: 10;
 }
 
 

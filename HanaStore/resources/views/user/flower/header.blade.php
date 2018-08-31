@@ -99,14 +99,9 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="javascript:void (0)" id="logout">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                    <div class="dropdown-menu dropdown-menu-right list-item-user" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="javascript:void (0)" id="infoUser">Thông tin</a>
+                        <a class="dropdown-item" href="javascript:void (0)" id="logout">Đăng xuất</a>
                     </div>
                 </li>
             @endguest
@@ -140,7 +135,7 @@
                     </ul>
 
                     <div class="header-cart-total" id="header-cart-total">
-                        Tổng tiền:            vnđ
+                        Tổng tiền: {{$total}}vnđ
                     </div>
 
                     <div class="header-cart-buttons">
@@ -156,6 +151,8 @@
             </div>
         </div>
     </div>
+
+    <!--Modal login-->
     <div class="modal fade" id="modalSocia">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -220,6 +217,16 @@
             </div>
         </div>
     </div>
+
+    <!--Modal info user-->
+    <div class="modal fade" id="modalInfoUser">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                SlowV
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Header Mobile --> <!-- Header dành cho điện thoại -->
