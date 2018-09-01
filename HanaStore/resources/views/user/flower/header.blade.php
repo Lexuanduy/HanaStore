@@ -100,8 +100,12 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right list-item-user" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="javascript:void (0)" id="infoUser">Thông tin</a>
-                        <a class="dropdown-item" href="javascript:void (0)" id="logout">Đăng xuất</a>
+                        <a class="dropdown-item" href="javascript:void (0)" id="infoUser">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i> Thông tin
+                        </a>
+                        <a class="dropdown-item" href="javascript:void (0)" id="logout">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất
+                        </a>
                     </div>
                 </li>
             @endguest
@@ -163,7 +167,28 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div>
+                    <form action="#" method="post">
+                        @csrf
+                       <div class="form-group">
+                           <label class="control-label">Tài khoản:</label>
+                           <input type="text" class="form-control" placeholder="Tên tài khoản" name="username">
+                       </div>
+                        <div class="form-group">
+                            <label class="control-label">Mật khẩu:</label>
+                            <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+                        </div>
+                        <div class="form-group div-btn1">
+                            <button type="button" class="btn-register">
+                                Đăng ký
+                            </button>
+                        </div>
+                        <div class="form-group div-btn2">
+                            <button type="button" class="btn-login">
+                                Đăng nhập
+                            </button>
+                        </div>
+                    </form>
+                    <div class="title-social">
                         Đăng nhập nhanh bằng mạng xã hội!
                     </div>
                     <ul>
@@ -221,8 +246,36 @@
     <!--Modal info user-->
     <div class="modal fade" id="modalInfoUser">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                SlowV
+            <div style="text-align: center;">
+                <div class="box-user">
+                    @guest
+
+                    @else
+                        <div class="imgBx">
+                            <img src="{{ Auth::user()->avatar }}" alt="AVATAR-USER" id="avatarUser">
+                            <ul class="social-icon">
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="details-user">
+                            <h2>{{ Auth::user()->name }} <br> <span>3 vòng như 1</span></h2>
+                        </div>
+                    @endguest
+                </div>
             </div>
         </div>
     </div>

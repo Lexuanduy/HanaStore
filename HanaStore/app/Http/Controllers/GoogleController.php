@@ -21,9 +21,9 @@ class GoogleController extends Controller
 
         $authUser = $this->findOrCreateUser($user);
 
-        // Chỗ này để check xem nó có chạy hay không
-        // dd($user);
-
+//        // Chỗ này để check xem nó có chạy hay không
+//        // dd($user);
+//
         Auth::login($authUser, true);
 
         return redirect()->route('homeClient');
@@ -34,6 +34,13 @@ class GoogleController extends Controller
         $authUser = User::where('provider_id', $googleUser->id)->first();
 
         if ($authUser) {
+            $authUser->name = $googleUser->name;
+            $authUser->password = $googleUser->token;
+            $authUser->email = $googleUser->email;
+            $authUser->provider_id = $googleUser->id;
+            $authUser->provider = $googleUser->id;
+            $authUser->avatar = $googleUser->avatar;
+            $authUser->save();
             return $authUser;
         }
 

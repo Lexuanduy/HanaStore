@@ -224,7 +224,11 @@
     });
 
     $('#infoUser').click(function () {
+        var src = $('#avatarUser').attr('src').replace('?sz=50','');
         $('#modalInfoUser').modal();
+        $('#avatarUser').attr('src',src);
     })
+
+
 
 })(jQuery);

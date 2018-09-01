@@ -2671,14 +2671,96 @@ input.num-product::-webkit-inner-spin-button {
     transition: transform .5s;
 }
 
-#modalSocia .modal-body div{
+#modalSocia .modal-body .title-social{
     text-align: center;
     margin-bottom: 20px;
     color: #000;
 }
 
+#modalSocia .modal-body form {
+    width: 100%;
+    padding: 0 30px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+
+
+#modalSocia .modal-body form .div-btn2 {
+    text-align: center;
+    position: relative;
+    float: right;
+    display: inline-block;
+    width: 45%;
+}
+
+#modalSocia .modal-body form .div-btn1 {
+    text-align: center;
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 45%;
+}
+
+#modalSocia .modal-body form .div-btn2 .btn-login{
+    position: relative;
+    background: rgba(0, 0, 0, 0.73);
+    color: #fff;
+    width: 100%;
+    height: 35px;
+    border-radius: 30px;
+    transition: 0.5s;
+    text-transform: uppercase;
+    line-height: 35px;
+}
+
+#modalSocia .modal-body form .div-btn2 .btn-login:focus{
+    outline: none;
+}
+
+#modalSocia form .div-btn2 .btn-login:hover{
+    background: rgba(187, 31, 24, 0.83);
+    cursor: pointer;
+    color: #fff;
+}
+
+
+#modalSocia .modal-body form .div-btn1 .btn-register {
+    position: relative;
+    background: rgba(0, 0, 0, 0.73);
+    color: #fff;
+    width: 100%;
+    height: 35px;
+    border-radius: 30px;
+    transition: 0.5s;
+    text-transform: uppercase;
+    line-height: 35px;
+}
+
+#modalSocia .modal-body form .div-btn1 .btn-register:focus {
+    outline: none;
+}
+
+#modalSocia form .div-btn1 .btn-register:hover {
+    background: rgba(117, 169, 215, 0.76);
+    cursor: pointer;
+    color: #fff;
+}
+
+#modalSocia .modal-body form:after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+#modalSocia .modal-body form input[name="username"],
+#modalSocia .modal-body form input[name="password"]{
+    font-size: 14px;
+    height: 40px;
+}
+
 .list-item-user {
-    padding: 10px;
+    padding: 10px 5px;
 }
 
 .list-item-user a{
@@ -2727,5 +2809,162 @@ input.num-product::-webkit-inner-spin-button {
     filter: blur(20px);
     opacity: 10;
 }
+
+/*Style modal info user*/
+.box-user{
+    position: absolute;
+    top: 50%;
+    left: 10% !important;
+    background: #fff;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.37);
+}
+.imgBx{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    background: #000;
+    z-index: 2;
+}
+
+.box-user:hover .imgBx{
+    transform: translateY(-100px);
+}
+
+.imgBx img{
+    min-height: 500px;
+    min-width: 400px;
+    transition: 0.5s;
+    height: 100%;
+}
+
+.box-user:hover .imgBx img{
+    opacity: 0.5;
+}
+
+.box-user .social-icon{
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.box-user .social-icon li{
+    list-style: none;
+}
+
+.box-user .social-icon li a{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
+    color: #262626;
+    margin: 0 5px;
+    transition: 0.5s;
+    border-radius: 50%;
+    transform: translateY(200px);
+    opacity: 0;
+}
+
+.box-user:hover .social-icon li a{
+    transform: translateY(80px);
+    opacity: 1;
+}
+
+.box-user:hover .social-icon li:nth-child(1) a{
+    transition-delay: 0s;
+}
+
+.box-user:hover .social-icon li:nth-child(2) a {
+    transition-delay: 0.2s;
+}
+
+.box-user:hover .social-icon li:nth-child(3) a {
+    transition-delay: 0.4s;
+}
+
+.box-user:hover .social-icon li:nth-child(4) a {
+    transition-delay: 0.6s;
+}
+
+.box-user:hover .social-icon li:nth-child(5) a {
+    transition-delay: 0.8s;
+}
+
+.box-user .social-icon li a .fa{
+    font-size: 22px;
+    line-height: 50px;
+    transition: 0.5s;
+}
+
+.box-user .social-icon li a:hover .fa{
+    transform: rotateY(360deg);
+}
+
+.details-user{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 1;
+}
+
+.details-user h2{
+    margin: 10px 0 0;
+    text-align: center;
+    padding: 0;
+}
+
+.details-user h2 span{
+    color: #bbb;
+    font-size: 15px;
+}
+
+.box-user .social-icon li a:hover .fa-facebook {
+    transition: .4s;
+    color: #4267B2;
+}
+
+.box-user .social-icon li a:hover .fa-twitter {
+    transition: .4s;
+    color: #1DA1F2;
+}
+
+.box-user .social-icon li a:hover .fa-google {
+    transition: .4s;
+    color: #EA4335;
+}
+
+.box-user .social-icon li a:hover .fa-instagram {
+    transition: .4s;
+    color: #943AB3;
+}
+
+.box-user .social-icon li a:hover .fa-linkedin {
+    transition: .4s;
+    color: #2797CF;
+}
+
+
+
+
+
+
 
 

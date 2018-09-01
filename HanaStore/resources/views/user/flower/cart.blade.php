@@ -109,7 +109,7 @@
                     <div class="size10 trans-0-4 m-t-10 m-b-10">
                         <!-- Button -->
                         <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
-                            Cập nhật giỏ hàng
+                            <a href="{{route('giohang')}}" class="nextPhopping">Cập nhật giỏ hàng</a>
                         </button>
                     </div>
                 </div>
