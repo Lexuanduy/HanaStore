@@ -39,7 +39,8 @@ class GoogleController extends Controller
             $authUser->email = $googleUser->email;
             $authUser->provider_id = $googleUser->id;
             $authUser->provider = $googleUser->id;
-            $authUser->avatar = $googleUser->avatar;
+            $avatar = str_replace('?sz=50','',$googleUser->avatar);
+            $authUser->avatar = $avatar;
             $authUser->save();
             return $authUser;
         }

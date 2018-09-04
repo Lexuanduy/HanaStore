@@ -30,7 +30,7 @@ class FacebookAuthController extends Controller
 
         Auth::login($authUser, true);
 
-        return redirect()->route('home');
+        return redirect()->route('homeClient');
     }
 
     private function findOrCreateUser($facebookUser)
@@ -48,6 +48,7 @@ class FacebookAuthController extends Controller
                 'email' => $facebookUser->email,
                 'provider_id' => $facebookUser->id,
                 'provider' => $facebookUser->id,
+                'avatar' => $facebookUser->avatar
             ]
         );
     }

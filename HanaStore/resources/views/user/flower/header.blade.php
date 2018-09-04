@@ -193,7 +193,7 @@
                     </div>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="{{route('facebook.login')}}">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -229,7 +229,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#" >
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -247,12 +247,12 @@
     <div class="modal fade" id="modalInfoUser">
         <div class="modal-dialog" role="document">
             <div style="text-align: center;">
-                <div class="box-user">
-                    @guest
+                @guest
 
-                    @else
+                @else
+                    <div class="box-user active-box">
                         <div class="imgBx">
-                            <img src="{{ Auth::user()->avatar }}" alt="AVATAR-USER" id="avatarUser">
+                            <img src="{{ Auth::user()->avatar }}" alt="AVATAR-USER" class="avatarUser">
                             <ul class="social-icon">
                                 <li>
                                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -267,15 +267,42 @@
                                     <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="#" id="edit-user"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="details-user">
                             <h2>{{ Auth::user()->name }} <br> <span>3 vòng như 1</span></h2>
                         </div>
-                    @endguest
-                </div>
+                    </div>
+                    <div class="box-edit-user">
+                        <div class="imgBx">
+                            <img src="{{ Auth::user()->avatar }}" alt="AVATAR-USER" class="avatarUser">
+                            <form action="#" type="post" id="form-edit-user">
+                                <div class="form-group">
+                                    <label> Tên </label>
+                                    <input type="text" name="username" value="{{Auth::user()->name}}"
+                                           class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Link facebook <small> &lt; có thể để trống &gt;</small></label>
+                                    <input type="text" name="facebook"
+                                           value="{{isset(Auth::user()->facebook) ? Auth::user()->facebook: ''}}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label >
+                                        Link google plus
+                                    </label>
+                                    <input type="text" name="gmail"
+                                           value="{{isset(Auth::user()->gmail) ? Auth::user()->gmail: ''}}" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="group-btn-submit-edit-user">
+
+                        </div>
+                    </div>
+                @endguest
             </div>
         </div>
     </div>
