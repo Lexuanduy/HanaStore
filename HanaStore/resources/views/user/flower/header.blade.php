@@ -58,7 +58,9 @@
                         <a href="javascript:void(0)">Bộ sưu tập</a>
                         <ul class="sub_menu">
                             @foreach($collections as $item)
-                                <li><a href="{{route('listProductClient').'?collectionId='.$item->id}}">{{$item->name}}</a></li>
+                                <li>
+                                    <a href="{{route('listProductClient').'?collectionId='.$item->id}}">{{$item->name}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -67,7 +69,9 @@
                         <a href="javascript:void(0)">Danh mục</a>
                         <ul class="sub_menu">
                             @foreach($categories as $item)
-                                <li><a href="{{route('listProductClient').'?categoryId='.$item->id}}">{{$item->name}}</a></li>
+                                <li>
+                                    <a href="{{route('listProductClient').'?categoryId='.$item->id}}">{{$item->name}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -85,10 +89,26 @@
 
         <!-- Header Icon --> <!-- Icon User-->
         <div class="header-icons">
-            <a href="#" class="header-wrapicon1 dis-block">
-                <img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
-            </a>
+            @guest
+                <a href="javascript:void(0)" class="header-wrapicon1 dis-block user-account">
+                    <img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
+                </a>
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
 
+                    <div class="dropdown-menu dropdown-menu-right list-item-user" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="javascript:void (0)" id="infoUser">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i> Thông tin
+                        </a>
+                        <a class="dropdown-item" href="javascript:void (0)" id="logout">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất
+                        </a>
+                    </div>
+                </li>
+            @endguest
             <span class="linedivide1"></span>
 
             <div class="header-wrapicon2" id="cart-icon-header">
@@ -119,7 +139,7 @@
                     </ul>
 
                     <div class="header-cart-total" id="header-cart-total">
-                        Tổng tiền: {{$total}} vnđ
+                        Tổng tiền: {{$total}}vnđ
                     </div>
 
                     <div class="header-cart-buttons">
@@ -135,6 +155,131 @@
             </div>
         </div>
     </div>
+
+    <!--Modal login-->
+    <div class="modal fade" id="modalSocia">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: rgba(0,0,0,0.14);">
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="post">
+                        @csrf
+                       <div class="form-group">
+                           <label class="control-label">Tài khoản:</label>
+                           <input type="text" class="form-control" placeholder="Tên tài khoản" name="username">
+                       </div>
+                        <div class="form-group">
+                            <label class="control-label">Mật khẩu:</label>
+                            <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+                        </div>
+                        <div class="form-group div-btn1">
+                            <button type="button" class="btn-register">
+                                Đăng ký
+                            </button>
+                        </div>
+                        <div class="form-group div-btn2">
+                            <button type="button" class="btn-login">
+                                Đăng nhập
+                            </button>
+                        </div>
+                    </form>
+                    <div class="title-social">
+                        Đăng nhập nhanh bằng mạng xã hội!
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/auth/google">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-google" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal info user-->
+    <div class="modal fade" id="modalInfoUser">
+        <div class="modal-dialog" role="document">
+            <div style="text-align: center;">
+                <div class="box-user">
+                    @guest
+
+                    @else
+                        <div class="imgBx">
+                            <img src="{{ Auth::user()->avatar }}" alt="AVATAR-USER" id="avatarUser">
+                            <ul class="social-icon">
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="details-user">
+                            <h2>{{ Auth::user()->name }} <br> <span>3 vòng như 1</span></h2>
+                        </div>
+                    @endguest
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Header Mobile --> <!-- Header dành cho điện thoại -->
@@ -148,7 +293,7 @@
     <div class="btn-show-menu">
         <!-- Header Icon mobile -->
         <div class="header-icons-mobile">
-            <a href="#" class="header-wrapicon1 dis-block">
+            <a href="javascript:void (0)" class="header-wrapicon1 dis-block">
                 <img src="{{asset('images/icons/icon-header-01.png')}}" class="header-icon1" alt="ICON">
             </a>
 
@@ -182,7 +327,7 @@
                     </ul>
 
                     <div class="header-cart-total">
-                        Tổng tiền: {{$total}} vnđ
+                        Tổng tiền:            vnđ
                     </div>
 
                     <div class="header-cart-buttons">
@@ -233,7 +378,8 @@
 
             <li class="item-topbar-mobile p-l-10">
                 <div class="topbar-social-mobile">
-                    <a href="https://www.facebook.com/HanaStore-376911052841875" class="topbar-social-item fa fa-facebook"
+                    <a href="https://www.facebook.com/HanaStore-376911052841875"
+                       class="topbar-social-item fa fa-facebook"
                        target="_blank"></a>
                     <a href="https://www.instagram.com/hanastore205/" class="topbar-social-item fa fa-instagram"></a>
                     <a href="https://www.pinterest.com/hanastore205/hoa-h%E1%BB%93ng/"

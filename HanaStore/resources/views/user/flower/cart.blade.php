@@ -109,7 +109,7 @@
                     <div class="size10 trans-0-4 m-t-10 m-b-10">
                         <!-- Button -->
                         <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
-                            Cập nhật giỏ hàng
+                            <a href="{{route('giohang')}}" class="nextPhopping">Cập nhật giỏ hàng</a>
                         </button>
                     </div>
                 </div>
@@ -186,7 +186,6 @@
                             </div>
                         </div>
 
-
                         <!--  -->
                         <div class="flex-w flex-sb-m p-t-26 p-b-30">
                         <span class="m-text22 w-size19 w-full-sm">
@@ -197,11 +196,18 @@
                         </span>
                         </div>
 
-                        <div class="size15 trans-0-4">
-                            <!-- Button -->
-                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
-                                Đặt Hàng
-                            </button>
+                        <div class="size15 trans-0-4" >
+                            @guest
+                                <button class="btn-order">
+                                    <span class="front-btn">ĐẶT HÀNG</span>
+                                    <span class="center-btn"></span>
+                                    <span class="back-btn">ĐĂNG NHẬP ĐỂ TIẾP TỤC</span>
+                                </button>
+                            @else
+                                <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">
+                                    Đặt Hàng
+                                </button>
+                            @endguest
                         </div>
                     </form>
                 </div>

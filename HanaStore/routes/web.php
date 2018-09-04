@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 //Route dashboard admin
 Route::get('/admin', function (){
     return view('admin.layout.index');
@@ -88,4 +89,17 @@ Route::get('/admin/chart', function () {
    return view('admin.chart.chart');
 });
 Route::resource('admin/category', 'CategoryController');
+
+/*<---=============================================================================================-->*/
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route login socilite Client
+Route::get('auth/google', 'GoogleController@redirectToProvider');
+Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
+
+Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
+Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
 

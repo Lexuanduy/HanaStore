@@ -52,7 +52,7 @@ $(document).ready(function () {
                 }
                 $('#header-cart-wrapitem').html(content);
                 $('#header-icons-noti').text(new_count);
-                $('#header-cart-total').text('Tổng tiền: '+new_total_money + ' vnđ');
+                $('#header-cart-total').text('Tổng tiền: '+ new_total_money + ' vnđ');
             },
             error:function (msg) {
 
