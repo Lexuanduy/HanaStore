@@ -224,11 +224,14 @@
     });
 
     $('#infoUser').click(function () {
-        var src = $('#avatarUser').attr('src').replace('?sz=50','');
+        var src = $('.avatarUser').attr('src').replace('?type=normal','');
         $('#modalInfoUser').modal();
-        $('#avatarUser').attr('src',src);
+        $('.avatarUser').attr('src',src);
     })
 
-
+    $('#edit-user').click(function () {
+        $('.box-edit-user').addClass('active-box');
+        $('.box-user').removeClass('active-box');
+    });
 
 })(jQuery);
