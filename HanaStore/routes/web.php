@@ -13,21 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 //Route dashboard admin
 Route::get('/admin', function (){
     return view('admin.layout.index');
 });
-
 
 Route::get('/admin/product/search','ProductController@search');
 
 Route::get('/admin/category/search','CategoryController@search');
 
 Route::get('/admin/collection/search','CollectionController@search');
-
-// config web by Phuocding
-Route::resource('admin/product', 'ProductController');
-
 
 //Route update sản phẩm trong giỏ hàng.
 Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
@@ -89,4 +85,14 @@ Route::get('/admin/chart', function () {
 });
 Route::resource('admin/category', 'CategoryController');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route login socialite Client
+Route::get('auth/google', 'GoogleController@redirectToProvider');
+Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
+
+Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
+Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
 

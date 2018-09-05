@@ -96,16 +96,16 @@
                             <div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
                                 <img src="{{$item->images}}" alt="IMG-PRODUCT"
                                      style="height: 350px;object-fit: cover;">
-                                <div class="block2-overlay trans-0-4">
-                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                <div class="block2-overlay trans-0-5">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-5">
                                         <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                         <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                     </a>
 
-                                    <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                    <div class="block2-btn-addcart w-size1 trans-0-5 add-to-cart"
                                          id="add-cart-{{$item->id}}">
                                         <!-- Button -->
-                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-5">
                                             Thêm vào giỏ
                                         </button>
                                     </div>
@@ -163,16 +163,16 @@
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
                                         <img src="{{$item->images}}" alt="IMG-PRODUCT"
                                              style="height: 350px;object-fit: cover;">
-                                        <div class="block2-overlay trans-0-4">
-                                            <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <div class="block2-overlay trans-0-5">
+                                            <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-5">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                            <div class="block2-btn-addcart w-size1 trans-0-5 add-to-cart"
                                                  id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-5">
                                                     Thêm vào giỏ
                                                 </button>
                                             </div>
@@ -241,16 +241,16 @@
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative{{$item->sale != 0 && $item->new != 1?' block2-labelsale':''}}{{$item->new == 1 && $item->sale == 0? ' block2-labelnew':''}}{{$item->sale != 0 && $item->new == 1 ? ' block2-labelsaleandnew' : ''}}">
                                         <img src="{{$item->images}}" alt="IMG-PRODUCT"
                                              style="height: 350px;object-fit: cover;">
-                                        <div class="block2-overlay trans-0-4">
-                                            <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <div class="block2-overlay trans-0-5">
+                                            <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-5">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
                                                 <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                             </a>
 
-                                            <div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart"
+                                            <div class="block2-btn-addcart w-size1 trans-0-5 add-to-cart"
                                                  id="add-cart-{{$item->id}}">
                                                 <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                <button class="flex-c-m size1 bg4 bo-rad-23 s-text1 trans-0-5">
                                                     Thêm vào giỏ
                                                 </button>
                                             </div>
@@ -351,172 +351,37 @@
         </div>
     </section>
 
-    <!-- Instagram -->
-    <section class="instagram p-t-20">
-        <div class="sec-title p-b-52 p-l-15 p-r-15">
-            <h3 class="m-text5 t-center">
-                @ follow us on Instagram
-            </h3>
-        </div>
-
-        <div class="flex-w">
-            <!-- Block4 -->
-            <div class="block4 wrap-pic-w">
-                <img src="{{asset('images/gallery-03.jpg')}}" alt="IMG-INSTAGRAM">
-
-                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-                        <p class="s-text10 m-b-15 h-size1 of-hidden">
-                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla
-                            in
-                            tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus
-                            elit.
-                        </p>
-
-                        <span class="s-text9">
-							Photo by @nancyward
-						</span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Block4 -->
-            <div class="block4 wrap-pic-w">
-                <img src="{{asset('images/gallery-07.jpg')}}" alt="IMG-INSTAGRAM">
-
-                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-                        <p class="s-text10 m-b-15 h-size1 of-hidden">
-                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla
-                            in
-                            tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus
-                            elit.
-                        </p>
-
-                        <span class="s-text9">
-							Photo by @nancyward
-						</span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Block4 -->
-            <div class="block4 wrap-pic-w">
-                <img src="{{asset('images/gallery-09.jpg')}}" alt="IMG-INSTAGRAM">
-
-                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-                        <p class="s-text10 m-b-15 h-size1 of-hidden">
-                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla
-                            in
-                            tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus
-                            elit.
-                        </p>
-
-                        <span class="s-text9">
-							Photo by @nancyward
-						</span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Block4 -->
-            <div class="block4 wrap-pic-w">
-                <img src="{{asset('images/gallery-13.jpg')}}" alt="IMG-INSTAGRAM">
-
-                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-                        <p class="s-text10 m-b-15 h-size1 of-hidden">
-                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla
-                            in
-                            tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus
-                            elit.
-                        </p>
-
-                        <span class="s-text9">
-							Photo by @nancyward
-						</span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Block4 -->
-            <div class="block4 wrap-pic-w">
-                <img src="{{asset('images/gallery-15.jpg')}}" alt="IMG-INSTAGRAM">
-
-                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
-					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
-						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
-						<span class="p-t-2">39</span>
-					</span>
-
-                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
-                        <p class="s-text10 m-b-15 h-size1 of-hidden">
-                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla
-                            in
-                            tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus
-                            elit.
-                        </p>
-
-                        <span class="s-text9">
-							Photo by @nancyward
-						</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Shipping -->
-    <section class="shipping bgwhite p-t-62 p-b-46">
+    <section class="shipping bgwhite p-t-20 p-b-46">
         <div class="flex-w p-l-15 p-r-15">
             <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
                 <h4 class="m-text12 t-center">
-                    Free Delivery Worldwide
+                    {{--Free Delivery Worldwide--}}
+                    Giao hàng miễn phí trên toàn quốc
                 </h4>
 
-                <a href="#" class="s-text11 t-center">
-                    Click here for more info
+                <a href="javascript:void (0)" class="s-text11 t-center">
+                    Cho tất cả các đơn hàng trên 1.000.000 vnđ
                 </a>
             </div>
 
             <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
                 <h4 class="m-text12 t-center">
-                    30 Days Return
+                    Hoàn trả tùy thích
                 </h4>
 
                 <span class="s-text11 t-center">
-					Simply return it within 30 days for an exchange.
+					Đơn hàng trong vòng 14 ngày
 				</span>
             </div>
 
             <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
                 <h4 class="m-text12 t-center">
-                    Store Opening
+                    Thời gian mở
                 </h4>
 
                 <span class="s-text11 t-center">
-					Shop open from Monday to Sunday
+					Cửa hàng mở từ thứ 2 đến chủ nhật
 				</span>
             </div>
         </div>
@@ -558,7 +423,7 @@
         $('.block2-btn-addwishlist').each(function () {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function () {
-                swal(nameProduct, "Đã thêm vào yêu thích!", "success");
+                swal(nameProduct, "Chức năng đang phát triển!", "success");
             });
         });
 

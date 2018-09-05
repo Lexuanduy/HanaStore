@@ -19,6 +19,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 use Webpatser\Uuid\Uuid;
 
 class UserController extends Controller
@@ -37,18 +38,14 @@ class UserController extends Controller
         $products_new = Product::orderBy('created_at', 'DESC')->where('new', '=', 1)->where('status', 1)->get();
         $products = Product::orderBy('created_at', 'DESC')->where('status', 1)->paginate(16);
         $articles = Article::all();
-        return view('user.flower.home')
-            ->with('categories', $categories)
-            ->with('products', $products)
-            ->with('collections', $collections)
-            ->with([
-                'products_sale' => $products_sale,
-                'products_new' => $products_new,
-                'countItemCart' => $countItemCart,
-                'content' => $content,
-                'total' => $total,
-                'articles' => $articles
-            ]);
+        $userClient = 0;
+        if (Session::has('user')){
+            $userClient = Session::get('user');
+        }
+        return view('user.flower.home')->with('categories', $categories)->with('products', $products)->with('collections', $collections)->with(['products_sale' => $products_sale, 'products_new' => $products_new, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,
+            'articles' => $articles,
+            'user' =>$userClient
+        ]);
     }
 
 
@@ -208,7 +205,7 @@ class UserController extends Controller
                     $order_detail->orderId = $idOr;
                     $order_detail->productId = $product->id;
                     $order_detail->quantity = $qty;
-                    $order_detail->unitPrice = number_format($product->price,0,'','');
+                    $order_detail->unitPrice = number_format($product->price, 0, '', '');
                     $order_detail->save();
                 }
                 $order->save();
@@ -237,7 +234,9 @@ class UserController extends Controller
         $collections = Collection::all();
         return view('user.flower.post')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
     }
-    public function getBlogDetail(){
+
+    public function getBlogDetail()
+    {
         $content = Cart::content();
         $countItemCart = Cart::count();
         $total = Cart::subtotal();

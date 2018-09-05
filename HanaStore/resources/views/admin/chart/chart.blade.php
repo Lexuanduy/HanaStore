@@ -1,4 +1,4 @@
-@extends('admin.layout.app', [
+@extends('admin.layout.master', [
     'currentPage' => 'chart',
     'current_menu' => 'chart_manager',
 ])

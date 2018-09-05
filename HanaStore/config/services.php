@@ -25,14 +25,24 @@ return [
         'region' => env('SES_REGION', 'us-east-1'),
     ],
 
-    'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
-    ],
+    'sparkpost' => ['secret' => env('SPARKPOST_SECRET'),],
 
     'stripe' => [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_ID'),
+        'client_secret' => env('GOOGLE_ID_SECRET'),
+        'redirect' => 'http://localhost:8000/auth/google/callback',
+    ],
+
+    'facebook' => [
+        'client_id' =>'250551365801178',
+        'client_secret' => '7b498d69bec063fc55c4457f6e3aaaed',
+        'redirect' => 'http://localhost:8000/auth/facebook/callback',
     ],
 
 ];

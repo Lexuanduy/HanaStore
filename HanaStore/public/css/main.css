@@ -2548,3 +2548,542 @@ input.num-product::-webkit-inner-spin-button {
     color: #fff;
 }
 
+.fade{
+    background-color: rgba(12, 0, 35, 0.32) !important;
+}
+
+#modalSocia .modal-content{
+    margin-top: 20% !important;
+    background: url("../img/bg-login-client.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+#modalSocia ul{
+    display: flex;
+    padding-left: 55px;
+}
+
+#modalSocia ul li{
+    list-style: none;
+}
+
+#modalSocia ul li a{
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #262626;
+    text-align: center;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 22px;
+    transition: .5s;
+}
+
+#modalSocia ul li a:hover .fa-facebook{
+    transition: .4s;
+    color: #4267B2;
+}
+
+#modalSocia ul li a:hover .fa-twitter {
+    transition: .4s;
+    color: #1DA1F2;
+}
+
+#modalSocia ul li a:hover .fa-google {
+    transition: .4s;
+    color: #EA4335;
+}
+
+#modalSocia ul li a:hover .fa-instagram {
+    transition: .4s;
+    color: #943AB3;
+}
+
+#modalSocia ul li a:hover .fa-linkedin {
+    transition: .4s;
+    color: #2797CF;
+}
+
+#modalSocia ul li a span{
+    position: absolute;
+    transition: transform .5s;
+}
+
+#modalSocia ul li a span:nth-child(1),
+#modalSocia ul li a span:nth-child(3){
+    width: 100%;
+    background: #262626;
+    height: 1px;
+}
+
+#modalSocia ul li a span:nth-child(1){
+    top: 0;
+    left: 0;
+    transform-origin: right;
+}
+#modalSocia ul li a:hover span:nth-child(1){
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .5s;
+}
+
+#modalSocia ul li a span:nth-child(3){
+    bottom: 0;
+    left: 0;
+    transform-origin: left;
+}
+#modalSocia ul li a:hover span:nth-child(3){
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s;
+}
+
+#modalSocia ul li a span:nth-child(2),
+#modalSocia ul li a span:nth-child(4){
+    width: 1px;
+    background: #262626;
+    height: 100%;
+}
+
+#modalSocia ul li a span:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+#modalSocia ul li a:hover span:nth-child(2){
+    transform: scaleY(1);
+    transform-origin: top;
+    transition: transform .5s;
+}
+
+#modalSocia ul li a span:nth-child(4){
+    top: 0;
+    right: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+}
+#modalSocia ul li a:hover span:nth-child(4){
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform .5s;
+}
+
+#modalSocia .modal-body .title-social{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #385971;
+}
+
+#modalSocia .modal-body form {
+    width: 100%;
+    padding: 0 30px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+
+
+#modalSocia .modal-body form .div-btn2 {
+    text-align: center;
+    position: relative;
+    float: right;
+    display: inline-block;
+    width: 45%;
+}
+
+#modalSocia .modal-body form .div-btn1 {
+    text-align: center;
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 45%;
+}
+
+#modalSocia .modal-body form .div-btn2 .btn-login{
+    position: relative;
+    background: rgba(0, 0, 0, 0.73);
+    color: #fff;
+    width: 100%;
+    height: 35px;
+    border-radius: 30px;
+    transition: 0.5s;
+    text-transform: uppercase;
+    line-height: 35px;
+}
+
+#modalSocia .modal-body form .div-btn2 .btn-login:focus{
+    outline: none;
+}
+
+#modalSocia form .div-btn2 .btn-login:hover{
+    background: rgba(230, 40, 20, 0.83);
+    cursor: pointer;
+    color: #fff;
+}
+
+
+#modalSocia .modal-body form .div-btn1 .btn-register {
+    position: relative;
+    background: rgba(0, 0, 0, 0.73);
+    color: #fff;
+    width: 100%;
+    height: 35px;
+    border-radius: 30px;
+    transition: 0.5s;
+    text-transform: uppercase;
+    line-height: 35px;
+}
+
+#modalSocia .modal-body form .div-btn1 .btn-register:focus {
+    outline: none;
+}
+
+#modalSocia form .div-btn1 .btn-register:hover {
+    background: rgba(117, 169, 215, 0.76);
+    cursor: pointer;
+    color: #fff;
+}
+
+#modalSocia .modal-body form:after{
+    content: '';
+    clear: both;
+    display: table;
+}
+
+#modalSocia .modal-body form input[name="username"],
+#modalSocia .modal-body form input[name="password"]{
+    font-size: 14px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.87);
+}
+
+#modalSocia .modal-body form input[name="username"]:focus,
+#modalSocia .modal-body form input[name="password"]:focus {
+    background: rgba(255, 255, 255, 0.97);
+}
+
+.list-item-user {
+    padding: 10px 5px;
+}
+
+.list-item-user a{
+    border-bottom: 1px dashed #d9d9d9;
+    font-size: 14px;
+}
+
+.list-item-user a:last-child {
+    border-bottom: none;
+}
+
+.block2-btn-addcart button{
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #ffe3c5, rgba(234, 77, 179, 0.82), #eedb38, #28e9e4);
+    background-size: 500%;
+    border-radius: 35px;
+}
+
+.block2-btn-addcart button:hover {
+   animation: animate 20s linear infinite;
+}
+
+@keyframes animate {
+    0%{background-position: 0%;}
+    100% {
+        background-position: 500%;
+    }
+}
+
+.block2-btn-addcart button:before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #f5bc99, rgba(244, 81, 185, 0.82), #ffeb3b, #03a9f4);
+    background-size: 500%;
+    border-radius: 45px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.block2-btn-addcart button:hover:before{
+    filter: blur(20px);
+    opacity: 10;
+}
+
+/*Style modal info user*/
+.box-user{
+    position: absolute;
+    top: 50%;
+    left: 10% !important;
+    background: #fff;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.37);
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+}
+
+.box-user.active-box{
+    visibility: visible;
+    opacity: 1;
+}
+
+.imgBx{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    background: #000;
+    z-index: 2;
+}
+
+.box-user:hover .imgBx{
+    transform: translateY(-100px);
+}
+
+.imgBx img{
+    min-height: 500px;
+    min-width: 400px;
+    transition: 0.5s;
+    height: 100%;
+}
+
+.box-user:hover .imgBx img{
+    opacity: 0.5;
+}
+
+.box-user .social-icon{
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.box-user .social-icon li{
+    list-style: none;
+}
+
+.box-user .social-icon li a{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
+    color: #262626;
+    margin: 0 5px;
+    transition: 0.5s;
+    border-radius: 50%;
+    transform: translateY(200px);
+    opacity: 0;
+}
+
+.box-user:hover .social-icon li a{
+    transform: translateY(80px);
+    opacity: 1;
+}
+
+.box-user:hover .social-icon li:nth-child(1) a{
+    transition-delay: 0s;
+}
+
+.box-user:hover .social-icon li:nth-child(2) a {
+    transition-delay: 0.2s;
+}
+
+.box-user:hover .social-icon li:nth-child(3) a {
+    transition-delay: 0.4s;
+}
+
+.box-user:hover .social-icon li:nth-child(4) a {
+    transition-delay: 0.6s;
+}
+
+.box-user:hover .social-icon li:nth-child(5) a {
+    transition-delay: 0.8s;
+}
+
+.box-user .social-icon li a .fa{
+    font-size: 22px;
+    line-height: 50px;
+    transition: 0.5s;
+}
+
+.box-user .social-icon li a:hover .fa{
+    transform: rotateY(360deg);
+}
+
+.details-user{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 1;
+}
+
+.details-user h2{
+    margin: 10px 0 0;
+    text-align: center;
+    padding: 0;
+}
+
+.details-user h2 span{
+    color: #bbb;
+    font-size: 15px;
+}
+
+.box-user .social-icon li a:hover .fa-facebook {
+    transition: .4s;
+    color: #4267B2;
+}
+
+.box-user .social-icon li a:hover .fa-twitter {
+    transition: .4s;
+    color: #1DA1F2;
+}
+
+.box-user .social-icon li a:hover .fa-google {
+    transition: .4s;
+    color: #EA4335;
+}
+
+.box-user .social-icon li a:hover .fa-pencil-square-o {
+    transition: .4s;
+    color: #943AB3;
+}
+
+.box-user .social-icon li a:hover .fa-linkedin {
+    transition: .4s;
+    color: #2797CF;
+}
+
+/*Style modal edit user*/
+
+.box-edit-user {
+    position: absolute;
+    top: 50%;
+    left: 10% !important;
+    background: #000000;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.37);
+    opacity: 0;
+    visibility: hidden;
+    transition: 1.5s;
+    box-sizing: border-box;
+}
+
+.imgBx {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    background: #000;
+    z-index: 2;
+}
+
+/*.box-edit-user:hover .imgBx {*/
+    /*transform: translateY(-100px);*/
+/*}*/
+
+.box-edit-user #form-edit-user{
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding:  0 30px;
+    margin: 0;
+    text-align: left;
+}
+
+.box-edit-user #form-edit-user input{
+    font-size: 13px;
+    box-sizing: border-box;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid rgba(244, 171, 168, 0.55) !important;
+    color: #fff;
+}
+
+.box-edit-user #form-edit-user div.form-group{
+    margin-bottom: 1.5rem;
+}
+
+.box-edit-user #form-edit-user input::placeholder {
+    color: #fff;
+    font-size: 11px;
+    opacity: 1; /* Firefox */
+}
+
+.box-edit-user #form-edit-user input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+}
+
+.box-edit-user #form-edit-user input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+}
+
+.box-edit-user #form-edit-user label{
+    color: #f4aba8;
+    font-weight: bold;
+    font-size: 11px;
+    position: absolute;
+    top: -10px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.box-edit-user #form-edit-user small {
+    color: #f4aba8;
+    font-weight: bold;
+    font-size: 9px;
+}
+
+.box-edit-user .imgBx img{
+    opacity: 0.5;
+}
+
+.box-edit-user form div{
+    position: relative;
+}
+
+.box-edit-user #form-edit-user input:focus{
+    border-bottom: 2px solid #f4aba8 !important;
+}
+
+.box-edit-user.active-box{
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+
+
+

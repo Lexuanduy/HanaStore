@@ -148,6 +148,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         JD\Cloudder\CloudderServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -212,7 +213,8 @@ return [
         'Form' => Collective\Html\FormFacade::class ,
         'Html' => Collective\Html\HtmlFacade::class,
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
-        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

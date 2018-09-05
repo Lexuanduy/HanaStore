@@ -201,4 +201,37 @@
         $('.video-mo-01').css('opacity','0');
     });
 
+    $('.user-account').click(function () {
+        $('#modalSocia').modal();
+    });
+
+    $('#logout').click(function () {
+        $.ajax({
+            url: '/logout',
+            method: 'post',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success:function () {
+            },
+            error:function () {
+
+            }
+        })
+        setTimeout(function () {
+            window.location.reload();
+        },500)
+    });
+
+    $('#infoUser').click(function () {
+        var src = $('.avatarUser').attr('src').replace('?type=normal','');
+        $('#modalInfoUser').modal();
+        $('.avatarUser').attr('src',src);
+    })
+
+    $('#edit-user').click(function () {
+        $('.box-edit-user').addClass('active-box');
+        $('.box-user').removeClass('active-box');
+    });
+
 })(jQuery);

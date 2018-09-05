@@ -1,4 +1,4 @@
-@extends('admin.layout.app', [
+@extends('admin.layout.master', [
     'currentPage' => 'home',
     'current_menu' => 'Home',
     'current_sub_menu' => 'Home',

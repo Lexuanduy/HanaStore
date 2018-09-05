@@ -65,4 +65,9 @@ $(document).ready(function () {
         });
     });
 
+    $('.btn-order').click(function (e) {
+        e.preventDefault();
+        $('#modalSocia').modal();
+    });
+
 });
