@@ -26,10 +26,6 @@ Route::get('/admin/category/search','CategoryController@search');
 
 Route::get('/admin/collection/search','CollectionController@search');
 
-// config web by Phuocding
-Route::resource('admin/product', 'ProductController');
-
-
 //Route update sản phẩm trong giỏ hàng.
 Route::get('user/update-product-cart/{rowId}/{qty}','Usercontroller@updateProductInCart');
 
@@ -103,3 +99,6 @@ Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
 Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
 Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
 
+// Order Manager
+Route::get('/admin/order', 'OrderController@index');
+Route::get('/admin/order/change-status', 'OrderController@changeStatus');
