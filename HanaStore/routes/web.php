@@ -96,10 +96,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route login socilite Client
+// Route login socialite Client
 Route::get('auth/google', 'GoogleController@redirectToProvider');
 Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
 
 Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
 Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
+
+Route::get('/chart-api', 'ChartController@getChartDataApi');
 
