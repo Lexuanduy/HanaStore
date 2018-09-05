@@ -17,9 +17,18 @@
             margin-bottom: 0;
         }
 
+        .form-group input[type=file] {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .row{
+            margin-bottom: 1rem;
+        }
+
         img.broken {
             position: relative;
-            min-height: 30px;
+            vertical-align: baseline;
         }
 
         img.broken:before {
@@ -154,8 +163,8 @@
                                             <div class="row ml-1">
                                                 <div class="col-sm-6">
                                                     <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
-                                                    <span class="badge">Choose new image...</span>
-                                                    <img id="upload-image" class="broken" src="#" alt="New image here" />
+                                                    <span class="badge badge-info">Choose new image...</span>
+                                                    <img id="upload-image" class="broken" src="#" alt="New image preview" />
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <span class="badge">Previous Image</span>
@@ -215,7 +224,7 @@
                                     <div class="row">
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                             <button type="reset" class="btn btn-reset btn-danger">Reset</button>
                                         </div>
                                     </div>

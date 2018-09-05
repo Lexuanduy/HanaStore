@@ -17,9 +17,18 @@
             margin-bottom: 0;
         }
 
+        .form-group input[type=file] {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .row{
+            margin-bottom: 1rem;
+        }
+
         img.broken {
             position: relative;
-            min-height: 40px;
+            vertical-align: baseline;
         }
 
         img.broken:before {
@@ -153,7 +162,7 @@
                                                 <div class="col-sm-10">
                                                     <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
                                                     <span class="badge badge-info">Choose image...</span>
-                                                    <img id="upload-image" class="broken" src="#" alt="Choose image here" />
+                                                    <img id="upload-image" class="broken" src="#" alt="Preview" />
                                                 </div>
                                                 @if($errors->has('images'))
                                                     <label class="text-danger">*{{$errors->first('images')}}</label>
