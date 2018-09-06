@@ -18,7 +18,7 @@ class CreateOrderDetailsTable extends Migration
             $table->unsignedInteger('productId');
             $table->primary(['orderId','productId']);
             $table->unsignedInteger('quantity');
-            $table->decimal('unitPrice');
+            $table->decimal('unitPrice',12,2);
         });
     }
 
