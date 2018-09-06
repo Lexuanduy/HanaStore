@@ -98,15 +98,6 @@ Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
 
 Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
 Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
-
-
-
-// Order Manager
-Route::get('/admin/order', 'OrderController@index');
-Route::get('/admin/order/change-status', 'OrderController@changeStatus');
-
-Route::get('/chart-api', 'ChartController@getChartDataApi');
-
 // Order Manager
 Route::get('/admin/order', 'OrderController@index');
 Route::get('/admin/order/change-status', 'OrderController@changeStatus');

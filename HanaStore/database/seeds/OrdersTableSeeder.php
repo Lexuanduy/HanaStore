@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 class OrdersTableSeeder extends Seeder
 {
     /**
@@ -26,7 +24,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 20, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 20, 12, 20, 20),
             ],
-
             [
                 'id'=>'de1gs231g',
                 'customerId'=>'df4g546dfg',
@@ -39,7 +36,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 21, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 21, 12, 20, 20),
             ],
-
             [
                 'id'=>'hgf4hjg54f',
                 'customerId'=>'798ge7wr65r',
@@ -52,7 +48,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 22, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 22, 12, 20, 20),
             ],
-
             [
                 'id'=>'sdf7sd4f5',
                 'customerId'=>'fdg4c32v1432',
@@ -65,7 +60,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 23, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 23, 12, 20, 20),
             ],
-
             [
                 'id'=>'xcv4167fd4',
                 'customerId'=>'cvbd2f4g2f',
@@ -78,7 +72,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 24, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 24, 12, 20, 20),
             ],
-
             [
                 'id'=>'fjfgh56f4',
                 'customerId'=>'7e78rsdfg',
@@ -91,7 +84,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 25, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 25, 12, 20, 20),
             ],
-
             [
                 'id'=>'7fg87hg',
                 'customerId'=>'7fg86h',
@@ -104,7 +96,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 20, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 20, 12, 20, 20),
             ],
-
             [
                 'id'=>'876fg86h',
                 'customerId'=>'45hfg684h',
@@ -117,7 +108,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 21, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 21, 12, 20, 20),
             ],
-
             [
                 'id'=>'56fgh65gfh',
                 'customerId'=>'45fgh54fg',
@@ -130,7 +120,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 22, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 22, 12, 20, 20),
             ],
-
             [
                 'id'=>'fg74h6f54hg',
                 'customerId'=>'fg54hf654gh',
@@ -143,7 +132,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 23, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 23, 12, 20, 20),
             ],
-
             [
                 'id'=>'4f6g574hf654g',
                 'customerId'=>'4f6g74he64hg64hjfg',
@@ -156,7 +144,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 24, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 24, 12, 20, 20),
             ],
-
             [
                 'id'=>'1d8f67jghjkty84',
                 'customerId'=>'uy444w4',
@@ -169,7 +156,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 25, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 25, 12, 20, 20),
             ],
-
             [
                 'id'=>'474gfasfddffd',
                 'customerId'=>'4eriuo74',
@@ -182,7 +168,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 20, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 20, 12, 20, 20),
             ],
-
             [
                 'id'=>'j756e4rbbv4fg',
                 'customerId'=>'hgjhgwe23q',
@@ -195,7 +180,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 21, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 21, 12, 20, 20),
             ],
-
             [
                 'id'=>'df4g168wegdfd',
                 'customerId'=>'78ew1rw12fdg',
@@ -208,7 +192,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 22, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 22, 12, 20, 20),
             ],
-
             [
                 'id'=>'54sdf5g48re',
                 'customerId'=>'21sd78fsds',
@@ -221,7 +204,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 23, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 23, 12, 20, 20),
             ],
-
             [
                 'id'=>'qwe7vc1vc2b',
                 'customerId'=>'78gdffd4nh',
@@ -234,7 +216,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 24, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 24, 12, 20, 20),
             ],
-
             [
                 'id'=>'dsf7ewrty5t4',
                 'customerId'=>'7wer4c2xd4fd',
@@ -247,7 +228,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 25, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 25, 12, 20, 20),
             ],
-
             [
                 'id'=>'mbv1n2sd28sd',
                 'customerId'=>'14d4dg7dg5',
@@ -260,7 +240,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 20, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 20, 12, 20, 20),
             ],
-
             [
                 'id'=>'bxcb1d1f2fds',
                 'customerId'=>'87wetryutyu7t',
@@ -273,7 +252,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 21, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 21, 12, 20, 20),
             ],
-
             [
                 'id'=>'24sda67hnjh87',
                 'customerId'=>'24s564we4d2',
@@ -286,7 +264,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 22, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 22, 12, 20, 20),
             ],
-
             [
                 'id'=>'js67as1bhd7f',
                 'customerId'=>'897wer44hbds4f',
@@ -299,7 +276,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 23, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 23, 12, 20, 20),
             ],
-
             [
                 'id'=>'32sdfggds654g',
                 'customerId'=>'34s5ad456sd',
@@ -312,7 +288,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 24, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 24, 12, 20, 20),
             ],
-
             [
                 'id'=>'7fdgh4e56ds',
                 'customerId'=>'hgf64g4h',
@@ -325,7 +300,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 25, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 25, 12, 20, 20),
             ],
-
             [
                 'id'=>'f7asd4fdfdf',
                 'customerId'=>'9sdf6sdf',
@@ -338,7 +312,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 20, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 20, 12, 20, 20),
             ],
-
             [
                 'id'=>'sdf4sd4f',
                 'customerId'=>'ff754bs',
@@ -351,7 +324,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 21, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 21, 12, 20, 20),
             ],
-
             [
                 'id'=>'bndf76dfsfds',
                 'customerId'=>'dsgg4534gb',
@@ -364,7 +336,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 22, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 22, 12, 20, 20),
             ],
-
             [
                 'id'=>'dsfdsfdf423',
                 'customerId'=>'asd3424fsdf',
@@ -377,7 +348,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 23, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 23, 12, 20, 20),
             ],
-
             [
                 'id'=>'GHcsfWUhfshv5CQx',
                 'customerId'=>'RhgT9cc9WMfzrhLs',
@@ -390,7 +360,6 @@ class OrdersTableSeeder extends Seeder
                 'created_at'=>\Carbon\Carbon::create(2018, 8, 24, 6, 20, 20),
                 'updated_at'=>\Carbon\Carbon::create(2018, 8, 24, 12, 20, 20),
             ],
-
             [
                 'id'=>'76shk4PXDp9cZTQP',
                 'customerId'=>'3XKr5yyJHdjnpMFv',

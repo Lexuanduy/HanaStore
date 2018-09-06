@@ -209,18 +209,38 @@
                 </li>
 
                 <!--Order-->
-                <li>
-                    <a data-toggle="collapse" href="#">
+                <li class="{{ $current_menu == 'order_manager' ? 'active' : '' }}">
+                    <a data-toggle="collapse" href="#orderList">
                         <i class="fab fa-first-order pb-4"></i>
-                        <p>Order</p>
+                        <p>Order
+                            <b class="caret"></b>
+                        </p>
                     </a>
+                    @if($current_menu == 'order_manager')
+                        <div class="collapse in" id="orderList">
+                            <ul class="nav">
+                                <li class="{{ ($current_menu == 'order_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
+                                    <a href="/admin/order">List Orders</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @else
+                        <div class="collapse" id="orderList">
+                            <ul class="nav">
+                                <li class="{{ ($current_menu == 'order_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
+                                    <a href="/admin/order">List Orders</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                 </li>
 
                 <!--Revenue-->
                 <li class="{{ $current_menu == 'chart_manager' ? 'active' : '' }}">
                     <a href="/admin/chart">
                         <i class="fas fa-chart-line"></i>
-                        <p>Revenue</p>
+                        <p>Revenue
+                        </p>
                     </a>
                 </li>
             </ul>

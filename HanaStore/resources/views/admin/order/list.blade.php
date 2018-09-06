@@ -26,6 +26,17 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <form action="/admin/product">
+                        <div class="form-group col-sm-3">
+                            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                <i class="fa fa-calendar"></i>&nbsp;
+                                <span></span> <i class="fa fa-caret-down"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 <!--List Flower Table-->
                 <div class="row" style="padding-top: 3em;">
                     <div class="panel panel-default">
@@ -34,6 +45,7 @@
                                 <table class="table table-hover table-striped table-condensed table-bordered">
                                     <thead>
                                     <tr>
+                                        <th scope="col">{{__('Order Code')}}</th>
                                         <th scope="col">{{__('ID')}}</th>
                                         <th scope="col">{{__('Merchant')}}</th>
                                         <th scope="col">{{__('Recipient')}}</th>
@@ -69,6 +81,8 @@
                                                             class="material-icons">done</i></a>
                                                 @endif
                                                 @if($item->status==0)
+                                                    <a href="/admin/order/change-status?id={{$item->id}}&status=-1" onclick="return confirm('Delete this order, are you sure?')"
+                                                       class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
                                                     <a href="{{$item->id}}" class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
                                                             class="material-icons">close</i></a>
                                                 @endif
@@ -96,7 +110,34 @@
         </div>
         <!--  end card  -->
     </div>
-    <script>
+
+    <script type="text/javascript">
+        $(function() {
+
+            var start = moment().subtract(29, 'days');
+            var end = moment();
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY'));
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            }, cb);
+
+            cb(start, end);
+
+        });
+
         $('.btn-delete').click(function () {
             var thisButton = $(this);
             swal({
@@ -139,6 +180,6 @@
 
             });
             return false;
-        })
+        });
     </script>
 @endsection

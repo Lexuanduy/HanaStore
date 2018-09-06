@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $table = 'orders';
-    public $timestamps = true;
+
+    public $incrementing = false;
 
     public function customer(){
         return $this->belongsTo('App\Customer','customerId');
@@ -16,10 +16,12 @@ class Order extends Model
     public function details(){
         return $this->hasMany('App\orderDetail','orderId');
     }
+
     public function getShipInformationAttribute()
     {
         return ' - '. $this->shipName . '<br> - '. $this->shipEmail . '<br> - ' . $this->shipAddress . '<br> - ' . $this->shipAddress;
     }
+
     public function getStatusLabelAttribute()
     {
         switch ($this->status) {
