@@ -77,7 +77,7 @@ Route::get('/user/blog', 'UserController@blog')->name('blogClient');
 Route::get('/user/blog/{id}','UserController@getBlogDetail');
 
 //Route view liên hệ
-Route::get('/user/contact','UserController@getBlog')->name('contactClient');
+Route::get('/user/contact','UserController@contact')->name('contactClient');
 
 
 //View chart
@@ -92,13 +92,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route login socilite Client
+// Route login socialite Client
 Route::get('auth/google', 'GoogleController@redirectToProvider');
 Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
 
 Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
 Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
 
+
 // Order Manager
 Route::get('/admin/order', 'OrderController@index');
 Route::get('/admin/order/change-status', 'OrderController@changeStatus');
+
+Route::get('/chart-api', 'ChartController@getChartDataApi');

@@ -16,6 +16,7 @@ use App\Order;
 use App\orderDetail;
 use App\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
@@ -74,30 +75,58 @@ class UserController extends Controller
         $selected_category = Category::find($selected_categoryId);
         $selected_collection = Collection::find($selected_collectionId);
         $list_product = $product_filter->orderBy('created_at', 'DESC')->paginate(9);
-        $activeHome = 1;
-        $activeList = 2;
-        $activeSale = 3;
-        $activeCollection = 4;
-        $activeCategory = 5;
-        $activeArticle = 6;
-        $activeContact = 7;
-        return view('user.flower.product-list')->with(['categories' => $categories, 'products' => $list_product, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total, 'selected_categoryId' => $selected_categoryId, 'selected_category' => $selected_category, 'selected_collection' => $selected_collection, 'selected_collectionId' => $selected_collectionId, 'activeHome' => $activeHome, 'activeList' => $activeList, 'activeSale' => $activeSale, 'activeCollection' => $activeCollection, 'activeCategory' => $activeCategory, 'activeArticle' => $activeArticle, 'activeContact' => $activeContact,]);
+        return view('user.flower.product-list')
+            ->with([
+                'categories' => $categories,
+                'products' => $list_product,
+                'collections' => $collections,
+                'countItemCart' => $countItemCart,
+                'content' => $content, 'total' => $total,
+                'selected_categoryId' => $selected_categoryId,
+                'selected_category' => $selected_category,
+                'selected_collection' => $selected_collection,
+                'selected_collectionId' => $selected_collectionId
+            ]);
     }
 
     // Thêm vào giỏ hàng
     public function productBuy($id)
     {
         $product = Product::where('id', $id)->first();
+        if($product == null || $product->status != 1){
+            return view('admin.error.400');
+        }
         if ($product->sale == 0) {
-            $itemCart = Cart::add(array('id' => $id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price, 'options' => array('img' => $product->images)));
+            $itemCart = Cart::add(array(
+                    'id' => $id,
+                    'name' => $product->name,
+                    'qty' => 1,
+                    'price' => $product->price,
+                    'options' => array(
+                        'img' => $product->images
+                    )
+                )
+            );
         } else {
-            $itemCart = Cart::add(array('id' => $id, 'name' => $product->name, 'qty' => 1, 'price' => $product->price - $product->price * $product->sale / 100, 'options' => array('img' => $product->images)));
+            $itemCart = Cart::add(array(
+                    'id' => $id,
+                    'name' => $product->name,
+                    'qty' => 1, 'price' => $product->price - $product->price * $product->sale / 100,
+                    'options' => array('
+                        img' => $product->images
+                    )
+                )
+            );
         }
         $cartItem = Cart::get($itemCart->rowId);
-        $total = Cart::subtotal(); // Tổng tiền tất cả giỏ hàng
-        $countItem = Cart::count();
-        $content = Cart::content();
-        return response()->json(['item' => $cartItem, 'count' => $countItem, 'total' => $total, 'cart' => $content], 200);
+        $total = Cart::subtotal(); // Tổng tiền tất cả giỏ hàng.
+        $countItem = Cart::count(); // Toongr số lượng sản phẩm đang có trong giỏ hàng.
+        $content = Cart::content(); // tất cả san phẩm đang có trong giỏ hàng.
+        return response()->json([
+            'item' => $cartItem,
+            'count' => $countItem,
+            'total' => $total, 'cart' => $content
+        ], 200);
     }
 
     // Trả về view giỏ hàng
@@ -124,11 +153,15 @@ class UserController extends Controller
     public function updateProductInCart()
     {
         if (Request::ajax()) {
+            if (Input::get('qty') < 1){
+                return view('admin.error.400');
+            }
             $rowId = Input::get('rowId');
             $qty = Input::get('qty');
             Cart::update($rowId, $qty);
             $content = Cart::get($rowId);
-            return response()->json(['item' => $content], 200);
+            $totalPrice = number_format($content->qty * $content->price,0,',','.');
+            return response()->json(['item' => $content, 'totalPrice' => $totalPrice], 200);
         }
     }
 
@@ -179,9 +212,9 @@ class UserController extends Controller
                 $note = Input::get('note');
 
                 $customer = new Customer();
-                $idCus = $customer->id = Uuid::generate()->string;
-                $customer->name = 'SlowVs2L';
-                $customer->email = 'quocviet.hn98@gmail.com';
+                $idCus = $customer->id = Auth::user()->provider_id;
+                $customer->name = Auth::user()->name;
+                $customer->email = Auth::user()->email;;
                 $customer->save();
 
                 $order = new Order();
@@ -198,7 +231,7 @@ class UserController extends Controller
                     $product = Product::find($item->id);
                     if ($product == null || $product->status != 1) {
                         // Chỗ này phải return về view error 404
-                        return 'Xảy ra lỗi!';
+                        return view('admin.error.400');
                     }
                     $qty = $item->qty;
                     $order_detail = new OrderDetail();
@@ -243,6 +276,14 @@ class UserController extends Controller
         $categories = Category::all();
         $collections = Collection::all();
         return view('user.flower.blogDetail')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
+    }
+    public function contact(){
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+        $categories = Category::all();
+        $collections = Collection::all();
+        return view('user.flower.contact')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
     }
 }
 
