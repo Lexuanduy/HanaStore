@@ -274,6 +274,14 @@ class UserController extends Controller
         $collections = Collection::all();
         return view('user.flower.blogDetail')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
     }
+    public function contact(){
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+        $categories = Category::all();
+        $collections = Collection::all();
+        return view('user.flower.contact')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
+    }
 }
 
 
