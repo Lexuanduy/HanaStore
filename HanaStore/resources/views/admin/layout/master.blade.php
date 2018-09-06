@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
           integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="/assets/css/google-roboto-300-700.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="/assets/js/jquery-3.1.1.min.js" type="text/javascript"></script>
     <!-- Jquery preview image upload-->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -337,4 +338,5 @@
 <!-- Material Dashboard javascript methods -->
 <script src="/assets/js/material-dashboard.js"></script>
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:32:16 GMT -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 </html>
