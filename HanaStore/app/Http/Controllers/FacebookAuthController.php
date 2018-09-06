@@ -38,6 +38,14 @@ class FacebookAuthController extends Controller
         $authUser = User::where('provider_id', $facebookUser->id)->first();
 
         if ($authUser) {
+            $authUser->name = $facebookUser->name;
+            $authUser->password = $facebookUser->token;
+            $authUser->email = $facebookUser->email;
+            $authUser->provider_id = $facebookUser->id;
+            $authUser->provider = $facebookUser->id;
+            $avatar = str_replace('=normal', '=large', $facebookUser->avatar);
+            $authUser->avatar = $avatar;
+            $authUser->save();
             return $authUser;
         }
 

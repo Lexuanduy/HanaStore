@@ -8,7 +8,7 @@ $(document).ready(function () {
         minimumResultsForSearch: 20,
         dropdownParent: $('#dropDownSelect2')
     });
-    $('[data-toggle="tooltip"]').tooltip();
+
 
     // Mess delete product success.
     $('#messageDeleteCart').addClass('show-mess');
@@ -45,8 +45,9 @@ $(document).ready(function () {
     });
 
     $('.btn-num').click(function () {
-        var qty = $(this).parents().find('.qty').val();
-        var rowId = $(this).parents().find('.btn-delete').attr('id');
+        var qty = $(this).parent().find('.qty').val();
+        var rowId = $(this).parent().parent().parent().find('.btn-delete').attr('id');
+        var isThis = $(this);
         $.ajax({
             type: 'GET',
             url: '/user/update-product-cart/'+ rowId +'/' + qty,
@@ -57,7 +58,7 @@ $(document).ready(function () {
                 'qty': qty
             },
             success:function (data) {
-                $(this).parents().find('.price').html(data.item.price*qty);
+                isThis.parent().parent().parent().find('.price').html(data.totalPrice);
             },
             error:function() {
 
@@ -69,5 +70,4 @@ $(document).ready(function () {
         e.preventDefault();
         $('#modalSocia').modal();
     });
-
 });
