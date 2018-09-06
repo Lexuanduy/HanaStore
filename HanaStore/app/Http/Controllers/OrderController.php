@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Support\Facades\Input;
+use function MongoDB\BSON\toJSON;
 
 class OrderController extends Controller
 {
@@ -14,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $list_order = Order::paginate(10);
+        $list_order = Order::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.order.list')->with('list_order', $list_order);
     }
 

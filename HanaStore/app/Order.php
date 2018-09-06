@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
 
+    public $incrementing = false;
+
     public function customer(){
         return $this->belongsTo('App\Customer','customerId');
     }
