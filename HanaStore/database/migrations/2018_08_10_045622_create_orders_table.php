@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->string('id',60);
             $table->primary('id');
             $table->string('customerId');
-            $table->decimal('totalPrice');
+            $table->decimal('totalPrice',12,2);
             $table->string('shipName');
             $table->string('shipEmail');
             $table->string('shipPhone');
