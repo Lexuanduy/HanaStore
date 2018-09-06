@@ -81,7 +81,7 @@ Route::get('/user/blog', 'UserController@blog')->name('blogClient');
 Route::get('/user/blog/{id}','UserController@getBlogDetail');
 
 //Route view liên hệ
-Route::get('/user/contact','UserController@getBlog')->name('contactClient');
+Route::get('/user/contact','UserController@contact')->name('contactClient');
 
 
 //View chart
