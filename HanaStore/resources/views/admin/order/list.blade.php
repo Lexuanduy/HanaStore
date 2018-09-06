@@ -8,7 +8,7 @@
         .none a{
             text-decoration: none;
         }
-        thead tr{
+        thead tr th{
             background-color: #117a8b;
             color: #fff;
         }
@@ -46,6 +46,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">{{__('Order Code')}}</th>
+                                        <th scope="col">{{__('ID')}}</th>
                                         <th scope="col">{{__('Merchant')}}</th>
                                         <th scope="col">{{__('Recipient')}}</th>
                                         <th class="col">{{__('Time')}}</th>
@@ -56,8 +57,8 @@
                                     </thead>
                                     <tbody>
                                     @foreach($list_order as $item)
-                                        <tr role="row">
-                                            <td class="id-flower col-1">{{$item->id}}</td>
+                                        <tr role="row" class="odd">
+                                            <th class="id-flower col-1">{{$item->id}}</th>
                                             <td class="col-1">tingfu</td>
                                             <td class="col-2">{!! $item->shipInformation !!}</td>
                                             <td class="col-2">{{$item->created_at}}</td>
@@ -82,6 +83,7 @@
                                                 @if($item->status==0)
                                                     <a href="/admin/order/change-status?id={{$item->id}}&status=-1" onclick="return confirm('Delete this order, are you sure?')"
                                                        class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
+                                                    <a href="{{$item->id}}" class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
                                                             class="material-icons">close</i></a>
                                                 @endif
                                             </td>
@@ -134,6 +136,50 @@
 
             cb(start, end);
 
+        });
+
+        $('.btn-delete').click(function () {
+            var thisButton = $(this);
+            swal({
+                text: "Do you want to close this order?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                confirmButtonText: 'Agree!',
+                cancelButtonText: 'Cancel',
+                buttonsStyling: false
+            }).then(function() {
+                var id = thisButton.attr('href');
+                $.ajax({
+                    'url': '/admin/order/' + id,
+                    'method': 'DELETE',
+                    'data':{
+                        '_token':$('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        swal({
+                            text: 'Order has delete.',
+                            type: 'success',
+                            confirmButtonClass: "btn btn-success",
+                            buttonsStyling: false
+                        })
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2*1000);
+                    },
+                    error: function () {
+                        swal({
+                            text: 'Error happened, try again please!',
+                            type: 'warning',
+                            confirmButtonClass: "btn btn-danger",
+                            buttonsStyling: false
+                        })
+                    }
+                });
+
+            });
+            return false;
         });
     </script>
 @endsection

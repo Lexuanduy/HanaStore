@@ -93,7 +93,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        if ($product == null) {
+        if ($product == null || $product->status != 1) {
             return view('admin.error.404');
         }
         $categoryId = $product->categoryId;
