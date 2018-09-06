@@ -93,6 +93,9 @@ class UserController extends Controller
     public function productBuy($id)
     {
         $product = Product::where('id', $id)->first();
+        if($product == null || $product->status != 1){
+            return view('admin.error.400');
+        }
         if ($product->sale == 0) {
             $itemCart = Cart::add(array(
                     'id' => $id,
@@ -228,7 +231,7 @@ class UserController extends Controller
                     $product = Product::find($item->id);
                     if ($product == null || $product->status != 1) {
                         // Chỗ này phải return về view error 404
-                        return 'Xảy ra lỗi!';
+                        return view('admin.error.400');
                     }
                     $qty = $item->qty;
                     $order_detail = new OrderDetail();
