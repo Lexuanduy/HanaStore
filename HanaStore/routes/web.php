@@ -53,7 +53,7 @@ Route::get('/admin/product/get-json/{id}', 'ProductController@getJson');
 
 
 // Route User Controller Client
-Route::get('/user/home', 'UserController@getIndexUser')->name('homeClient');
+Route::get('/hanastore/home', 'UserController@getIndexUser')->name('homeClient');
 
 // Route view giỏ hàng Client
 Route::get('/user/cart', 'UserController@getCart')->name('giohang');

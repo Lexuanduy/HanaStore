@@ -69,6 +69,7 @@
 
     <!-- Content page -->
     <section class="bgwhite p-t-55 p-b-65">
+        <input type="hidden" value="{{route('listProductClient')}}" id="routeListProduct">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
@@ -127,13 +128,13 @@
                     <div class="flex-sb-m flex-w p-b-35">
                         <div class="flex-w">
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select class="selection-2" name="sorting">
-                                    <option>Giá</option>
-                                    <option>$0.00 - $50.00</option>
-                                    <option>$50.00 - $100.00</option>
-                                    <option>$100.00 - $150.00</option>
-                                    <option>$150.00 - $200.00</option>
-                                    <option>$200.00+</option>
+                                <select class="selection-2" name="filter-price">
+                                    <option value="0">Giá</option>
+                                    <option value="1">0 - 50.000</option>
+                                    <option value="2">50.000 - 100.000</option>
+                                    <option value="3">100.000 - 150.000</option>
+                                    <option value="4">150.000 - 200.000</option>
+                                    <option value="5">200.000+</option>
                                 </select>
                             </div>
                         </div>
@@ -266,6 +267,46 @@
                     alert('En tở đc rồi!');
                 }
             });
+        });
+
+        $('select[name="filter-price"]').change(function () {
+            var url =$('#routeListProduct').val();
+            switch ($(this).val()){
+                case '0':
+                    window.location.href = url;
+                case '1':
+                    $.ajax({
+                        method: 'GET',
+                        url: url,
+                        data: {
+                            '_token': $('meta[name="csrf-token"]').attr('content'),
+                            'startPrice': '0',
+                            'endPrice':'50000'
+                        },
+                        success: function (resp) {
+                            $('#messageSuccess').text('Action success!');
+                            $('#messageSuccess').removeClass('d-none');
+                            for (var i = 0; i < arrayId.length; i++) {
+                                $('#row-item-' + arrayId[i]).remove();
+                            }
+                            if($('.check-item').length == 0){
+                                setTimeout(function(){
+                                    window.location.reload(1);
+                                }, 3*1000);
+                            }
+                        },
+                        error: function () {
+                            $('#messageError').removeClass('d-none');
+                            $('#messageError').text('Action fails! Please try again later!');
+                        }
+                    });
+                case '2':
+                    window.location.href = url + '?startPrice=50000&endPrice=100000';
+                case '3':
+                    window.location.href = url + '?startPrice=100000&endPrice=150000';
+                case '4':
+                    window.location.href = url + '?startPrice=150000&endPrice=200000';
+            }
         });
     </script>
     <!--===============================================================================================-->
