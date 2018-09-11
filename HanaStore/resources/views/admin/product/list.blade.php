@@ -18,8 +18,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
+                <div class="card-header card-header-text">
+                    <hr></div>
                     <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> FLOWERS CATALOGUE</h4>
+                    <hr></div>
                 </div>
 
                 <div class="card-body">
