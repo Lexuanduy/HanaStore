@@ -15,181 +15,181 @@ class OrderDetailsTableSeeder extends Seeder
         \Illuminate\Support\Facades\DB::table('order_details')->truncate();
         \Illuminate\Support\Facades\DB::table('order_details')->insert([
             [
-                'orderId'=>1,
+                'orderId'=>'sdg45sdg',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>2,
+                'orderId'=>'de1gs231g',
                 'productId'=>3,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>3,
+                'orderId'=>'hgf4hjg54f',
                 'productId'=>5,
                 'quantity'=>1,
                 'unitPrice'=>200000
             ],
             [
-                'orderId'=>4,
+                'orderId'=>'sdf7sd4f5',
                 'productId'=>6,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>5,
+                'orderId'=>'xcv4167fd4',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>6,
+                'orderId'=>'fjfgh56f4',
                 'productId'=>3,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>7,
+                'orderId'=>'7fg87hg',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>8,
+                'orderId'=>'876fg86h',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>9,
+                'orderId'=>'56fgh65gfh',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1300000
             ],
             [
-                'orderId'=>10,
+                'orderId'=>'fg74h6f54hg',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>2500000
             ],
             [
-                'orderId'=>11,
+                'orderId'=>'4f6g574hf654g',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>4500000
             ],
             [
-                'orderId'=>12,
+                'orderId'=>'1d8f67jghjkty84',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1230000
             ],
             [
-                'orderId'=>13,
+                'orderId'=>'474gfasfddffd',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1640000
             ],
             [
-                'orderId'=>14,
+                'orderId'=>'j756e4rbbv4fg',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1560000
             ],
             [
-                'orderId'=>15,
+                'orderId'=>'df4g168wegdfd',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1450000
             ],
             [
-                'orderId'=>16,
+                'orderId'=>'54sdf5g48re',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1050000
             ],
             [
-                'orderId'=>17,
+                'orderId'=>'qwe7vc1vc2b',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>3000000
             ],
             [
-                'orderId'=>18,
+                'orderId'=>'dsf7ewrty5t4',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1040000
             ],
             [
-                'orderId'=>19,
+                'orderId'=>'mbv1n2sd28sd',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1070000
             ],
             [
-                'orderId'=>20,
+                'orderId'=>'bxcb1d1f2fds',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1000000
             ],
             [
-                'orderId'=>21,
+                'orderId'=>'24sda67hnjh87',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>800000
             ],
             [
-                'orderId'=>22,
+                'orderId'=>'js67as1bhd7f',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1100000
             ],
             [
-                'orderId'=>23,
+                'orderId'=>'32sdfggds654g',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1400000
             ],
             [
-                'orderId'=>24,
+                'orderId'=>'7fdgh4e56ds',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1090000
             ],
             [
-                'orderId'=>25,
+                'orderId'=>'f7asd4fdfdf',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1050000
             ],
             [
-                'orderId'=>26,
+                'orderId'=>'sdf4sd4f',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1006000
             ],
             [
-                'orderId'=>27,
+                'orderId'=>'bndf76dfsfds',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>2700000
             ],
             [
-                'orderId'=>28,
+                'orderId'=>'dsfdsfdf423',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>1900000
             ],
             [
-                'orderId'=>29,
+                'orderId'=>'GHcsfWUhfshv5CQx',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>890000
             ],
             [
-                'orderId'=>30,
+                'orderId'=>'76shk4PXDp9cZTQP',
                 'productId'=>2,
                 'quantity'=>1,
                 'unitPrice'=>790000

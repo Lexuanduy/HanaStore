@@ -13,15 +13,20 @@
             background-color: #117a8b;
             color: #fff;
         }
+        .table td, .table th{
+            vertical-align: middle;
+            text-align: center;
+        }
+        .table thead th{
+            text-align: center;
+        }
     </style>
 
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header card-header-text">
-                    <hr></div>
+                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
                     <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> FLOWERS CATALOGUE</h4>
-                    <hr></div>
                 </div>
 
                 <div class="card-body">
@@ -72,7 +77,7 @@
                                                 <th class="column7">{{__('Sale')}}</th>
                                                 <th class="column8">{{__('Description')}}</th>
                                                 <th class="column9">{{__('Detail')}}</th>
-                                                <th class="column9">{{__('Action')}}</th>
+                                                <th class="column10">{{__('Action')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>

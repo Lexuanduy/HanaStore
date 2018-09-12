@@ -43,7 +43,7 @@ Route::resource('/admin/category', 'CategoryController');
 
 Route::resource('/admin/collection', 'CollectionController');
 
-Route::get('/error', function (){
+Route::get('/404', function (){
     return view('admin.error.404');
 });
 
@@ -76,7 +76,7 @@ Route::get('/user/blog', 'UserController@blog')->name('blogClient');
 Route::get('/user/blog/{id}','UserController@getBlogDetail');
 
 //Route view liên hệ
-Route::get('/user/contact','UserController@getBlog')->name('contactClient');
+Route::get('/user/contact','UserController@contact')->name('contactClient');
 
 
 //View chart
@@ -95,4 +95,9 @@ Route::get('auth/google/callback', 'GoogleController@handleProviderCallback');
 
 Route::get('auth/facebook', 'FacebookAuthController@redirectToProvider')->name('facebook.login');
 Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallback');
+// Order Manager
+Route::get('/admin/order', 'OrderController@index');
+Route::get('/admin/order/change-status', 'OrderController@changeStatus');
+Route::get('/chart-api', 'ChartController@getChartDataApi');
+
 

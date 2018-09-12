@@ -83,9 +83,9 @@
                                     </td>
                                     <td class="column-5 text-center price">{{number_format($item->price * $item->qty,0,',','.')}}</td>
                                     <td style="padding-right: 20px;">
-                                        <button type="button" data-toggle="tooltip" title="Xóa"
+                                        <button type="button" title="Xóa"
                                                 class="btn btn-xs btn-delete" id="{{$item-> rowId}}"
-                                                style="background-color: transparent; border: 1px solid transparent">
+                                                style="background-color: transparent;border:none;outline: none">
                                             <i class="fa fa-trash-o icon" aria-hidden="true"></i>
                                         </button>
                                     </td>

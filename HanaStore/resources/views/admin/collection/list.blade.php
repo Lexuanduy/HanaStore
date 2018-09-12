@@ -13,6 +13,13 @@
             background-color: #117a8b;
             color: #fff;
         }
+        .table td, .table th{
+            vertical-align: middle;
+            text-align: center;
+        }
+        .table thead th{
+            text-align: center;
+        }
     </style>
     <div class="row">
         <div class="col-lg-12">

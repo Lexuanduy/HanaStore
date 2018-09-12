@@ -143,7 +143,7 @@
                                                 <div class="form-group input-group-prepend">
                                                     <span class="input-group-text">Price</span>
                                                 </div>
-                                                <input type="text" class="form-control" value="{{$product->price}}" required>
+                                                <input type="text" name="price" class="form-control" value="{{$product->price}}" required>
                                                 <div class="form-group input-group-append">
                                                     <span class="input-group-text">VND</span>
                                                 </div>
@@ -181,7 +181,7 @@
                                         <label class="col-sm-2">Sale</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" value="{{$product->sale}}" required>
+                                                <input type="text" name="sale" class="form-control" value="{{$product->sale}}" required>
                                                 <div class="form-group input-group-prepend">
                                                     <span class="input-group-text">%</span>
                                                 </div>
