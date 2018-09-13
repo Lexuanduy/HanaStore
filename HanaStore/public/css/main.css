@@ -3080,6 +3080,13 @@ input.num-product::-webkit-inner-spin-button {
     visibility: visible;
     opacity: 1;
 }
+.cus-hidden{
+    visibility: hidden;
+}
+
+.cus-show{
+    visibility: visible;
+}
 
 
 

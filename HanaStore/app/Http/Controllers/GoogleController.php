@@ -44,7 +44,7 @@ class GoogleController extends Controller
             $authUser->save();
             return $authUser;
         }
-
+        $avatar = str_replace('?sz=50', '', $googleUser->avatar);
         return User::create(
             [
                 'name' => $googleUser->name,
@@ -52,7 +52,7 @@ class GoogleController extends Controller
                 'email' => $googleUser->email,
                 'provider_id' => $googleUser->id,
                 'provider' => $googleUser->id,
-                'avatar' => $googleUser->avatar
+                'avatar' => $avatar
             ]
         );
     }
