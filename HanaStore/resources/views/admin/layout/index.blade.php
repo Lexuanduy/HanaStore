@@ -333,10 +333,13 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6" id="first_order_chart">
+                            <div class="col-md-4" id="first_order_chart">
 
                             </div>
-                            <div class="col-md-6" id="second_order_chart">
+                            <div class="col-md-4" id="second_order_chart">
+
+                            </div>
+                            <div class="col-md-4" id="third_order_chart">
 
                             </div>
                         </div>
@@ -466,8 +469,9 @@
             };
 
             // Optional; add a title and set the width and height of the chart
-            let options_one = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400};
+            let options_one = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400, is3D: true};
             let options_two = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400, legend: 'none'};
+            let options_three = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400, pieHole: 0.4};
 
             // Display the chart inside the <div> element with id="first_order_chart"
             let first_order_chart = new google.visualization.PieChart(document.getElementById('first_order_chart'));
@@ -476,6 +480,10 @@
             // Display the chart inside the <div> element with id="second_order_chart"
             let second_order_chart = new google.visualization.BarChart(document.getElementById('second_order_chart'));
             second_order_chart.draw(data, options_two);
+
+            // Display the chart inside the <div> element with id="third_order_chart"
+            let third_order_chart = new google.visualization.PieChart(document.getElementById('third_order_chart'));
+            third_order_chart.draw(data, options_three);
         }
     </script>
 @endsection
