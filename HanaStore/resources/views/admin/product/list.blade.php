@@ -93,9 +93,6 @@
                         </div>
                     </div>
                     <!--List Flower Table-->
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        {{$products_in_view->links()}}
-                    </div>
                 </div>
             </div>
         </div>
@@ -149,7 +146,6 @@
 
         $(document).ready(function() {
             $('#table').DataTable({
-                "paging": false
             });
         } );
     </script>

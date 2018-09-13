@@ -8,7 +8,7 @@
         .none a{
             text-decoration: none;
         }
-        thead tr th{
+        .dataTable thead tr th{
             background-image: linear-gradient(#868f96, #596164);
         }
         .table td{
@@ -17,6 +17,9 @@
         .daterangepicker{
             color: #6495ed;
             background: #f0f8ff;
+        }
+        table thead tr{
+            background: #faebd7;
         }
         .date-range{
             background: #ffffe0;
@@ -27,6 +30,7 @@
             cursor: pointer;
         }
         .form-group{
+            margin-right: 100px;
             margin-bottom: 0;
         }
     </style>
@@ -35,7 +39,7 @@
             <!--open card-->
             <div class="card">
                 <div class="card-header card-header-text">
-                    <h4 class="mb-0 col-sm-8"><i class="fas fa-clipboard-list text-danger"></i> ORDER</h4>
+                    <h4 class="mb-0 col-sm-4"><i class="fas fa-clipboard-list text-danger"></i> ORDER</h4>
 
                     <div class="form-group">
                         <form action="/admin/order">
@@ -118,9 +122,6 @@
                         </div>
                     </div>
                     <!--List Flower Table-->
-                    <div style="display: flex; align-items: center; justify-content: center;">
-                        {{$list_order->links()}}
-                    </div>
                 </div>
             </div>
             <!--  end card  -->
@@ -155,7 +156,6 @@
 
         $(document).ready(function() {
             $('#table').DataTable({
-                "paging": false
             });
         } );
     </script>

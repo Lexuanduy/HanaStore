@@ -9,7 +9,6 @@
             color: #6495ed;
             background: #f0f8ff;
         }
-
         table thead tr{
             background: #faebd7;
         }
@@ -30,7 +29,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="mb-0 col-sm-8">Daily Revenue Chart</h4>
+                        <h4 class="mb-0 col-sm-6">Daily Revenue Chart</h4>
 
                         <div class="form-group">
                             <form action="/admin/order">
@@ -46,6 +45,10 @@
 
                     <div class="card-body">
                         <div id="linechart_material">
+
+                        </div>
+
+                        <div id="pie_chart">
 
                         </div>
                     </div>
@@ -74,12 +77,13 @@
             var data = new google.visualization.DataTable();
             data.addColumn('date', 'Ngày');
             data.addColumn('number', 'Doanh thu');
-            for (var i = 0; i < chart_data.length; i++){
-                data.addRow([new Date(chart_data[i].day),  Number(chart_data[i].revenue)]);
+            data.addColumn('number', 'Lợi nhuận');
+            for (var i = 0, chartLg = chart_data.length; i < chartLg; i++){
+                data.addRow([new Date(chart_data[i].day),  Number(chart_data[i].revenue), Number(chart_data[i].revenue)-Number(chart_data[i].revenue)*0.1-480000]);
             }
             var options = {
                 chart: {
-                    title: 'Biểu đồ doanh thu theo thời gian',
+                    title: 'Biểu đồ doanh thu và lợi nhuận theo thời gian',
                     subtitle: 'tính theo đơn vị (vnd)'
                 },
                 height: 500,
@@ -142,5 +146,21 @@
                 });
             });
         });
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart()
+        {
+            var data = google.visualization.arrayToDataTable({!! $order_data !!});
+            var options = {
+                title : 'Percentage of Order Status: Fulfilled, Confirmed(Delivering), Pending, Cancel'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+            chart.draw(data, options);
+        }
     </script>
 @endsection

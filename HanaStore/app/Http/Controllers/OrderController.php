@@ -15,7 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $list_order = Order::orderBy('created_at', 'desc')->paginate(10);
+        $list_order = Order::all();
         return view('admin.order.list')->with('list_order', $list_order);
 
 //        $start_date = Input::get('startDate');

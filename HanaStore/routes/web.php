@@ -99,5 +99,7 @@ Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallb
 Route::get('/admin/order', 'OrderController@index');
 Route::get('/admin/order/change-status', 'OrderController@changeStatus');
 Route::get('/chart-api', 'ChartController@getChartDataApi');
+// Test APIs from order, can delete
+//Route::get('/order-api', 'ChartController@getChartOrder');
 
 
