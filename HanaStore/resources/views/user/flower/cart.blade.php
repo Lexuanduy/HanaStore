@@ -124,9 +124,8 @@
 					<span class="s-text18 w-size19 w-full-sm">
 						Số tiền:
 					</span>
-
-                        <span class="m-text21 w-size20 w-full-sm">
-						 {{$total}} vnđ
+                    <span class="m-text21 w-size20 w-full-sm totalPriceOrder">
+                        {{$total}} vnđ
 					</span>
                     </div>
 
@@ -188,12 +187,12 @@
 
                         <!--  -->
                         <div class="flex-w flex-sb-m p-t-26 p-b-30">
-                        <span class="m-text22 w-size19 w-full-sm">
-                            Tổng tiền:
-                        </span>
-                            <span class="m-text21 w-size20 w-full-sm">
-                            {{$total}} vnđ
-                        </span>
+                            <span class="m-text22 w-size19 w-full-sm">
+                                Tổng tiền:
+                            </span>
+                                <span class="m-text21 w-size20 w-full-sm totalPriceOrder">
+                                {{$total}} vnđ
+                            </span>
                         </div>
 
                         <div class="size15 trans-0-4" >

@@ -213,7 +213,7 @@
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <a href="/user/product/{{$item->id}}"
+                                    <a href="/hanastore/product/{{$item->id}}"
                                        class="block2-name dis-block s-text3 p-b-5">
                                         {{$item->name}}
                                     </a>
@@ -280,7 +280,7 @@
             var nameProduct = $('.product-detail-name').html();
             $(this).click(function () {
                 $.ajax({
-                    url: '/user/add-cart/' + id,
+                    url: '/hanastore/add-cart/' + id,
                     method: 'post',
                     data: {
                         _token: $('meta[name="csrf-token"]').attr('content')
@@ -294,7 +294,7 @@
                             confirmButtonText: 'Ok',
                         }).then((result) => {
                             if (result.value) {
-                                window.location.href = '/user/cart';
+                                window.location.href = '/hanastore/cart';
                             }
                         })
                     },

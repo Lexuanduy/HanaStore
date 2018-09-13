@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="block2-txt p-t-20">
-                                <a href="/user/product/{{$item->id}}" class="block2-name dis-block s-text3 p-b-5">
+                                <a href="/hanastore/product/{{$item->id}}" class="block2-name dis-block s-text3 p-b-5">
                                     {{$item->name}}
                                 </a>
                                 @if($item->sale == 0)
@@ -180,7 +180,7 @@
                                     </div>
 
                                     <div class="block2-txt p-t-20">
-                                        <a href="/user/product/{{$item->id}}"
+                                        <a href="/hanastore/product/{{$item->id}}"
                                            class="block2-name dis-block s-text3 p-b-5">
                                             {{$item->name}}
                                         </a>
@@ -258,7 +258,7 @@
                                     </div>
 
                                     <div class="block2-txt p-t-20">
-                                        <a href="/user/product/{{$item->id}}"
+                                        <a href="/hanastore/product/{{$item->id}}"
                                            class="block2-name dis-block s-text3 p-b-5">
                                             {{$item->name}}
                                         </a>

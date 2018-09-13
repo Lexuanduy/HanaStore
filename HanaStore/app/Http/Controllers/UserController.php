@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-use PHPUnit\Framework\Constraint\Count;
 use Webpatser\Uuid\Uuid;
 
 class UserController extends Controller
@@ -175,7 +174,8 @@ class UserController extends Controller
             Cart::update($rowId, $qty);
             $content = Cart::get($rowId);
             $totalPrice = number_format($content->qty * $content->price,0,',','.');
-            return response()->json(['item' => $content, 'totalPrice' => $totalPrice], 200);
+            $totalCart = Cart::subtotal();
+            return response()->json(['item' => $content, 'totalPrice' => $totalPrice,'totalCart'=>$totalCart], 200);
         }
     }
 
@@ -333,6 +333,19 @@ class UserController extends Controller
         $categories = Category::all();
         $collections = Collection::all();
         return view('user.flower.contact')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
+    }
+
+    public function getProductFilterApi($startPrice,$endPrice)
+    {
+        $product = Product::whereBetween('price', [$startPrice, $endPrice])->where('status', 1)->get();
+        $count = Product::whereBetween('price', [$startPrice, $endPrice])->where('status', 1)->count();
+        return response()->json(['listProduct'=> $product,'count'=>$count], 200);
+    }
+
+    public function getProductBySearchApi ($value){
+        $product = Product::where('name', 'like', '%' . $value . '%')->orWhere('description', 'like', '%' . $value . '%')->where('status', 1)->get();
+        $count = Product::where('name', 'like', '%' . $value . '%')->orWhere('description', 'like', '%' . $value . '%')->where('status', 1)->count();
+        return response()->json(['listProduct' => $product, 'count' => $count], 200);
     }
 }
 
