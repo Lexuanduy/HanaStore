@@ -73,8 +73,8 @@
                     </div>
                 @endif
 
-                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
-                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Flower</h4>
+                <div class="card-header card-header-text">
+                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Edit Flower</h4>
                 </div>
 
                 <!--form edit flowers-->
@@ -143,7 +143,7 @@
                                                 <div class="form-group input-group-prepend">
                                                     <span class="input-group-text">Price</span>
                                                 </div>
-                                                <input type="text" class="form-control" value="{{$product->price}}" required>
+                                                <input type="text" name="price" class="form-control" value="{{$product->price}}" required>
                                                 <div class="form-group input-group-append">
                                                     <span class="input-group-text">VND</span>
                                                 </div>
@@ -181,7 +181,7 @@
                                         <label class="col-sm-2">Sale</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" value="{{$product->sale}}" required>
+                                                <input type="text" name="sale" class="form-control" value="{{$product->sale}}" required>
                                                 <div class="form-group input-group-prepend">
                                                     <span class="input-group-text">%</span>
                                                 </div>
@@ -266,4 +266,11 @@
         });
     </script>
     <!--reset-->
+    <script type="text/javascript">
+        window.onbeforeunload = confirmExit;
+        function confirmExit()
+        {
+            return "Do you want to leave this page without saving?";
+        }
+    </script>
 @endsection

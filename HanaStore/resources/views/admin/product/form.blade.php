@@ -72,8 +72,8 @@
                         </ul>
                     </div>
                 @endif
-                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
-                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create Product</h4>
+                <div class="card-header card-header-text">
+                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Create Product</h4>
                 </div>
 
                 <!--form edit flowers-->
@@ -104,8 +104,8 @@
                                     <div class="row">
                                         <label class="col-sm-2">Category</label>
                                         <div class="col-sm-4 form-group mb-3">
-                                            <select class="form-control" required>
-                                                <option name="categoryId" value="">Select category...</option>
+                                            <select name="categoryId" class="form-control" required>
+                                                <option value="">Select category...</option>
                                                 @foreach($categories as $item)
                                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                                 @endforeach
@@ -141,7 +141,7 @@
                                                 <div class="form-group input-group-prepend">
                                                     <span class="input-group-text">Price</span>
                                                 </div>
-                                                <input type="text" class="form-control" required>
+                                                <input type="text" name="price" class="form-control" required>
                                                 <div class="form-group input-group-append">
                                                     <span class="input-group-text">VND</span>
                                                 </div>
@@ -175,7 +175,7 @@
                                         <label class="col-sm-2">Sale</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" required>
+                                                <input type="text" name="sale" class="form-control" required>
                                                 <div class="form-group input-group-prepend">
                                                     <span class="input-group-text">%</span>
                                                 </div>
@@ -280,4 +280,11 @@
         })
     </script>
     <!--Reset-->
+    <script type="text/javascript">
+        window.onbeforeunload = confirmExit;
+        function confirmExit()
+        {
+            return "Do you want to leave this page without saving?";
+        }
+    </script>
 @endsection

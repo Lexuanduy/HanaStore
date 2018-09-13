@@ -23,7 +23,7 @@ class ProductController extends Controller
         $collections = Collection::all();
         $categoryId = Input::get('categoryId');
         if ($categoryId == null || $categoryId == 0) {
-            $products = Product::where('status', 1)->orderBy('created_at', 'desc')->paginate(5);
+            $products = Product::where('status', 1)->orderBy('created_at', 'desc')->get();
             return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
@@ -31,7 +31,7 @@ class ProductController extends Controller
                 ->with('categoryId', $categoryId);
         } else {
             $products_filter = Product::where('status', 1);
-            $products = $products_filter->where('categoryId', $categoryId)->orderBy('created_at', 'desc')->paginate(5);
+            $products = $products_filter->where('categoryId', $categoryId)->orderBy('created_at', 'desc')->get();
             return view('admin.product.list')
                 ->with('products_in_view', $products)
                 ->with('categories', $categories)
@@ -93,7 +93,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        if ($product == null) {
+        if ($product == null || $product->status != 1) {
             return view('admin.error.404');
         }
         $categoryId = $product->categoryId;
@@ -210,62 +210,4 @@ class ProductController extends Controller
         return view('admin.product.list')->with(['products_in_view' => $products, 'categories' => $categories, 'categoryId' => $categoryId]);
     }
 
-//    Live search action
-//    function action(Request $request)
-//    {
-//        if($request->ajax())
-//        {
-//            $output = '';
-//            $query = $request->get('query');
-//            if($query != '')
-//            {
-//                $data = Product::where('Name', 'like', '%'.$query.'%')
-//                    ->orWhere('Price', 'like', '%'.$query.'%')
-//                    ->orWhere('Sale', 'like', '%'.$query.'%')
-//                    ->orWhere('Description', 'like', '%'.$query.'%')
-//                    ->orWhere('Detail', 'like', '%'.$query.'%')
-//                    ->get();
-//
-//            }
-//            else
-//            {
-//                $data = Product::orderBy('ID', 'desc')
-//                    ->get();
-//            }
-//            $total_row = $data->count();
-//            if($total_row > 0)
-//            {
-//                foreach($data as $row)
-//                {
-//                    $output .= '
-//                    <tr>
-//                     <td>'.$row->ID.'</td>
-//                     <td>'.$row->Name.'</td>
-//                     <td>'.$row->Image.'</td>
-//                     <td>'.$row->Category.'</td>
-//                     <td>'.$row->Collection.'</td>
-//                     <td>'.$row->Price.'</td>
-//                     <td>'.$row->Sale.'</td>
-//                     <td>'.$row->Description.'</td>
-//                     <td>'.$row->Detail.'</td>
-//                    </tr>
-//                    ';
-//                }
-//            }
-//            else
-//            {
-//                $output = '
-//                <tr>
-//                 <td align="center" colspan="5">No Data Found</td>
-//                </tr>
-//               ';
-//            }
-//            $data = array(
-//                'table_data'  => $output,
-//                'total_data'  => $total_row
-//            );
-//
-//            echo json_encode($data);
-//        }
-//    }
 }

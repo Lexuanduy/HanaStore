@@ -17,7 +17,7 @@ class GoogleController extends Controller
 
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->stateless()->user();
 
         $authUser = $this->findOrCreateUser($user);
 

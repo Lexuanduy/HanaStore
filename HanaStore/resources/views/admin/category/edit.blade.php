@@ -73,8 +73,8 @@
                         </ul>
                     </div>
                 @endif
-                    <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Category</h4>
+                    <div class="card-header card-header-text">
+                        <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Edit Category</h4>
                     </div>
 
                     <!--form edit collections-->
@@ -180,5 +180,12 @@
         });
     </script>
     <!--reset-->
+    <script type="text/javascript">
+        window.onbeforeunload = confirmExit;
+        function confirmExit()
+        {
+            return "Do you want to leave this page without saving?";
+        }
+    </script>
 @endsection
 

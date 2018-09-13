@@ -8,7 +8,7 @@
 
 body, html {
     height: 100%;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 /* ------------------------------------ */
@@ -137,7 +137,7 @@ table td.r, table th.r {
 
 
 .table100-head th{
-    font-family: OpenSans-Regular;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 18px;
     color: #fff;
     line-height: 1.2;
@@ -149,7 +149,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr {
-    font-family: OpenSans-Regular;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
     color: #808080;
     line-height: 1.2;
@@ -184,7 +184,7 @@ tbody tr:hover {
         margin-bottom: 0;
     }
     table tbody tr td:before {
-        font-family: OpenSans-Regular;
+        font-family: 'Source Sans Pro', sans-serif;
         font-size: 14px;
         color: #999999;
         line-height: 1.2;
@@ -194,31 +194,10 @@ tbody tr:hover {
         left: 30px;
         top: 0;
     }
-    table tbody tr td:nth-child(1):before {
-        content: "Date";
-    }
-    table tbody tr td:nth-child(2):before {
-        content: "Order ID";
-    }
-    table tbody tr td:nth-child(3):before {
-        content: "Name";
-    }
-    table tbody tr td:nth-child(4):before {
-        content: "Price";
-    }
-    table tbody tr td:nth-child(5):before {
-        content: "Quantity";
-    }
-    table tbody tr td:nth-child(6):before {
-        content: "Total";
-    }
 
-    .column4,
-    .column5,
-    .column6 {
-        text-align: left;
-    }
-
+    .column7
+    .column8
+    .column9
     .column4,
     .column5,
     .column6,

@@ -4,7 +4,7 @@ html,
 body {
 	margin: 0;
 	font-size: 100%;
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 	background: #fff;
 }
 
@@ -37,7 +37,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	font-family: 'Poiret One', cursive;
+    font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 700;
 }
 
@@ -505,6 +505,12 @@ a.btn.more {
 	border: 1px solid #d0d0d0;
 }
 
+.card-header{
+    background-image: linear-gradient(#B7F8DB, #50A7C2);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
 
 /*--responsive--*/
 
