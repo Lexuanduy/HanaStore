@@ -10,8 +10,7 @@
             text-decoration: none;
         }
         thead tr th{
-            background-color: #117a8b;
-            color: #fff;
+            background-image: linear-gradient(#868f96, #596164);
         }
         .table td, .table th{
             vertical-align: middle;
@@ -20,52 +19,30 @@
         .table thead th{
             text-align: center;
         }
+        .form-group{
+            margin-bottom: 0;
+        }
     </style>
 
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
-                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> FLOWERS CATALOGUE</h4>
+                <div class="card-header card-header-text text-center">
+                    <h4 class="mb-0 col-sm-4"><i class="fab fa-pagelines text-danger"></i> FLOWERS CATALOGUE</h4>
+
+                    <div class="form-group">
+                        <a href="/admin/product/create" class="btn" style="background-image: linear-gradient(#a3bded, #66a6ff);"><i class="far fa-plus-square"></i> Create New</a>
+                    </div>
                 </div>
 
                 <div class="card-body">
-                    <div class="form-group col-sm-4">
-                        <label class="mr-3 badge badge-info">Search by name or id,...</label>
-                        <form action="/admin/product/search">
-                            <div class="form-group">
-                                <input type="text" name="records" id="search" class="form-control" placeholder="Search Flower Data" />
-                            </div>
-                        </form>
-
-                        <div class="ml-2">
-                            <a href="/admin/product/create" class="btn btn-warning"><i class="far fa-plus-square"></i> Create New</a>
-                        </div>
-                    </div>
-
-                    <!--Search by category-->
-                    <form action="/admin/product">
-                        <div class="form-group col-sm-4">
-                            <label class="mr-3 badge badge-info">Search by category</label>
-                            <select name="categoryId" class="form-control mr-3">
-                                <option value="0">All category</option>
-                                @foreach($categories as $item)
-                                    <option
-                                        value="{{$item->id}}" {{$categoryId == $item->id ? 'selected' : ''}}>{{$item->name}}</option>
-                                @endforeach
-                            </select>
-                            <input type="submit" value="Filter" class="btn btn-style">
-                        </div>
-                    </form>
-                    <!--Search by category-->
-
                     <!--List Flower Table-->
                     <div class="limiter">
                         <div class="container-table100">
                             <div class="wrap-table100">
                                 <div class="table100">
                                     @if($products_in_view->count()>0)
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered" id="table">
                                             <thead>
                                             <tr class="table100-head">
                                                 <th class="column1">{{__('ID')}}</th>
@@ -168,7 +145,13 @@
 
             });
             return false;
-        })
+        });
+
+        $(document).ready(function() {
+            $('#table').DataTable({
+                "paging": false
+            });
+        } );
     </script>
     <!--remove product in view-->
 @endsection

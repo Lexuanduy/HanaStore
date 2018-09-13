@@ -13,18 +13,29 @@
         table thead tr{
             background: #faebd7;
         }
+        .date-range{
+            background: #ffffe0;
+            color: #6495ed;
+            padding: 8px;
+            line-height: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group{
+            margin-bottom: 0;
+        }
     </style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Daily Revenue Chart</h4>
+                        <h4 class="mb-0 col-sm-8">Daily Revenue Chart</h4>
 
-                        <div class="form-group float-right">
+                        <div class="form-group">
                             <form action="/admin/order">
                                 <div class="form-group">
-                                    <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                    <div id="reportrange" class="date-range">
                                         <i class="fa fa-calendar"></i>&nbsp;
                                         <span></span> <i class="fa fa-caret-down"></i>
                                     </div>

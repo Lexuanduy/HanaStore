@@ -73,8 +73,8 @@
                         </ul>
                     </div>
                 @endif
-                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
-                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Collection</h4>
+                <div class="card-header card-header-text">
+                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Edit Collection</h4>
                 </div>
 
                 <!--form edit collections-->

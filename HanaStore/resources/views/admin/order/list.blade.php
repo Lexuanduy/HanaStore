@@ -9,39 +9,54 @@
             text-decoration: none;
         }
         thead tr th{
-            background-color: #117a8b;
-            color: #fff;
+            background-image: linear-gradient(#868f96, #596164);
         }
         .table td{
             vertical-align: middle;
+        }
+        .daterangepicker{
+            color: #6495ed;
+            background: #f0f8ff;
+        }
+        .date-range{
+            background: #ffffe0;
+            color: #6495ed;
+            padding: 8px;
+            line-height: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group{
+            margin-bottom: 0;
         }
     </style>
     <div class="row">
         <div class="col-md-12">
             <!--open card-->
             <div class="card">
-                <div class="card-header card-header-text" style="background: url('{{ asset('img/hanastore.png') }}')">
-                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i></i> ORDER</h4>
-                </div>
-                <div class="card-body">
-                    <div class="form-group float-right">
+                <div class="card-header card-header-text">
+                    <h4 class="mb-0 col-sm-8"><i class="fas fa-clipboard-list text-danger"></i> ORDER</h4>
+
+                    <div class="form-group">
                         <form action="/admin/order">
                             <div class="form-group">
-                                <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                <div id="reportrange" class="date-range">
                                     <i class="fa fa-calendar"></i>&nbsp;
                                     <span></span> <i class="fa fa-caret-down"></i>
                                 </div>
                             </div>
                         </form>
                     </div>
+                </div>
 
+                <div class="card-body">
                     <!--List Flower Table-->
                     <div class="limiter">
                         <div class="container-table100">
                             <div class="wrap-table100">
                                 <div class="table100">
                                     @if($list_order->count()>0)
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered" id="table">
                                             <thead>
                                                 <tr class="table100-head">
                                                     <th class="column1">{{__('Order Code')}}</th>
@@ -118,7 +133,7 @@
             var end = moment();
 
             function cb(start, end) {
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                $('#reportrange span').html(start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY'));
             }
 
             $('#reportrange').daterangepicker({
@@ -137,5 +152,11 @@
             cb(start, end);
 
         });
+
+        $(document).ready(function() {
+            $('#table').DataTable({
+                "paging": false
+            });
+        } );
     </script>
 @endsection

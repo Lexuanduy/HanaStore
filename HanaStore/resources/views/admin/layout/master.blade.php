@@ -21,6 +21,7 @@
     </script>
     <!-- Bootstrap core CSS     -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <!-- Bootstrap core Css -->
     <!-- Common Css -->
     <link href="{{ asset('css/my-style.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -35,8 +36,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main-table.css') }}">
 
     <!--web-fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
-    <link href="https:fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <!--//web-fonts-->
 
     <!--CSS Date range picker-->
@@ -339,5 +339,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!--JS date range picker-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
 </body>
 </html>
