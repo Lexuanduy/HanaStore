@@ -74,10 +74,10 @@
                                                     <td class="column7">{{$item->sale}} %</td>
                                                     <td class="column8">{{$item->description}}</td>
                                                     <td class="column9">{{$item->detail}}</td>
-                                                    <td class="column9">
+                                                    <td>
                                                         <a class="text-primary" href="/admin/product/{{$item -> id}}/edit"><i class="fas fa-edit"></i></a>
 
-                                                        <a class="text-danger" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i></a>
+                                                        <a class="text-danger btn-delete" href="{{$item-> id}}"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -103,14 +103,13 @@
         $('.btn-delete').click(function () {
             var thisButton = $(this);
             swal({
-                text: "Are you sure about this action?",
+                title: 'Chắc cú không?',
+                text: "Xóa hoa này nghen?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Đồng ý',
-                cancelButtonText: 'Huỷ bỏ',
-                buttonsStyling: false
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đồng ý'
             }).then(function() {
                 var id = thisButton.attr('href');
                 $.ajax({
@@ -119,12 +118,11 @@
                     'data':{
                         '_token':$('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function (response) {
+                    success: function () {
                         swal({
                             text: 'Product has deleted.',
                             type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
+                            confirmButtonColor: '#2ebf91',
                         })
                         setTimeout(function () {
                             window.location.reload();
@@ -132,10 +130,10 @@
                     },
                     error: function () {
                         swal({
-                            text: 'Error happened, try again please!',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: '<a href>Why do I have this issue?</a>'
                         })
                     }
                 });

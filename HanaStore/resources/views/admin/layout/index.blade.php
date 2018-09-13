@@ -7,7 +7,6 @@
 @section('content')
     <style>
         .panel{
-            margin-bottom:20px;
             background-color:#fff;
             border:1px solid transparent;border-radius:4px;
             -webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);
@@ -23,7 +22,7 @@
         .panel-primary .panel-heading {
             border-color: #337ab7;
             color: #fff;
-            background-color: #337ab7;
+            background-image: linear-gradient(#16222A, #3A6073);
         }
 
         .panel-primary a {
@@ -36,7 +35,7 @@
         .panel-green .panel-heading {
             border-color: #5cb85c;
             color: #fff;
-            background-color: #5cb85c;
+            background-image: linear-gradient(#43cea2, #185a9d);
         }
 
         .panel-green a {
@@ -54,7 +53,7 @@
         .panel-red .panel-heading {
             border-color: #d9534f;
             color: #fff;
-            background-color: #d9534f;
+            background-image: linear-gradient(#36d1dc, #5b86e5);
         }
 
         .panel-red a {
@@ -72,7 +71,7 @@
         .panel-yellow .panel-heading {
             border-color: #f0ad4e;
             color: #fff;
-            background-color: #f0ad4e;
+            background-image: linear-gradient(#4568dc, #b06ab3);
         }
 
         .panel-yellow a {
@@ -89,7 +88,7 @@
         .panel-sea .panel-heading {
             border-color: #3b517c;
             color: #fff;
-            background-color: #3b517c;
+            background-image: linear-gradient(#373B44, #4286f4);
         }
 
         .panel-sea a {
@@ -106,7 +105,7 @@
         .panel-purple .panel-heading {
             border-color: #882b8a;
             color: #fff;
-            background-color: #882b8a;
+            background-image: linear-gradient(#ffd89b, #19547b);
         }
 
         .panel-purple a {
@@ -119,6 +118,9 @@
 
 
         .row.items-dasboard{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
             width: 100%;
             margin: 0 auto;
         }
@@ -153,7 +155,7 @@
                     <div class="panel-heading">
                         <div class="row items-dasboard">
                             <div class="col-xs-4" style="margin-left: 10px">
-                                <i class="fab fa-product-hunt fa-5x"></i>
+                                <i class="fab fa-product-hunt fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
                                 <h2>Products</h2>
@@ -175,7 +177,7 @@
                     <div class="panel-heading">
                         <div class="row items-dasboard">
                             <div class="col-xs-4" style="margin-left: 10px">
-                                <i class="fas fa-folder-minus fa-5x"></i>
+                                <i class="fas fa-folder-minus fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
                                 <h2>Categories</h2>
@@ -198,7 +200,7 @@
                     <div class="panel-heading">
                         <div class="row items-dasboard">
                             <div class="col-xs-4" style="margin-left: 10px">
-                                <i class="far fa-list-alt fa-5x"></i>
+                                <i class="far fa-list-alt fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
                                 <h2>Collections</h2>
@@ -222,7 +224,7 @@
                     <div class="panel-heading">
                         <div class="row items-dasboard">
                             <div class="col-xs-4" style="margin-left: 10px">
-                                <i class="fas fa-clipboard-list fa-5x"></i>
+                                <i class="fas fa-clipboard-list fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
                                 <h2>Orders</h2>
@@ -245,7 +247,7 @@
                     <div class="panel-heading">
                         <div class="row items-dasboard">
                             <div class="col-xs-4" style="margin-left: 10px">
-                                <i class="fa fa-chart-line fa-5x"></i>
+                                <i class="fa fa-chart-line fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
                                 <h2>Chart</h2>
@@ -268,7 +270,7 @@
                     <div class="panel-heading">
                         <div class="row items-dasboard">
                             <div class="col-xs-4" style="margin-left: 10px">
-                                <i class="fa fa-chart-bar fa-5x" ></i>
+                                <i class="fa fa-chart-bar fa-4x" ></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
                                 <h2>Revenue</h2>
@@ -287,12 +289,14 @@
 
         </div>
     </div>
+
+    <!--General about company-->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="mb-0 col-sm-6">Daily Revenue Chart</h4>
+                        <h4 class="mb-0 col-sm-6">Thống kê doanh thu và lợi nhuận</h4>
 
                         <div class="form-group">
                             <form action="/admin/order">
@@ -307,8 +311,34 @@
                     </div>
 
                     <div class="card-body">
-                        <div id="linechart_material">
+                        <div class="row">
+                            <div class="col-md-6" id="first-revenue-chart">
 
+                            </div>
+                            <div class="col-md-6" id="second-revenue-chart">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0 col-sm-6">Trạng thái đơn hàng</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" id="first_order_chart">
+
+                            </div>
+                            <div class="col-md-6" id="second_order_chart">
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -318,7 +348,9 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['line']});
+        google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(function () {
             $.ajax({
                 url:'/chart-api?startDate=2018-08-20&endDate=2018-08-25',
@@ -333,32 +365,38 @@
         });
 
         function drawChart(chart_data) {
-            var data = new google.visualization.DataTable();
+            let data = new google.visualization.DataTable();
             data.addColumn('date', 'Ngày');
             data.addColumn('number', 'Doanh thu');
-            for (var i = 0; i < chart_data.length; i++){
-                data.addRow([new Date(chart_data[i].day),  Number(chart_data[i].revenue)]);
+            data.addColumn('number', 'Lợi nhuận');
+            for (let i = 0, chartLg = chart_data.length; i < chartLg; i++){
+                data.addRow([new Date(chart_data[i].day),  Number(chart_data[i].revenue), Number(chart_data[i].revenue)-Number(chart_data[i].revenue)*0.1-480000]);
             }
-            var options = {
+            let options = {
                 chart: {
-                    title: 'Biểu đồ doanh thu theo thời gian',
+                    title: 'Biểu đồ doanh thu và lợi nhuận theo thời gian',
                     subtitle: 'tính theo đơn vị (vnd)'
                 },
+                backgroundColor: '#f1f8e9',
                 height: 500,
                 hAxis: {
                     format: 'dd/MM/yyyy'
                 }
             };
 
-            var chart = new google.charts.Line(document.getElementById('linechart_material'));
+            let first_revenue_chart = new google.charts.Line(document.getElementById('first-revenue-chart'));
 
-            chart.draw(data, google.charts.Line.convertOptions(options));
+            first_revenue_chart.draw(data, google.charts.Line.convertOptions(options));
+
+            let second_revenue_chart = new google.charts.Bar(document.getElementById('second-revenue-chart'));
+
+            second_revenue_chart.draw(data, google.charts.Bar.convertOptions(options));
         };
 
         $(function() {
 
-            var start = moment().subtract(29, 'days');
-            var end = moment();
+            let start = moment().subtract(29, 'days');
+            let end = moment();
 
             function cb(start, end) {
                 $('#reportrange span').html(start.format('DD-MM-YYYY') + ' - ' + end.format('DD-MM-YYYY'));
@@ -386,8 +424,8 @@
             $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
                 // console.log();
                 // console.log(picker.endDate.format('YYYY-MM-DD'));
-                var startDate = picker.startDate.format('YYYY-MM-DD');
-                var endDate = picker.endDate.format('YYYY-MM-DD');
+                let startDate = picker.startDate.format('YYYY-MM-DD');
+                let endDate = picker.endDate.format('YYYY-MM-DD');
                 $.ajax({
                     url: '/chart-api?startDate=' + startDate + '&endDate=' + endDate,
                     method: 'GET',
@@ -404,5 +442,40 @@
                 });
             });
         });
+
+        google.charts.setOnLoadCallback(function () {
+            $.ajax({
+                url:'/order-api',
+                method:'GET',
+                success:function (resp) {
+                    drawOrderChart(JSON.parse(resp));
+                },
+                error: function () {
+                    swal('Server bị hack rồi mất hết số liệu.', 'Không thể lấy dữ liệu từ api', 'error');
+                }
+            });
+        });
+
+        // Draw the chart and set the chart values
+        function drawOrderChart(order_data) {
+            let data = new google.visualization.DataTable();
+            data.addColumn('string', 'Order Status');
+            data.addColumn('number', 'Number');
+            for (let i = 0, chartLg = order_data.length; i < chartLg; i++){
+                data.addRow([order_data[i].status,  order_data[i].number]);
+            };
+
+            // Optional; add a title and set the width and height of the chart
+            let options_one = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400};
+            let options_two = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400, legend: 'none'};
+
+            // Display the chart inside the <div> element with id="first_order_chart"
+            let first_order_chart = new google.visualization.PieChart(document.getElementById('first_order_chart'));
+            first_order_chart.draw(data, options_one);
+
+            // Display the chart inside the <div> element with id="second_order_chart"
+            let second_order_chart = new google.visualization.BarChart(document.getElementById('second_order_chart'));
+            second_order_chart.draw(data, options_two);
+        }
     </script>
 @endsection

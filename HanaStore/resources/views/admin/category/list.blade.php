@@ -63,11 +63,11 @@
                                                         </div>
                                                     </td>
                                                     <td class="column3">{{$item->name}}</td>
-                                                    <td class="column8">{{$item->description}}</td>
-                                                    <td class="column9">
+                                                    <td class="column4">{{$item->description}}</td>
+                                                    <td>
                                                         <a class="text-primary" href="/admin/category/{{$item -> id}}/edit"><i class="fas fa-edit"></i></a>
 
-                                                        <a class="text-danger" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i></a>
+                                                        <a class="text-danger btn-delete" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -93,14 +93,13 @@
         $('.btn-delete').click(function () {
             var thisButton = $(this);
             swal({
-                text: "Are you sure about this action?",
+                title: 'Chắc cú không?',
+                text: "Xóa danh mục này nghen?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Agree',
-                cancelButtonText: 'Cancel',
-                buttonsStyling: false
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đồng ý'
             }).then(function() {
                 var id = thisButton.attr('href');
                 $.ajax({
@@ -109,12 +108,11 @@
                     'data':{
                         '_token':$('meta[name="csrf-token"]').attr('content')
                     },
-                    success: function (response) {
+                    success: function () {
                         swal({
-                            text: 'Category has deleted.',
+                            text: 'Danh mục đã bị xóa.',
                             type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
+                            confirmButtonColor: '#2ebf91',
                         })
                         setTimeout(function () {
                             window.location.reload();
