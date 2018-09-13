@@ -248,7 +248,7 @@
                     <!--// Search-from -->
 
                     <div class="nav-item mx-3">
-                        <a href="/user/home" class="btn btn-outline-info" target="_blank">Visit website</a>
+                        <a href="/hanastore/home" class="btn btn-outline-info" target="_blank">Visit website</a>
                     </div>
 
                     <!--Admin profile-->

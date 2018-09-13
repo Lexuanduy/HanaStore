@@ -22,7 +22,7 @@ class OrderController extends Controller
 //        $end_date = Input::get('endDate');
 //        $list_order = Order::whereBetween('created_at', array($start_date .' 00:00:00', $end_date . ' 23:59:59'))
 //            ->orderBy('created_at', 'desc')
-//            ->paginate(10);
+//            ->get();
 //        return view('admin.order.list')->with('list_order', $list_order);
     }
 

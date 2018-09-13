@@ -353,7 +353,7 @@
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(function () {
             $.ajax({
-                url:'/chart-api?startDate=2018-08-20&endDate=2018-08-25',
+                url:'/chart-api?startDate=2018-08-20&endDate=2018-09-15',
                 method:'GET',
                 success:function (resp) {
                     drawChart(resp);

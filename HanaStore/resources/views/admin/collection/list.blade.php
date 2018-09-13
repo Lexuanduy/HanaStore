@@ -99,34 +99,45 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Đồng ý'
-            }).then(function() {
+            }).then(function(result) {
                 var id = thisButton.attr('href');
-                $.ajax({
-                    'url': '/admin/collection/' + id,
-                    'method': 'DELETE',
-                    'data':{
-                        '_token':$('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function () {
-                        swal({
-                            text: 'Bộ sưu tập đã bị xóa.',
-                            type: 'success',
-                            confirmButtonColor: '#2ebf91',
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2*1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Error happened, try again please!',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-
+                if (result.value) {
+                    $.ajax({
+                        'url': '/admin/collection/' + id,
+                        'method': 'DELETE',
+                        'data':{
+                            '_token':$('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function () {
+                            swal({
+                                text: 'Bộ sưu tập đã bị xóa.',
+                                type: 'success',
+                                confirmButtonColor: '#2ebf91',
+                            })
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2*1000);
+                        },
+                        error: function () {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Có gì đó sai sai!',
+                                footer: '<a href>Why do I have this issue?</a>'
+                            })
+                        }
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal({
+                        title: 'Đã hủy bỏ!',
+                        text: 'Hoa còn tồn kho nhiều lắm.',
+                        imageUrl: 'https://ubisafe.org/images/amounting-clipart-animation-1.gif',
+                        imageWidth: 300,
+                        imageHeight: 150,
+                        imageAlt: 'Custom image',
+                        animation: false
+                    })
+                }
             });
             return false;
         });

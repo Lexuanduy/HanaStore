@@ -86,7 +86,7 @@
         google.charts.load('current', {'packages':['bar']});
         google.charts.setOnLoadCallback(function () {
             $.ajax({
-                url:'/chart-api?startDate=2018-08-20&endDate=2018-08-25',
+                url:'/chart-api?startDate=2018-08-20&endDate=2018-09-15',
                 method:'GET',
                 success:function (resp) {
                     drawChart(resp);
@@ -164,7 +164,15 @@
                     method: 'GET',
                     success: function (resp) {
                         if(resp.length ==0){
-                            swal('Làm gì bán được bông nào.', 'Làm ơn chọn thời gian khác.', 'warning');
+                            swal({
+                                title: 'Làm gì bán được bông nào!',
+                                text: 'Hoa còn tồn kho nhiều lắm, gắng bán đê.',
+                                imageUrl: 'https://media.giphy.com/media/3orifdO6eKr9YBdOBq/giphy.gif',
+                                imageWidth: 300,
+                                imageHeight: 200,
+                                imageAlt: 'Custom image',
+                                animation: false
+                            });
                             return;
                         };
                         drawChart(resp);
