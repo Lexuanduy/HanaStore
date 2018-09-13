@@ -59,6 +59,7 @@ $(document).ready(function () {
             },
             success:function (data) {
                 isThis.parent().parent().parent().find('.price').html(data.totalPrice);
+                $(document).find('.totalPriceOrder').html(data.totalCart + ' vnđ');
             },
             error:function() {
 

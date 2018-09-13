@@ -116,7 +116,7 @@
                             <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Tìm kiếm sản phẩm. . ." id="srearch-product">
 
                             <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                                <a href="#"><i class="fs-12 fa fa-search" aria-hidden="true"></i></a>
+                                <a href="javascript:void (0)" class="searchProduct"><i class="fs-12 fa fa-search" aria-hidden="true"></i></a>
                             </button>
                         </div>
                     </div>
@@ -127,30 +127,23 @@
                     <div class="flex-sb-m flex-w p-b-35">
                         <div class="flex-w">
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select class="selection-2" name="sorting">
-                                    <option>Giá</option>
-                                    <option>$0.00 - $50.00</option>
-                                    <option>$50.00 - $100.00</option>
-                                    <option>$100.00 - $150.00</option>
-                                    <option>$150.00 - $200.00</option>
-                                    <option>$200.00+</option>
+                                <select class="selection-2" name="filter-price">
+                                    <option value="0">Giá</option>
+                                    <option value="1">0 - 50.000</option>
+                                    <option value="2">50.000 - 100.000</option>
+                                    <option value="3">100.000 - 150.000</option>
+                                    <option value="4">150.000 - 200.000</option>
+                                    <option value="5">200.000+</option>
                                 </select>
                             </div>
                         </div>
-                        <span class="s-text8 p-t-5 p-b-5">
+                        <span class="s-text8 p-t-5 p-b-5" id="show-name-filter">
                             {{$selected_categoryId!=0?'Danh mục "'.$selected_category->name . '"':''}}
                             {{$selected_collectionId!=0?'Bộ sư tập "'.$selected_collection->name.'"':''}}
                         </span>
                     </div>
-                    <div style="display: none">
-                        <form action="/user/list" method="GET" id="form-filter" enctype="multipart/form-data">
-                            @csrf
-                            <input type="number" name="startPrice" id="startPrice">
-                            <input type="number" name="endPrice" id="endPrice">
-                        </form>
-                    </div>
                     <!-- Product -->
-                    <div class="row">
+                    <div class="row" id="product-list-filter">
                         @foreach($products as $item)
                             <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                                 <!-- Block2 -->
@@ -173,7 +166,7 @@
                                     </div>
 
                                     <div class="block2-txt p-t-20">
-                                        <a href="/user/product/{{$item->id}}" class="block2-name dis-block s-text3 p-b-5">
+                                        <a href="/hanastore/product/{{$item->id}}" class="block2-name dis-block s-text3 p-b-5">
                                             {{$item->name}}
                                         </a>
                                         @if($item->sale == 0)
@@ -195,7 +188,7 @@
                     </div>
 
                     <!-- Pagination -->
-                    <div class="row">
+                    <div class="row" id="pagination">
                         <div class="col-md-12 mt-5 parent-paginate">
                             {{$products->links()}}
                         </div>
@@ -246,32 +239,182 @@
     <script type="text/javascript" src="{{asset('vendor/lightbox2/js/lightbox.min.js')}}"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
-    <script type="text/javascript">
-        // $('.block2-btn-addcart').each(function(){
-        //     var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        //     $(this).on('click', function(){
-        //         swal(nameProduct, "Thêm vào giỏ hàng thành công!", "success");
-        //     });
-        // });
-
-        $('.block2-btn-addwishlist').each(function(){
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function(){
-                swal(nameProduct, "Chức năng đang phát triển (^.^)", "success");
-            });
-        });
-        $('#srearch-product').focus(function () {
-            $(this).keypress(function (event) {
-                if (event.keyCode == 13) {
-                    alert('En tở đc rồi!');
-                }
-            });
-        });
-    </script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/noui/nouislider.min.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{asset('js/main.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{asset('js/home-user.js')}}"></script>
+    <script type="text/javascript">
+        $('.block2-btn-addwishlist').each(function () {
+            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "Chức năng đang phát triển (^.^)", "success");
+            });
+        });
+
+        $('#srearch-product').focus(function () {
+            $(this).keypress(function (event) {
+                if (event.keyCode == 13) {
+                    var valueSearch = $(this).val();
+                    $.ajax({
+                        method: 'GET',
+                        url: '/hanastore/api/search/' + valueSearch,
+                        data: {
+                            '_token': $('meta[name="csrf-token"]').attr('content'),
+                        },
+                        success: function (resp) {
+                            var content = '';
+                            var product = resp.listProduct;
+                            if (resp.count !== 0) {
+                                for (var i in product) {
+                                    content += '<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">' +
+                                        '<div class="block2">' +
+                                        '<div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative">' +
+                                        '<img src="' + product[i].images + '" alt="IMG-PRODUCT" style = "height:350px;object-fit: cover;">' +
+                                        '<div class="block2-overlay trans-0-4">' +
+                                        '<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">' +
+                                        '<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>' +
+                                        '<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>' +
+                                        '</a>' +
+                                        '<div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-' + product[i].id + '">' +
+                                        '<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">' +
+                                        'Thêm vào giỏ' +
+                                        '</button>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '<div class="block2-txt p-t-20">' +
+                                        '<a href="/hanastore/product/' + product[i].id + '" class="block2-name dis-block s-text3 p-b-5">' +
+                                        product[i].name +
+                                        '</a>';
+                                    if (parseInt(product[i].sale) === 0) {
+                                        content += '<span class="block2-price m-text6 p-r-5">' +
+                                            product[i].price + ' (vnđ)' +
+                                            '</span>';
+                                    }
+                                    else {
+                                        content += '<span class="block2-price m-text6 p-r-5 text-decoration">' +
+                                            product[i].price + ' (vnđ)' +
+                                            '</span>' +
+                                            '<span class="block2-sale m-text6 p-r-5" style="color: #F8A300">' +
+                                            (product[i].price - (product[i].price * product[i].sale / 100)) + ' (vnđ)' +
+                                            '</span>'
+                                    }
+                                    content += '</div>' +
+                                        '</div>' +
+                                        '</div>';
+                                    if (parseInt(product[i].sale) !== 0 && parseInt(product[i].new) !== 1) {
+                                        $('.img-product-home').addClass('block2-labelsale');
+                                    } else if (parseInt(product[i].sale) === 0 && parseInt(product[i].new) === 1) {
+                                        $('.img-product-home').removeClass('block2-labelsale');
+                                        $('.img-product-home').addClass('block2-labelnew');
+                                    } else {
+                                        $('.img-product-home').removeClass('block2-labelsale');
+                                        $('.img-product-home').removeClass('block2-labelnew');
+                                        $('.img-product-home').addClass('block2-labelsaleandnew');
+                                    }
+                                }
+                                $('#product-list-filter').html(content);
+                                $('#show-name-filter').html('Từ khóa: "' + valueSearch + '"');
+                                $('#pagination').addClass('cus-hidden');
+                            } else {
+                                $('#product-list-filter').html('Không có sản phẩm nào với từ khóa "' + valueSearch + '"!');
+                                $('#pagination').addClass('cus-hidden');
+                            }
+                        },
+                        error: function () {
+                            alert('a á à à a ~~~~ Lỗi rồi!');
+                        }
+                    });
+                }
+            });
+        });
+
+        $('.searchProduct').click(function () {
+            var valueSearch = $(this).val();
+            $.ajax({
+                method: 'GET',
+                url: '/hanastore/api/search/' + valueSearch,
+                data: {
+                    '_token': $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function (resp) {
+                    var content = '';
+                    var product = resp.listProduct;
+                    if (resp.count !== 0) {
+                        for (var i in product) {
+                            content += '<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">' +
+                                '<div class="block2">' +
+                                '<div class="block2-img wrap-pic-w img-product-home of-hidden pos-relative">' +
+                                '<img src="' + product[i].images + '" alt="IMG-PRODUCT" style = "height:350px;object-fit: cover;">' +
+                                '<div class="block2-overlay trans-0-4">' +
+                                '<a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">' +
+                                '<i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>' +
+                                '<i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>' +
+                                '</a>' +
+                                '<div class="block2-btn-addcart w-size1 trans-0-4 add-to-cart" id="add-cart-' + product[i].id + '">' +
+                                '<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">' +
+                                'Thêm vào giỏ' +
+                                '</button>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '<div class="block2-txt p-t-20">' +
+                                '<a href="/hanastore/product/' + product[i].id + '" class="block2-name dis-block s-text3 p-b-5">' +
+                                product[i].name +
+                                '</a>';
+                            if (parseInt(product[i].sale) === 0) {
+                                content += '<span class="block2-price m-text6 p-r-5">' +
+                                    product[i].price + ' (vnđ)' +
+                                    '</span>';
+                            }
+                            else {
+                                content += '<span class="block2-price m-text6 p-r-5 text-decoration">' +
+                                    product[i].price + ' (vnđ)' +
+                                    '</span>' +
+                                    '<span class="block2-sale m-text6 p-r-5" style="color: #F8A300">' +
+                                    (product[i].price - (product[i].price * product[i].sale / 100)) + ' (vnđ)' +
+                                    '</span>'
+                            }
+                            content += '</div>' +
+                                '</div>' +
+                                '</div>';
+                            if (parseInt(product[i].sale) !== 0 && parseInt(product[i].new) !== 1) {
+                                $('.img-product-home').addClass('block2-labelsale');
+                            } else if (parseInt(product[i].sale) === 0 && parseInt(product[i].new) === 1) {
+                                $('.img-product-home').removeClass('block2-labelsale');
+                                $('.img-product-home').addClass('block2-labelnew');
+                            } else {
+                                $('.img-product-home').removeClass('block2-labelsale');
+                                $('.img-product-home').removeClass('block2-labelnew');
+                                $('.img-product-home').addClass('block2-labelsaleandnew');
+                            }
+                        }
+                        $('#product-list-filter').html(content);
+                        $('#show-name-filter').html('Từ khóa: "' + valueSearch + '"');
+                        $('#pagination').addClass('cus-hidden');
+                    } else {
+                        $('#product-list-filter').html('Không có sản phẩm nào với từ khóa "' + valueSearch + '"!');
+                        $('#pagination').addClass('cus-hidden');
+                    }
+                },
+                error: function () {
+                    alert('a á à à a ~~~~ Lỗi rồi!');
+                }
+            });
+        });
+
+        $('#srearch-product').focusout(function () {
+            if($(this).val()== null || $(this).val().length == 0){
+                window.location.reload();
+            }
+        });
+
+
+        function search() {
+
+        }
+    </script>
+    <script src="{{asset('js/list-product.js')}}"></script>
 @endsection

@@ -8,7 +8,6 @@ class OrderDetail extends Model
 {
     protected $table = 'order_details';
     public $timestamps = false;
-    public $incrementing = false;
 
     public function order(){
         return $this->belongsTo('App\Order','orderId');

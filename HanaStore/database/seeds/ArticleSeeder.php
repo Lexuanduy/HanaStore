@@ -25,6 +25,8 @@ class ArticleSeeder extends Seeder
                             Chi Mẫu đơn Trung Quốc, 
                             nhiều khi có tài liệu gọi là chi Thược dược (danh pháp khoa học: Paeonia) là chi duy nhất trong họ Mẫu đơn Trung Quốc (Paeoniaceae).',
                 'images' => 'https://hoadepviet.com/wp-content/uploads/2016/12/hoa-mau-don-tq-1a.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 2,
@@ -33,6 +35,8 @@ class ArticleSeeder extends Seeder
                             Hoa có nhiều giống: giống lùn, giống trung, 
                             giống cao và cũng có nhiều màu sắc khác nhau: vàng lợt, vàng chanh, tím sậm, nâu sậm, tím đốm trắng, đỏ…',
                 'images' => 'https://chauhoa.vn/pictures/chau-hoa-thuoc-duoc-3.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
                 'id' => 3,
@@ -42,6 +46,8 @@ class ArticleSeeder extends Seeder
                             tránh xa quạt máy để hoa không bị héo vì mất nước. Ngoài ra, cần tránh những nơi quá nóng như tivi, 
                             tủ lạnh các thiết bị điện khác hoặc ánh nắng mặt trời trực tiếp chiếu vào để hoa không bị héo úa.',
                 'images' => 'https://hoatuoi360.com/uploads/2017/01/chonhoangaytet2.jpg',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ],
 
         ]);
