@@ -10,82 +10,79 @@
             text-decoration: none;
         }
         thead tr th{
-            background-color: #117a8b;
-            color: #fff;
+            background-image: linear-gradient(#868f96, #596164);
         }
-        .id-flower{
-            background-color: #ffff00;
+        .table td, .table th{
+            vertical-align: middle;
+            text-align: center;
+        }
+        .table thead th{
+            text-align: center;
+        }
+        .form-group{
+            margin-bottom: 0;
         }
     </style>
-    <div class="card">
-        <div class="card-content">
-            <div class="row">
-                <div class="card-header card-header-text text-center col-sm-3" data-background-color="green">
-                    <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> COLLECTION CATALOGUE</h4>
-                </div>
-                <div class="ml-2">
-                    <a href="/admin/collection/create" class="btn btn-twitter"><i class="far fa-plus-square"></i> Create New</a>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header card-header-text text-center">
+                    <h4 class="mb-0 col-sm-4"><i class="fab fa-pagelines text-danger"></i> COLLECTION CATALOGUE</h4>
 
-            <div class="row">
-                <div class="form-group col-sm-4">
-                    <label class="mr-3 badge">Search by name or id,...</label>
-                    <form action="/admin/collection/search">
-                        <div class="form-group">
-                            <input type="text" name="records" id="search" class="form-control" placeholder="Search Collection Data" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!--List Flower Table-->
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="table-responsive">
-                        @if($collection->count()>0)
-                            <table class="table table-hover table-striped table-condensed table-bordered">
-                                <thead>
-                                <tr>
-                                    <th scope="col" style="width: 1em">{{__('ID')}}</th>
-                                    <th scope="col" style="width: 10em">{{__('Image')}}</th>
-                                    <th class="col">{{__('Collection')}}</th>
-                                    <th class="col">{{__('Description')}}</th>
-                                    <th scope="col" style="width: 45px">{{__('Action')}}</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($collection as $item)
-                                    <tr>
-                                        <th class="id-flower" scope="row">{{$item->id}}</th>
-                                        <td>
-                                            <div class="card" style="background-size: cover; height: 120px; width: 120px">
-                                                <a href="/admin/collection/{{ $item->id }}">
-                                                    <img src="{{$item->images}}" class="img-thumbnail" style="background-size: cover; height: 120px; width: 120px" alt="images"/></a>
-                                            </div>
-                                        </td>
-                                        <td>{{$item->name}}</td>
-                                        <td>{{$item->description}}</td>
-                                        <td class="none">
-                                            <a class="btn btn-info btn-sm" href="/admin/collection/{{$item -> id}}/edit" style="width: 96.06px"><i class="fas fa-edit"></i> <b>Edit</b></a>
-
-                                            <a class="btn btn-delete btn-danger btn-sm" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i> <b>Remove</b></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                                @else
-                                    <div class="alert alert-danger">Hiện tại không có bộ sưu tập nào. Vui lòng click <a
-                                            href="/admin/collection/create" title="Thêm mới bộ sưu tập" class="btn-link">vào đây</a> để tạo mới.
-                                    </div>
-                                @endif
-                            </table>
+                    <div class="form-group">
+                        <a href="/admin/collection/create" class="btn" style="background-image: linear-gradient(#a3bded, #66a6ff);"><i class="far fa-plus-square"></i> Create New</a>
                     </div>
                 </div>
-            </div>
-            <!--List Flower Table-->
-            <div class="row float-right mr-2">
-                {{$collection->links()}}
+
+                <div class="card-body">
+                    <!--List Flower Table-->
+                    <div class="limiter">
+                        <div class="container-table100">
+                            <div class="wrap-table100">
+                                <div class="table100">
+                                    @if($collection->count()>0)
+                                        <table class="table table-bordered" id="table">
+                                            <thead>
+                                            <tr class="table100-head">
+                                                <th class="column1">{{__('ID')}}</th>
+                                                <th class="column2">{{__('Image')}}</th>
+                                                <th class="column5">{{__('Collection')}}</th>
+                                                <th class="column8">{{__('Description')}}</th>
+                                                <th class="column9">{{__('Action')}}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($collection as $item)
+                                                <tr>
+                                                    <td class="column1">{{$item->id}}</td>
+                                                    <td class="column2">
+                                                        <div class="card" style="background-size: cover; height: 120px; width: 120px">
+                                                            <a href="/admin/collection/{{ $item->id }}">
+                                                                <img src="{{$item->images}}" class="img-thumbnail" style="background-size: cover; height: 120px; width: 120px" alt="images"/></a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="column3">{{$item->name}}</td>
+                                                    <td class="column4">{{$item->description}}</td>
+                                                    <td>
+                                                        <a class="text-primary" href="/admin/collection/{{$item -> id}}/edit"><i class="fas fa-edit"></i></a>
+
+                                                        <a class="text-danger btn-delete" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i></a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            @else
+                                                <div class="alert alert-danger">Hiện tại không có danh mục sản phẩm. Vui lòng click <a
+                                                        href="/admin/collection/create" title="Thêm mới sản phẩm" class="btn-link">vào đây</a> để tạo mới.
+                                                </div>
+                                            @endif
+                                        </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--List Flower Table-->
+                </div>
             </div>
         </div>
     </div>
@@ -95,46 +92,60 @@
         $('.btn-delete').click(function () {
             var thisButton = $(this);
             swal({
-                text: "Are you sure about this action?",
+                title: 'Chắc cú không?',
+                text: "Xóa bộ sưu tập này nghen?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Agree',
-                cancelButtonText: 'Cancel',
-                buttonsStyling: false
-            }).then(function() {
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đồng ý'
+            }).then(function(result) {
                 var id = thisButton.attr('href');
-                $.ajax({
-                    'url': '/admin/collection/' + id,
-                    'method': 'DELETE',
-                    'data':{
-                        '_token':$('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Collection has deleted.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2*1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Error happened, try again please!',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-
+                if (result.value) {
+                    $.ajax({
+                        'url': '/admin/collection/' + id,
+                        'method': 'DELETE',
+                        'data':{
+                            '_token':$('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function () {
+                            swal({
+                                text: 'Bộ sưu tập đã bị xóa.',
+                                type: 'success',
+                                confirmButtonColor: '#2ebf91',
+                            })
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2*1000);
+                        },
+                        error: function () {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Có gì đó sai sai!',
+                                footer: '<a href>Why do I have this issue?</a>'
+                            })
+                        }
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal({
+                        title: 'Đã hủy bỏ!',
+                        text: 'Hoa còn tồn kho nhiều lắm.',
+                        imageUrl: 'https://ubisafe.org/images/amounting-clipart-animation-1.gif',
+                        imageWidth: 300,
+                        imageHeight: 150,
+                        imageAlt: 'Custom image',
+                        animation: false
+                    })
+                }
             });
             return false;
-        })
+        });
+
+        $(document).ready(function() {
+            $('#table').DataTable({
+            });
+        } );
     </script>
     <!--remove collection in view-->
 @endsection

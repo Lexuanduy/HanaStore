@@ -8,109 +8,125 @@
         .none a{
             text-decoration: none;
         }
-        thead tr th{
-            background-color: #117a8b;
-            color: #fff;
+        .dataTable thead tr th{
+            background-image: linear-gradient(#868f96, #596164);
         }
-        .id-flower{
-            background-color: #ffff00;
+        .table td{
+            vertical-align: middle;
+        }
+        .daterangepicker{
+            color: #6495ed;
+            background: #f0f8ff;
+        }
+        table thead tr{
+            background: #faebd7;
+        }
+        .date-range{
+            background: #ffffe0;
+            color: #6495ed;
+            padding: 8px;
+            line-height: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group{
+            margin-right: 100px;
+            margin-bottom: 0;
         }
     </style>
-    <div class="col-md-12">
-        <!--open card-->
-        <div class="card">
-            <div class="card-content">
-                <div class="row">
-                    <div class="card-header card-header-text text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="material-icons">assignment</i></i> ORDER</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <!--open card-->
+            <div class="card">
+                <div class="card-header card-header-text">
+                    <h4 class="mb-0 col-sm-4"><i class="fas fa-clipboard-list text-danger"></i> ORDER</h4>
+
+                    <div class="form-group">
+                        <form action="/admin/order">
+                            <div class="form-group">
+                                <div id="reportrange" class="date-range">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span> <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
-                <div class="row">
-                    <form action="/admin/product">
-                        <div class="form-group col-sm-3">
-                            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                                <i class="fa fa-calendar"></i>&nbsp;
-                                <span></span> <i class="fa fa-caret-down"></i>
+                <div class="card-body">
+                    <!--List Flower Table-->
+                    <div class="limiter">
+                        <div class="container-table100">
+                            <div class="wrap-table100">
+                                <div class="table100">
+                                    @if($list_order->count()>0)
+                                        <table class="table table-bordered" id="table">
+                                            <thead>
+                                                <tr class="table100-head">
+                                                    <th class="column1">{{__('Order Code')}}</th>
+                                                    <th class="column2">{{__('Merchant')}}</th>
+                                                    <th class="column3">{{__('Recipient')}}</th>
+                                                    <th class="column4">{{__('Order Date')}}</th>
+                                                    <th class="column5">{{__('Items')}}</th>
+                                                    <th class="column6">{{__('Order Value')}}</th>
+                                                    <th class="column7">{{__('Status')}}</th>
+                                                    <th class="column8">{{__('Action')}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($list_order as $item)
+                                                <tr>
+                                                    <td class="column1">{{$item->id}}</td>
+                                                    <td class="column2">tingfu</td>
+                                                    <td class="column3">{!! $item->shipInformation !!}</td>
+                                                    <td class="column4">{{$item->created_at}}</td>
+                                                    <td class="column5">
+                                                        <ul>
+                                                            @foreach($item->details as $order_detail)
+                                                                <li>{{$order_detail->product->name}} - {{$order_detail->quantity}}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </td>
+                                                    <td class="column6">{{number_format($item->totalPrice, 0, '.', ',')}} (VND)</td>
+                                                    <td class="column7">{{$item->statusLabel}}</td>
+                                                    <td class="column8 text-center">
+                                                        @if($item->status==0)
+                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=1" onclick="return confirm('Do you confirm this order definitely?')"
+                                                               class="fas fa-check text-success">
+                                                            </a>
+                                                        @elseif($item->status==1)
+                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=2" onclick="return confirm('Do you fulfill this order definitely?')"
+                                                               class="fas fa-shipping-fast text-info">
+                                                            </a>
+                                                        @endif
+                                                        @if($item->status==0)
+                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=-1" onclick="return confirm('Delete this order, are you sure?')"
+                                                               class="far fa-times-circle text-danger">
+                                                            </a>
+                                                        @elseif($item->status==-1)
+                                                            <i class="fas fa-ban text-secondary"></i>
+                                                        @elseif($item->status==2)
+                                                            <i class="far fa-check-circle text-success"></i>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                            @else
+                                                <div class="alert alert-info">Non order.
+                                                </div>
+                                            @endif
+                                        </table>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-
-                <!--List Flower Table-->
-                <div class="row" style="padding-top: 3em;">
-                    <div class="panel panel-default">
-                        <div class="table-responsive">
-                            @if($list_order->count()>0)
-                                <table class="table table-hover table-striped table-condensed table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">{{__('Order Code')}}</th>
-                                        <th scope="col">{{__('ID')}}</th>
-                                        <th scope="col">{{__('Merchant')}}</th>
-                                        <th scope="col">{{__('Recipient')}}</th>
-                                        <th class="col">{{__('Time')}}</th>
-                                        <th scope="col">{{__('Information')}}</th>
-                                        <th scope="col">{{__('Status')}}</th>
-                                        <th scope="col">{{__('Action')}}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($list_order as $item)
-                                        <tr role="row" class="odd">
-                                            <th class="id-flower col-1">{{$item->id}}</th>
-                                            <td class="col-1">tingfu</td>
-                                            <td class="col-2">{!! $item->shipInformation !!}</td>
-                                            <td class="col-2">{{$item->created_at}}</td>
-                                            <td class="col-2">
-                                                <ul>
-                                                    @foreach($item->details as $order_detail)
-                                                        <li>{{$order_detail->product->name}} - {{$order_detail->quantity}}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </td>
-                                            <td class="col-1">{{$item->statusLabel}}</td>
-                                            <td class="col-3">
-                                                @if($item->status==0)
-                                                    <a href="/admin/order/change-status?id={{$item->id}}&status=1" onclick="return confirm('Do you confirm this order definitely?')"
-                                                       class="btn btn-simple btn-success btn-icon edit"><i
-                                                            class="material-icons">how_to_reg</i></a>
-                                                @elseif($item->status==1)
-                                                    <a href="/admin/order/change-status?id={{$item->id}}&status=2" onclick="return confirm('Do you fulfill this order definitely?')"
-                                                       class="btn btn-simple btn-success btn-icon edit"><i
-                                                            class="material-icons">done</i></a>
-                                                @endif
-                                                @if($item->status==0)
-                                                    <a href="/admin/order/change-status?id={{$item->id}}&status=-1" onclick="return confirm('Delete this order, are you sure?')"
-                                                       class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
-                                                    <a href="{{$item->id}}" class="btn btn-simple btn-danger btn-icon remove btn-delete"><i
-                                                            class="material-icons">close</i></a>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                    @else
-                                        <div class="alert alert-info">Non order.
-                                        </div>
-                                    @endif
-                                </table>
-                        </div>
                     </div>
-                </div>
-                <!--List Flower Table-->
-                <div class="row">
-                    <div class="col-sm-5">
-                    </div>
-                    <div class="col-sm-7">
-                        {{ $list_order->links() }}
-                    </div>
+                    <!--List Flower Table-->
                 </div>
             </div>
+            <!--  end card  -->
         </div>
-        <!--  end card  -->
     </div>
-
     <script type="text/javascript">
         $(function() {
 
@@ -138,48 +154,9 @@
 
         });
 
-        $('.btn-delete').click(function () {
-            var thisButton = $(this);
-            swal({
-                text: "Do you want to close this order?",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Agree!',
-                cancelButtonText: 'Cancel',
-                buttonsStyling: false
-            }).then(function() {
-                var id = thisButton.attr('href');
-                $.ajax({
-                    'url': '/admin/order/' + id,
-                    'method': 'DELETE',
-                    'data':{
-                        '_token':$('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Order has delete.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2*1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Error happened, try again please!',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-
+        $(document).ready(function() {
+            $('#table').DataTable({
             });
-            return false;
-        });
+        } );
     </script>
 @endsection

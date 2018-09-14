@@ -9,9 +9,26 @@
 
         /* Style Three */
 
+        .bg-color{
+            background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
+        }
+
+        .form-group{
+            margin-bottom: 0;
+        }
+
+        .form-group input[type=file] {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .row{
+            margin-bottom: 1rem;
+        }
+
         img.broken {
             position: relative;
-            min-height: 40px;
+            vertical-align: baseline;
         }
 
         img.broken:before {
@@ -43,12 +60,11 @@
     </style>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <!--main form -->
             <div class="card">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        Vui lòng sửa các lỗi bên dưới và thử lại.
+                    <div class="alert alert-danger">Vui lòng sửa các lỗi bên dưới và thử lại.
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -56,139 +72,186 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" action="/admin/product" class="form-horizontal bg-info"
-                      enctype="multipart/form-data">
-                    {{csrf_field()}}
-                    <div class="card-header card-header-text text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Create Product</h4>
-                    </div>
+                <div class="card-header card-header-text">
+                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Create Product</h4>
+                </div>
 
-                    <!--form edit flowers-->
-                    <div class="card-content">
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating" {{$errors->has('name')?' has-error':''}}>
-                                    <input type="text" name="name" class="form-control" required>
-                                    <span class="material-input"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- props name of categories by id-->
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Category</label>
-                            <div class="col-sm-4">
-                                <div class="form-group label-floating">
-                                    <select name="categoryId" class="form-control">
-                                        <option value="">Select category...</option>
-                                        @foreach($categories as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- props name of categories by id-->
-
-                        <!-- props name of collections by id-->
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Collection</label>
-                            <div class="col-sm-4">
-                                <div class="form-group label-floating">
-                                    <select class="form-control" name="collectionId">
-                                        <option value="">Select collection...</option>
-                                        @foreach($collections as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- props name of collections by id-->
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Price</label>
-                            <div class="col-sm-4">
-                                <div class="input-group label-floating">
-                                    <input type="text" name="price" class="form-control" required>
-                                    <span class="input-group-addon">VND</span>
-                                    @if($errors->has('price'))
-                                        <label class="text-danger">*{{$errors->first('price')}}</label>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row text-center">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
-                            <div class="form-group">
-                                <div class="row ml-1 custom-file">
-                                    <div class="col-sm-3">
-                                        <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
-                                        <span class="badge">Choose image...</span>
-                                        <img id="upload-image" class="broken" src="#" alt="Choose image here" />
-                                    </div>
-                                    @if($errors->has('images'))
-                                        <label class="text-danger">*{{$errors->first('images')}}</label>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Sale</label>
-                            <div class="col-sm-4">
-                                <div class="input-group label-floating">
-                                    <input type="text" name="sale" class="form-control" required>
-                                    <span class="input-group-addon">%</span>
-                                    @if($errors->has('sale'))
-                                        <label class="text-danger">*{{$errors->first('sale')}}</label>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating">
-                                    <input type="text" name="description" class="form-control" required>
-                                    @if($errors->has('description'))
-                                        <label class="text-danger">*{{$errors->first('description')}}</label>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Detail</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating">
-                                    <textarea class="form-control" name="detail" rows="3" required></textarea>
-                                    @if($errors->has('detail'))
-                                        <label class="text-danger">*{{$errors->first('detail')}}</label>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
+                <!--form edit flowers-->
+                <div class="card-body container bg-color">
+                    <!--main form -->
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-sm-2"></div>
                             <div class="col-sm-10">
-                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Create
-                                    <div class="ripple-container"></div>
-                                </button>
-                                <button type="reset" value="Reset" class="btn btn-reset btn-fill btn-danger">Reset
-                                    <div class="ripple-container"></div>
-                                </button>
+                                <form class="needs-validation" role="form" novalidate method="POST" action="/admin/product" enctype="multipart/form-data">
+                                    {{csrf_field()}}
+                                    <div class="row">
+                                        <label class="col-sm-2">Name</label>
+                                        <div class="col-sm-6 form-group mb-3">
+                                            <div class="input-group" {{$errors->has('name')?' has-error':''}}>
+                                                <div class="form-group input-group-prepend">
+                                                    <span class="input-group-text">@</span>
+                                                </div>
+                                                <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                                <div class="invalid-feedback">
+                                                    Please choose a username.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- props name of categories by id-->
+                                    <div class="row">
+                                        <label class="col-sm-2">Category</label>
+                                        <div class="col-sm-4 form-group mb-3">
+                                            <select name="categoryId" class="form-control" required>
+                                                <option value="">Select category...</option>
+                                                @foreach($categories as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please choose a category.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- props name of categories by id-->
+
+                                    <!-- props name of collections by id-->
+                                    <div class="row">
+                                        <label class="col-sm-2">Collection</label>
+                                        <div class="col-sm-4 form-group mb-3">
+                                            <select name="collectionId" class="form-control" required>
+                                                <option value="">Select collection...</option>
+                                                @foreach($collections as $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please choose a collection.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- props name of collections by id-->
+
+                                    <div class="row">
+                                        <label class="col-sm-2">Price</label>
+                                        <div class="col-sm-6 form-group mb-3">
+                                            <div class="input-group">
+                                                <div class="form-group input-group-prepend">
+                                                    <span class="input-group-text">Price</span>
+                                                </div>
+                                                <input type="text" name="price" class="form-control" required>
+                                                <div class="form-group input-group-append">
+                                                    <span class="input-group-text">VND</span>
+                                                </div>
+                                                @if($errors->has('price'))
+                                                    <label class="text-danger">*{{$errors->first('price')}}</label>
+                                                @endif
+                                                <div class="invalid-feedback">
+                                                    Please choose a price.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2">Images</label>
+                                        <div class="form-group">
+                                            <div class="row ml-1 custom-file">
+                                                <div class="col-sm-10">
+                                                    <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
+                                                    <span class="badge badge-info">Choose image...</span>
+                                                    <img id="upload-image" class="broken" src="#" alt="Preview" />
+                                                </div>
+                                                @if($errors->has('images'))
+                                                    <label class="text-danger">*{{$errors->first('images')}}</label>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2">Sale</label>
+                                        <div class="col-sm-6 form-group mb-3">
+                                            <div class="input-group">
+                                                <input type="text" name="sale" class="form-control" required>
+                                                <div class="form-group input-group-prepend">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                @if($errors->has('sale'))
+                                                    <label class="text-danger">*{{$errors->first('sale')}}</label>
+                                                @endif
+                                                <div class="invalid-feedback">
+                                                    Please choose a sale.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2">Description</label>
+                                        <div class="col-sm-6 form-group mb-3">
+                                            <input name="description" type="text" class="form-control" required>
+                                            @if($errors->has('description'))
+                                                <label class="text-danger">*{{$errors->first('description')}}</label>
+                                            @endif
+                                            <div class="invalid-feedback">
+                                                Please choose a description.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-sm-2">Detail</label>
+                                        <div class="col-sm-6 form-group mb-3">
+                                            <textarea name="detail" class="form-control" rows="3" required></textarea>
+                                            @if($errors->has('detail'))
+                                                <label class="text-danger">*{{$errors->first('detail')}}</label>
+                                            @endif
+                                            <div class="invalid-feedback">
+                                                Please choose a detail.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-10">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="reset" class="btn btn-reset btn-danger">Reset</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+                    <!--form edit flowers-->
             </div>
         </div>
     </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 
     <!--preview image after selected from storage-->
     <script>
@@ -217,4 +280,11 @@
         })
     </script>
     <!--Reset-->
+    <script type="text/javascript">
+        window.onbeforeunload = confirmExit;
+        function confirmExit()
+        {
+            return "Do you want to leave this page without saving?";
+        }
+    </script>
 @endsection

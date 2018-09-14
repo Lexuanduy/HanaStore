@@ -19,7 +19,6 @@ Route::get('/admin', function (){
     return view('admin.layout.index');
 });
 
-
 Route::get('/admin/product/search','ProductController@search');
 
 Route::get('/admin/category/search','CategoryController@search');
@@ -44,7 +43,7 @@ Route::resource('/admin/category', 'CategoryController');
 
 Route::resource('/admin/collection', 'CollectionController');
 
-Route::get('/error', function (){
+Route::get('/404', function (){
     return view('admin.error.404');
 });
 
@@ -91,8 +90,6 @@ Route::get('/admin/chart', function () {
 });
 Route::resource('admin/category', 'CategoryController');
 
-/*<---=============================================================================================-->*/
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -107,5 +104,7 @@ Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallb
 Route::get('/admin/order', 'OrderController@index');
 Route::get('/admin/order/change-status', 'OrderController@changeStatus');
 Route::get('/chart-api', 'ChartController@getChartDataApi');
+// Test APIs from order
+Route::get('/order-api', 'ChartController@getChartOrderApi');
 
 

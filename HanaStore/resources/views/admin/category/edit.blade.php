@@ -9,9 +9,26 @@
 
         /* Style Three */
 
+        .bg-color{
+            background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
+        }
+
+        .form-group{
+            margin-bottom: 0;
+        }
+
+        .form-group input[type=file] {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .row{
+            margin-bottom: 1rem;
+        }
+
         img.broken {
             position: relative;
-            min-height: 30px;
+            vertical-align: baseline;
         }
 
         img.broken:before {
@@ -56,72 +73,108 @@
                         </ul>
                     </div>
                 @endif
-                <form method="post" action="/admin/category/{{ $category->id }}" class="form-horizontal bg-info" enctype="multipart/form-data">
-                    @method('PUT')
-                    {{csrf_field()}}
-                    <div class="card-header card-header-text text-center" data-background-color="green">
-                        <h4 class="mb-0"><i class="fab fa-pagelines fa-2x text-danger"></i> Edit Category</h4>
+                    <div class="card-header card-header-text">
+                        <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Edit Category</h4>
                     </div>
 
-                    <!--form edit flowers-->
-                    <div class="card-content">
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Name</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating">
-                                    <input type="text" name="name" class="form-control" value="{{$category->name}}"
-                                           required>
-                                    <span class="material-input"></span>
-                                </div>
-                            </div>
-                        </div>
+                    <!--form edit collections-->
+                    <div class="card-body container bg-color">
+                        <!--main form -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">
+                                    <form class="needs-validation" novalidate role="form" method="POST" action="/admin/category/{{ $category->id }}" enctype="multipart/form-data">
+                                        @method('PUT')
+                                        {{csrf_field()}}
 
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Upload image</label>
-                            <div class="form-group">
-                                <div class="row ml-1">
-                                    <div class="col-sm-3">
-                                        <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
-                                        <span class="badge">Choose new image...</span>
-                                        <img id="upload-image" class="broken" src="#" alt="New image here" />
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <span class="badge">Previous Image</span>
-                                        <img src="{{ $category->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>
-                                    </div>
-                                    @if($errors->has('images'))
-                                        <label class="text-danger">*{{$errors->first('images')}}</label>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
+                                        <div class="row">
+                                            <label class="col-sm-2">Name</label>
+                                            <div class="col-sm-6 form-group mb-3">
+                                                <div class="input-group" {{$errors->has('name')?' has-error':''}}>
+                                                    <div class="form-group input-group-prepend">
+                                                        <span class="input-group-text">@</span>
+                                                    </div>
+                                                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{$category->name}}" required>
+                                                    <div class="invalid-feedback">
+                                                        Please choose a username.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <div class="row">
-                            <label class="col-sm-2 label-on-left" for="inputSuccess">Description</label>
-                            <div class="col-sm-8">
-                                <div class="form-group label-floating">
-                                    <input type="text" name="description" class="form-control"
-                                           value="{{$category->description}}" required>
-                                </div>
-                            </div>
-                        </div>
+                                        <div class="row">
+                                            <label class="col-sm-2">Images</label>
+                                            <div class="col-sm-6 form-group mb-3">
+                                                <div class="row ml-1">
+                                                    <div class="col-sm-6">
+                                                        <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
+                                                        <span class="badge badge-info">Choose new image...</span>
+                                                        <img id="upload-image" class="broken" src="#" alt="New image preview" />
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <span class="badge">Previous Image</span>
+                                                        <img src="{{ $category->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>
+                                                    </div>
+                                                    @if($errors->has('images'))
+                                                        <label class="text-danger">*{{$errors->first('images')}}</label>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <div class="row">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-10">
-                                <button type="submit" value="Submit" class="btn btn-fill btn-instagram">Update
-                                    <div class="ripple-container"></div>
-                                </button>
-                                <button type="reset" value="Reset" class="btn btn-reset btn-fill btn-danger">Reset
-                                    <div class="ripple-container"></div>
-                                </button>
+                                        <div class="row">
+                                            <label class="col-sm-2">Description</label>
+                                            <div class="col-sm-6 form-group mb-3">
+                                                <input name="description" type="text" class="form-control" value="{{$category->description}}" required>
+                                                @if($errors->has('description'))
+                                                    <label class="text-danger">*{{$errors->first('description')}}</label>
+                                                @endif
+                                                <div class="invalid-feedback">
+                                                    Please choose a description.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-10">
+                                                <button type="submit" value="Submit" class="btn btn-primary">Update</button>
+                                                <button type="reset" value="Reset" class="btn btn-reset btn-danger">Reset</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--main form-->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                    <!--form edit collections-->
             </div>
         </div>
     </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
     <!--preview image after selected from storage-->
     <script>
         function readURL(input) {
@@ -149,5 +202,12 @@
         });
     </script>
     <!--reset-->
+    <script type="text/javascript">
+        window.onbeforeunload = confirmExit;
+        function confirmExit()
+        {
+            return "Do you want to leave this page without saving?";
+        }
+    </script>
 @endsection
 

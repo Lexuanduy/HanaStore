@@ -17,7 +17,7 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $collection = Collection::where('status', 1)->orderBy('created_at', 'DESC')->paginate(5);
+        $collection = Collection::where('status', 1)->orderBy('created_at', 'DESC')->get();
         return view('admin.collection.list')->with('collection', $collection);
 
     }
