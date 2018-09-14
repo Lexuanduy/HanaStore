@@ -50,33 +50,38 @@ Route::get('/404', function (){
 // Lấy 1 san phẩm
 Route::get('/admin/product/get-json/{id}', 'ProductController@getJson');
 
+// Route get sản phẩm bằng input tìm kiếm.
+Route::get('/hanastore/api/search/{value}','UserController@getProductBySearchApi');
+
+// Route lọc theo giá
+Route::get('/hanastore/api/product-filter/{startPrice}/{endPrice}','UserController@getProductFilterApi');
 
 // Route User Controller Client
-Route::get('/user/home', 'UserController@getIndexUser')->name('homeClient');
+Route::get('/hanastore/home', 'UserController@getIndexUser')->name('homeClient');
 
 // Route view giỏ hàng Client
-Route::get('/user/cart', 'UserController@getCart')->name('giohang');
+Route::get('/hanastore/cart', 'UserController@getCart')->name('giohang');
 
 // Route thêm vào giỏ hàng Client
-Route::post('/user/add-cart/{id}', 'UserController@productBuy');
+Route::post('/hanastore/add-cart/{id}', 'UserController@productBuy');
 
 // Route view list sản phẩm Client
-Route::get('/user/list-product', 'Usercontroller@listProduct')->name('listProductClient');
+Route::get('/hanastore/list-product', 'Usercontroller@listProduct')->name('listProductClient');
 
 // Route view sản phẩm chi tiết Client
-Route::get('/user/product/{id}','UserController@getProductDetail');
+Route::get('/hanastore/product/{id}','UserController@getProductDetail');
 
 //View list product sale
-Route::get('/user/sale', 'UserController@getIndexProductSale')->name('saleClient');
+Route::get('/hanastore/sale', 'UserController@getIndexProductSale')->name('saleClient');
 
 //Route view bài viết
-Route::get('/user/blog', 'UserController@blog')->name('blogClient');
+Route::get('/hanastore/blog', 'UserController@blog')->name('blogClient');
 
 //Route view bài viết chi tiết.
-Route::get('/user/blog/{id}','UserController@getBlogDetail');
+Route::get('/hanastore/blog/{id}','UserController@getBlogDetail');
 
 //Route view liên hệ
-Route::get('/user/contact','UserController@contact')->name('contactClient');
+Route::get('/hanastore/contact','UserController@contact')->name('contactClient');
 
 
 //View chart
@@ -99,7 +104,7 @@ Route::get('auth/facebook/callback', 'FacebookAuthController@handleProviderCallb
 Route::get('/admin/order', 'OrderController@index');
 Route::get('/admin/order/change-status', 'OrderController@changeStatus');
 Route::get('/chart-api', 'ChartController@getChartDataApi');
-// Test APIs from order, can delete
-//Route::get('/order-api', 'ChartController@getChartOrder');
+// Test APIs from order
+Route::get('/order-api', 'ChartController@getChartOrderApi');
 
 

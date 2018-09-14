@@ -95,7 +95,8 @@
                 </a>
             @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
@@ -119,6 +120,23 @@
                 <!-- Header cart noti --> <!-- Xem nhanh giỏ hàng -->
                 <div class="header-cart header-dropdown">
                     <ul class="header-cart-wrapitem style4" id="header-cart-wrapitem">
+                        {{--@foreach($content as $itemCart)--}}
+                        {{--<li class="header-cart-item bo10">--}}
+                        {{--<div class="header-cart-item-img">--}}
+                        {{--<img src="{{$itemCart->options->img}}" alt="IMG-PRODUCT-CART">--}}
+                        {{--</div>--}}
+
+                        {{--<div class="header-cart-item-txt">--}}
+                        {{--<a href="#" class="header-cart-item-name">--}}
+                        {{--{{$itemCart->name}}--}}
+                        {{--</a>--}}
+
+                        {{--<span class="header-cart-item-info">--}}
+                        {{--{{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}--}}
+                        {{--</span>--}}
+                        {{--</div>--}}
+                        {{--</li>--}}
+                        {{--@endforeach--}}
                         @foreach($content as $itemCart)
                             <li class="header-cart-item bo10">
                                 <div class="header-cart-item-img">
@@ -131,8 +149,8 @@
                                     </a>
 
                                     <span class="header-cart-item-info">
-                                            {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
-                                        </span>
+                            {{$itemCart->qty}} x {{number_format($itemCart->price,0,',','.')}}
+                            </span>
                                 </div>
                             </li>
                         @endforeach
@@ -169,10 +187,10 @@
                 <div class="modal-body">
                     <form action="#" method="post">
                         @csrf
-                       <div class="form-group">
-                           <label class="control-label">Tài khoản:</label>
-                           <input type="text" class="form-control" placeholder="Tên tài khoản" name="username">
-                       </div>
+                        <div class="form-group">
+                            <label class="control-label">Tài khoản:</label>
+                            <input type="text" class="form-control" placeholder="Tên tài khoản" name="username">
+                        </div>
                         <div class="form-group">
                             <label class="control-label">Mật khẩu:</label>
                             <input type="password" class="form-control" placeholder="Mật khẩu" name="password">
@@ -229,7 +247,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" >
+                            <a href="#">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -285,16 +303,20 @@
                                            class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Link facebook <small> &lt; có thể để trống &gt;</small></label>
+                                    <label>Link facebook
+                                        <small> &lt; có thể để trống &gt;</small>
+                                    </label>
                                     <input type="text" name="facebook"
-                                           value="{{isset(Auth::user()->facebook) ? Auth::user()->facebook: ''}}" class="form-control">
+                                           value="{{isset(Auth::user()->facebook) ? Auth::user()->facebook: ''}}"
+                                           class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label >
+                                    <label>
                                         Link google plus
                                     </label>
                                     <input type="text" name="gmail"
-                                           value="{{isset(Auth::user()->gmail) ? Auth::user()->gmail: ''}}" class="form-control">
+                                           value="{{isset(Auth::user()->gmail) ? Auth::user()->gmail: ''}}"
+                                           class="form-control">
                                 </div>
                             </form>
                         </div>
@@ -354,7 +376,7 @@
                     </ul>
 
                     <div class="header-cart-total">
-                        Tổng tiền:            vnđ
+                        Tổng tiền: vnđ
                     </div>
 
                     <div class="header-cart-buttons">

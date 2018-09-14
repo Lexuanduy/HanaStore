@@ -72,6 +72,12 @@ class UserController extends Controller
             $selected_collectionId = Input::get('collectionId');
             $product_filter = $product_filter->where('collectionId', $selected_collectionId);
         }
+
+        if(Input::has('priceStart')&&Input::has('endStart')){
+            $product_filter = $product_filter->whereIn('price', [Input::get('priceStart'),Input::get('endStart')]);
+        }
+
+
         $selected_category = Category::find($selected_categoryId);
         $selected_collection = Collection::find($selected_collectionId);
         $list_product = $product_filter->orderBy('created_at', 'DESC')->paginate(9);
@@ -112,8 +118,8 @@ class UserController extends Controller
                     'id' => $id,
                     'name' => $product->name,
                     'qty' => 1, 'price' => $product->price - $product->price * $product->sale / 100,
-                    'options' => array('
-                        img' => $product->images
+                    'options' => array(
+                        'img' => $product->images
                     )
                 )
             );
@@ -138,7 +144,14 @@ class UserController extends Controller
         $countItemCart = Cart::count();
         $total = Cart::subtotal();
 
-        return view('user.flower.cart')->with(['categories' => $categories, 'collections' => $collections, 'content' => $content, 'total' => $total, 'countItemCart' => $countItemCart]);
+        return view('user.flower.cart')
+            ->with([
+                'categories' => $categories,
+                'collections' => $collections,
+                'content' => $content,
+                'total' => $total,
+                'countItemCart' => $countItemCart
+            ]);
     }
 
 
@@ -161,7 +174,8 @@ class UserController extends Controller
             Cart::update($rowId, $qty);
             $content = Cart::get($rowId);
             $totalPrice = number_format($content->qty * $content->price,0,',','.');
-            return response()->json(['item' => $content, 'totalPrice' => $totalPrice], 200);
+            $totalCart = Cart::subtotal();
+            return response()->json(['item' => $content, 'totalPrice' => $totalPrice,'totalCart'=>$totalCart], 200);
         }
     }
 
@@ -211,45 +225,80 @@ class UserController extends Controller
                 $ship_address = Input::get('ship-address');
                 $note = Input::get('note');
 
-                $customer = new Customer();
-                $idCus = $customer->id = Auth::user()->provider_id;
-                $customer->name = Auth::user()->name;
-                $customer->email = Auth::user()->email;;
-                $customer->save();
-
-                $order = new Order();
-                $idOr = $order->id = Uuid::generate()->string;
-                $order->customerId = $idCus;
-                $order->totalPrice = Cart::subtotal(0, '', '');
-                $order->shipName = $ship_name;
-                $order->shipEmail = $ship_email;
-                $order->shipAddress = $ship_address;
-                $order->shipPhone = $ship_phone;
-                $order->note = $note;
-                $order->save();
-                foreach ($cart as $item) {
-                    $product = Product::find($item->id);
-                    if ($product == null || $product->status != 1) {
-                        // Chỗ này phải return về view error 404
-                        return view('admin.error.400');
+                $Customer = Customer::where('id', Auth::user()->provider)->first();
+                if($Customer){
+                    $order = new Order();
+                    $idOr = $order->id = Uuid::generate()->string;
+                    $order->customerId = Auth::user()->provider;
+                    $order->totalPrice = Cart::subtotal(0, '', '');
+                    $order->shipName = $ship_name;
+                    $order->shipEmail = $ship_email;
+                    $order->shipAddress = $ship_address;
+                    $order->shipPhone = $ship_phone;
+                    $order->note = $note;
+                    $order->save();
+                    foreach ($cart as $item) {
+                        $product = Product::find($item->id);
+                        if ($product == null || $product->status != 1) {
+                            // Chỗ này phải return về view error 404
+                            return view('admin.error.400');
+                        }
+                        $qty = $item->qty;
+                        $order_detail = new OrderDetail();
+                        $order_detail->orderId = $idOr;
+                        $order_detail->productId = $product->id;
+                        $order_detail->quantity = $qty;
+                        $order_detail->unitPrice = number_format($product->price, 0, '', '');
+                        $order_detail->save();
                     }
-                    $qty = $item->qty;
-                    $order_detail = new OrderDetail();
-                    $order_detail->orderId = $idOr;
-                    $order_detail->productId = $product->id;
-                    $order_detail->quantity = $qty;
-                    $order_detail->unitPrice = number_format($product->price, 0, '', '');
-                    $order_detail->save();
+                    $order->save();
+                    DB::commit();
+                    Cart::destroy();
+
+                    /* Chỗ này phải return vềview list ordered of user, kèm với message  'Đặt hàng thành công,
+                    phải gửi Email cám ơn đã đặt hàng
+                     bên HanaStore và sẽ phản hồi lại sớm nhất 'Chức năng này chỉ làm khi đã đăng nhaapjbh thì chưa cần.' */
+
+                    return redirect()->route('giohang')->with(['order-success' => 'Đặt hàng thành công!']);
+                }else{
+                    $customer = new Customer();
+                    $idCus = $customer->id = Auth::user()->provider_id;
+                    $customer->name = Auth::user()->name;
+                    $customer->email = Auth::user()->email;;
+                    $customer->save();
+
+                    $order = new Order();
+                    $idOr = $order->id = Uuid::generate()->string;
+                    $order->customerId = $idCus;
+                    $order->totalPrice = Cart::subtotal(0, '', '');
+                    $order->shipName = $ship_name;
+                    $order->shipEmail = $ship_email;
+                    $order->shipAddress = $ship_address;
+                    $order->shipPhone = $ship_phone;
+                    $order->note = $note;
+                    $order->save();
+                    foreach ($cart as $item) {
+                        $product = Product::find($item->id);
+                        if ($product == null || $product->status != 1) {
+                            // Chỗ này phải return về view error 404
+                            return view('admin.error.400');
+                        }
+                        $qty = $item->qty;
+                        $order_detail = new OrderDetail();
+                        $order_detail->orderId = $idOr;
+                        $order_detail->productId = $product->id;
+                        $order_detail->quantity = $qty;
+                        $order_detail->unitPrice = number_format($product->price, 0, '', '');
+                        $order_detail->save();
+
+                    }
+                    $order->save();
+                    DB::commit();
+                    Cart::destroy();
+                    return redirect()->route('giohang')->with(['order-success' => 'Đặt hàng thành công!']);
                 }
-                $order->save();
-                DB::commit();
-                Cart::destroy();
 
-                /* Chỗ này phải return vềview list ordered of user, kèm với message  'Đặt hàng thành công,
-                phải gửi Email cám ơn đã đặt hàng
-                 bên HanaStore và sẽ phản hồi lại sớm nhất 'Chức năng này chỉ làm khi đã đăng nhaapjbh thì chưa cần.' */
 
-                return redirect()->route('giohang')->with(['order-success' => 'Đặt hàng thành công!']);
             } catch (\Exception $exception) {
                 // return view error ở chỗ này
                 DB::rollBack();
@@ -284,6 +333,19 @@ class UserController extends Controller
         $categories = Category::all();
         $collections = Collection::all();
         return view('user.flower.contact')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
+    }
+
+    public function getProductFilterApi($startPrice,$endPrice)
+    {
+        $product = Product::whereBetween('price', [$startPrice, $endPrice])->where('status', 1)->get();
+        $count = Product::whereBetween('price', [$startPrice, $endPrice])->where('status', 1)->count();
+        return response()->json(['listProduct'=> $product,'count'=>$count], 200);
+    }
+
+    public function getProductBySearchApi ($value){
+        $product = Product::where('name', 'like', '%' . $value . '%')->orWhere('description', 'like', '%' . $value . '%')->where('status', 1)->get();
+        $count = Product::where('name', 'like', '%' . $value . '%')->orWhere('description', 'like', '%' . $value . '%')->where('status', 1)->count();
+        return response()->json(['listProduct' => $product, 'count' => $count], 200);
     }
 }
 

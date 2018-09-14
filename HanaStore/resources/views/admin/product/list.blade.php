@@ -74,10 +74,10 @@
                                                     <td class="column7">{{$item->sale}} %</td>
                                                     <td class="column8">{{$item->description}}</td>
                                                     <td class="column9">{{$item->detail}}</td>
-                                                    <td class="column9">
+                                                    <td>
                                                         <a class="text-primary" href="/admin/product/{{$item -> id}}/edit"><i class="fas fa-edit"></i></a>
 
-                                                        <a class="text-danger" href="{{$item-> id}}"><i class="fas fa-trash-alt "></i></a>
+                                                        <a class="text-danger btn-delete" href="{{$item-> id}}"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -103,43 +103,52 @@
         $('.btn-delete').click(function () {
             var thisButton = $(this);
             swal({
-                text: "Are you sure about this action?",
+                title: 'Chắc cú không?',
+                text: "Xóa hoa này nghen?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Đồng ý',
-                cancelButtonText: 'Huỷ bỏ',
-                buttonsStyling: false
-            }).then(function() {
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đồng ý'
+            }).then(function(result) {
                 var id = thisButton.attr('href');
-                $.ajax({
-                    'url': '/admin/product/' + id,
-                    'method': 'DELETE',
-                    'data':{
-                        '_token':$('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        swal({
-                            text: 'Product has deleted.',
-                            type: 'success',
-                            confirmButtonClass: "btn btn-success",
-                            buttonsStyling: false
-                        })
-                        setTimeout(function () {
-                            window.location.reload();
-                        }, 2*1000);
-                    },
-                    error: function () {
-                        swal({
-                            text: 'Error happened, try again please!',
-                            type: 'warning',
-                            confirmButtonClass: "btn btn-danger",
-                            buttonsStyling: false
-                        })
-                    }
-                });
-
+                if (result.value) {
+                    $.ajax({
+                        'url': '/admin/product/' + id,
+                        'method': 'DELETE',
+                        'data':{
+                            '_token':$('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function () {
+                            swal({
+                                text: 'Hoa bị lạc trôi về nơi vô cực rồi.',
+                                type: 'success',
+                                confirmButtonColor: '#2ebf91',
+                            })
+                            setTimeout(function () {
+                                window.location.reload();
+                            }, 2*1000);
+                        },
+                        error: function () {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'Có gì đó sai sai!',
+                                footer: '<a href>Why do I have this issue?</a>'
+                            })
+                        }
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal({
+                        title: 'Đã hủy bỏ!',
+                        text: 'Hoa còn tồn kho nhiều lắm.',
+                        imageUrl: 'https://ubisafe.org/images/amounting-clipart-animation-1.gif',
+                        imageWidth: 300,
+                        imageHeight: 150,
+                        imageAlt: 'Custom image',
+                        animation: false
+                    })
+                }
             });
             return false;
         });

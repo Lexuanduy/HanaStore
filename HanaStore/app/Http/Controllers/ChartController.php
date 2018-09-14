@@ -24,15 +24,15 @@ class ChartController extends Controller
         return $chart_data;
     }
 
-    public function getChartOrder() {
+    public function getChartOrderApi() {
         try {
-            $data = Order::select(DB::raw('status as status'),
+            $order_data = Order::select(DB::raw('status as status'),
                 DB::raw('count(*) as number'))->groupBy('status')->get();
-            $array[] = ['Status', 'Number'];
-            foreach ($data as $key => $value) {
-                $array[++$key] = [$value->statusLabel, $value->number];
+            foreach ($order_data as $key => $value) {
+                $order_data[$key++] = ['status' => $value->statusLabel, 'number' => $value->number];
             }
-            return view('admin.chart.chart', ['order_data' => json_encode($array, JSON_UNESCAPED_UNICODE)]);
+//            return view('admin.chart.chart', ['order_data' => json_encode($array, JSON_UNESCAPED_UNICODE)]);
+            return json_encode($order_data, JSON_UNESCAPED_UNICODE);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
