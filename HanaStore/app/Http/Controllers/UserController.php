@@ -259,7 +259,7 @@ class UserController extends Controller
                     phải gửi Email cám ơn đã đặt hàng
                      bên HanaStore và sẽ phản hồi lại sớm nhất 'Chức năng này chỉ làm khi đã đăng nhaapjbh thì chưa cần.' */
 
-                    return redirect()->route('giohang')->with(['order-success' => 'Đặt hàng thành công!']);
+                    return redirect()->route('myOrder')->with(['order-success' => 'Đặt hàng thành công!']);
                 }else{
                     $customer = new Customer();
                     $idCus = $customer->id = Auth::user()->provider_id;
@@ -295,7 +295,7 @@ class UserController extends Controller
                     $order->save();
                     DB::commit();
                     Cart::destroy();
-                    return redirect()->route('giohang')->with(['order-success' => 'Đặt hàng thành công!']);
+                    return redirect()->route('myOrder')->with(['order-success' => 'Đặt hàng thành công!']);
                 }
 
 
@@ -307,24 +307,27 @@ class UserController extends Controller
         }
     }
 
-    public function blog()
+    public function getBlogDetail($id)
     {
+        $article = Article::where('id', $id)->where('status', 1)->first();
         $content = Cart::content();
         $countItemCart = Cart::count();
         $total = Cart::subtotal();
         $categories = Category::all();
         $collections = Collection::all();
-        return view('user.flower.post')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
-    }
-
-    public function getBlogDetail()
-    {
-        $content = Cart::content();
-        $countItemCart = Cart::count();
-        $total = Cart::subtotal();
-        $categories = Category::all();
-        $collections = Collection::all();
-        return view('user.flower.blogDetail')->with(['categories' => $categories, 'collections' => $collections, 'countItemCart' => $countItemCart, 'content' => $content, 'total' => $total,]);
+        $products = Product::where('status', 1)->inRandomOrder()->limit(5)->get();
+        return view('user.flower.blogDetail')
+            ->with(
+                [
+                    'categories' => $categories,
+                    'collections' => $collections,
+                    'countItemCart' => $countItemCart,
+                    'content' => $content,
+                    'total' => $total,
+                    'article' => $article,
+                    'products' => $products,
+                ]
+            );
     }
     public function contact(){
         $content = Cart::content();
@@ -346,6 +349,60 @@ class UserController extends Controller
         $product = Product::where('name', 'like', '%' . $value . '%')->orWhere('description', 'like', '%' . $value . '%')->where('status', 1)->get();
         $count = Product::where('name', 'like', '%' . $value . '%')->orWhere('description', 'like', '%' . $value . '%')->where('status', 1)->count();
         return response()->json(['listProduct' => $product, 'count' => $count], 200);
+    }
+
+    // Trả về view blog list
+    public function blogList()
+    {
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+        $categories = Category::all();
+        $collections = Collection::all();
+        $article = Article::where('status', 1)->paginate(3);
+        $products = Product::where('status', 1)->inRandomOrder()->limit(5)->get();
+        return view('user.flower.blogList')
+            ->with(
+                [
+                    'categories' => $categories,
+                    'collections' => $collections,
+                    'countItemCart' => $countItemCart,
+                    'content' => $content,
+                    'total' => $total,
+                    'article' => $article,
+                    'products' => $products,
+                ]
+            );
+    }
+
+    public function myOrder()
+    {
+        $content = Cart::content();
+        $countItemCart = Cart::count();
+        $total = Cart::subtotal();
+        $categories = Category::all();
+        $collections = Collection::all();
+        $myOrder = Order::where('orders.customerId', Auth::user()->provider_id)
+            ->join('order_details', 'orders.id', '=', 'order_details.orderId')
+            ->join('products', 'order_details.productId', '=', 'products.id')
+            ->select(
+                'orders.shipName',
+                'orders.id',
+                'products.name',
+                'orders.totalPrice',
+                'products.images',
+                'orders.status'
+            )->get();
+        return view('user.flower.myOrder')->with(
+            [
+                'categories' => $categories,
+                'collections' => $collections,
+                'countItemCart' => $countItemCart,
+                'content' => $content,
+                'total' => $total,
+                'myOrder' => $myOrder,
+            ]
+        );
     }
 }
 

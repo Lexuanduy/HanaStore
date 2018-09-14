@@ -76,13 +76,16 @@ Route::get('/hanastore/product/{id}','UserController@getProductDetail');
 Route::get('/hanastore/sale', 'UserController@getIndexProductSale')->name('saleClient');
 
 //Route view bài viết
-Route::get('/hanastore/blog', 'UserController@blog')->name('blogClient');
+Route::get('/hanastore/blog', 'UserController@blogList')->name('blogClient');
 
 //Route view bài viết chi tiết.
 Route::get('/hanastore/blog/{id}','UserController@getBlogDetail');
 
 //Route view liên hệ
 Route::get('/hanastore/contact','UserController@contact')->name('contactClient');
+
+//Route view my order for Client
+Route::get('/hanastore/my-order','UserController@myOrder')->name('myOrder');
 
 
 //View chart

@@ -26,7 +26,7 @@ class GoogleController extends Controller
 //
         Auth::login($authUser, true);
 
-        return redirect()->route('homeClient');
+        return redirect()->route('giohang');
     }
 
     private function findOrCreateUser($googleUser)

@@ -242,9 +242,9 @@
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{asset('vendor/noui/nouislider.min.js')}}"></script>
     <!--===============================================================================================-->
+    <script src="{{asset('js/list-product.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="{{asset('js/home-user.js')}}"></script>
     <script type="text/javascript">
         $('.block2-btn-addwishlist').each(function () {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
@@ -411,10 +411,6 @@
             }
         });
 
-
-        function search() {
-
-        }
     </script>
-    <script src="{{asset('js/list-product.js')}}"></script>
+    <script src="{{asset('js/home-user.js')}}"></script>
 @endsection
