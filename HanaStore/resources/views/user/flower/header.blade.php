@@ -104,6 +104,9 @@
                         <a class="dropdown-item" href="javascript:void (0)" id="infoUser">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i> Thông tin
                         </a>
+                        <a class="dropdown-item" href="{{route('myOrder')}}">
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i> Đơn hàng
+                        </a>
                         <a class="dropdown-item" href="javascript:void (0)" id="logout">
                             <i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất
                         </a>
