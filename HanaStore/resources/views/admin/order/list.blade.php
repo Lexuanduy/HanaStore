@@ -39,7 +39,7 @@
             <!--open card-->
             <div class="card">
                 <div class="card-header card-header-text">
-                    <h4 class="mb-0 col-sm-4"><i class="fas fa-clipboard-list text-danger"></i> ORDER</h4>
+                    <h4 class="mb-0 col-sm-4"><i class="fas fa-clipboard-list text-danger"></i> DANH SÁCH ĐẶT HÀNG</h4>
 
                     <div class="form-group">
                         <form action="/admin/order">
@@ -63,14 +63,14 @@
                                         <table class="table table-bordered" id="table">
                                             <thead>
                                                 <tr class="table100-head">
-                                                    <th class="column1">{{__('Order Code')}}</th>
-                                                    <th class="column2">{{__('Merchant')}}</th>
-                                                    <th class="column3">{{__('Recipient')}}</th>
-                                                    <th class="column4">{{__('Order Date')}}</th>
-                                                    <th class="column5">{{__('Items')}}</th>
-                                                    <th class="column6">{{__('Order Value')}}</th>
-                                                    <th class="column7">{{__('Status')}}</th>
-                                                    <th class="column8">{{__('Action')}}</th>
+                                                    <th class="column1">{{__('Mã đơn hàng')}}</th>
+                                                    <th class="column2">{{__('Người đặt')}}</th>
+                                                    <th class="column3">{{__('Người nhận')}}</th>
+                                                    <th class="column4">{{__('Ngày đặt hàng')}}</th>
+                                                    <th class="column5">{{__('Sản phẩm')}}</th>
+                                                    <th class="column6">{{__('Giá trị')}}</th>
+                                                    <th class="column7">{{__('Trạng thái')}}</th>
+                                                    <th class="column8">{{__('Thao tác')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -91,16 +91,16 @@
                                                     <td class="column7">{{$item->statusLabel}}</td>
                                                     <td class="column8 text-center">
                                                         @if($item->status==0)
-                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=1" onclick="return confirm('Do you confirm this order definitely?')"
+                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=1" onclick="return confirm('Bạn có muốn xác nhận và vận chuyển đơn hàng này?')"
                                                                class="fas fa-check text-success">
                                                             </a>
                                                         @elseif($item->status==1)
-                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=2" onclick="return confirm('Do you fulfill this order definitely?')"
+                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=2" onclick="return confirm('Bạn có chắc là đơn hàng đã hoàn thành?')"
                                                                class="fas fa-shipping-fast text-info">
                                                             </a>
                                                         @endif
                                                         @if($item->status==0)
-                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=-1" onclick="return confirm('Delete this order, are you sure?')"
+                                                            <a href="/admin/order/change-status?id={{$item->id}}&status=-1" onclick="return confirm('Bạn có chắc xóa đơn hàng này?')"
                                                                class="far fa-times-circle text-danger">
                                                             </a>
                                                         @elseif($item->status==-1)
@@ -113,7 +113,7 @@
                                             @endforeach
                                             </tbody>
                                             @else
-                                                <div class="alert alert-info">Non order.
+                                                <div class="alert alert-info">Không có đơn đặt hàng nào.
                                                 </div>
                                             @endif
                                         </table>
