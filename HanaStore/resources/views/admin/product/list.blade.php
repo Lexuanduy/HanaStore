@@ -28,10 +28,10 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header card-header-text text-center">
-                    <h4 class="mb-0 col-sm-4"><i class="fab fa-pagelines text-danger"></i> FLOWERS CATALOGUE</h4>
+                    <h4 class="mb-0 col-sm-4"><i class="fab fa-pagelines text-danger"></i> DANH SÁCH HOA</h4>
 
                     <div class="form-group">
-                        <a href="/admin/product/create" class="btn" style="background-image: linear-gradient(#a3bded, #66a6ff);"><i class="far fa-plus-square"></i> Create New</a>
+                        <a href="/admin/product/create" class="btn" style="background-image: linear-gradient(#a3bded, #66a6ff);"><i class="far fa-plus-square"></i> Nhập hoa mới</a>
                     </div>
                 </div>
 
@@ -45,16 +45,16 @@
                                         <table class="table table-bordered" id="table">
                                             <thead>
                                             <tr class="table100-head">
-                                                <th class="column1">{{__('ID')}}</th>
-                                                <th class="column2">{{__('Image')}}</th>
-                                                <th class="column3">{{__('Name')}}</th>
-                                                <th class="column4">{{__('Category')}}</th>
-                                                <th class="column5">{{__('Collection')}}</th>
-                                                <th class="column6">{{__('Price')}}</th>
-                                                <th class="column7">{{__('Sale')}}</th>
-                                                <th class="column8">{{__('Description')}}</th>
-                                                <th class="column9">{{__('Detail')}}</th>
-                                                <th class="column10">{{__('Action')}}</th>
+                                                <th class="column1">{{__('STT')}}</th>
+                                                <th class="column2">{{__('Ảnh minh họa')}}</th>
+                                                <th class="column3">{{__('Tên gọi')}}</th>
+                                                <th class="column4">{{__('Danh mục')}}</th>
+                                                <th class="column5">{{__('Bộ sưu tập')}}</th>
+                                                <th class="column6">{{__('Giá thành')}}</th>
+                                                <th class="column7">{{__('Khuyến mãi')}}</th>
+                                                <th class="column8">{{__('Mô tả')}}</th>
+                                                <th class="column9">{{__('Chi tiết')}}</th>
+                                                <th class="column10">{{__('Thao tác')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>

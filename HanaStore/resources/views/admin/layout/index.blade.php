@@ -158,13 +158,13 @@
                                 <i class="fab fa-product-hunt fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
-                                <h2>Products</h2>
+                                <h2>Sản phẩm</h2>
                             </div>
                         </div>
                     </div>
                     <a href="/admin/product">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                             <div class="clearfix"></div>
@@ -180,13 +180,13 @@
                                 <i class="fas fa-folder-minus fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
-                                <h2>Categories</h2>
+                                <h2>Danh mục</h2>
                             </div>
                         </div>
                     </div>
                     <a href="/admin/category">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                             <div class="clearfix"></div>
@@ -203,13 +203,13 @@
                                 <i class="far fa-list-alt fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
-                                <h2>Collections</h2>
+                                <h2>Bộ sưu tập</h2>
                             </div>
                         </div>
                     </div>
                     <a href="admin/collection">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -227,13 +227,13 @@
                                 <i class="fas fa-clipboard-list fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
-                                <h2>Orders</h2>
+                                <h2>Đơn hàng</h2>
                             </div>
                         </div>
                     </div>
                     <a href="admin/order">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                             <div class="clearfix"></div>
@@ -250,13 +250,13 @@
                                 <i class="fa fa-chart-line fa-4x"></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
-                                <h2>Chart</h2>
+                                <h2>Doanh Thu</h2>
                             </div>
                         </div>
                     </div>
                     <a href="/admin/chart">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 
                             <div class="clearfix"></div>
@@ -273,13 +273,13 @@
                                 <i class="fa fa-chart-bar fa-4x" ></i>
                             </div>
                             <div class="col-xs-8 text-right" style="float: right">
-                                <h2>Revenue</h2>
+                                <h2>Thống kê</h2>
                             </div>
                         </div>
                     </div>
                     <a href="/admin/chart">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -312,10 +312,10 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6" id="first-revenue-chart">
+                            <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6" id="first-revenue-chart">
 
                             </div>
-                            <div class="col-md-6" id="second-revenue-chart">
+                            <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6" id="second-revenue-chart">
 
                             </div>
                         </div>
@@ -333,13 +333,13 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4" id="first_order_chart">
+                            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-4" id="first_order_chart">
 
                             </div>
-                            <div class="col-md-4" id="second_order_chart">
+                            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-4" id="second_order_chart">
 
                             </div>
-                            <div class="col-md-4" id="third_order_chart">
+                            <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-4" id="third_order_chart">
 
                             </div>
                         </div>
@@ -380,7 +380,6 @@
                     title: 'Biểu đồ doanh thu và lợi nhuận theo thời gian',
                     subtitle: 'tính theo đơn vị (vnd)'
                 },
-                backgroundColor: '#f1f8e9',
                 height: 500,
                 hAxis: {
                     format: 'dd/MM/yyyy'
@@ -469,9 +468,9 @@
             };
 
             // Optional; add a title and set the width and height of the chart
-            let options_one = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400, is3D: true};
-            let options_two = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400, legend: 'none'};
-            let options_three = {'title':'Phân loại trạng thái đơn hàng', backgroundColor: '#f1f8e9', width: 500, height: 400, pieHole: 0.4};
+            let options_one = {'title':'Phân loại trạng thái đơn hàng', height: 400, is3D: true};
+            let options_two = {'title':'Phân loại trạng thái đơn hàng', height: 400, legend: 'none'};
+            let options_three = {'title':'Phân loại trạng thái đơn hàng', height: 400, pieHole: 0.4};
 
             // Display the chart inside the <div> element with id="first_order_chart"
             let first_order_chart = new google.visualization.PieChart(document.getElementById('first_order_chart'));

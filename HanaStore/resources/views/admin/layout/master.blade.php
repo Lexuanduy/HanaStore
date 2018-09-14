@@ -74,7 +74,7 @@
                 <li class="{{ $current_menu == 'Home' ? 'active' : '' }}">
                     <a href="/admin">
                         <i class="fas fa-th"></i>
-                        Dashboard
+                        Trang chủ
                     </a>
                 </li>
 
@@ -82,35 +82,35 @@
                 <li class="{{ $current_menu == 'product_manager' ? 'active' : '' }}">
                     <a href="#sub-product" data-toggle="collapse" aria-expanded="false">
                         <i class="fab fa-product-hunt"></i>
-                        Products Management
+                        Quản lí hoa
                         <i class="fas fa-angle-down fa-pull-right"></i>
                     </a>
                     @if($current_menu == 'product_manager')
                         <ul class="collapse in list-unstyled" id="sub-product">
                             @if($current_menu == 'product_manager' && $current_sub_menu == 'edit')
                                 <li class="active">
-                                    <a href="{{ url()->current() }}">Edit Info</a>
+                                    <a href="{{ url()->current() }}">Chỉnh sửa hoa</a>
                                 </li>
                             @endif
                             <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                <a href="/admin/product/create">Create New Flower</a>
+                                <a href="/admin/product/create">Nhập hoa mới</a>
                             </li>
                             <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/product">List Flower</a>
+                                <a href="/admin/product">Danh sách hoa</a>
                             </li>
                         </ul>
                     @else
                         <ul class="collapse list-unstyled" id="sub-product">
                             @if($current_menu == 'product_manager' && $current_sub_menu == 'edit')
                                 <li class="active">
-                                    <a href="{{ url()->current() }}">Edit Info</a>
+                                    <a href="{{ url()->current() }}">Chỉnh sửa hoa</a>
                                 </li>
                             @endif
                             <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                <a href="/admin/product/create">Create New Flower</a>
+                                <a href="/admin/product/create">Nhập hoa mới</a>
                             </li>
                             <li class="{{ ($current_menu == 'product_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/product">List Flower</a>
+                                <a href="/admin/product">Danh sách hoa</a>
                             </li>
                         </ul>
                     @endif
@@ -121,35 +121,35 @@
                 <li class="{{ $current_menu == 'category_manager' ? 'active' : '' }}">
                     <a href="#sub-category" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-folder-minus"></i>
-                        Categories
+                        Danh mục
                         <i class="fas fa-angle-down fa-pull-right"></i>
                     </a>
                     @if($current_menu == 'category_manager')
                         <ul class="collapse in list-unstyled" id="sub-category">
                             @if($current_menu == 'category_manager' && $current_sub_menu == 'edit')
                                 <li class="active">
-                                    <a href="{{ url()->current() }}">Edit Info</a>
+                                    <a href="{{ url()->current() }}">Chỉnh sửa</a>
                                 </li>
                             @endif
                             <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                <a href="/admin/category/create">Create New Category</a>
+                                <a href="/admin/category/create">Nhập danh mục mới</a>
                             </li>
                             <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/category">List Categories</a>
+                                <a href="/admin/category">Danh mục</a>
                             </li>
                         </ul>
                     @else
                         <ul class="collapse list-unstyled" id="sub-category">
                             @if($current_menu == 'category_manager' && $current_sub_menu == 'edit')
                                 <li class="active">
-                                    <a href="{{ url()->current() }}">Edit Info</a>
+                                    <a href="{{ url()->current() }}">Chỉnh sửa</a>
                                 </li>
                             @endif
                             <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                <a href="/admin/category/create">Create New Category</a>
+                                <a href="/admin/category/create">Nhập danh mục mới</a>
                             </li>
                             <li class="{{ ($current_menu == 'category_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/category">List Categories</a>
+                                <a href="/admin/category">Danh mục</a>
                             </li>
                         </ul>
                     @endif
@@ -160,35 +160,35 @@
                 <li class="{{ $current_menu == 'collection_manager' ? 'active' : '' }}">
                     <a href="#sub-collection" data-toggle="collapse" aria-expanded="false">
                         <i class="far fa-list-alt"></i>
-                        Collections
+                        Bộ sưu tập (BST)
                         <i class="fas fa-angle-down fa-pull-right"></i>
                     </a>
                     @if($current_menu == 'collection_manager')
                         <ul class="collapse in list-unstyled" id="sub-collection">
                             @if($current_menu == 'collection_manager' && $current_sub_menu == 'edit')
                                 <li class="active">
-                                    <a href="{{ url()->current() }}">Edit Info</a>
+                                    <a href="{{ url()->current() }}">Chỉnh sửa</a>
                                 </li>
                             @endif
                             <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                <a href="/admin/collection/create">Create New Collection</a>
+                                <a href="/admin/collection/create">Nhập BST mới</a>
                             </li>
                             <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/collection">List Collections</a>
+                                <a href="/admin/collection">Bộ sưu tập</a>
                             </li>
                         </ul>
                     @else
                         <ul class="collapse list-unstyled" id="sub-collection">
                             @if($current_menu == 'collection_manager' && $current_sub_menu == 'edit')
                                 <li class="active">
-                                    <a href="{{ url()->current() }}">Edit Info</a>
+                                    <a href="{{ url()->current() }}">Chỉnh sửa hoa</a>
                                 </li>
                             @endif
                             <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'create_new') ? 'active' : ''}}">
-                                <a href="/admin/collection/create">Create New Collection</a>
+                                <a href="/admin/collection/create">Nhập BST mới</a>
                             </li>
                             <li class="{{ ($current_menu == 'collection_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/collection">List Collections</a>
+                                <a href="/admin/collection">Bộ sưu tập</a>
                             </li>
                         </ul>
                     @endif
@@ -199,19 +199,19 @@
                 <li class="{{ $current_menu == 'order_manager' ? 'active' : '' }}">
                     <a href="#sub-order" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-clipboard-list"></i>
-                        Orders
+                        Đơn hàng
                         <i class="fas fa-angle-down fa-pull-right"></i>
                     </a>
                     @if($current_menu == 'order_manager')
                         <ul class="collapse in list-unstyled" id="sub-order">
                             <li class="{{ ($current_menu == 'order_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/order">List Orders</a>
+                                <a href="/admin/order">Danh sách đơn hàng</a>
                             </li>
                         </ul>
                     @else
                         <ul class="collapse list-unstyled" id="sub-order">
                             <li class="{{ ($current_menu == 'order_manager' && $current_sub_menu == 'list_item') ? 'active' : ''}}">
-                                <a href="/admin/order">List Orders</a>
+                                <a href="/admin/order">Danh sách đơn hàng</a>
                             </li>
                         </ul>
                     @endif
@@ -222,7 +222,7 @@
                 <li class="{{ $current_menu == 'chart_manager' ? 'active' : '' }}">
                     <a href="/admin/chart">
                         <i class="fas fa-chart-line"></i>
-                        Revenue
+                        Thống kê
                     </a>
                 </li>
                 <!--Revenue-->
@@ -242,13 +242,13 @@
                     </div>
                     <!-- Search-from -->
                     <form action="#" method="post" class="form-inline mx-auto search-form">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required="">
-                        <button class="btn btn-style my-2 my-sm-0" type="submit">Search</button>
+                        <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search" required="">
+                        <button class="btn btn-style my-2 my-sm-0" type="submit">Tìm kiếm</button>
                     </form>
                     <!--// Search-from -->
 
                     <div class="nav-item mx-3">
-                        <a href="/hanastore/home" class="btn btn-outline-info" target="_blank">Visit website</a>
+                        <a href="/hanastore/home" class="btn btn-outline-info" target="_blank">Tới shop ngay</a>
                     </div>
 
                     <!--Admin profile-->
@@ -269,7 +269,7 @@
                                     </div>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" href="#">Đăng xuất</a>
                             </div>
                         </li>
                     </ul>
@@ -283,7 +283,7 @@
 
             <!-- Copyright -->
             <footer class="copyright-w3layouts py-xl-3 py-2 mt-xl-5 mt-4 mb-1 text-center">
-                <p>© 2018 Hanastore . All Rights Reserved | Customize by
+                <p>© 2018 Hanastore . All Rights Reserved | Tùy biến và phát triển bởi
                     <a href="/admin"> Hana Team </a>
                 </p>
             </footer>

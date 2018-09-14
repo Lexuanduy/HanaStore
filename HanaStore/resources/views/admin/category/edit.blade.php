@@ -74,7 +74,7 @@
                     </div>
                 @endif
                     <div class="card-header card-header-text">
-                        <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Edit Category</h4>
+                        <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> CẬP NHẬT DANH MỤC</h4>
                     </div>
 
                     <!--form edit collections-->
@@ -89,31 +89,31 @@
                                         {{csrf_field()}}
 
                                         <div class="row">
-                                            <label class="col-sm-2">Name</label>
+                                            <label class="col-sm-2">Tên gọi</label>
                                             <div class="col-sm-6 form-group mb-3">
                                                 <div class="input-group" {{$errors->has('name')?' has-error':''}}>
                                                     <div class="form-group input-group-prepend">
                                                         <span class="input-group-text">@</span>
                                                     </div>
-                                                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{$category->name}}" required>
+                                                    <input type="text" name="name" class="form-control" placeholder="Tên gọi" value="{{$category->name}}" required>
                                                     <div class="invalid-feedback">
-                                                        Please choose a username.
+                                                        Vui lòng chọn tên danh mục.
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
-                                            <label class="col-sm-2">Images</label>
+                                            <label class="col-sm-2">Ảnh minh hoa</label>
                                             <div class="col-sm-6 form-group mb-3">
                                                 <div class="row ml-1">
                                                     <div class="col-sm-6">
                                                         <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
-                                                        <span class="badge badge-info">Choose new image...</span>
-                                                        <img id="upload-image" class="broken" src="#" alt="New image preview" />
+                                                        <span class="badge badge-info">Chọn ảnh mới...</span>
+                                                        <img id="upload-image" class="broken" src="#" alt="Xem trước" />
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <span class="badge">Previous Image</span>
+                                                        <span class="badge">Ảnh cũ</span>
                                                         <img src="{{ $category->images }}" class="img-thumbnail" style="width: 150px; height: 150px;"/>
                                                     </div>
                                                     @if($errors->has('images'))
@@ -124,14 +124,14 @@
                                         </div>
 
                                         <div class="row">
-                                            <label class="col-sm-2">Description</label>
+                                            <label class="col-sm-2">Mô tả</label>
                                             <div class="col-sm-6 form-group mb-3">
                                                 <input name="description" type="text" class="form-control" value="{{$category->description}}" required>
                                                 @if($errors->has('description'))
                                                     <label class="text-danger">*{{$errors->first('description')}}</label>
                                                 @endif
                                                 <div class="invalid-feedback">
-                                                    Please choose a description.
+                                                    Vui lòng thêm mô tả.
                                                 </div>
                                             </div>
                                         </div>
@@ -139,8 +139,8 @@
                                         <div class="row">
                                             <div class="col-sm-2"></div>
                                             <div class="col-sm-10">
-                                                <button type="submit" value="Submit" class="btn btn-primary">Update</button>
-                                                <button type="reset" value="Reset" class="btn btn-reset btn-danger">Reset</button>
+                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                                <button type="reset" class="btn btn-reset btn-danger">Đặt lại</button>
                                             </div>
                                         </div>
                                     </form>
@@ -206,7 +206,7 @@
         window.onbeforeunload = confirmExit;
         function confirmExit()
         {
-            return "Do you want to leave this page without saving?";
+            return "Bạn có muốn rời đi dù chưa lưu lại?";
         }
     </script>
 @endsection

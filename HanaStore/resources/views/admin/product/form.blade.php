@@ -73,7 +73,7 @@
                     </div>
                 @endif
                 <div class="card-header card-header-text">
-                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> Create Product</h4>
+                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> NHẬP HOA MỚI</h4>
                 </div>
 
                 <!--form edit flowers-->
@@ -86,15 +86,12 @@
                                 <form class="needs-validation" role="form" novalidate method="POST" action="/admin/product" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="row">
-                                        <label class="col-sm-2">Name</label>
+                                        <label class="col-sm-2">Tên loài hoa</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <div class="input-group" {{$errors->has('name')?' has-error':''}}>
-                                                <div class="form-group input-group-prepend">
-                                                    <span class="input-group-text">@</span>
-                                                </div>
-                                                <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                                <input type="text" name="name" class="form-control" placeholder="Tên gọi" required>
                                                 <div class="invalid-feedback">
-                                                    Please choose a username.
+                                                    Vui lòng chọn tên gọi loài hoa.
                                                 </div>
                                             </div>
                                         </div>
@@ -102,16 +99,16 @@
 
                                     <!-- props name of categories by id-->
                                     <div class="row">
-                                        <label class="col-sm-2">Category</label>
+                                        <label class="col-sm-2">Danh mục</label>
                                         <div class="col-sm-4 form-group mb-3">
                                             <select name="categoryId" class="form-control" required>
-                                                <option value="">Select category...</option>
+                                                <option value="">Chọn danh mục...</option>
                                                 @foreach($categories as $item)
                                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
-                                                Please choose a category.
+                                                Vui lòng chọn danh mục hoa.
                                             </div>
                                         </div>
                                     </div>
@@ -119,27 +116,27 @@
 
                                     <!-- props name of collections by id-->
                                     <div class="row">
-                                        <label class="col-sm-2">Collection</label>
+                                        <label class="col-sm-2">Bộ sưu tập</label>
                                         <div class="col-sm-4 form-group mb-3">
                                             <select name="collectionId" class="form-control" required>
-                                                <option value="">Select collection...</option>
+                                                <option value="">Chọn bộ sưu tập...</option>
                                                 @foreach($collections as $item)
                                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback">
-                                                Please choose a collection.
+                                                Vui lòng chọn bộ sưu tập hoa.
                                             </div>
                                         </div>
                                     </div>
                                     <!-- props name of collections by id-->
 
                                     <div class="row">
-                                        <label class="col-sm-2">Price</label>
+                                        <label class="col-sm-2">Giá thành</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <div class="input-group">
                                                 <div class="form-group input-group-prepend">
-                                                    <span class="input-group-text">Price</span>
+                                                    <span class="input-group-text">Giá</span>
                                                 </div>
                                                 <input type="text" name="price" class="form-control" required>
                                                 <div class="form-group input-group-append">
@@ -149,20 +146,20 @@
                                                     <label class="text-danger">*{{$errors->first('price')}}</label>
                                                 @endif
                                                 <div class="invalid-feedback">
-                                                    Please choose a price.
+                                                    Vui lòng chọn mức giá thành hợp lí.
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <label class="col-sm-2">Images</label>
+                                        <label class="col-sm-2">Ảnh</label>
                                         <div class="form-group">
                                             <div class="row ml-1 custom-file">
                                                 <div class="col-sm-10">
                                                     <input type="file" name="images" class="mr-2" accept="image/*" onchange="readURL(this);">
-                                                    <span class="badge badge-info">Choose image...</span>
-                                                    <img id="upload-image" class="broken" src="#" alt="Preview" />
+                                                    <span class="badge badge-info">Chọn ảnh...</span>
+                                                    <img id="upload-image" class="broken" src="#" alt="Xem trước" />
                                                 </div>
                                                 @if($errors->has('images'))
                                                     <label class="text-danger">*{{$errors->first('images')}}</label>
@@ -172,7 +169,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <label class="col-sm-2">Sale</label>
+                                        <label class="col-sm-2">Khuyến mãi</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <div class="input-group">
                                                 <input type="text" name="sale" class="form-control" required>
@@ -183,34 +180,34 @@
                                                     <label class="text-danger">*{{$errors->first('sale')}}</label>
                                                 @endif
                                                 <div class="invalid-feedback">
-                                                    Please choose a sale.
+                                                    Vui lòng chọn mức giảm giá.
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <label class="col-sm-2">Description</label>
+                                        <label class="col-sm-2">Mô tả</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <input name="description" type="text" class="form-control" required>
                                             @if($errors->has('description'))
                                                 <label class="text-danger">*{{$errors->first('description')}}</label>
                                             @endif
                                             <div class="invalid-feedback">
-                                                Please choose a description.
+                                                Vui lòng thêm mô tả.
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <label class="col-sm-2">Detail</label>
+                                        <label class="col-sm-2">Chi tiết</label>
                                         <div class="col-sm-6 form-group mb-3">
                                             <textarea name="detail" class="form-control" rows="3" required></textarea>
                                             @if($errors->has('detail'))
                                                 <label class="text-danger">*{{$errors->first('detail')}}</label>
                                             @endif
                                             <div class="invalid-feedback">
-                                                Please choose a detail.
+                                                Vui lòng thêm chi tiết.
                                             </div>
                                         </div>
                                     </div>
@@ -218,8 +215,8 @@
                                     <div class="row">
                                         <div class="col-sm-2"></div>
                                         <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <button type="reset" class="btn btn-reset btn-danger">Reset</button>
+                                            <button type="submit" class="btn btn-primary">Tạo mới</button>
+                                            <button type="reset" class="btn btn-reset btn-danger">Đặt lại</button>
                                         </div>
                                     </div>
                                 </form>
@@ -284,7 +281,7 @@
         window.onbeforeunload = confirmExit;
         function confirmExit()
         {
-            return "Do you want to leave this page without saving?";
+            return "Bạn có muốn rời đi dù chưa lưu lại?";
         }
     </script>
 @endsection

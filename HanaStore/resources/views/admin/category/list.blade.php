@@ -28,10 +28,10 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header card-header-text text-center">
-                    <h4 class="mb-0 col-sm-4"><i class="fab fa-pagelines text-danger"></i> CATEGORY CATALOGUE</h4>
+                    <h4 class="mb-0 col-sm-4"><i class="fab fa-pagelines text-danger"></i> DANH MỤC</h4>
 
                     <div class="form-group">
-                        <a href="/admin/category/create" class="btn" style="background-image: linear-gradient(#a3bded, #66a6ff);"><i class="far fa-plus-square"></i> Create New</a>
+                        <a href="/admin/category/create" class="btn" style="background-image: linear-gradient(#a3bded, #66a6ff);"><i class="far fa-plus-square"></i> Tạo mới</a>
                     </div>
                 </div>
 
@@ -45,11 +45,11 @@
                                         <table class="table table-bordered" id="table">
                                             <thead>
                                             <tr class="table100-head">
-                                                <th class="column1">{{__('ID')}}</th>
-                                                <th class="column2">{{__('Image')}}</th>
-                                                <th class="column5">{{__('Category')}}</th>
-                                                <th class="column8">{{__('Description')}}</th>
-                                                <th class="column9">{{__('Action')}}</th>
+                                                <th class="column1">{{__('STT')}}</th>
+                                                <th class="column2">{{__('Ảnh')}}</th>
+                                                <th class="column5">{{__('Tên danh mục')}}</th>
+                                                <th class="column8">{{__('Mô tả')}}</th>
+                                                <th class="column9">{{__('Thao tác')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
