@@ -117,7 +117,8 @@ class UserController extends Controller
             $itemCart = Cart::add(array(
                     'id' => $id,
                     'name' => $product->name,
-                    'qty' => 1, 'price' => $product->price - $product->price * $product->sale / 100,
+                    'qty' => 1,
+                    'price' => $product->price - $product->price * $product->sale / 100,
                     'options' => array(
                         'img' => $product->images
                     )

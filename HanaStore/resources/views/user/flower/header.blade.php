@@ -24,7 +24,7 @@
             <div class="topbar-language rs1-select2">
                 <select class="selection-1" name="time">
                     <option value="1">VN</option>
-                    <option value="2">EN</option>
+                    {{--<option value="2">EN</option>--}}
                 </select>
             </div>
         </div>
