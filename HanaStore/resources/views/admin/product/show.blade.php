@@ -3,7 +3,7 @@
     'current_menu' => 'product_manager',
     'current_sub_menu' => 'show_item',
 ])
-@section('page-title', 'Show product')
+@section('page-title', 'CHI TIẾT SẢN PHẨM')
 @section('content')
  <div class="container-fluid">
      <div class="row">

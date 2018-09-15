@@ -3,7 +3,7 @@
     'current_menu' => 'category_manager',
     'current_sub_menu' => 'edit',
 ])
-@section('page-title', 'Edit category')
+@section('page-title', 'CẬP NHẬT DANH MỤC')
 @section('content')
     <style>
 

@@ -3,7 +3,7 @@
     'current_menu' => 'category_manager',
     'current_sub_menu' => 'create_new',
 ])
-@section('page-title', 'Create new category')
+@section('page-title', 'THÊM DANH MỤC')
 @section('content')
     <style>
 

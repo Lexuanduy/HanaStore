@@ -3,7 +3,7 @@
     'current_menu' => 'collection_manager',
     'current_sub_menu' => 'edit',
 ])
-@section('page-title', 'Edit Collection')
+@section('page-title', 'CẬP NHẬT BỘ SƯU TẬP')
 @section('content')
     <style>
 

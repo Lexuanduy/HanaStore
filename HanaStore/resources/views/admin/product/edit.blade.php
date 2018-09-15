@@ -3,7 +3,7 @@
     'current_menu' => 'product_manager',
     'current_sub_menu' => 'edit',
 ])
-@section('page-title', 'Edit products')
+@section('page-title', 'CẬP NHÂT HOA')
 @section('content')
     <style>
 
