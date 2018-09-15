@@ -3,7 +3,7 @@
     'current_menu' => 'collection_manager',
     'current_sub_menu' => 'create_new',
 ])
-@section('page-title', 'Create New Collection ')
+@section('page-title', 'THÊM BỘ SƯU TẬP')
 @section('content')
     <style>
 
@@ -74,7 +74,7 @@
                     </div>
                 @endif
                 <div class="card-header card-header-text">
-                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> THÊM DANH MỤC</h4>
+                    <h4 class="mb-0"><i class="fab fa-pagelines text-danger"></i> THÊM BỘ SƯU TẬP</h4>
                 </div>
 
                 <!--form create collections-->

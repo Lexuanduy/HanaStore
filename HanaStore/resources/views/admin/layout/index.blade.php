@@ -3,7 +3,7 @@
     'current_menu' => 'Home',
     'current_sub_menu' => 'Home',
 ])
-@section('page-title', 'Home')
+@section('page-title', 'Trang quản lý HANASTORE')
 @section('content')
     <style>
         .panel{
@@ -148,7 +148,10 @@
         }
     </style>
     <!-- /.row -->
+
+    <!-- Dashboard-->
     <div class="container-fluid>">
+        <!-- FIRST Dashboard-->
         <div class="row parent-dasboard">
             <div class="col-lg-4 col-md-6">
                 <div class="panel panel-primary">
@@ -218,6 +221,9 @@
             </div>
 
         </div>
+        <!-- FIRST Dashboard-->
+
+        <!-- SECOND Dashboard-->
         <div class="row parent-dasboard">
             <div class="col-lg-4 col-md-6">
                 <div class="panel panel-purple">
@@ -288,10 +294,13 @@
             </div>
 
         </div>
+        <!-- SECOND Dashboard-->
     </div>
+    <!-- Dashboard-->
 
     <!--General about company-->
     <div class="container-fluid">
+        <!--REVENUE company-->
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -323,7 +332,9 @@
                 </div>
             </div>
         </div>
+        <!--REVENUE company-->
 
+        <!--ORDER company-->
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -347,7 +358,9 @@
                 </div>
             </div>
         </div>
+        <!--ORDER company-->
     </div>
+    <!--General about company-->
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">

@@ -3,6 +3,7 @@
     'current_menu'=>'order_manager',
     'current_sub_menu'=>'list_item'
 ])
+@section('page-title','DANH SÁCH ĐẶT HÀNG')
 @section('content')
     <style type="text/css">
         .none a{
@@ -156,6 +157,22 @@
 
         $(document).ready(function() {
             $('#table').DataTable({
+                lengthMenu: [[10, 20, 30, 40, 50, -1], [10, 20, 30, 40, 50, "Tất cả"]],
+                order: [[ 3, "desc" ]],
+                pagingType: "full_numbers",
+                language: {
+                    lengthMenu: "_MENU_",
+                    search: "_INPUT_",
+                    searchPlaceholder: "Tìm kiếm...",
+                    zeroRecords: "Dạo này ế ẩm lắm, không có bản ghi nào",
+                    paginate: {
+                        first: "<<",
+                        last: ">>",
+                        next: ">",
+                        previous: "<"
+                    },
+                    info: "Hiển thị từ _START_ tới _END_ của _TOTAL_ bản ghi",
+                }
             });
         } );
     </script>

@@ -3,7 +3,7 @@
     'current_menu' => 'product_manager',
     'current_sub_menu' => 'create_new',
 ])
-@section('page-title', 'Create new flower')
+@section('page-title', 'NHẬP HOA MỚI')
 @section('content')
     <style>
 

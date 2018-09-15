@@ -2,7 +2,7 @@
     'currentPage' => 'chart',
     'current_menu' => 'chart_manager',
 ])
-@section('page-title', 'Revenue Chart')
+@section('page-title', 'THỐNG KÊ')
 @section('content')
     <style>
         .daterangepicker{
