@@ -217,7 +217,7 @@
             error:function () {
 
             }
-        })
+        });
         setTimeout(function () {
             window.location.reload();
         },500)
@@ -227,11 +227,20 @@
         var src = $('.avatarUser').attr('src').replace('?type=normal','');
         $('#modalInfoUser').modal();
         $('.avatarUser').attr('src',src);
-    })
+    });
 
     $('#edit-user').click(function () {
         $('.box-edit-user').addClass('active-box');
         $('.box-user').removeClass('active-box');
     });
+
+    $('.showPopup').click(function () {
+        // Mess delete product success.
+        $('#Popup').addClass('show-mess');
+        setTimeout(function () {
+            $('#Popup').removeClass('show-mess');
+        }, 2000);
+    });
+
 
 })(jQuery);
