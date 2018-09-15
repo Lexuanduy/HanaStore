@@ -42,7 +42,7 @@
                 <div class="card-header card-header-text">
                     <h4 class="mb-0 col-sm-4"><i class="fas fa-clipboard-list text-danger"></i> DANH SÁCH ĐẶT HÀNG</h4>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <form action="/admin/order">
                             <div class="form-group">
                                 <div id="reportrange" class="date-range">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="card-body">
