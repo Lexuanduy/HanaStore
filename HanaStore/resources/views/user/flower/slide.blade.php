@@ -14,7 +14,7 @@
 
                 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                     <!-- Button -->
-                    <a href="/user/list-product?collectionId=1" class="flex-c-m size2 bo-rad-23 s-text1 bggray hov1 trans-0-4">
+                    <a href="/hanastore/list-product?collectionId=1" class="flex-c-m size2 bo-rad-23 s-text1 bggray hov1 trans-0-4">
                         Xem ngay
                     </a>
                 </div>
@@ -35,7 +35,7 @@
 
                 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
                     <!-- Button -->
-                    <a href="/user/list-product?collectionId=2" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                    <a href="/hanastore/list-product?collectionId=2" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                         Xem ngay
                     </a>
                 </div>
@@ -55,7 +55,7 @@
 
                 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                     <!-- Button -->
-                    <a href="/user/list-product?collectionId=3" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                    <a href="/hanastore/list-product?collectionId=3" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                         xem ngay
                     </a>
                 </div>
@@ -76,7 +76,7 @@
 
                 <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
                     <!-- Button -->
-                    <a href="/user/list-product?collectionId=4" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                    <a href="/hanastore/list-product?collectionId=4" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                         xem ngay
                     </a>
                 </div>
